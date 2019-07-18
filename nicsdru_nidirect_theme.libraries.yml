@@ -1,0 +1,16 @@
+nid_base:
+  version: VERSION
+  css:
+    component:
+      css/1_base/base.css: { minified: true }
+
+nid_components:
+  version: VERSION
+  css:
+    component:
+      css/3_components/site-logo/site-logo.css: { minified: true }
+
+fonts:
+  css:
+    theme:
+      '//fonts.googleapis.com/css?family=lato': { type: external, minified: true }

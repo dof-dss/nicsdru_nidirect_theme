@@ -1,0 +1,24 @@
+name: NIDirect
+type: theme
+description: 'Drupal 8 theme for nidirect site'
+package: NICS
+core: 8.x
+libraries:
+  - nicsdru_nidirect_theme/nid_base
+  - nicsdru_nidirect_theme/nid_components
+
+base theme: nics_origins
+
+regions:
+  header: 'Header'
+  primary_menu: 'Primary menu'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  breadcrumb: Breadcrumb
+  highlighted: Highlighted
+  help: Help
+  content: Content
+  sidebar_first: 'First sidebar'
+  sidebar_second: 'Sidebar second'
+  footer: 'Footer'
+  feedback: 'Feedback'
