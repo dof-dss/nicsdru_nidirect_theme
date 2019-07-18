@@ -1,0 +1,18 @@
+@import '../init';
+
+// Layouts
+//
+// The layout styling for major parts of the page that are included with the
+// theme. cssgrid is used for styling the layouts with appropriate fallback's.
+// Components and options for laying out the project, including wrapping containers, a powerful grid system, a flexible
+// media object, and responsive utility classes. The grid is styled used cssgrid and the utility classes are modelled on
+// those used by the Bootstrap frontend component library. @see the grid section for more information.
+//
+// Weight: -8
+//
+// Style guide: layouts
+
+@import 'grid/grid';
+@import 'header/header';
+@import '../3_components/footer/footer';
+@import 'navigation/navigation';

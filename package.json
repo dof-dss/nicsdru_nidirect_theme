@@ -1,5 +1,5 @@
 {
-  "name": "theming_codekit",
+  "name": "nicsdru_nidirect_theme",
   "version": "1.0.0",
   "description": "A package of utilities used to theme our site",
   "main": "index.js",
@@ -36,7 +36,7 @@
     "//": "build scripts",
     "kss": "kss --config styleguide/config/kss-config.json",
     "modernizr": "modernizr -uc config/modernizr-config.json -d js/modernizr.min.js",
-    "autoprefixer": "npx postcss -u autoprefixer -r css/*css --no-map",
+    "autoprefixer": "npx postcss -u autoprefixer -r css/**/*.css --no-map",
     "uglify": "mkdir -p js && uglifyjs src/js/*.js -m -o js/scripts.js",
     "scss:dev": "mkdir -p css && node-sass --source-map true --source-comments true --source-map-contents true --output-style expanded -o css src/scss",
     "scss:prod": "mkdir -p css && node-sass --output-style compressed -o css src/scss",

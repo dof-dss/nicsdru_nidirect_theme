@@ -1,0 +1,20 @@
+// Navigation
+//
+// The layout styling for major parts of the page that are included with the
+// theme. For layout we use cssgrid with appropriate fallback's. Given the simplistic nature of the site,
+// only a couple of different grid layouts are ever needed and these can be re-used for different layout scenarios.
+// - There two main 2 column layouts adopted in the site:
+//   - a 2 column layout where each column is an equal width
+//   - a 2 column layout where the one column is approximately 3x the width of the other, ie is in a ratio 3:1
+// - There is one 3 column layout where each column is an equal width
+// A grid container / row is initiated with the `.gd-row` class. The same page element should then have a second class
+// which describes the desired composition of the layout. This will always take the form of
+// `.gd-comp-X-cols` where X is the number of cols required. This can then by followed by an optional modifier which
+// defines the ratio of the cols eg. `--ratio-eq`.
+// Grid can be nested. More information is provided in the documentation for each layout.
+//
+// Weight: -8
+//
+// Style guide: layouts.navigation
+
+@import 'nav-menu/nav-menu';

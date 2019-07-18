@@ -1,0 +1,83 @@
+// Headings
+//
+// All HTML headings, `<h1>` through `<h6>`, are available. `%h1` through `%h6`
+// classes are also available, for when you want to match the font styling of a
+// heading but still want your text to be displayed inline.
+//
+// Markup: headings-h.twig
+//
+// Style guide: base.headings
+
+// Address variable `h1` font-size and margin within `section` and `article`
+// contexts in Firefox 4+, Safari, and Chrome.
+
+h1,
+%h1 {
+  // Set the font-size and line-height while keeping a proper vertical rhythm.
+  @include adjust-font-size-to(28px, 5.3333334);
+  // Set units of vertical rhythm on the top and bottom margins.
+  @include rhythm-margins(2, 3.5);
+  color: color(headings);
+  letter-spacing: -.5px;
+
+  @include breakpoint($mob) {
+    @include adjust-font-size-to(32px, 6.6666667);
+    @include rhythm-margins(4.5, 3.5);
+    letter-spacing: -.25px;
+  }
+
+  @include breakpoint($phab, $no-query: true) {
+    letter-spacing: auto;
+    font-weight: bold;
+  }
+
+  @include breakpoint($tab, $no-query: true) {
+    @include rhythm-margins(5.6666667, 4.6666667);
+  }
+}
+
+h2,
+%h2 {
+  @include adjust-font-size-to($h2-font-size, 4);
+  @include rhythm-margins(4.6667, 2);
+  color: color(brand-secondary);
+
+  @include breakpoint($phab) {
+    @include adjust-font-size-to($h2-font-size, 6);
+    @include rhythm-margins(6, 3);
+  }
+}
+
+h3,
+%h3 {
+  @include adjust-font-size-to($h3-font-size, 4);
+  @include rhythm-margins(4.6666667, .3333334);
+  font-weight: normal;
+}
+
+h4,
+%h4 {
+  @include adjust-font-size-to(18px, 4);
+  @include rhythm-margins(4.6666667, .3333334);
+  font-weight: 700;
+  color: color(grey-dark);
+
+  @include breakpoint($phab, $no-query: true) {
+    @include adjust-font-size-to($h4-font-size, 4.5);
+    @include rhythm-margins(4.5, 1);
+  }
+}
+
+h5,
+%h5 {
+  @include adjust-font-size-to($h5-font-size);
+  @include leader(1, $h5-font-size);
+  @include trailer(1, $h5-font-size);
+}
+
+h6,
+%h6 {
+  @include adjust-font-size-to($h6-font-size);
+  @include leader(1, $h6-font-size);
+  @include trailer(1, $h6-font-size);
+}

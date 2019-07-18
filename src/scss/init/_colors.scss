@@ -1,0 +1,60 @@
+// sass-lint:disable indentation, no-color-keywords
+
+// Colors
+//
+// Use the `color()` function to add colors to CSS properties. To learn more,
+// [read the Chroma documentation](http://johnalbin.github.io/chroma/).
+//
+// Markup: chroma.twig
+//
+// Weight: -8
+//
+// Style guide: init.colors
+
+// Define the default color scheme's color names.
+$chroma: define-default-color-scheme('branding', 'The site\'s main colors. Can be used to define colors in other color schemes.');
+
+$chroma: add-colors((
+  black:                  #000,
+  charcoal:               ('black' lighten 20%), // #333
+  'grey':                 ('black' lighten 80%), // #999
+  grey-dark:              ('black' lighten 30%), // #4d4d4d
+  grey-light:             #e8e7e7,
+  grey-lightest:          #f0f0f0,
+  grey-medium:            #cdcdcd,
+  white:                  #fff,
+  offwhite:               #f3f8fc,
+
+  brand-primary:          #00aae5,
+  brand-primary-dark:     #076cba,
+  brand-primary-medium:   #0a7ad0,
+  brand-primary-light:    #cee4f6,
+  brand-primary-lightest: #f3f8fc,
+
+  brand-secondary:        #0c1e63,
+  brand-secondary-dark:   #333,
+
+  brand-tertiary:         #db6304,
+));
+
+// Define color names for functional uses.
+$chroma: define-color-scheme('functional', 'Colors used by functional parts of the design.');
+$chroma: add-colors('functional', (
+  // Colors used in the main content area.
+  text:                   'charcoal',
+  headings:               #19315a,
+
+  link:                   #0e6bb3,
+  link-hover:             'link',
+  link-visited:           #5e60b5,
+  link-active:            'link',
+
+  border:                 'grey-light',
+
+  button:                 'text',
+  button-disabled:        'grey',
+
+  mark-bg:                #ff0,
+));
+
+$chroma-active-scheme: 'functional';

@@ -1,0 +1,14 @@
+// gd-col-width()
+//
+// Helper mixin to calculate the width and margins as a percentage of a grid item taking into account the number of
+// columns and the gap to be between each item.
+//
+// Style guide: init.mixins.grid-helpers
+ @mixin gd-col-width($cols: 2, $grid-gap: $grid-gap, $percentage: 1) {
+  $width-units: strip-unit($max-grid-width);
+  $gaps-in-grid: $cols - 1;
+  $col-width: (strip-unit($max-grid-width) - (strip-unit($grid-gap) * $gaps-in-grid))/$cols;
+  margin-right: percentage((strip-unit($grid-gap) * $gaps-in-grid)/$width-units)/$gaps-in-grid;
+  //min-width: 100%;
+  width: percentage($col-width/$width-units);
+}

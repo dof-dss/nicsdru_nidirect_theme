@@ -1,0 +1,46 @@
+// Breadcrumb navigation
+//
+// The path to the current page in the form of a list of links.
+//
+// Markup: breadcrumb.twig
+//
+// Style guide: navigation.breadcrumb
+
+.breadcrumb,
+%breadcrumb {
+  @media print {
+    display: none;
+  }
+
+  &--list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &--item {
+    @include adjust-font-size-to(13px, 3);
+    display: inline;
+    list-style-type: none;
+    margin: 0 5px 0 0;
+    padding: 0;
+
+    &::after {
+      content: '»';
+    }
+
+    &:last-child::after {
+      content: '';
+    }
+  }
+
+  a {
+    color: color(brand-secondary);
+    margin-right: 5px;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

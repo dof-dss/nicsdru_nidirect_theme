@@ -1,0 +1,41 @@
+.section--information-services {
+  grid-gap: 15px 20px;
+
+  h2 {
+    @include rhythm-margins(6, 2);
+  }
+}
+
+.card {
+  &--title {
+    @include adjust-font-size-to(18px, 4.5);
+    @include rhythm-margins(0, 2);
+    font-weight: 700;
+
+    a {
+      color: color(brand-primary-medium);
+    }
+  }
+
+  p {
+    @include adjust-font-size-to(16px);
+  }
+}
+
+.section--popular {
+  align-content: start;
+  background-color: color(grey-light);
+  padding: 0 1.5rem;
+
+  .sub-menu {
+    .nav-item {
+        padding: 0 0 .9rem 1rem;
+    }
+  }
+}
+
+.section--featured {
+  border-top: 10px solid color(brand-primary-medium);
+  margin-top: -$grid-gap; // remove the grid gap
+  padding-top: 27px;
+}

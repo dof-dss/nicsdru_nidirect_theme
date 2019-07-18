@@ -1,0 +1,12 @@
+.header {
+  grid-template-columns: 1fr;
+  grid-gap: 0;
+  justify-content: space-between;
+
+  @include breakpoint($tab) {
+    grid-template-columns: auto 400px;
+    margin: 0 auto;
+    max-width: $max-grid-width;
+    padding: 4.3rem 0 3rem;
+  }
+}

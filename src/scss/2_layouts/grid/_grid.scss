@@ -1,0 +1,137 @@
+// Grid framework
+//
+// Powerful mobile-first cssgrid built layouts, can be used to make grids of all shapes and sizes thanks to a
+// #{$total-columns} column system, five default responsive tiers, Sass variables and mixins.
+// ## How it works
+// The grid system uses a series of containers, rows and columns to layout and align content.
+// * Containers provide a means to center and horizontally pad your site’s contents. Use `.container` for a responsive
+//   pixel width or `.container-fluid` for width: 100% across all viewport and device sizes.
+// * Rows are wrappers for columns. Each column has space (called a gutter or `grid gap`) for controlling the space
+//   between them.
+// * In a grid layout, content must be placed within columns and columns are the immediate children of rows.
+// * Column classes indicate the number of columns you’d like to use out of the possible #{$total-columns} per row.
+//   So, if you want three equal-width columns across, you can use `.col-4`.
+// * There are appropriate fall-backs included for browsers that do not support cssgrid. This is done by setting column
+//   widths as percentages, so they’re always fluid and sized relative to their parent element. For browsers that
+//   support cssgrid the width is set to auto and margins are set to none on child descendents, this allows their size
+//   to be controlled by cssgrid.
+// * Columns have `grid-gap` to create the gutters between individual columns, however, you can remove the margin from
+//   rows and padding from columns with `.no-gutters` on the `.gd-row`.
+// * To make the grid responsive, there are five grid breakpoints, one for each responsive breakpoint:
+//   all breakpoints (extra small), small, medium, large, and extra large
+// * Grid breakpoints are based on minimum width media queries, meaning they apply to that one breakpoint and all those
+//   above it (e.g., `.col-sm-4` applies to small, medium, large, and extra large devices, but not the first xs breakpoint).
+//
+// Weight: -5
+//
+// Style guide: layouts.grid
+
+// first import our helpers functions
+@import '../../init';
+
+
+// Container
+//
+// `.container` defines a simple wrapper that fills the width of the page until it reaches a maximum width (defined by
+// the `$max-grid-width` variable in init/variables. When the container reaches the max-width, it is centered on the
+// page. All other layout structures should be nested inside this centered layout to ensure that content does not get
+// too wide on very large screens. Note that `.gd-row` class which indicates the start of a grid container can be applied
+// at the same level as `.container`, the grid will not be able to stretch beyond the maximum width of the container.
+//
+// Weight: -1
+//
+// Style guide: layouts.grid.container
+
+%container,
+.container {
+  padding: 0 10px;
+
+  @include breakpoint($phab) {
+    padding: 0 20px 0 30px;
+  }
+
+  @include breakpoint($tab) {
+    margin: 0 auto;
+    max-width: $max-grid-width;
+    padding: 0 10px;
+  }
+
+  @include breakpoint($lap) {
+    padding: 0;
+  }
+}
+
+//.container {
+//  display: grid;
+//  grid-template-columns:
+//    [full-start] minmax(1rem, 1fr)
+//    [main-start] minmax(0, $max-grid-width) [main-end]
+//    minmax(1rem, 1fr) [full-end];
+//
+//  & > * {
+//    grid-column: main;
+//  }
+//
+//  &-fluid {
+//    grid-column: full;
+//  }
+//}
+
+.gd-row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: $grid-gap;
+  justify-content: space-between;
+
+  &.no-gutters {
+    grid-gap: 0;
+  }
+}
+
+// set col spans / widths for each number upto our number of columns
+[class^='col-'] {
+  grid-column: span $total-columns;
+  width: 100%;
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+  @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+    @for $i from 1 through $total-columns {
+      .col#{$infix}-#{$i} {
+        grid-column: span $i;
+        /* needed for the floated layout*/
+        @include gd-col-width($i);
+        clear: right;
+        float: left;
+
+        &.last-item {
+          width: percentage($i/$total-columns);
+        }
+      }
+    }
+  }
+}
+
+.last-item {
+  grid-column-end: $total-columns + 1;
+  /* needed for the floated layout*/
+  float: right;
+  margin-right: 0;
+}
+
+.gd-title {
+  grid-column: 1 / -1;
+  /* needed for the floated layout */
+  width: 100%;
+  clear: both;
+}
+
+/* We need to set the widths used on floated items back to auto, and remove the bottom margin as when we have grid we have gaps. */
+@supports (display: grid) {
+  .gd-row > * {
+    width: auto;
+    margin: 0;
+  }
+}
+

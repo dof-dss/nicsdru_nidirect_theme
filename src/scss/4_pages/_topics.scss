@@ -1,0 +1,18 @@
+.page-taxonomy {
+  @include breakpoint($phab) {
+    border-bottom: 1px solid color(grey-light);
+  }
+
+  aside {
+    background-color: color(grey-light);
+    padding: 0 15px;
+  }
+
+  .sub-menu {
+    li {
+      padding-bottom: .9rem;
+    }
+  }
+}
+
+// test
