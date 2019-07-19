@@ -7,7 +7,7 @@ libraries:
   - nicsdru_nidirect_theme/nid_base
   - nicsdru_nidirect_theme/nid_components
 
-base theme: nics_origins
+base theme: nicsdru_origins_theme
 
 regions:
   header: 'Header'
