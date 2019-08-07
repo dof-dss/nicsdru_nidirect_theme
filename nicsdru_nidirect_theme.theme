@@ -5,42 +5,24 @@
  * Functions to support theming in the nicsdru_nidirect_theme theme.
  */
 
-
 /**
  * Implements hook_preprocess_field().
  */
-function nicsdru_nidirect_theme_preprocess_field(&$variables)
-{
+function nicsdru_nidirect_theme_preprocess_field(&$variables) {
   // Implement audit link.
   if (isset($variables['element'])
     && isset($variables['element']['#entity_type'])
     && ($variables['element']['#entity_type'] == 'node')
   ) {
-    // Only start this processing if the 'nidirect_workflow' module is installed.
+    // Only start this processing if the 'nidirect_workflow'
+    // module is installed.
     if (\Drupal::service('module_handler')->moduleExists('nidirect_workflow')) {
       $content_type = $variables['element']['#bundle'];
       switch ($content_type) {
         case 'health_condition':
-          // ** check to see if this node is due for audit
-          // Get the current node.
-          $node = \Drupal::routeMatch()->getParameter('node');
-          if (!empty($node) && is_object($node)) {
-            $nid = $node->id();
-            if (!empty($nid)) {
-              // See if audit is due.
-              $next_audit_date = $node->get('field_next_audit_due')->value;
-              if (strtotime($next_audit_date) < strtotime("now")) {
-                // Next audit date is in the past, so this node is due for audit.
-                $variables['audit_link'] = '<a href="/nidirect_workflow/content_audit/' . $nid . '?destination=node/' . $nid . '" title="Click this link to indicate you have checked this content for accuracy and relevance" class="flag unflag-action flag-link-confirm" rel="nofollow">Audit this published content</a>';
-              }
-            }
-          }
-          break;
-
         case 'article':
         case 'contact':
         case 'page':
-          // ** check to see if this node is due for audit
           // Get the current node.
           $node = \Drupal::routeMatch()->getParameter('node');
           if (!empty($node) && is_object($node)) {
@@ -49,7 +31,8 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables)
               // See if audit is due.
               $next_audit_date = $node->get('field_next_audit_due')->value;
               if (strtotime($next_audit_date) < strtotime("now")) {
-                // Next audit date is in the past, so this node is due for audit.
+                // Next audit date is in the past,
+                // so this node is due for audit - display the audit link.
                 $variables['audit_link'] = '<a href="/nidirect_workflow/content_audit/' . $nid . '?destination=node/' . $nid . '" title="Click this link to indicate you have checked this content for accuracy and relevance" class="flag unflag-action flag-link-confirm" rel="nofollow">Audit this published content</a>';
               }
             }
