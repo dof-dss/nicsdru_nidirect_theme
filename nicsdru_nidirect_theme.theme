@@ -46,7 +46,12 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables)
           if (!empty($node) && is_object($node)) {
             $nid = $node->id();
             if (!empty($nid)) {
-              $variables['audit_link'] = '<a href="/nidirect_workflow/content_audit/' . $nid . '?destination=node/' . $nid . '" title="Click this link to indicate you have checked this content for accuracy and relevance" class="flag unflag-action flag-link-confirm" rel="nofollow">Audit this published content</a>';
+              // See if audit is due.
+              $next_audit_date = $node->get('field_next_audit_due')->value;
+              if (strtotime($next_audit_date) < strtotime("now")) {
+                // Next audit date is in the past, so this node is due for audit.
+                $variables['audit_link'] = '<a href="/nidirect_workflow/content_audit/' . $nid . '?destination=node/' . $nid . '" title="Click this link to indicate you have checked this content for accuracy and relevance" class="flag unflag-action flag-link-confirm" rel="nofollow">Audit this published content</a>';
+              }
             }
           }
           break;
