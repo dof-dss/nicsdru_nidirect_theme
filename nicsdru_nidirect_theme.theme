@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the nicsdru_nidirect_theme theme.
+ */
+
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function nicsdru_nidirect_theme_preprocess_field(&$variables)
+{
+  // Implement audit link.
+  if (isset($variables['element'])
+    && isset($variables['element']['#entity_type'])
+    && ($variables['element']['#entity_type'] == 'node')
+  ) {
+    // Only start this processing if the 'nidirect_workflow' module is installed.
+    if (\Drupal::service('module_handler')->moduleExists('nidirect_workflow')) {
+      $content_type = $variables['element']['#bundle'];
+      switch ($content_type) {
+        case 'health_condition':
+          // ** check to see if this node is due for audit
+          // ** check to see if workflow module installed
+          // Get the current node.
+          $node = \Drupal::routeMatch()->getParameter('node');
+          if (!empty($node) && is_object($node)) {
+            $nid = $node->id();
+            if (!empty($nid)) {
+              $variables['audit_link'] = '<a href="/nidirect_workflow/content_audit/' . $nid . '?destination=node/' . $nid . '" title="Click this link to indicate you have checked this content for accuracy and relevance" class="flag unflag-action flag-link-confirm" rel="nofollow">Audit this published content</a>';
+            }
+          }
+          break;
+
+        case 'article':
+        case 'contact':
+        case 'page':
+          // ** check to see if this node is due for audit
+          // ** check to see if workflow module installed
+          // Get the current node.
+          $node = \Drupal::routeMatch()->getParameter('node');
+          if (!empty($node) && is_object($node)) {
+            $nid = $node->id();
+            if (!empty($nid)) {
+              $variables['audit_link'] = '<a href="/nidirect_workflow/content_audit/' . $nid . '?destination=node/' . $nid . '" title="Click this link to indicate you have checked this content for accuracy and relevance" class="flag unflag-action flag-link-confirm" rel="nofollow">Audit this published content</a>';
+            }
+          }
+          break;
+      }
+    }
+  }
+}
