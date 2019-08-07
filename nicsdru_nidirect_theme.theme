@@ -35,7 +35,10 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
                 // so this node is due for audit - display the audit link.
                 $config = \Drupal::config('nidirect_workflow.auditsettings');
                 $audit_button_text = $config->get('audit_button_text');
-                $variables['audit_link'] = '<a href="/nidirect_workflow/content_audit/' . $nid . '?destination=node/' . $nid . '" title="Click this link to indicate you have checked this content for accuracy and relevance" class="flag unflag-action flag-link-confirm" rel="nofollow">' . $audit_button_text . '</a>';
+                $audit_button_hover_text = $config->get('audit_button_hover_text');
+                $variables['audit_link'] = '<a href="/nidirect_workflow/content_audit/' . $nid;
+                $variables['audit_link'] .= '?destination=node/' . $nid . '" title="' . $audit_button_hover_text;
+                $variables['audit_link'] .= '" class="flag unflag-action flag-link-confirm" rel="nofollow">' . $audit_button_text . '</a>';
               }
             }
           }
