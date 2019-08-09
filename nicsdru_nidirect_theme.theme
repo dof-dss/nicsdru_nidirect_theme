@@ -33,8 +33,8 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
               $next_review_date = $node->get('field_next_review_date')->value;
               if (strtotime($next_review_date) < strtotime("now")) {
                 // Next review date is in the past,
-                // so this node is due for audit - display the audit link
-                // if the user is allowed to see it.
+                // so this node is due for audit - display node edit link
+                // (if the user is allowed to see it).
                 $account = User::load(\Drupal::currentUser()->id());
                 if ($account->hasPermission('audit content')) {
                   $audit_button_text = \Drupal::config('nidirect_workflow.auditsettings')->get('audit_button_text');
@@ -60,7 +60,7 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
               if (strtotime($next_audit_date) < strtotime("now")) {
                 // Next audit date is in the past,
                 // so this node is due for audit - display the audit link
-                // if the user is allowed to see it.
+                // (if the user is allowed to see it).
                 $account = User::load(\Drupal::currentUser()->id());
                 if ($account->hasPermission('audit content')) {
                   $audit_button_text = \Drupal::config('nidirect_workflow.auditsettings')->get('audit_button_text');
