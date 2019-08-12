@@ -31,7 +31,7 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
             if (!empty($nid)) {
               // See if audit is due.
               $next_review_date = $node->get('field_next_review_date')->value;
-              if (strtotime($next_review_date) < strtotime("now")) {
+              if (strtotime($next_review_date) < \Drupal::time()->getCurrentTime()) {
                 // Next review date is in the past,
                 // so this node is due for audit - display node edit link
                 // (if the user is allowed to see it).
@@ -57,7 +57,7 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
             if (!empty($nid)) {
               // See if audit is due.
               $next_audit_date = $node->get('field_next_audit_due')->value;
-              if (strtotime($next_audit_date) < strtotime("now")) {
+              if (strtotime($next_audit_date) < \Drupal::time()->getCurrentTime()) {
                 // Next audit date is in the past,
                 // so this node is due for audit - display the audit link
                 // (if the user is allowed to see it).
