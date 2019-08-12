@@ -5,6 +5,7 @@
  * Functions to support theming in the nicsdru_nidirect_theme theme.
  */
 
+use Drupal\Core\Link;
 use Drupal\user\Entity\User;
 
 /**
@@ -16,63 +17,77 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
     && isset($variables['element']['#entity_type'])
     && ($variables['element']['#entity_type'] == 'node')
   ) {
-    // Only start this processing if the 'nidirect_workflow'
-    // module is installed.
-    if (\Drupal::service('module_handler')->moduleExists('nidirect_workflow')) {
-      $content_type = $variables['element']['#bundle'];
-      switch ($content_type) {
-        case 'health_condition':
-          // For health conditions, just send the user to the node edit
-          // form, where they can set the 'next review date' to a date
-          // in the future to remove this node from the 'needs audit' view.
-          $node = \Drupal::routeMatch()->getParameter('node');
-          if (!empty($node) && is_object($node)) {
-            $nid = $node->id();
-            if (!empty($nid)) {
-              // See if audit is due.
-              $next_review_date = $node->get('field_next_review_date')->value;
-              if (strtotime($next_review_date) < \Drupal::time()->getCurrentTime()) {
-                // Next review date is in the past,
-                // so this node is due for audit - display node edit link
-                // (if the user is allowed to see it).
-                $account = User::load(\Drupal::currentUser()->id());
-                if ($account->hasPermission('audit content')) {
-                  $audit_button_text = \Drupal::config('nidirect_workflow.auditsettings')->get('audit_button_text');
-                  $audit_button_hover_text = \Drupal::config('nidirect_workflow.auditsettings')->get('audit_button_hover_text');
-                  $variables['audit_link'] = '<a href="/node/' . $nid . '/edit" title="' . $audit_button_hover_text;
-                  $variables['audit_link'] .= '" class="flag unflag-action flag-link-confirm" rel="nofollow">' . $audit_button_text . '</a>';
-                }
-              }
-            }
-          }
-          break;
+    // We are only ineterested in certain content types.
+    $content_type = $variables['element']['#bundle'];
+    switch ($content_type) {
+      case 'health_condition':
+        _build_audit_link('health_condition', $variables);
+        break;
 
-        case 'article':
-        case 'contact':
-        case 'page':
-          // Get the current node.
-          $node = \Drupal::routeMatch()->getParameter('node');
-          if (!empty($node) && is_object($node)) {
-            $nid = $node->id();
-            if (!empty($nid)) {
-              // See if audit is due.
-              $next_audit_date = $node->get('field_next_audit_due')->value;
-              if (strtotime($next_audit_date) < \Drupal::time()->getCurrentTime()) {
-                // Next audit date is in the past,
-                // so this node is due for audit - display the audit link
-                // (if the user is allowed to see it).
-                $account = User::load(\Drupal::currentUser()->id());
-                if ($account->hasPermission('audit content')) {
-                  $audit_button_text = \Drupal::config('nidirect_workflow.auditsettings')->get('audit_button_text');
-                  $audit_button_hover_text = \Drupal::config('nidirect_workflow.auditsettings')->get('audit_button_hover_text');
-                  $variables['audit_link'] = '<a href="/nidirect_workflow/content_audit/' . $nid;
-                  $variables['audit_link'] .= '?destination=node/' . $nid . '" title="' . $audit_button_hover_text;
-                  $variables['audit_link'] .= '" class="flag unflag-action flag-link-confirm" rel="nofollow">' . $audit_button_text . '</a>';
-                }
-              }
-            }
-          }
-          break;
+      case 'article':
+      case 'contact':
+      case 'page':
+        _build_audit_link('article', $variables);
+        break;
+    }
+  }
+}
+
+/**
+ * Top level function to build audit links.
+ */
+function _build_audit_link($type, &$variables) {
+  // Only start this processing if the 'nidirect_workflow'
+  // module is installed.
+  if (\Drupal::service('module_handler')->moduleExists('nidirect_workflow')) {
+    // Get the current node.
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if (!empty($node)) {
+      $nid = $node->id();
+      if (!empty($nid)) {
+        if ($type == 'health_condition') {
+          $variables['audit_link'] = _audit_link($type, $node->get('field_next_review_date')->value, $nid);
+        }
+        else {
+          // This will be an article, contact or page.
+          $variables['audit_link'] = _audit_link($type, $node->get('field_next_audit_due')->value, $nid);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Utility function to build the audit link html.
+ */
+function _audit_link($type, $dt, $nid) {
+  if (strtotime($dt) < \Drupal::time()->getCurrentTime()) {
+    // Next review date is in the past,
+    // so this node is due for audit - display node edit link
+    // (if the user is allowed to see it).
+    $account = User::load(\Drupal::currentUser()->id());
+    if ($account->hasPermission('audit content')) {
+      // Retrieve audit text from config.
+      $audit_button_text = \Drupal::config('nidirect_workflow.auditsettings')->get('audit_button_text');
+      $audit_button_hover_text = \Drupal::config('nidirect_workflow.auditsettings')->get('audit_button_hover_text');
+      // Set up common attributes for links.
+      $options = ['attributes' => ['rel' => 'nofollow', 'title' => $audit_button_hover_text, 'class' => 'audit_link']];
+      $link_object = NULL;
+      if ($type == 'health_condition') {
+        // For health conditions, just send the user to the node edit
+        // form, where they can set the 'next review date' to a date
+        // in the future to remove this node from the 'needs audit' view.
+        $link_object = Link::createFromRoute($audit_button_text, 'entity.node.edit_form', ['node' => $nid], $options);
+      }
+      else {
+        // For articles, contacts and pages send the user
+        // to the 'content audit' page.
+        $link_object = Link::createFromRoute($audit_button_text, 'nidirect_workflow.audit_controller_content_audit', ['nid' => $nid], $options);
+      }
+      if ($link_object) {
+        return $link_object->toString()->__toString();
+      } else {
+        return "";
       }
     }
   }
