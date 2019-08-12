@@ -41,6 +41,13 @@
     label_display == 'visually_hidden' ? 'visually-hidden',
   ]
 %}
+{#
+* Audit link added in here so that it doesn't get forgotten.
+*
+* Note also that this entire field template was added for the purposes of displaying
+* the audit link - it may be decided as we progress that there is a better way to
+* theme the content types.
+#}
 {{ audit_link|raw }}
 {% if label_hidden %}
   {% if multiple %}
