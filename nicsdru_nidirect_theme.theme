@@ -17,7 +17,7 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
     && isset($variables['element']['#entity_type'])
     && ($variables['element']['#entity_type'] == 'node')
   ) {
-    // We are only ineterested in certain content types.
+    // We are only interested in certain content types.
     $content_type = $variables['element']['#bundle'];
     switch ($content_type) {
       case 'health_condition':
@@ -71,7 +71,13 @@ function _audit_link($type, $dt, $nid) {
       $audit_button_text = \Drupal::config('nidirect_workflow.auditsettings')->get('audit_button_text');
       $audit_button_hover_text = \Drupal::config('nidirect_workflow.auditsettings')->get('audit_button_hover_text');
       // Set up common attributes for links.
-      $options = ['attributes' => ['rel' => 'nofollow', 'title' => $audit_button_hover_text, 'class' => 'audit_link']];
+      $options = [
+        'attributes' => [
+          'rel' => 'nofollow',
+          'title' => $audit_button_hover_text,
+          'class' => 'audit_link',
+        ],
+      ];
       $link_object = NULL;
       if ($type == 'health_condition') {
         // For health conditions, just send the user to the node edit
@@ -85,8 +91,10 @@ function _audit_link($type, $dt, $nid) {
         $link_object = Link::createFromRoute($audit_button_text, 'nidirect_workflow.audit_controller_content_audit', ['nid' => $nid], $options);
       }
       if ($link_object) {
+        // Return render array.
         return $link_object->toRenderable();
-      } else {
+      }
+      else {
         return "";
       }
     }
