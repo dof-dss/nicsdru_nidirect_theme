@@ -85,7 +85,7 @@ function _audit_link($type, $dt, $nid) {
         $link_object = Link::createFromRoute($audit_button_text, 'nidirect_workflow.audit_controller_content_audit', ['nid' => $nid], $options);
       }
       if ($link_object) {
-        return $link_object->toString()->__toString();
+        return $link_object->toRenderable();
       } else {
         return "";
       }
