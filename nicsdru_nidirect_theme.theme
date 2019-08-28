@@ -6,7 +6,90 @@
  */
 
 use Drupal\Core\Link;
+use Drupal\Core\Url;
 use Drupal\user\Entity\User;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_preprocess_page() for page.html.twig.
+ */
+function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
+  // Links for: Twitter, Facebook, Youtube and RSS.
+  $links['twitter'] = Link::fromTextAndUrl(t('Twitter'),
+    Url::fromUri(theme_get_setting('nidirect_sst_twitter'), [
+      'attributes' => ['title' => t('Twitter')]
+    ]))->toRenderable();
+  $links['fb'] = Link::fromTextAndUrl(t('Facebook'),
+    Url::fromUri(theme_get_setting('nidirect_sst_fb'), [
+      'attributes' => ['title' => t('Facebook')]
+    ]))->toRenderable();
+  $links['youtube'] = Link::fromTextAndUrl(t('YouTube'),
+    Url::fromUri(theme_get_setting('nidirect_sst_youtube'), [
+      'attributes' => ['title' => t('YouTube')]
+    ]))->toRenderable();
+
+  // RSS path might be internal.
+  $rss_url = theme_get_setting('nidirect_sst_rss');
+  if (preg_match('/^http/', $rss_url) == FALSE) {
+    // Strip leading / if present.
+    $rss_url = ltrim($rss_url, '/');
+    $rss_url = 'internal:/' . $rss_url;
+  }
+
+  $links['rss'] = Link::fromTextAndUrl(t('RSS'),
+    Url::fromUri($rss_url, [
+      'attributes' => ['title' => t('RSS')]
+    ]))->toRenderable();
+
+  // Add to primary menu region.
+  $variables['page']['primary_menu']['social_links'] = $links;
+
+  // Add to footer region.
+  $variables['page']['footer']['social_links'] = $links;
+}
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ */
+function nicsdru_nidirect_theme_form_system_theme_settings_alter(&$form, FormStateInterface &$form_state, $form_id = NULL) {
+  // Work-around for a core bug affecting admin themes. See issue #943212.
+  if (isset($form_id)) {
+    return;
+  }
+
+  // Add a theme settings group to gather social media link URLs for
+  // presentation in the site header/footer regions.
+  $form['nidirect_sst'] = [
+    '#type' => 'details',
+    '#title' => t('Social media links'),
+    '#open' => TRUE,
+    '#description' => t('Add social media platform details here.'),
+  ];
+  $form['nidirect_sst']['nidirect_sst_twitter'] = [
+    '#type'          => 'textfield',
+    '#title'         => t('Twitter'),
+    '#default_value' => theme_get_setting('nidirect_sst_twitter'),
+    '#placeholder' => 'Enter a URL, such as https://twitter.com/yourorg',
+  ];
+  $form['nidirect_sst']['nidirect_sst_facebook'] = [
+    '#type'          => 'textfield',
+    '#title'         => t('Facebook'),
+    '#default_value' => theme_get_setting('nidirect_sst_facebook'),
+    '#placeholder' => 'Enter a URL, such as https://facebook.com/yourorg',
+  ];
+  $form['nidirect_sst']['nidirect_sst_youtube'] = [
+    '#type'          => 'textfield',
+    '#title'         => t('YouTube'),
+    '#default_value' => theme_get_setting('nidirect_sst_youtube'),
+    '#placeholder' => 'Enter a URL, such as https://youtube.com/yourorg',
+  ];
+  $form['nidirect_sst']['nidirect_sst_rss'] = [
+    '#type'          => 'textfield',
+    '#title'         => t('RSS'),
+    '#default_value' => theme_get_setting('nidirect_sst_rss'),
+    '#placeholder' => 'Enter a URL, such as https://example.com/rss.xml',
+  ];
+}
 
 /**
  * Implements hook_preprocess_field().
