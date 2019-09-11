@@ -24,3 +24,8 @@ jobs:
           name: Lint all code
           command: |
             npm run lint
+workflows:
+  version: 2
+  lint-build:
+    jobs:
+      - lint
