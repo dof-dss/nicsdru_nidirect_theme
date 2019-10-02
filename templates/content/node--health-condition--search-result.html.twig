@@ -21,8 +21,16 @@
     <a href="{{ url }}">Find out more<span class="element-invisible"> about {{ label }}</span></a>
   </p>
 </div>
+{% if content.related_conditions is not empty %}
+<div class="further-info">
+  <h4>Related conditions</h4>
+  {{ content.related_conditions }}
+</div>
+{% endif %}
 {{ content | without(
   'field_summary',
+  'related_conditions',
+  'field_related_conditions',
   'field_hc_primary_symptom_1',
   'field_hc_primary_symptom_2',
   'field_hc_primary_symptom_3',
