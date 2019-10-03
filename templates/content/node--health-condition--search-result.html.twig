@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * Theme override to display a health condition node in search result view mode.
+#}
+<h3><a href="{{ url }}">{{ label }}</a></h3>
+<p class="symptoms">
+  <span class="label-inline">Symptoms include:</span>
+  <span class="values">
+  {% for i in 1..4 %}
+    {% set symptom = attribute(content, 'field_hc_primary_symptom_' ~ i) | render | striptags %}
+    {% if symptom is not empty %}
+      <span class="meta">{{ symptom }}</span>
+    {% endif %}
+  {% endfor %}
+  </span>
+</p>
+<div class="further-info">
+  <p class="extract">
+    {{ content.field_summary|render|striptags|trim }}
+    <a href="{{ url }}">Find out more<span class="element-invisible"> about {{ label }}</span></a>
+  </p>
+</div>
+{% if content.related_conditions is not empty %}
+<div class="further-info">
+  <h4>Related conditions</h4>
+  {{ content.related_conditions }}
+</div>
+{% endif %}
+{{ content | without(
+  'field_summary',
+  'related_conditions',
+  'field_related_conditions',
+  'field_hc_primary_symptom_1',
+  'field_hc_primary_symptom_2',
+  'field_hc_primary_symptom_3',
+  'field_hc_primary_symptom_4')
+}}
