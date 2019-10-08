@@ -1,5 +1,3 @@
-
-
 .element-invisible {
   position: absolute !important;
   height: 1px;
@@ -8,10 +6,7 @@
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-
 @import 'site-logo/site-logo';
-@import 'form-elements/_forms.scss';
-
+@import 'form-elements/forms';
 @import 'feedback-form/feedback-form';
-
 @import 'toggle-btn/toggle-btn';

@@ -1,0 +1,30 @@
+# PHP CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-php/ for more details
+version: 2
+
+jobs:
+  # Code linting.
+  lint:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - node_modules-{{ checksum "package.json" }}
+      - run:
+          name: Fetch dependencies
+          command: npm install
+      - save_cache:
+          key: node_modules-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Lint all code
+          command: npm run lint
+workflows:
+  version: 2
+  lint-build:
+    jobs:
+      - lint
