@@ -7,7 +7,7 @@ jobs:
   # Code linting.
   lint:
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:lts
     steps:
       - checkout
       - restore_cache:
@@ -22,8 +22,7 @@ jobs:
             - node_modules
       - run:
           name: Lint all code
-          command: |
-            npm run lint
+          command: npm run lint
 workflows:
   version: 2
   lint-build:
