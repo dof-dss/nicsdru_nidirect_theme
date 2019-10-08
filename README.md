@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/dof-dss/nicsdru_nidirect_theme.svg?style=svg)](https://circleci.com/gh/dof-dss/nicsdru_nidirect_theme)
+
 # nicsdru_nidirect_theme
 This repository contains code for nidirect Drupal 8 site theme.
 
