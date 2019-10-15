@@ -1,3 +1,5 @@
+@import '../init';
+
 // Grouping content
 //
 // Weight: 1
@@ -15,7 +17,7 @@
 // Optionally, add a `<footer>` to identify the source of the quote, wrapping
 // the name of the source work in `<cite>`.
 //
-// Markup: grouping-blockquote.twig
+// Markup: kss-templates/grouping-blockquote.twig
 //
 // Style guide: base.grouping.blockquote
 
@@ -36,7 +38,7 @@ blockquote {
 // The `<ul>` element is a list of items in which the order does <em>not</em>
 // explicitly matter.
 //
-// Markup: grouping-ul.twig
+// Markup: kss-templates/grouping-ul.twig
 //
 // Style guide: base.grouping.lists.ul
 
@@ -45,7 +47,7 @@ blockquote {
 // The `<ol>` element is a list of items in which the order <em>does</em>
 // explicitly matter.
 //
-// Markup: grouping-ol.twig
+// Markup: kss-templates/grouping-ol.twig
 //
 // Style guide: base.grouping.lists.ol
 
@@ -53,7 +55,7 @@ blockquote {
 //
 // The `<dl>` element is a list of terms with their associated descriptions.
 //
-// Markup: grouping-dl.twig
+// Markup: kss-templates/grouping-dl.twig
 //
 // Weight: 1
 //
@@ -84,7 +86,7 @@ dd {
   margin: 0 0 0 $indent-amount;
 }
 
-// Address paddings set differently in IE 6/7.
+// Address padding's set differently in IE 6/7.
 menu,
 ol,
 ul {
@@ -92,7 +94,17 @@ ul {
 }
 
 li {
-  padding-bottom: .6rem;
+  @include responsive-typo-map($normal-text);
+  color: color(text);
+  margin-bottom: .8rem;
+
+  @include breakpoint($tab) {
+    margin-bottom: .9rem;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 // Figures
@@ -103,7 +115,7 @@ li {
 // Optionally, a `<figcaption>` element inside the `<figure>` represents the
 // caption of the figure.
 //
-// Markup: grouping-figure.twig
+// Markup: ../kss-templates/grouping-figure.twig
 //
 // Style guide: base.grouping.figure
 
@@ -122,7 +134,7 @@ figure {
 // change in a story, or a transition to another topic within a section of a
 // reference book.
 //
-// Markup: grouping-hr.twig
+// Markup: ../kss-templates/grouping-hr.twig
 //
 // Style guide: base.grouping.hr
 
@@ -144,7 +156,7 @@ hr {
 // `<body>` element and all paragraphs. In addition, `<p>` (paragraphs) receive
 // a top and bottom margin.
 //
-// Markup: grouping-p.twig
+// Markup: ../kss-templates/grouping-p.twig
 //
 // Weight: -2
 //
@@ -156,12 +168,12 @@ pre {
   margin: rhythm(2) 0;
 }
 
-// Preformatted text
+// Pre-formatted text
 //
-// The `<pre>` element represents a block of preformatted text, such as
+// The `<pre>` element represents a block of pre-formatted text, such as
 // fragments of computer code, ASCII art, etc.
 //
-// Markup: grouping-pre.twig
+// Markup: ../kss-templates/grouping-pre.twig
 //
 // Style guide: base.grouping.pre
 

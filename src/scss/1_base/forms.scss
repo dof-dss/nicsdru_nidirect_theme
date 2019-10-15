@@ -1,3 +1,5 @@
+@import '../init';
+
 // sass-lint:disable no-vendor-prefixes, no-css-comments
 
 // Form defaults
@@ -24,8 +26,8 @@ select,
 textarea {
   // Keep form elements constrained in their containers.
   box-sizing: border-box;
-  border-radius: 0 !important;
   border: 1px solid;
+  border-radius: 0 !important;
   max-width: 100%;
   // Change font properties to `inherit` in all browsers (opinionated).
   font: inherit;
@@ -99,7 +101,7 @@ input[type='search']:focus {
 // :hover        - Hover styling.
 // :active:hover - Depressed button styling.
 //
-// Markup: forms-button.twig
+// Markup: ../kss-templates/forms-button.twig
 //
 // Style guide: forms.base.button
 
@@ -107,9 +109,12 @@ input[type='search']:focus {
 
 // The %text-form-element can be used to style `<input>` text types and
 // `<textarea>` elements at the same time.
-//%text-form-element {
-//  // Add your styles.
-//}
+
+// sass-lint:disable no-empty-rulesets
+%text-form-element {
+  // Add your styles.
+}
+// sass-lint:enable no-empty-rulesets
 
 // Inputs
 //
@@ -117,7 +122,7 @@ input[type='search']:focus {
 // HTML5 types: `text`, `search`, `tel`, `url`, `email`, `password`, `date`,
 // `time`, `number`, `range`, `color`, and `file`.
 //
-// Markup: forms-input.twig
+// Markup: ../kss-templates/forms-input.twig
 //
 // Style guide: forms.base.input
 
@@ -153,7 +158,7 @@ input[type='search']:focus {
 // It's recommended that you don't attempt to style these elements. Firefox's
 // implementation doesn't respect `box-sizing`, `padding`, or `width`.
 //
-// Markup: forms-input-checkbox.twig
+// Markup: ../kss-templates/forms-input-checkbox.twig
 //
 // Style guide: forms.base.input-checkbox
 
@@ -165,7 +170,7 @@ input[type='search']:focus {
 // It's recommended that you don't attempt to style these elements. Firefox's
 // implementation doesn't respect `box-sizing`, `padding`, or `width`.
 //
-// Markup: forms-input-radio.twig
+// Markup: ../kss-templates/forms-input-radio.twig
 //
 // Style guide: forms.base.input-radio
 
@@ -177,12 +182,12 @@ input[type='search']:focus {
   padding: 0;
 }
 
-// Fieldsets
+// Fieldset
 //
 // The `<fieldset>` element groups a set of form fields, optionally under a
 // common name given by the `<legend>` element.
 //
-// Markup: forms-fieldset.twig
+// Markup: ../kss-templates/forms-fieldset.twig
 //
 // Style guide: forms.base.fieldset
 
@@ -213,7 +218,7 @@ legend {
 // associated with a specific form control by using the `for` attribute or by
 // putting the form control inside the label element itself.
 //
-// Markup: forms-label.twig
+// Markup: ../kss-templates/forms-label.twig
 //
 // Style guide: forms.base.label
 
@@ -231,7 +236,7 @@ label {
 // Known limitation: by default, Chrome and Safari on OS X allow very limited
 // styling of `<select>`, unless a `border` property is set.
 //
-// Markup: forms-select.twig
+// Markup: ../kss-templates/forms-select.twig
 //
 // Style guide: forms.base.select
 
@@ -248,7 +253,7 @@ optgroup {
 //
 // The `<textarea>` element represents a multi-line plain text form field.
 //
-// Markup: forms-textarea.twig
+// Markup: ../kss-templates/forms-textarea.twig
 //
 // Style guide: forms.base.textarea
 

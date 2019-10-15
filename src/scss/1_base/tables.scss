@@ -1,8 +1,10 @@
+@import '../init';
+
 // Tables
 //
 // The `<table>` element displays tabular data in rows, columns, and cells.
 //
-// Markup: tables-table.twig
+// Markup: ../kss-templates/tables-table.twig
 //
 // Weight: 1
 //
@@ -10,7 +12,6 @@
 
 table {
   // Add vertical rhythm margins.
-  /* Add vertical rhythm margins. */
   @include leader(1);
   @include trailer(1);
   // Remove most spacing between table cells.
