@@ -30,31 +30,6 @@ $image-url-path-to-source: '../' !default;
 // The relative path from the root sass directory to where your components usually lie.
 $image-url-subdirectory: 'images' !default;
 
-// Font faces, stacks and sizes.
-//
-// Font styling and line heights are controlled by the several variables that
-// used by mixins like adjust-font-size-to().
-// These variable and mixins are documented in [Compass](http://compass-style.org/reference/compass/typography/vertical_rhythm/).
-// We import Google fonts in the head of the document and set the base family to be
-// 'Open Sans', sans-serif
-//
-// Style guide: init.variables.typography
-// The default font family.
-$base-font-family: 'Lato', 'Open Sans', sans-serif;
-$font-monospace:   'Courier New', 'DejaVu Sans Mono', monospace, sans-serif;;
-
-// The font sizes for h1-h6.
-$h1-font-size: 4 * $base-font-size;
-$h2-font-size: 2.8 * $base-font-size;
-$h3-font-size: 2.4 * $base-font-size;
-$h4-font-size: 1.8 * $base-font-size;
-$h5-font-size: 1.8 * $base-font-size;
-$h6-font-size: 1.8 * $base-font-size;
-$p-font-size: 1.8 * $base-font-size;
-
-// The amount lists, blockquotes and comments are indented.
-$indent-amount: 1.8rem;
-
 /* Layout ============================================================ */
 $max-grid-width: 940px;
 $grid-gap: 20px;
@@ -72,5 +47,14 @@ $grid-breakpoints: (
   sm: $mob,
   md: $phab,
   lg: $tab,
-  xl: $lap
+  xl: $lap,
+  xxl: $desk,
 ) !default;
+
+// The amount lists, blockquotes and comments are indented.
+$indent-amount: 1.8rem;
+
+// Set the width of child grid items in the .header
+// The first child will typically be the site branding wrapper, additional items (typically just the main search form)
+// can be controlled with this variable which only becomes applicable @breakpoint $tab (768px).
+$header-template-columns: auto 400px !default;
