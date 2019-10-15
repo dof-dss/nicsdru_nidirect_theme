@@ -4,8 +4,12 @@ description: 'Drupal 8 theme for nidirect site'
 package: NICS
 core: 8.x
 libraries:
-  - nicsdru_nidirect_theme/nid_base
-  - nicsdru_nidirect_theme/nid_components
+  - nicsdru_nidirect_theme/nidirect-global-styles
+
+libraries-override:
+  origins_common/in-page-navigation:
+    js:
+      js/in_page_navigation.js : js/in_page_navigation.js
 
 base theme: nicsdru_origins_theme
 
@@ -14,11 +18,13 @@ regions:
   primary_menu: 'Primary menu'
   page_top: 'Page top'
   page_bottom: 'Page bottom'
-  breadcrumb: Breadcrumb
-  highlighted: Highlighted
-  help: Help
-  content: Content
+  breadcrumb: 'Breadcrumb'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  top_banner: 'Banner top'
+  content: 'Content'
   sidebar_first: 'First sidebar'
   sidebar_second: 'Sidebar second'
+  bottom_banner: 'Page bottom'
   footer: 'Footer'
   feedback: 'Feedback'
