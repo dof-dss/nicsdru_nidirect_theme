@@ -1,0 +1,31 @@
+/*
+ * @file
+ * Provides the styling for a toggle list.
+ *
+ * @requires js/toggle-btn-script.js
+ */
+@import '../../init';
+
+// Toggle button
+//
+// Creates a subtle action button that hides (via javascript) list items when there are more than large numbers of items
+// in the list. The default is 7 items, however this can be overridden by adding a data-toggle-length attribute to the
+// element the `.toggle-list` class is declared.
+// When a user clicks on the button, all items are then shown and the button is hidden.
+//
+// Markup: toggle-list.twig
+//
+// Style guide: components.toggle-list
+
+.toggle-list .toggle-btn {
+  @include adjust-font-size-to(18px, 4.5);
+  border: 1px solid color(brand-primary-medium);
+  background-color: color(brand-primary-medium);
+  border-right: 21px solid color(brand-primary-medium);
+  color: color(white);
+  display: block;
+  padding: .9rem 4rem;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
