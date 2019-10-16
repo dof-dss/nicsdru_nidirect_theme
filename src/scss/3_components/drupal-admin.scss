@@ -1,0 +1,189 @@
+/* =====================================================
+ * Drupal tabs - tabbed menu's
+ * =====================================================*/
+
+@import '../init';
+
+/* Basic positioning styles shared by primary and secondary tabs. */
+%tabs {
+  //@include clearfix;
+  list-style: none;
+  margin: rhythm(1) 0;
+  //padding: 0 2px;
+  white-space: nowrap;
+}
+
+%tabs--tab {
+  position: relative;
+  float: left;
+  margin: 0;
+  padding: 0;
+  list-style-image: none !important;
+}
+
+%tabs--tab-link {
+  @include adjust-leading-to(1);
+  border-bottom: 0;
+  display: block;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+/* Primary tabs. */
+.tabs-primary {
+  @extend %tabs;
+  padding-left: 18px;
+  border-bottom: 1px solid #ccc;
+  margin: 1.8rem 0;
+}
+
+.tab {
+  @extend %tabs--tab;
+  top: 5px;
+  font-size: 18px;
+}
+
+.tab.is-active {
+  @extend %tabs--tab;
+  font-size: 18px;
+  top: 0;
+  bottom: -1px;
+  left: 1px;
+  z-index: 10;
+}
+
+.tab + .tab.is-active {
+  left: -1px;
+}
+
+// We use 3 placeholder styles to prevent @extend from going selector crazy.
+%tabs-primary--tab-link {
+  @extend %tabs--tab-link;
+  color: #666;
+  background-color: #fff;
+  padding: 7px 14px 6px;
+  text-align: center;
+  border: solid #ccc;
+  border-radius: .25em .5em 0 0;
+  border-width: 1px 1px 0 0;
+  line-height: 1em;
+  transition: background-color .1s;
+
+  :first-child {
+    border-width: 1px 1px 0;
+  }
+}
+
+%tabs-primary--tab-link-is-hover {
+  background-color: color(charcoal);
+  border-color: color(charcoal);
+  color: #fff;
+}
+
+%tabs-primary--tab-link-is-active {
+  background-color: #ebedee;
+  border-color: #e0e0e0;
+  color: #555;
+  padding: 9px 18px;
+}
+
+.tab a {
+  @extend %tabs-primary--tab-link;
+
+  &:hover,
+  &:focus {
+    @extend %tabs-primary--tab-link-is-hover;
+  }
+
+  &:active {
+    @extend %tabs-primary--tab-link-is-active;
+  }
+}
+
+.tab a.is-active {
+  @extend %tabs-primary--tab-link;
+  @extend %tabs-primary--tab-link-is-active;
+}
+
+.tab.is-active .activelink {
+  @extend %tabs-primary--tab-link;
+  @extend %tabs-primary--tab-link-is-active;
+}
+
+/* Secondary tabs. */
+.tabs-secondary {
+  @extend %tabs;
+  font-size: .9em;
+  /* Collapse bottom margin of ul.primary. */
+  margin-top: -(rhythm(1));
+}
+
+.tabs-secondary--tab,
+.tabs-secondary--tab.is-active {
+  @extend %tabs--tab;
+  margin: rhythm(1)/2 3px;
+}
+
+// We use 3 placeholder styles to prevent @extend from going selector crazy.
+%tabs-secondary--tab-link {
+  @extend %tabs--tab-link;
+  //@include single-text-shadow(#fff, 1px, 1px, 0);
+  background-color: #f2f2f2;
+  border-radius: .75em;
+  color: #666;
+  padding: 0 .5em;
+  transition: background-color .3s;
+}
+
+%tabs-secondary--tab-link-is-focus {
+  background-color: color(grey-light);
+  border-color: #999;
+  color: color('grey');
+}
+
+%tabs-secondary--tab-link-is-active {
+  //@include single-text-shadow($charcoal, 1px, 1px, 0);
+  background-color: #666;
+  border-color: #000;
+  color: #fff;
+}
+
+a.tabs-secondary--tab-link {
+  @extend %tabs-secondary--tab-link;
+
+  &:hover,
+  &:focus {
+    @extend %tabs-secondary--tab-link-is-focus;
+  }
+
+  &:active {
+    @extend %tabs-secondary--tab-link-is-active;
+  }
+}
+
+a.tabs-secondary--tab-link.is-active {
+  @extend %tabs-secondary--tab-link;
+  @extend %tabs-secondary--tab-link-is-active;
+}
+
+.tab.active {
+  top: 0;
+}
+
+// reset issues on the toolbar where it inherits base font size / margin / padding
+.toolbar {
+  div,
+  p,
+  blockquote,
+  th,
+  td,
+  li,
+  .item-list,
+  .item-list li,
+  .menu-item,
+  .menu-item--expanded {
+    font-size: unset;
+    margin: 0;
+    padding: 0;
+  }
+}

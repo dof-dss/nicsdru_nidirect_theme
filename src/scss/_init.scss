@@ -21,6 +21,7 @@
 
 @import 'init/colors';
 @import 'init/variables';
+@import 'init/typography';
 
 // 3rd party libraries
 //
@@ -29,7 +30,8 @@
 // - [Chroma-sass](http://johnalbin.github.io/chroma/)
 // - [Compass vertical rhythm](http://compass-style.org/)
 // For compass we we only load vertical rhythm support
-// Note that this is loaded in standalone files that are developed for node sass
+// Note that this is loaded in standalone files that are developed for node sass further information can be found
+// @see https://github.com/Igosuki/compass-mixins
 //
 // Weight: -7
 //
@@ -40,22 +42,23 @@
 @import '../../node_modules/chroma-sass/sass/chroma/kss';
 @import 'init/compass-vr/compass';
 
-// Mixins
-//
-// Custom mixins used on this site.
-//
-// Weight: -5
-//
-// Style guide: init.mixins
-@import 'init/visually-hidden/visually-hidden';
-@import 'init/breakpoint-helpers/breakpoint-helpers';
-@import 'init/grid/grid-helpers';
-
 // Functions
 //
 // Custom functions used on this site.
 //
-// Weight: -6
+// Weight: -5
 //
 // Style guide: init.functions
-@import 'init/strip-unit/strip-unit';
+@import 'init/helpers/strip-unit';
+@import 'init/helpers/breakpoint-helpers';
+@import 'init/helpers/headings';
+
+// Mixins
+//
+// Custom mixins used on this site.
+//
+// Weight: -6
+//
+// Style guide: init.mixins
+@import 'init/visually-hidden/visually-hidden';
+@import 'init/responsive-typo/resp-typo';

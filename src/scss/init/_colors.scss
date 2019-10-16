@@ -5,7 +5,7 @@
 // Use the `color()` function to add colors to CSS properties. To learn more,
 // [read the Chroma documentation](http://johnalbin.github.io/chroma/).
 //
-// Markup: chroma.twig
+// Markup: ../kss-templates/chroma.twig
 //
 // Weight: -8
 //
@@ -16,9 +16,9 @@ $chroma: define-default-color-scheme('branding', 'The site\'s main colors. Can b
 
 $chroma: add-colors((
   black:                  #000,
-  charcoal:               ('black' lighten 20%), // #333
-  'grey':                 ('black' lighten 80%), // #999
-  grey-dark:              ('black' lighten 30%), // #4d4d4d
+  charcoal:               #333,
+  'grey':                 #999,
+  grey-dark:              #4d4d4d,
   grey-light:             #e8e7e7,
   grey-lightest:          #f0f0f0,
   grey-medium:            #cdcdcd,
@@ -58,3 +58,39 @@ $chroma: add-colors('functional', (
 ));
 
 $chroma-active-scheme: 'functional';
+
+$black: color('black');
+$charcoal: color(charcoal);
+$grey: color('grey');
+$grey-dark: color(grey-dark);
+$grey-light: color(grey-light);
+$grey-lightest: color(grey-lightest);
+$grey-medium: color(grey-medium);
+$white: color('white');
+$offwhite: color(offwhite);
+
+$brand-primary: color(brand-primary);
+$brand-primary-dark: color(brand-primary-dark);
+$brand-primary-medium: color(brand-primary-medium);
+$brand-primary-light: color(brand-primary-light);
+$brand-primary-lightest: color(brand-primary-lightest);
+
+$brand-secondary: color(brand-secondary);
+$brand-secondary-dark: color(brand-secondary-dark);
+
+$brand-tertiary: color(brand-tertiary);
+
+$text: color('text');
+$headings: color(headings);
+
+$link: color(link);
+$link-hover: color(link-hover);
+$link-visited: color(link-visited);
+$link-active: color(link-active);
+
+$border: color('border');
+
+$button: color('button');
+$button-disabled: color(button-disabled);
+
+$mark-bg: color(mark-bg);

@@ -1,0 +1,22 @@
+/*
+ * @file
+ * Provides the layout styles for content output from field_summary for any entity.
+ */
+@import '../../init';
+
+$field-summary: (
+  null: (17px, 2.4rem),
+  md: (21px, 3rem)
+);
+
+.page-summary {
+  p {
+    @include responsive-typo-map($field-summary);
+    font-weight: 700;
+    margin-top: 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
