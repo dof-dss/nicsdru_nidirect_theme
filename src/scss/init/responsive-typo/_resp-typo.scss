@@ -1,0 +1,52 @@
+// responsive-typo-map()
+//
+// A mixin to make responsive typography much more manageable.
+// @see https://www.smashingmagazine.com/2015/06/responsive-typography-with-sass-maps/
+//
+// The mixin accepts a sass map with key-value pairs with breakpoints as keys and elements for setting vertical rhythm
+// as corresponding values. The mixin checks to see whether the value of the key in the font-sizes map is a list
+// as opposed to a font-size value. If it’s a list, then it gets the correct value from the list by index value,
+// with the help of the nth function. It assumes that the first value is the font size, the second is the line height
+// and a third is margin values. Finally the mixin integrates with compass vertical typography mixins to output values
+// in appropriate rhythm units.
+//
+// Style guide: init.mixins.responsive-typo-map
+@mixin responsive-typo-map($fs-map, $fs-breakpoints: $grid-breakpoints) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      @include rtp-map-attributes($fs-font-size);
+    }
+    @else {
+      // If $fs-font-size is a key that exists in
+      // $fs-breakpoints, use the value
+      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+      }
+      @media screen and (min-width: $fs-breakpoint) {
+        @include rtp-map-attributes($fs-font-size);
+      }
+    }
+  }
+}
+
+// Utility function for mixin creating font-size, line height and margins
+@mixin rtp-map-attributes($fs-font-size) {
+  // If $fs-font-size is a list, include
+  // both font-size, line-height and margins
+  @if type-of($fs-font-size) == "list" {
+    @if (nth($fs-font-size, 1) != null) {
+      @include adjust-font-size-to(nth($fs-font-size, 1));
+    }
+    @if (length($fs-font-size) > 1) {
+      @if (nth($fs-font-size, 2) != null) {
+        line-height: nth($fs-font-size, 2);
+      }
+    }
+    @if (length($fs-font-size) > 2) {
+      margin: nth($fs-font-size, 3);
+    }
+  }
+  @else {
+    @include adjust-font-size-to($fs-font-size);
+  }
+}

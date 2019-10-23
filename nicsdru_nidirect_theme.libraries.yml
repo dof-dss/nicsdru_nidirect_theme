@@ -1,14 +1,19 @@
-nid_base:
-  version: VERSION
+nidirect-global-styles:
+  version: 1.x
   css:
+    # The SMACSS category, "base", is loaded before other categories. Drupal 8
+    # loads stylesheets based on the SMACSS ordering of:
+    # base, layout, component, state, theme
+    base:
+      # css/1_base/fonts.css: { minified: true }
+    # The SMACSS category, "layout", is loaded after "base" styles.
+    layout:
+    # The SMACSS category, "component", is loaded after "base and layout" styles.
     component:
-      css/1_base/base.css: { minified: true }
-
-nid_components:
-  version: VERSION
-  css:
-    component:
-      css/3_components/site-logo/site-logo.css: { minified: true }
+      css/3_components/block/site-logo.css: { minified: true }
+      css/3_components/field/field-summary.css: { minified: true }
+    state:
+      css/4_state/navigation/related-menus.css: { minified: true }
 
 fonts:
   css:

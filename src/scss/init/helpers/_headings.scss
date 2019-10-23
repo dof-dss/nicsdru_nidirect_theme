@@ -1,0 +1,20 @@
+// headings()
+//
+// SASS function loop for headings h1, h2, h3, h4, h5, h6
+// The function provides an easy way to apply styles to all of the 6 standardised HTML headings (h1,h2,h3,h4,h5,h6).
+// The mixin helps effectively chop and change stylings for heading tags and save recursively writing the tags. At its
+// default state it will output all h1 to h6 tags, but is useful to apply rules to a given range of headings. You would
+// do this by calling the function: #{headings()} with the number range you need so for the example, if you wanted to
+// apply styling to your h2, h3, and h4’s you would simply run: `#{headings(2,4)} {...}`
+//
+// @see https://guwii.com/bytes/sass-function-loop-headings-h1h2h3h4h5h6/
+//
+// Style guide: init.functions.headings
+
+@function headings($from:1, $to:6) {
+  @if $from == $to {
+    @return 'h#{$from}';
+  } @else {
+    @return 'h#{$from},' + headings($from+1, $to);
+  }
+}

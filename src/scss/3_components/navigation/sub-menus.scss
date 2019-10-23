@@ -1,0 +1,37 @@
+/*
+ * @file
+ *
+ */
+@import '../../init';
+
+.sub-menu {
+  .nav {
+    &-menu {
+      margin-top: 0;
+    }
+
+    // applied to the menu li
+    &-item {
+      position: relative;
+      list-style: none;
+      padding: 0 0 .6rem 1rem;
+
+      &::before {
+        content: '-';
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+
+    // applied to menu links
+    &-menu a,
+    &-link {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
