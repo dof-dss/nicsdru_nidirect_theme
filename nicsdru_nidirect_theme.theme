@@ -13,11 +13,15 @@ use Drupal\user\Entity\User;
  */
 function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
-    if ($node->bundle() == 'article') {
+    if ($node->bundle() == ('article' || 'application' || 'contact' || 'gp_practice' || 'health_condition' || 'news' || 'page' || 'recipe')) {
       $variables['main_content_attr']['class'][] = 'grid';
       $variables['main_content_attr']['class'][] = 'layout--article-n-side';
       $variables['sidebar_second_attr']['class'][] = 'ga-aside';
     }
+  }
+
+  if (isset($variables['is_front']) && $variables['is_front'] == TRUE) {
+    $variables['main_content_attr']['class'][] = 'grid';
   }
 }
 
