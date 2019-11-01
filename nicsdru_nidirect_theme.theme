@@ -13,7 +13,9 @@ use Drupal\user\Entity\User;
  */
 function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
-    if ($node->bundle() == ('article' || 'application' || 'contact' || 'gp_practice' || 'health_condition' || 'news' || 'page' || 'recipe')) {
+    if ($node->bundle() == ('article' || 'application' || 'contact'
+        || 'gp_practice' || 'health_condition' || 'news' || 'page' || 'recipe')
+    ) {
       $variables['main_content_attr']['class'][] = 'grid';
       $variables['main_content_attr']['class'][] = 'layout--article-n-side';
       $variables['sidebar_second_attr']['class'][] = 'ga-aside';
@@ -47,6 +49,14 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
         _build_audit_link('article', $variables);
         break;
     }
+  }
+  // Add a class to the anchor tag on application link fields
+  if (isset($variables['element'])
+    && $variables['element']['#field_name'] == 'field_link'
+    && $variables['element']['#bundle'] == 'application'
+  ) {
+    $classes = ['btn', 'call-to-action'];
+    $variables['items'][0]['content']['#url']->setOption('attributes', ['class' => $classes]);
   }
 }
 
