@@ -13,7 +13,10 @@ nidirect-global-styles:
       css/3_components/block/site-logo.css: { minified: true }
       css/3_components/field/field-summary.css: { minified: true }
     state:
-      css/4_state/navigation/related-menus.css: { minified: true }
+        css/4_state/navigation/related-menus.css: { minified: true }
+        css/4_state/layout/cards.css: { minified: true }
+    theme:
+      css/5_theme/entities.css: { minified: true }
 
 fonts:
   css:
