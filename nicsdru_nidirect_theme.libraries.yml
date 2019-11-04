@@ -4,6 +4,7 @@ nidirect-global-styles:
     component:
       css/3_components/block/site-logo.css: { minified: true }
       css/3_components/field/field-summary.css: { minified: true }
+      css/3_components/navigation/book.css: { minified: true }
     state:
       css/4_state/navigation/related-menus.css: { minified: true }
 
