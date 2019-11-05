@@ -1,0 +1,15 @@
+/*
+ * @file
+ * Provides very specific styling for entities / content types.
+ */
+@import '../init';
+
+/*
+ * Application content type
+ * the wrapper around the application link field 'button' needs to inherit some spacing around the element to keep the
+ * pages vertical rhythm.
+ */
+.launch-service {
+  //@include responsive-typo-map($normal-text);
+  margin: 1.2rem 0;
+}

@@ -1,0 +1,63 @@
+/*
+ * @file
+ * Provides specific overrides for creating a card components.
+ */
+@import '../../init';
+
+// Card borders
+//
+// Sets a color on any card borders.
+// By default a `.card` element in a `.card-deck` can have modifier classes applied which add a border to either the
+// top, bottom or both edges of the card. This declaration sets the base color for borders in a card deck as this rarely
+// changes in the site design. It can of course be further overridden with additional states as defined below.
+//
+// Style guide: components.layouts.cards
+.card-deck {
+  [class^='border-'] {
+    border-color: $grey-light;
+  }
+}
+
+// Front page taxonomy cards
+//
+// Overrides / fleshes out the cards component for the home page taxonomy cards.
+// Main adjustments are controlling the layout of individual 'card' using css grid declarations this is qualified using
+// the `.grid` class on the same element as the `.card-deck` class is applied to.
+// The main heading of the card `.card--title` and the sub-sequent text selectors have attributes set for font properties
+//
+// Style guide: components.layouts.cards.home-site-topics
+.section--info-services {
+  .card-deck {
+    grid-gap: 0 20px;
+    @include breakpoint($mob) {
+      grid-gap: 15px 20px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      &--title {
+        @include adjust-font-size-to(18px, 4.5);
+        font-weight: 700;
+        margin-bottom: 1.2rem;
+
+        a {
+          color: $brand-primary-medium;
+        }
+      }
+
+      p,
+      .more-link {
+        @include adjust-font-size-to(16px);
+        margin: 0;
+      }
+
+      .more-link {
+        font-weight: 700;
+
+        a {
+          color: $brand-secondary;
+        }
+      }
+    }
+  }
+}
