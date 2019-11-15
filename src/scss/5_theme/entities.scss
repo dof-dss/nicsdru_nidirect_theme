@@ -10,6 +10,63 @@
  * pages vertical rhythm.
  */
 .launch-service {
-  //@include responsive-typo-map($normal-text);
   margin: 1.2rem 0;
+}
+
+/*
+ * GP Practice content type
+ * - the wrapper around the application link field 'button' needs to have the spacing around the element tweaked to keep
+ * the pages vertical rhythm.
+ * - adjust the some attrs on the list of practice members
+ */
+.page-node-type-gp-practice {
+  .launch-service {
+    display: inline-block;
+    margin: 2.7rem 1.2rem 0;
+  }
+
+  .call-to-action {
+    @include adjust-font-size-to(18px, 4);
+  }
+}
+
+.list--gp-practice-members {
+  .list-item {
+    color: #777;
+    margin: 0;
+
+    &::after {
+      content: ',';
+    }
+
+    &:last-child::after {
+      content: '';
+    }
+  }
+}
+
+/*
+ * Health condition content type
+ * - adjust the text for the last / next review information
+ */
+.review-info {
+  @include adjust-font-size-to(16px, 4);
+  margin: 0;
+}
+
+.page-node-type-health-condition {
+  p.meta {
+    @include adjust-font-size-to(15px, 4);
+    letter-spacing: -.25px;
+    margin: 0;
+    padding-bottom: .9rem;
+  }
+
+  .block-views-exposed-filter-blockhealth-conditions-search-page {
+    background: transparent;
+  }
+
+  #block-healthconditionsatoz-2 {
+    padding: 0 10px;
+  }
 }
