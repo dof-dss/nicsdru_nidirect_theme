@@ -1,3 +1,1 @@
 a{color:#0e6bb3;-webkit-text-decoration-skip:objects;text-decoration:none}:visited{color:#5e60b5;text-decoration:none}a:hover,a:focus{color:#0e6bb3;text-decoration:underline}a:focus{outline:thin dotted}a:active{color:#0e6bb3}a:active:not(.button){background-color:transparent}a:active,a:hover{outline-width:0}@media print{:link,:visited{text-decoration:underline}a[href]::after{content:" (" attr(href) ")";font-weight:normal;font-size:10px;text-decoration:none}a[href^='javascript:']::after,a[href^='#']::after{content:''}}
-
-/*# sourceMappingURL=links.css.map */
