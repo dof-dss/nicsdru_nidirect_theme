@@ -3,7 +3,10 @@ nidirect-global-styles:
   css:
     component:
       css/3_components/block/site-logo.css: { minified: true }
+      css/3_components/block/az-facet-list.css: { minified: true }
+      css/3_components/content/utilities.css: { minified: true }
       css/3_components/field/field-summary.css: { minified: true }
+      css/3_components/field/vcard.css: { minified: true }
     state:
         css/4_state/navigation/related-menus.css: { minified: true }
         css/4_state/layout/cards.css: { minified: true }
