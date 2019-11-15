@@ -70,12 +70,17 @@
  *   in different view modes.
  */
 #}
-
-<article{{ attributes.addClass('ga-main').setAttribute('id', 'main-article').removeAttribute('role') }}>
+<article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
   {% if label %}
     {{- title_prefix -}}
     <h1{{ title_attributes.addClass('page-title') }}>{{- label -}}</h1>
     {{- title_suffix -}}
   {% endif %}
+  {% if  content_attributes is not empty %}
+  <div{{ content_attributes }}>
+  {% endif %}
   {{- content -}}
+  {% if  content_attributes is not empty %}
+  </div>
+  {% endif %}
 </article>
