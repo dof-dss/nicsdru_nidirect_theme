@@ -3,18 +3,19 @@
 module.exports = (ctx) => ({
   map: ctx.file.dirname.includes('examples') ? false : {
     inline: false,
-    annotation: true,
-    sourcesContent: true
+    prev: false,
+    annotation: false,
+    sourcesContent: false
   },
   plugins: {
     'autoprefixer': {
       cascade: false,
-      overrideBrowserslist: ['last 2 versions', '> 1%', 'ie >= 10']
     },
     'postcss-assets': {
       cachebuster: true,
       relative: true,
-      loadPaths: ['images']
+      loadPaths: ['images'],
+      baseUrl: '/themes/custom/nicsdru_nidirect_theme/'
     }
   }
 })
