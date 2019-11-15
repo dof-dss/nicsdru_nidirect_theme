@@ -50,7 +50,7 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
         break;
     }
   }
-  // Add a class to the anchor tag on application link fields
+  // Add a class to the anchor tag on application link fields.
   if (isset($variables['element'])
     && $variables['element']['#field_name'] == 'field_link'
     && $variables['element']['#bundle'] == 'application'
