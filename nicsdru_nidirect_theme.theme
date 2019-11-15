@@ -6,24 +6,49 @@
  */
 
 use Drupal\Core\Link;
+use Drupal\Core\Render;
 use Drupal\user\Entity\User;
+use Drupal\block\Entity\Block;
+use Drupal\Component\Utility\Html;
 
 /**
  * Implements hook_preprocess_page() for page.html.twig.
  */
 function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
-  if ($node = \Drupal::routeMatch()->getParameter('node')) {
-    if ($node->bundle() == ('article' || 'application' || 'contact'
-        || 'gp_practice' || 'health_condition' || 'news' || 'page' || 'recipe')
-    ) {
-      $variables['main_content_attr']['class'][] = 'grid';
-      $variables['main_content_attr']['class'][] = 'layout--article-n-side';
-      $variables['sidebar_second_attr']['class'][] = 'ga-aside';
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if (isset($node) && !empty($node->bundle())) {
+    switch ($node->bundle()) {
+      case "article":
+      case "application":
+      case "contact":
+      case "gp-practice":
+      case "health_condition":
+      case "news":
+      case "page":
+      case "recipe":
+        $variables['main_content_attr']['class'][] = 'grid';
+        $variables['main_content_attr']['class'][] = 'layout--article-n-side';
+        $variables['sidebar_second_attr']['class'][] = 'ga-aside';
+        break;
     }
   }
 
   if (isset($variables['is_front']) && $variables['is_front'] == TRUE) {
     $variables['main_content_attr']['class'][] = 'grid';
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
+  switch ($variables['node']->getType()) {
+    case "article":
+    case "application":
+    case "news":
+    case "page":
+      $variables['attributes']['class'][] = Html::cleanCssIdentifier('ga-main');
+      break;
   }
 }
 
@@ -50,13 +75,43 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
         break;
     }
   }
-  // Add a class to the anchor tag on application link fields
+  // Add a class to the anchor tag on application link fields & append the icon
   if (isset($variables['element'])
     && $variables['element']['#field_name'] == 'field_link'
     && $variables['element']['#bundle'] == 'application'
   ) {
-    $classes = ['btn', 'call-to-action'];
-    $variables['items'][0]['content']['#url']->setOption('attributes', ['class' => $classes]);
+    foreach ($variables['items'] as $key => $item) {
+      $icon = '<svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg>';
+      $uri = $item['content']['#title'];
+      $classes = ['btn', 'call-to-action'];
+
+      $formattedIcon = \Drupal\Core\Render\Markup::create($uri . $icon);
+
+      $variables['items'][0]['content']['#title'] = $formattedIcon;
+      $variables['items'][0]['content']['#url']->setOption('attributes', ['class' => $classes]);
+    }
+  }
+  // amend classes on the standard address field output
+  if (isset($variables['element'])
+    && $variables['element']['#field_type'] == 'address'
+  ) {
+    for ($i = 0; $i < count($variables['items']); $i++) {
+      $variables['items'][$i]["content"]["#prefix"] = '<p class="adr" translate="no">';
+      $replacement = array(0 => "street-address");
+      $variables['items'][$i]['content']['address_line1']['#attributes']['class'] = array_replace($variables['items'][$i]['content']['address_line1']['#attributes']['class'], $replacement);
+      $variables['items'][$i]['content']['address_line2']['#attributes']['class'] = array_replace($variables['items'][$i]['content']['address_line2']['#attributes']['class'], $replacement);
+      $i++;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_form().
+ */
+function nicsdru_nidirect_theme_preprocess_form(array &$variables) {
+  if ($variables['element']['#id'] == 'views-exposed-form-health-conditions-search-page') {
+    $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form');
+    $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form--page');
   }
 }
 
