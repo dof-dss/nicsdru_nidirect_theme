@@ -58,6 +58,12 @@
   field_type == 'link' ? 'url fn',
 ]
 %}
+{%
+  set btn_classes = [
+  'btn',
+  'call-to-action',
+]
+%}
 {% if label_hidden %}
   {% if multiple %}
     <div{{ attributes }}>
@@ -78,6 +84,12 @@
         <span{{ item.attributes.addClass(item_classes) }}>{{ item.content }}</span>
       {% endfor %}
     </div>
+  {% elseif label_display == 'visually_hidden' and field_type == 'link' %}
+    {% for item in items %}
+      <div class="launch-service" role="presentation">
+        <a{{ item.attributes.addClass(btn_classes) }} href="{{ item.content['#url'] }}">{{ label }}<svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg></a>
+      </div>
+    {% endfor %}
   {% else %}
     <h2{{ title_attributes }}>{{ label }}</h2>
     {% for item in items %}
