@@ -7,15 +7,16 @@
 
 use Drupal\Core\Link;
 use Drupal\Core\Render;
+use Drupal\Core\Render\Markup;
 use Drupal\user\Entity\User;
 use Drupal\block\Entity\Block;
 use Drupal\Component\Utility\Html;
 
 /**
- * Implements hook_preprocess_page() for page.html.twig.
+ * Implements hook_preprocess_page().
  */
 function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
-  $node = \Drupal::routeMatch()->getParameter('node');
+  $node = Drupal::routeMatch()->getParameter('node');
   if (isset($node) && !empty($node->bundle())) {
     switch ($node->bundle()) {
       case "article":
@@ -45,6 +46,7 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
   switch ($variables['node']->getType()) {
     case "article":
     case "application":
+    case "contact":
     case "news":
     case "page":
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('ga-main');
@@ -75,31 +77,36 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
         break;
     }
   }
-  // Add a class to the anchor tag on application link fields & append the icon
+  // Add a class to the anchor tag on application link fields & append the icon.
   if (isset($variables['element'])
     && $variables['element']['#field_name'] == 'field_link'
     && $variables['element']['#bundle'] == 'application'
   ) {
     foreach ($variables['items'] as $key => $item) {
       $icon = '<svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg>';
-      $uri = $item['content']['#title'];
+      $title = $item['content']['#title'];
       $classes = ['btn', 'call-to-action'];
 
-      $formattedIcon = \Drupal\Core\Render\Markup::create($uri . $icon);
+      $formattedTitle = Markup::create($title . $icon);
 
-      $variables['items'][0]['content']['#title'] = $formattedIcon;
+      $variables['items'][0]['content']['#title'] = $formattedTitle;
       $variables['items'][0]['content']['#url']->setOption('attributes', ['class' => $classes]);
     }
   }
-  // amend classes on the standard address field output
+  // Amend classes on the standard address field output.
   if (isset($variables['element'])
     && $variables['element']['#field_type'] == 'address'
   ) {
     for ($i = 0; $i < count($variables['items']); $i++) {
       $variables['items'][$i]["content"]["#prefix"] = '<p class="adr" translate="no">';
-      $replacement = array(0 => "street-address");
-      $variables['items'][$i]['content']['address_line1']['#attributes']['class'] = array_replace($variables['items'][$i]['content']['address_line1']['#attributes']['class'], $replacement);
-      $variables['items'][$i]['content']['address_line2']['#attributes']['class'] = array_replace($variables['items'][$i]['content']['address_line2']['#attributes']['class'], $replacement);
+      if (($key = array_search('address-line1', $variables['items'][$i]['content']['address_line1']['#attributes']['class'])) !== false) {
+        unset($variables['items'][$i]['content']['address_line1']['#attributes']['class'][$key]);
+      }
+      $variables['items'][$i]['content']['address_line1']['#attributes']['class'][] = 'street-address';
+      if (($key = array_search('address-line2', $variables['items'][$i]['content']['address_line2']['#attributes']['class'])) !== false) {
+        unset($variables['items'][$i]['content']['address_line2']['#attributes']['class'][$key]);
+      }
+      $variables['items'][$i]['content']['address_line2']['#attributes']['class'][] = 'street-address';
       $i++;
     }
   }
@@ -121,9 +128,9 @@ function nicsdru_nidirect_theme_preprocess_form(array &$variables) {
 function _build_audit_link($type, &$variables) {
   // Only start this processing if the 'origins_workflow'
   // module is installed.
-  if (\Drupal::service('module_handler')->moduleExists('origins_workflow')) {
+  if (Drupal::service('module_handler')->moduleExists('origins_workflow')) {
     // Get the current node.
-    $node = \Drupal::routeMatch()->getParameter('node');
+    $node = Drupal::routeMatch()->getParameter('node');
     if (!empty($node)) {
       $nid = $node->id();
       if (!empty($nid)) {
@@ -143,15 +150,15 @@ function _build_audit_link($type, &$variables) {
  * Utility function to build the audit link html.
  */
 function _audit_link($type, $dt, $nid) {
-  if (strtotime($dt) < \Drupal::time()->getCurrentTime()) {
+  if (strtotime($dt) < Drupal::time()->getCurrentTime()) {
     // Next review date is in the past,
     // so this node is due for audit - display node edit link
     // (if the user is allowed to see it).
-    $account = User::load(\Drupal::currentUser()->id());
+    $account = User::load(Drupal::currentUser()->id());
     if ($account->hasPermission('audit content')) {
       // Retrieve audit text from config.
-      $audit_button_text = \Drupal::config('origins_workflow.auditsettings')->get('audit_button_text');
-      $audit_button_hover_text = \Drupal::config('origins_workflow.auditsettings')->get('audit_button_hover_text');
+      $audit_button_text = Drupal::config('origins_workflow.auditsettings')->get('audit_button_text');
+      $audit_button_hover_text = Drupal::config('origins_workflow.auditsettings')->get('audit_button_hover_text');
       // Set up common attributes for links.
       $options = [
         'attributes' => [
