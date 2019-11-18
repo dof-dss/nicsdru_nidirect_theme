@@ -70,7 +70,6 @@
  *   in different view modes.
  */
 #}
-
 <article{{ attributes.addClass('ga-main').setAttribute('id', 'main-article').removeAttribute('role') }}>
   {% if label %}
     {{- title_prefix -}}
@@ -85,25 +84,11 @@
       {% endfor %}
     </ul>
   {% endif %}
-  {% if content.field_address or content.field_contact_phone or content.field_gp_practice_website %}
-  <address class="vcard">
-    {{- content.field_address -}}
-    {{- content.field_contact_phone -}}
-    {{- content.field_gp_practice_website -}}
-  </address>
+  {% if  content_attributes is not empty %}
+  <div{{ content_attributes }}>
   {% endif %}
-  {% if content.field_gp_appointments %}
-    <div class="launch-service" role="presentation">
-      <a class="btn call-to-action" href="{{- content.field_gp_appointments[0]['#url'] -}}">Online appointments<svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg></a>
-    </div>
-  {% endif %}
-  {% if content.field_gp_prescriptions %}
-    <div class="launch-service" role="presentation">
-      <a class="btn call-to-action" href="{{- content.field_gp_prescriptions[0]['#url'] -}}">Repeat prescriptions<svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg></a>
-    </div>
-  {% endif %}
-  {% if content.field_location %}
-    <h2>Map</h2>
-    {{- content.field_location -}}
+  {{- content|without('field_gp_practice_lead', 'field_gp_practice_member') -}}
+  {% if  content_attributes is not empty %}
+  </div>
   {% endif %}
 </article>
