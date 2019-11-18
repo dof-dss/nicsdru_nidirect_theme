@@ -1,0 +1,56 @@
+/*
+ * @file
+ * Provides a grid like component for creating an a-z list.
+ */
+@import '../../init';
+
+// Facet A-Z List
+//
+// .
+//
+// Style guide: components.block.az-list
+.az-facet-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 1px 0 0 1px;
+  overflow: hidden;
+
+  li {
+    font-size: 0; // Safari inline-block white space fix
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+  }
+
+  a,
+  .a-nolink {
+    @include adjust-font-size-to(24px, 7.5);
+    border: 1px solid $brand-primary-medium;
+    color: $brand-primary-medium;
+    display: block;
+    height: 4.5rem;
+    margin: -1px 0 0 -1px;
+    text-align: center;
+    text-decoration: none;
+    width: 4.5rem;
+
+    &:hover,
+    &:focus {
+      background: $brand-primary-medium;
+      color: white;
+    }
+
+    &.active {
+      background: $grey-lightest;
+      color: $grey;
+    }
+  }
+
+  .no-content,
+  .a-nolink {
+    background: $grey-lightest;
+    color: $grey;
+  }
+}

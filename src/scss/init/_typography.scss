@@ -43,6 +43,7 @@ $breadcrumb-text: (
 
 $normal-text: (
   null: (16px, 1.5, 0 0 1.5em),
+  md: (null, null, 1.8rem 0 2.7rem),
   lg: 18px,
   xxl: 20px,
 );
@@ -99,4 +100,19 @@ $h6-text: (
   null: (16px, 2.4rem, 3.2rem 0 1.2rem),
   lg: (18px, 2.7rem, 3.6rem 0 1.8rem),
   xxl: (20px, 3rem, 4rem 0 2rem)
+);
+
+$btn-standard: (
+  null: (16px, 2.4rem),
+  lg: (18px, 2.7rem)
+);
+
+$btn-medium: (
+  null: (18px, 2.4rem),
+  lg: (21px, 2.4rem)
+);
+
+$btn-large: (
+  null: (21px, 2.4rem),
+  lg: (24px, 3rem)
 );

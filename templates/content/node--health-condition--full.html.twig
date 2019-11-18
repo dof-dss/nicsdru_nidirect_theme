@@ -70,12 +70,31 @@
  *   in different view modes.
  */
 #}
-
 <article{{ attributes.addClass('ga-main').setAttribute('id', 'main-article').removeAttribute('role') }}>
   {% if label %}
     {{- title_prefix -}}
     <h1{{ title_attributes.addClass('page-title') }}>{{- label -}}</h1>
     {{- title_suffix -}}
   {% endif %}
+  {% if  content_attributes is not empty %}
+  <div{{ content_attributes }}>
+  {% endif %}
   {{- content -}}
+  {% if  content_attributes is not empty %}
+  </div>>
+  {% endif %}
+  {% if node.field_last_review_date.value or node.field_next_review_date.value or node.field_published_date.value %}
+  <footer>
+    {% if node.field_last_review_date.value %}
+      <p class="review-info">{{- 'This page was reviewed '|t }}{{ content.field_last_review_date.value|date('U')|format_date('custom', 'F Y') -}}</p>
+    {% else %}
+      {% if node.field_published_date.value %}
+        <p class="review-info">{{- 'This page was published '|t }}{{ content.field_published_date.value|date('U')|format_date('custom', 'F Y') -}}</p>
+      {% endif %}
+    {% endif %}
+    {% if node.field_next_review_date.value %}
+      <p class="review-info">{{- 'This page is due for review '|t }}{{ content.field_next_review_date.value|date('U')|format_date('custom', 'F Y') -}}</p>
+    {% endif %}
+  </footer>
+  {% endif %}
 </article>

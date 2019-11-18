@@ -1,12 +1,12 @@
 {
-  "name": "nicsdru_origins_theme",
+  "name": "nicsdru_nidirect_theme",
   "version": "1.0.0",
-  "description": "A package of utilities used to theme our site",
+  "description": "A package of utilities used to create the nidirect theme",
   "main": "index.js",
   "license": "GPL-2.0-or-later",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dof-dss/nicsdru_origins_theme"
+    "url": "https://github.com/dof-dss/nicsdru_nidirect_theme"
   },
   "devDependencies": {
     "autoprefixer": "^9.6.4",
@@ -48,7 +48,7 @@
   },
   "scripts": {
     "––––––– JS SCRIPTS": "–––––––––––––",
-    "js": "npm-run-all js-lint js-compile",
+    "js": "npm-run-all --sequential js-lint js-compile",
     "js-lint": "./node_modules/.bin/eslint src/js/**",
     "//": "mkdir -p js && uglifyjs src/js/*.js -o js/scripts.js",
     "js-compile": "npm-run-all --parallel js-compile-*",
@@ -62,18 +62,20 @@
     "scss-prod": "mkdir -p css && node-sass --output-style compressed -o css src/scss",
     "––––––– IMG and SVG SCRIPTS": "–––––––––––––",
     "imgmin": "mkdir -p images && node imagemin.js",
-    "svgmin": "mkdir -p images && svgo -f src/svgs -o images --config config/svgo-config.yml",
+    "svgmin": "mkdir -p images && svgo -f src/images -o images --config config/svgo-config.yml",
     "icons": "svgo -f src/images/icons && mkdir -p images && svg-sprite-generate -d src/images/icons -o images/icons.svg",
     "––––––– WATCH SCRIPTS": "–––––––––––––",
     "watch": "npm-run-all --parallel watch-*",
     "watch-scss": "onchange 'src/scss/**/*.scss' -- npm run css",
     "watch-js": "onchange 'src/js/**/*.js' -- npm run js-compile",
     "watch-img": "onchange 'src/images/*.{gif,jpg,jpeg,JPG,JPEG,png}' -- npm run imgmin",
+    "watch-svg": "onchange 'src/images/*.svg' -- npm run svgmin",
     "––––––– BUILD SCRIPTS": "–––––––––––––",
     "build": "npm-run-all --parallel build-*",
     "build-css": "npm-run-all --parallel css-lint* scss-prod --sequential css-post",
     "build-js": "npm run js",
     "build-img": "npm run imgmin",
+    "-svg": "npm run svgmin",
     "lint": "npm-run-all --parallel css-lint js-lint"
   },
   "config": {

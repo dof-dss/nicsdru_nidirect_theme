@@ -5,19 +5,24 @@
 #}
 {%
 set classes = [
-'block',
-'block-' ~ configuration.provider|clean_class,
-'block-' ~ plugin_id|clean_class,
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+  'rel-menu',
 ]
 %}
 <div{{ attributes.addClass(classes) }}>
 {% if label %}
-<h2{{ title_attributes }}>{{ label }}</h2>
+<h2{{ title_attributes.addClass('menu-title') }}>{{ label }}</h2>
 {% endif %}
-Search by health condition or symptoms.
+<p class="meta">{{ 'Search by health condition or symptoms.'|t }}</p>
 {% block content %}
-<div{{ content_attributes.addClass('content') }}>
-{{ content }}
-</div>
+  {% if content_attributes is not empty %}
+    <div{{ content_attributes }}>
+      {{ content }}
+    </div>
+  {% else %}
+    {{ content }}
+  {% endif %}
 {% endblock %}
 </div>

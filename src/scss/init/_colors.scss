@@ -17,6 +17,7 @@ $chroma: define-default-color-scheme('branding', 'The site\'s main colors. Can b
 $chroma: add-colors((
   black:                  #000,
   charcoal:               #333,
+  ash-grey:               #666,
   'grey':                 #999,
   grey-dark:              #4d4d4d,
   grey-light:             #e8e7e7,
@@ -53,6 +54,7 @@ $chroma: add-colors('functional', (
 
   button:                 'text',
   button-disabled:        'grey',
+  button-action:          #3fa940,
 
   mark-bg:                #ff0,
 ));
@@ -61,6 +63,7 @@ $chroma-active-scheme: 'functional';
 
 $black: color('black');
 $charcoal: color(charcoal);
+$ash-grey: color(ash-grey);
 $grey: color('grey');
 $grey-dark: color(grey-dark);
 $grey-light: color(grey-light);
@@ -92,5 +95,6 @@ $border: color('border');
 
 $button: color('button');
 $button-disabled: color(button-disabled);
+$button-action: color(button-action);
 
 $mark-bg: color(mark-bg);
