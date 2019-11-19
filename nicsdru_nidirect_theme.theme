@@ -99,11 +99,11 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
   ) {
     for ($i = 0; $i < count($variables['items']); $i++) {
       $variables['items'][$i]["content"]["#prefix"] = '<p class="adr" translate="no">';
-      if (($key = array_search('address-line1', $variables['items'][$i]['content']['address_line1']['#attributes']['class'])) !== false) {
+      if (($key = array_search('address-line1', $variables['items'][$i]['content']['address_line1']['#attributes']['class'])) !== FALSE) {
         unset($variables['items'][$i]['content']['address_line1']['#attributes']['class'][$key]);
       }
       $variables['items'][$i]['content']['address_line1']['#attributes']['class'][] = 'street-address';
-      if (($key = array_search('address-line2', $variables['items'][$i]['content']['address_line2']['#attributes']['class'])) !== false) {
+      if (($key = array_search('address-line2', $variables['items'][$i]['content']['address_line2']['#attributes']['class'])) !== FALSE) {
         unset($variables['items'][$i]['content']['address_line2']['#attributes']['class'][$key]);
       }
       $variables['items'][$i]['content']['address_line2']['#attributes']['class'][] = 'street-address';
