@@ -1,0 +1,48 @@
+/*
+ * @file
+ * Provides the styling for button components.
+ */
+@import '../../init';
+@import 'button/button-defs';
+
+// Buttons
+//
+// The site incorporates a number of different types of 'buttons', which might take a more formal style such in a form
+// or may be a simple link on a page which is designed to encourage greater user interaction. This section of the guide
+// looks at how buttons might be incorporated into content.
+//
+// Style guide: components.buttons
+
+// Buttons - call to action
+//
+// The 'call to action' button is a fairly simple button designed to invite a user to take action or launch an action.
+// It inherits the basic styling common to all types of button and builds upon this make the button fuller using font
+// sizing and padding. It also makes use of colour to suggest a 'go' type action.
+//
+// Style guide: components.buttons.call-to-action
+.call-to-action {
+  @extend %btn;
+  @include btn-color($button-action);
+  @include btn-size('large');
+  position: relative;
+  padding-right: 3.9rem;
+
+  @at-root a#{&} {
+    text-align: left;
+    color: color(white);
+  }
+
+  .ico-elink {
+    fill: $white;
+  }
+
+  .ico-arrow-right {
+    fill: $white;
+    height: 2.5rem;
+    margin-right: 1.2rem;
+    position: absolute;
+    right: 0;
+    top: calc(50% - 1.25rem);
+    width: 1.5rem;
+  }
+}

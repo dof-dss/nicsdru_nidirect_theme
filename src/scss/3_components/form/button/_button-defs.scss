@@ -1,0 +1,80 @@
+/*
+ * @file
+ * Provides some base definitions that are common among button type elements.
+ */
+
+@mixin btn-color($bg-color: $charcoal, $txt-color: '', $hover: '', $active: '') {
+  $lighten: lighten($bg-color, 5%);
+  $darken: darken($bg-color, 5%);
+  @if($hover != '') {
+    $lighten: $hover;
+  }
+  @if($active != '') {
+    $darken: $active;
+  }
+  background-color: $bg-color;
+  border-color: $bg-color;
+  @if($txt-color != '') {
+    color: $txt-color;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $lighten;
+    border-color: $lighten;
+  }
+
+  &:active {
+    background-color: $darken;
+    border-color: $darken;
+  }
+}
+
+@mixin btn-size($size: 'standard') {
+  @if($size == 'standard') {
+    @include responsive-typo-map($btn-standard);
+  }
+  @else if($size == 'medium') {
+    @include responsive-typo-map($btn-medium);
+  }
+  @else if($size == 'large') {
+    @include responsive-typo-map($btn-large);
+  }
+}
+
+%btn {
+  border: 1px solid;
+  min-width: 100px;
+  padding: 1rem;
+  text-align: center;
+  vertical-align: middle;
+
+  @include breakpoint($phab, $no-query: true) {
+    min-width: 120px;
+    padding: 1.2rem 2.4rem;
+  }
+
+  &:link,
+  &:visited {
+    color: $white;
+  }
+
+  &:focus {
+    outline: 1px dotted $charcoal;
+  }
+}
+
+// The disabled variation should always go last, so that it overrides any
+// other variations.
+%button--disabled[disabled] {
+  // Re-set default cursor for disabled elements.
+  cursor: default;
+  color: color(button-disabled);
+
+  &:hover,
+  &:focus,
+  &:active {
+    // Override any link underlines and color changes.
+    color: color(button-disabled);
+  }
+}

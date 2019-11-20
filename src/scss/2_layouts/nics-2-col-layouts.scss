@@ -1,0 +1,69 @@
+/*
+ * @file
+ * Provides the layout styles for common nics 2 column layouts.
+ */
+
+@import '../init';
+
+// Two Column layouts
+//
+// Commonly used 2 column page layouts.
+//
+// Weight: -6
+//
+// Style guide: layouts.two-column
+
+// Article with side
+//
+// This layout defines two grid areas - not to be confused with HTML elements with similar names as the classes can be
+// applied to any appropriate semantic element. The `main` (or article) area is where the main body of content would be
+// expected to be placed and takes approximately two thirds of the available space. The `side` area does command as much
+// space, and would have approximately one third of the available space.
+//
+// Weight: 0
+//
+// Markup: ../kss-templates/layouts-nics-2-col.twig
+//
+// Style guide: layouts.two-column.article-aside
+.layout--article-n-side {
+
+  @include breakpoint($tab) {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: 'main side';
+
+    .ga-main {
+      grid-area: main;
+      /* no grid support? */
+      float: left;
+      width: 66%;
+    }
+
+    .ga-aside {
+      grid-area: side;
+      /* no grid support? */
+      float: right;
+      width: 33%;
+    }
+  }
+}
+
+// Diptych
+//
+// This layout defines two equal width child elements each would have approximately half of the available space.
+//
+// Weight: 0
+//
+// Style guide: layouts.two-column.diptych
+.layout--diptych {
+
+  @include breakpoint($tab) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: $grid-gap;
+
+    > * {
+      /* no grid support? */
+      float: left;
+      width: 50%;
+    }
+  }
+}
