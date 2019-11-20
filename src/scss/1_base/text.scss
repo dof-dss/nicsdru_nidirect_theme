@@ -8,8 +8,20 @@
 //
 // Style guide: base.text
 
+// Body copy
+//
+// The default `font-size` and `line-height` properties are applied to the
+// `<body>` element and all paragraphs. In addition, `<p>` (paragraphs) receive
+// a top and bottom margin.
+//
+// Markup: ../kss-templates/grouping-p.twig
+//
+// Weight: -2
+//
+// Style guide: base.grouping.p
+
 p,
-%p {
+pre {
   @include responsive-typo-map($normal-text);
   color: color(text);
 }

@@ -1,0 +1,21 @@
+/*
+ * @file
+ * Provides the styling for list components.
+ */
+@import '../../init';
+
+.list {
+  &--no-bullet {
+    list-style: none;
+    padding: 0;
+  }
+
+  li,
+  &-item {
+    .list--inline & {
+      display: inline-block;
+      padding-right: .334em;
+      white-space: nowrap;
+    }
+  }
+}
