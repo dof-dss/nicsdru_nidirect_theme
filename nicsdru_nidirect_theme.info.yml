@@ -5,6 +5,7 @@ package: NICS
 core: 8.x
 libraries:
   - nicsdru_nidirect_theme/nidirect-global-styles
+  - nicsdru_nidirect_theme/nidirect-specific-styles
 
 libraries-override:
   origins_common/in-page-navigation:
