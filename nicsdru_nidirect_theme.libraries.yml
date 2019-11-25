@@ -33,6 +33,7 @@ nidirect-global-styles:
       css/3_components/form/buttons.css: { minified: true }
       css/3_components/content/icons-messages.css: { minified: true }
       css/3_components/content/lists.css: { minified: true }
+      css/3_components/field/file-link.css: { minified: true }
 
 nidirect-specific-styles:
   version: 1.x
