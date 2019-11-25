@@ -2,14 +2,23 @@
 
 .layout-header--logo {
   margin: 2.4rem auto;
+  max-height: 5.5rem;
 
   @include breakpoint($tab) {
     width: auto;
     margin: 0;
   }
+
+  a {
+    font-size: 0;
+  }
+
+  a:focus {
+    outline: 0.3rem dashed $brand-primary-medium;
+    outline-offset: 0.5rem;
+  }
 }
 
 .site-logo {
-  height: 55px;
-  max-height: 55px;
+  height: 5.5rem; // temporary - might change for bilingual logo
 }
