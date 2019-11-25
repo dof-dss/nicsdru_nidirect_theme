@@ -18,7 +18,7 @@ $chroma: add-colors((
   black:                  #000,
   charcoal:               #333,
   ash-grey:               #666,
-  'grey':                 #999,
+  'grey':                 #949494, // replaces #999 for 3:1 contrast with white
   grey-dark:              #4d4d4d,
   grey-light:             #e8e7e7,
   grey-lightest:          #f0f0f0,
@@ -27,12 +27,12 @@ $chroma: add-colors((
   offwhite:               #f3f8fc,
 
   brand-primary:          #00aae5,
-  brand-primary-dark:     #076cba,
-  brand-primary-medium:   #0a7ad0,
+  brand-primary-dark:     #076cba, // replaces #0a7ad0 for 4.5:1 contrast with white
+  brand-primary-medium:   #0a78cd,
   brand-primary-light:    #cee4f6,
   brand-primary-lightest: #f3f8fc,
 
-  brand-secondary:        #0c1e63,
+  brand-secondary:        #0b1951, // replaces #0c1e63 for 3:1 contrast with brand-primary-dark
   brand-secondary-dark:   #333,
 
   brand-tertiary:         #db6304,
@@ -46,9 +46,10 @@ $chroma: add-colors('functional', (
   headings:               #19315a,
 
   link:                   #0e6bb3,
-  link-hover:             'link',
   link-visited:           #5e60b5,
+  link-hover:             'link',
   link-active:            'link',
+  link-focus:             #fff,
 
   border:                 'grey-light',
 
@@ -90,6 +91,7 @@ $link: color(link);
 $link-hover: color(link-hover);
 $link-visited: color(link-visited);
 $link-active: color(link-active);
+$link-focus: color(link-focus);
 
 $border: color('border');
 
