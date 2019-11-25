@@ -1,1 +1,29 @@
-.header{display:grid;grid-gap:0;grid-template-columns:1fr;justify-content:space-between}@media (min-width: 768px){.header{grid-template-columns:auto 400px;margin:1.2rem auto 0;max-width:980px;padding:0 20px;align-items:center;min-height:11.7rem}}
+/*
+ * @file
+ * Provides the layout styles for the header area.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 23, src/scss/2_layouts/header.scss */
+.header {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: 1fr;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  /* line 23, src/scss/2_layouts/header.scss */
+  .header {
+    grid-template-columns: auto 400px;
+    margin: 1.2rem auto 0;
+    max-width: 980px;
+    padding: 0 20px;
+    align-items: center;
+    min-height: 11.7rem;
+  }
+}
+
+/*# sourceMappingURL=header.css.map */

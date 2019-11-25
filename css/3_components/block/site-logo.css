@@ -1,1 +1,35 @@
-.layout-header--logo{margin:2.4rem auto;max-height:5.5rem}@media (min-width: 768px){.layout-header--logo{width:auto;margin:0}}.layout-header--logo a{font-size:0}.layout-header--logo a:focus{outline:0.3rem dashed #0a78cd;outline-offset:0.5rem}.site-logo{height:5.5rem}
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 3, src/scss/3_components/block/site-logo.scss */
+.layout-header--logo {
+  margin: 2.4rem auto;
+  max-height: 5.5rem;
+}
+
+@media (min-width: 768px) {
+  /* line 3, src/scss/3_components/block/site-logo.scss */
+  .layout-header--logo {
+    width: auto;
+    margin: 0;
+  }
+}
+
+/* line 12, src/scss/3_components/block/site-logo.scss */
+.layout-header--logo a {
+  font-size: 0;
+}
+
+/* line 16, src/scss/3_components/block/site-logo.scss */
+.layout-header--logo a:focus {
+  outline: 0.3rem dashed #0a78cd;
+  outline-offset: 0.5rem;
+}
+
+/* line 22, src/scss/3_components/block/site-logo.scss */
+.site-logo {
+  height: 5.5rem;
+}
+
+/*# sourceMappingURL=site-logo.css.map */

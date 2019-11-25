@@ -1,1 +1,29 @@
-.card-deck{grid-template-columns:repeat(1, 1fr)}.card-deck.border-top .card{border-top:1px solid}.card-deck.border-bottom .card{border-bottom:1px solid}.card--title{margin-top:0}
+/*
+ * @file
+ * Provides the styling for creating a card component.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 15, src/scss/3_components/layout/cards.scss */
+.card-deck {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+/* line 25, src/scss/3_components/layout/cards.scss */
+.card-deck.border-top .card {
+  border-top: 1px solid;
+}
+
+/* line 25, src/scss/3_components/layout/cards.scss */
+.card-deck.border-bottom .card {
+  border-bottom: 1px solid;
+}
+
+/* line 31, src/scss/3_components/layout/cards.scss */
+.card--title {
+  margin-top: 0;
+}
+
+/*# sourceMappingURL=cards.css.map */
