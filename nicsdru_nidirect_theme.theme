@@ -189,3 +189,10 @@ function _audit_link($type, $dt, $nid) {
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_taxonomy_term().
+ */
+function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
+  $variables['information_services_output'] = 'Hello from the theme';
+}
