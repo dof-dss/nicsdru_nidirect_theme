@@ -218,6 +218,8 @@ function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
       '#url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $row->tid])
     ];
   }
+  // Sort entries alphabetically (regardless of type).
   ksort($results);
-  $variables['information_services_output'] = $results;
+  // Return as an 'item_list' themed render array.
+  $variables['information_services_output'] = ['#theme' => 'item_list', '#items' => $results];
 }
