@@ -25,6 +25,7 @@
 #}
 <div{{ attributes }}>
   {% if information_services_output is defined %}
+    <h1>{{ name }}</h1>
     {{ information_services_output }}
   {%  else %}
     {{ title_prefix }}
