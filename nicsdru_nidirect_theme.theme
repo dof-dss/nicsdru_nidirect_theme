@@ -194,5 +194,18 @@ function _audit_link($type, $dt, $nid) {
  * Implements hook_preprocess_taxonomy_term().
  */
 function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
-  $variables['information_services_output'] = 'Hello from the theme';
+  // Render the 'articles by term' view and process the results.
+  $articles_view = views_embed_view('articles_by_term', 'articles_by_term_block');
+  \Drupal::service('renderer')->renderRoot($articles_view);
+  $results = [];
+  foreach ($articles_view['view_build']['#view']->result as $row) {
+    $results[$row->nid] = $row->node_field_data_title;
+  }
+  // Render the 'site subtopics' view and process the results.
+  $subtopics_view = views_embed_view('site_subtopics', 'site_subtopics_block');
+  \Drupal::service('renderer')->renderRoot($subtopics_view);
+  foreach ($subtopics_view['view_build']['#view']->result as $row) {
+    $results[$row->tid] = $row->taxonomy_term_field_data_name;
+  }
+  $variables['information_services_output'] = 'rows here';
 }
