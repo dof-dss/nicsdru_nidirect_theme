@@ -199,13 +199,24 @@ function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
   \Drupal::service('renderer')->renderRoot($articles_view);
   $results = [];
   foreach ($articles_view['view_build']['#view']->result as $row) {
-    $results[$row->nid] = $row->node_field_data_title;
+    $link_object = Link::createFromRoute($row->node_field_data_title,
+      'entity.node.canonical',
+      ['node' => $row->nid]);
+    $results[$row->node_field_data_title] = $link_object;
   }
   // Render the 'site subtopics' view and process the results.
   $subtopics_view = views_embed_view('site_subtopics', 'by_topic_simple_embed');
   \Drupal::service('renderer')->renderRoot($subtopics_view);
   foreach ($subtopics_view['view_build']['#view']->result as $row) {
-    $results[$row->tid] = $row->taxonomy_term_field_data_name;
+    $link_object = Link::createFromRoute($row->taxonomy_term_field_data_name,
+      'entity.taxonomy_term.canonical',
+      ['taxonomy_term' => $row->tid]);
+    $results[$row->taxonomy_term_field_data_name] = $link_object;
   }
-  $variables['information_services_output'] = 'rows here';
+  ksort($results);
+  $items = [];
+  foreach ($results as $res) {
+    $items[] = $res;
+  }
+  $variables['information_services_output'] = ['#markup' => $items];
 }
