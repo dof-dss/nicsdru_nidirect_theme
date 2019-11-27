@@ -8,6 +8,7 @@
 use Drupal\Core\Link;
 use Drupal\Core\Render;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Url;
 use Drupal\user\Entity\User;
 use Drupal\block\Entity\Block;
 use Drupal\Component\Utility\Html;
@@ -199,24 +200,24 @@ function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
   \Drupal::service('renderer')->renderRoot($articles_view);
   $results = [];
   foreach ($articles_view['view_build']['#view']->result as $row) {
-    $link_object = Link::createFromRoute($row->node_field_data_title,
-      'entity.node.canonical',
-      ['node' => $row->nid]);
-    $results[$row->node_field_data_title] = $link_object;
+    // This will be a link to an article.
+    $results[$row->node_field_data_title] = [
+      '#type' => 'link',
+      '#title' => $row->node_field_data_title,
+      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $row->nid])
+    ];
   }
   // Render the 'site subtopics' view and process the results.
   $subtopics_view = views_embed_view('site_subtopics', 'by_topic_simple_embed');
   \Drupal::service('renderer')->renderRoot($subtopics_view);
   foreach ($subtopics_view['view_build']['#view']->result as $row) {
-    $link_object = Link::createFromRoute($row->taxonomy_term_field_data_name,
-      'entity.taxonomy_term.canonical',
-      ['taxonomy_term' => $row->tid]);
-    $results[$row->taxonomy_term_field_data_name] = $link_object;
+    // This will be a link to another taxonomy page.
+    $results[$row->taxonomy_term_field_data_name] = [
+      '#type' => 'link',
+      '#title' => $row->taxonomy_term_field_data_name,
+      '#url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $row->tid])
+    ];
   }
   ksort($results);
-  $items = [];
-  foreach ($results as $res) {
-    $items[] = $res;
-  }
-  $variables['information_services_output'] = ['#markup' => $items];
+  $variables['information_services_output'] = $results;
 }
