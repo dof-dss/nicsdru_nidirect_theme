@@ -201,7 +201,7 @@ function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
   $results = [];
   foreach ($articles_view['view_build']['#view']->result as $row) {
     // This will be a link to an article.
-    $results[$row->node_field_data_title] = [
+    $results[strtolower($row->node_field_data_title)] = [
       '#type' => 'link',
       '#title' => $row->node_field_data_title,
       '#url' => Url::fromRoute('entity.node.canonical', ['node' => $row->nid])
@@ -212,7 +212,7 @@ function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
   \Drupal::service('renderer')->renderRoot($subtopics_view);
   foreach ($subtopics_view['view_build']['#view']->result as $row) {
     // This will be a link to another taxonomy page.
-    $results[$row->taxonomy_term_field_data_name] = [
+    $results[strtolower($row->taxonomy_term_field_data_name)] = [
       '#type' => 'link',
       '#title' => $row->taxonomy_term_field_data_name,
       '#url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $row->tid])
