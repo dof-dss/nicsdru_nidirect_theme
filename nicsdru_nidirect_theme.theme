@@ -199,6 +199,10 @@ function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
   $articles_view = views_embed_view('articles_by_term', 'articles_by_term_embed');
   \Drupal::service('renderer')->renderRoot($articles_view);
   $results = [];
+  // Add a custom cache tag for this taxonomy term 'listing' page.
+  $cache_tags = ['taxonomy_term_list:' . $variables['term']->id()];
+  // Add the standard taxonomy term cache tag as well.
+  $cache_tags[] = 'taxonomy_term:' . $variables['term']->id();
   foreach ($articles_view['view_build']['#view']->result as $row) {
     // This will be a link to an article.
     $results[strtolower($row->node_field_data_title)] = [
@@ -206,6 +210,8 @@ function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
       '#title' => $row->node_field_data_title,
       '#url' => Url::fromRoute('entity.node.canonical', ['node' => $row->nid])
     ];
+    // Add cache tag for each article.
+    $cache_tags[] = 'node:' . $row->nid;
   }
   // Render the 'site subtopics' view and process the results.
   $subtopics_view = views_embed_view('site_subtopics', 'by_topic_simple_embed');
@@ -217,9 +223,18 @@ function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
       '#title' => $row->taxonomy_term_field_data_name,
       '#url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $row->tid])
     ];
+    // Add cache tag for each listed term.
+    $cache_tags[] = 'taxonomy_term:' . $row->tid;
   }
   // Sort entries alphabetically (regardless of type).
   ksort($results);
-  // Return as an 'item_list' themed render array.
-  $variables['information_services_output'] = ['#theme' => 'item_list', '#items' => $results];
+  // Return as an 'item_list' themed render array, with
+  // cache tags set appropriately.
+  $variables['information_services_output'] = [
+    '#theme' => 'item_list',
+    '#items' => $results,
+    '#cache' => [
+      'tags' => $cache_tags
+    ]
+  ];
 }
