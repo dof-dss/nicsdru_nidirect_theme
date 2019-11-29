@@ -27,22 +27,42 @@
 // Style guide: layouts.two-column.article-aside
 .layout--article-n-side {
 
+  .ga-main {
+    max-width: 620px;
+  }
+
   @include breakpoint($tab) {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 62% auto;
     grid-template-areas: 'main side';
+    grid-gap: 0;
 
     .ga-main {
       grid-area: main;
       /* no grid support? */
       float: left;
-      width: 66%;
+      width: 62%;
     }
 
     .ga-aside {
       grid-area: side;
       /* no grid support? */
       float: right;
-      width: 33%;
+      width: 38%;
+      max-width: 320px;
+      padding-left: 16px;
+    }
+  }
+
+  @include breakpoint($lap) {
+    grid-template-columns: 65.9575% auto;
+
+    .ga-main {
+      width: 65.9575%;
+    }
+
+    .ga-aside {
+      width: 34.0425%;
+      padding-left: 28px;
     }
   }
 }

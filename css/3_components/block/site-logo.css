@@ -1,1 +1,1 @@
-.layout-header--logo{margin:2.4rem auto}@media (min-width: 768px){.layout-header--logo{width:auto;margin:0}}.site-logo{height:55px;max-height:55px}
+.layout-header--logo{margin:2.4rem auto;max-width:375px;max-height:5.5rem;padding:0 30px}@media (min-width: 480px){.layout-header--logo{padding:0}}@media (min-width: 768px){.layout-header--logo{width:auto;max-width:none;margin:0}}.layout-header--logo a{font-size:0;border:0}.layout-header--logo a:focus{outline:0.3rem dashed #949494;outline-offset:1.2rem}.site-logo{height:5.5rem}

@@ -25,11 +25,17 @@
   grid-gap: 0;
   grid-template-columns: 1fr;
   justify-content: space-between;
+  align-items: center;
+  min-height: 8rem;
+
+  @include breakpoint($phab) {
+    min-height: 12.9rem;
+  }
 
   @include breakpoint($tab) {
-    grid-template-columns: $header-template-columns;
+    grid-template-columns: 45% 42.56%;
     margin: 0 auto;
     max-width: $max-grid-width;
-    padding: 4.3rem 0 3rem;
+    padding: 0 20px;
   }
 }
