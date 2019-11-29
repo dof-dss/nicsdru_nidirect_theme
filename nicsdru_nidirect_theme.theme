@@ -203,9 +203,9 @@ function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
   $cache_tags[] = 'taxonomy_term:' . $variables['term']->id();
   foreach ($articles_view['view_build']['#view']->result as $row) {
     // This will be a link to an article.
-    $results[strtolower($row->node_field_data_title)] = [
+    $results[strtolower($row->_entity->getTitle())] = [
       '#type' => 'link',
-      '#title' => $row->node_field_data_title,
+      '#title' => $row->_entity->getTitle(),
       '#url' => Url::fromRoute('entity.node.canonical', ['node' => $row->nid]),
     ];
     // Add cache tag for each article.
@@ -216,9 +216,9 @@ function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
   \Drupal::service('renderer')->renderRoot($subtopics_view);
   foreach ($subtopics_view['view_build']['#view']->result as $row) {
     // This will be a link to another taxonomy page.
-    $results[strtolower($row->taxonomy_term_field_data_name)] = [
+    $results[strtolower($row->_entity->getName())] = [
       '#type' => 'link',
-      '#title' => $row->taxonomy_term_field_data_name,
+      '#title' => $row->_entity->getName(),
       '#url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $row->tid]),
     ];
     // Add cache tag for each listed term.
