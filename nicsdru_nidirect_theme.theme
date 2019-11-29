@@ -6,11 +6,9 @@
  */
 
 use Drupal\Core\Link;
-use Drupal\Core\Render;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
 use Drupal\user\Entity\User;
-use Drupal\block\Entity\Block;
 use Drupal\Component\Utility\Html;
 
 /**
@@ -208,7 +206,7 @@ function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
     $results[strtolower($row->node_field_data_title)] = [
       '#type' => 'link',
       '#title' => $row->node_field_data_title,
-      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $row->nid])
+      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $row->nid]),
     ];
     // Add cache tag for each article.
     $cache_tags[] = 'node:' . $row->nid;
@@ -221,7 +219,7 @@ function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
     $results[strtolower($row->taxonomy_term_field_data_name)] = [
       '#type' => 'link',
       '#title' => $row->taxonomy_term_field_data_name,
-      '#url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $row->tid])
+      '#url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $row->tid]),
     ];
     // Add cache tag for each listed term.
     $cache_tags[] = 'taxonomy_term:' . $row->tid;
@@ -234,7 +232,7 @@ function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
     '#theme' => 'item_list',
     '#items' => $results,
     '#cache' => [
-      'tags' => $cache_tags
-    ]
+      'tags' => $cache_tags,
+    ],
   ];
 }
