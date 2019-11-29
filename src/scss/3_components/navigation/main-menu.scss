@@ -14,6 +14,7 @@
       overflow: hidden;
 
       @include breakpoint($tab) {
+        display: flex;
         margin: 0 auto;
         height: auto;
         max-height: 100%;
@@ -55,6 +56,7 @@
       background-color: color(brand-secondary);
       border-color: color(brand-secondary);
       text-decoration: underline;
+      outline: none;
       &:not(.is-active) {
         border: 0;
       }

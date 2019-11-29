@@ -12,17 +12,24 @@
   grid-gap: 0;
   grid-template-columns: 1fr;
   justify-content: space-between;
+  align-items: center;
+  min-height: 8rem;
+}
+
+@media (min-width: 600px) {
+  /* line 23, src/scss/2_layouts/header.scss */
+  .header {
+    min-height: 12.9rem;
+  }
 }
 
 @media (min-width: 768px) {
   /* line 23, src/scss/2_layouts/header.scss */
   .header {
-    grid-template-columns: auto 400px;
-    margin: 1.2rem auto 0;
+    grid-template-columns: 45% 42.56%;
+    margin: 0 auto;
     max-width: 980px;
     padding: 0 20px;
-    align-items: center;
-    min-height: 11.7rem;
   }
 }
 

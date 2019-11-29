@@ -87,14 +87,15 @@
 .view-search-container form input[type='search']:focus, .view-search-container form input[type='text']:focus,
 .search-form input[type='search']:focus,
 .search-form input[type='text']:focus {
-  outline: 3px solid;
+  outline: 3px solid #333;
   outline-offset: -2px;
   border-right-width: 1px;
+  border-color: #fff;
   position: relative;
   z-index: 101;
 }
 
-/* line 55, src/scss/3_components/block/search-form.scss */
+/* line 56, src/scss/3_components/block/search-form.scss */
 .view-search-container form input[type='submit'],
 .search-form input[type='submit'] {
   width: 5.4rem;
@@ -104,7 +105,7 @@
   text-indent: -9999px;
 }
 
-/* line 61, src/scss/3_components/block/search-form.scss */
+/* line 62, src/scss/3_components/block/search-form.scss */
 .view-search-container form input[type='submit']:focus,
 .search-form input[type='submit']:focus {
   outline: 3px solid #333;
@@ -113,7 +114,7 @@
   z-index: 101;
 }
 
-/* line 79, src/scss/3_components/block/search-form.scss */
+/* line 80, src/scss/3_components/block/search-form.scss */
 .view-search-container form--page input,
 .search-form--page input {
   font-size: 1.4rem;
@@ -121,14 +122,14 @@
   margin: 0;
 }
 
-/* line 83, src/scss/3_components/block/search-form.scss */
+/* line 84, src/scss/3_components/block/search-form.scss */
 .view-search-container form--page input[type='search'], .view-search-container form--page input[type='text'],
 .search-form--page input[type='search'],
 .search-form--page input[type='text'] {
   padding: .6rem 4.8rem .6rem .6rem;
 }
 
-/* line 88, src/scss/3_components/block/search-form.scss */
+/* line 89, src/scss/3_components/block/search-form.scss */
 .view-search-container form--page input[type='submit'],
 .search-form--page input[type='submit'] {
   background-color: #0a78cd;
@@ -136,7 +137,7 @@
   width: 4.5rem;
 }
 
-/* line 105, src/scss/3_components/block/search-form.scss */
+/* line 106, src/scss/3_components/block/search-form.scss */
 header .search-form {
   background-color: #0a78cd;
   padding: 1rem 1rem 1rem 5.8rem;
@@ -144,7 +145,7 @@ header .search-form {
 }
 
 @media (min-width: 768px) {
-  /* line 105, src/scss/3_components/block/search-form.scss */
+  /* line 106, src/scss/3_components/block/search-form.scss */
   header .search-form {
     background-color: inherit;
     padding: 0;
@@ -152,12 +153,19 @@ header .search-form {
   }
 }
 
-/* line 116, src/scss/3_components/block/search-form.scss */
+@media (min-width: 980px) {
+  /* line 106, src/scss/3_components/block/search-form.scss */
+  header .search-form {
+    margin-top: .9rem;
+  }
+}
+
+/* line 121, src/scss/3_components/block/search-form.scss */
 header .search-form input {
   height: 4.2rem;
 }
 
-/* line 119, src/scss/3_components/block/search-form.scss */
+/* line 124, src/scss/3_components/block/search-form.scss */
 header .search-form input[type='search'] {
   padding: 0 .8rem;
   border-width: 0;
@@ -165,14 +173,14 @@ header .search-form input[type='search'] {
 }
 
 @media (min-width: 768px) {
-  /* line 119, src/scss/3_components/block/search-form.scss */
+  /* line 124, src/scss/3_components/block/search-form.scss */
   header .search-form input[type='search'] {
     border-width: 1px;
     border-right-width: 0;
   }
 }
 
-/* line 129, src/scss/3_components/block/search-form.scss */
+/* line 134, src/scss/3_components/block/search-form.scss */
 header .search-form input[type='submit'] {
   border-color: #db6304;
   background-color: #db6304;
@@ -182,7 +190,7 @@ header .search-form input[type='submit'] {
   width: 5rem;
 }
 
-/* line 141, src/scss/3_components/block/search-form.scss */
+/* line 146, src/scss/3_components/block/search-form.scss */
 .search-form--site[type='submit'] {
   border-color: #db6304;
   background-color: #db6304;

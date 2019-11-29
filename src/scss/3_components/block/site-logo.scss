@@ -2,20 +2,28 @@
 
 .layout-header--logo {
   margin: 2.4rem auto;
+  max-width: 375px;
   max-height: 5.5rem;
+  padding: 0 30px;
+
+  @include breakpoint($mob) {
+    padding: 0;
+  }
 
   @include breakpoint($tab) {
     width: auto;
+    max-width: none;
     margin: 0;
   }
 
   a {
     font-size: 0;
+    border: 0;
   }
 
   a:focus {
-    outline: 0.3rem dashed $brand-primary-medium;
-    outline-offset: 0.5rem;
+    outline: 0.3rem dashed $grey;
+    outline-offset: 1.2rem;
   }
 }
 

@@ -5,29 +5,40 @@
 /* line 3, src/scss/3_components/block/site-logo.scss */
 .layout-header--logo {
   margin: 2.4rem auto;
+  max-width: 375px;
   max-height: 5.5rem;
+  padding: 0 30px;
+}
+
+@media (min-width: 480px) {
+  /* line 3, src/scss/3_components/block/site-logo.scss */
+  .layout-header--logo {
+    padding: 0;
+  }
 }
 
 @media (min-width: 768px) {
   /* line 3, src/scss/3_components/block/site-logo.scss */
   .layout-header--logo {
     width: auto;
+    max-width: none;
     margin: 0;
   }
 }
 
-/* line 12, src/scss/3_components/block/site-logo.scss */
+/* line 19, src/scss/3_components/block/site-logo.scss */
 .layout-header--logo a {
   font-size: 0;
+  border: 0;
 }
 
-/* line 16, src/scss/3_components/block/site-logo.scss */
+/* line 24, src/scss/3_components/block/site-logo.scss */
 .layout-header--logo a:focus {
-  outline: 0.3rem dashed #0a78cd;
-  outline-offset: 0.5rem;
+  outline: 0.3rem dashed #949494;
+  outline-offset: 1.2rem;
 }
 
-/* line 22, src/scss/3_components/block/site-logo.scss */
+/* line 30, src/scss/3_components/block/site-logo.scss */
 .site-logo {
   height: 5.5rem;
 }

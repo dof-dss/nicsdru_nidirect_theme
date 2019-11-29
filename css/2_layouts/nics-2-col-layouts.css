@@ -6,35 +6,59 @@
 /* Set the base images folder */
 /* Layout ============================================================ */
 /* Breakpoints ======================================================== */
+/* line 30, src/scss/2_layouts/nics-2-col-layouts.scss */
+.layout--article-n-side .ga-main {
+  max-width: 620px;
+}
+
 @media (min-width: 768px) {
   /* line 28, src/scss/2_layouts/nics-2-col-layouts.scss */
   .layout--article-n-side {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 62% auto;
     grid-template-areas: 'main side';
+    grid-gap: 0;
   }
-  /* line 34, src/scss/2_layouts/nics-2-col-layouts.scss */
+  /* line 39, src/scss/2_layouts/nics-2-col-layouts.scss */
   .layout--article-n-side .ga-main {
     grid-area: main;
     /* no grid support? */
     float: left;
-    width: 66%;
+    width: 62%;
   }
-  /* line 41, src/scss/2_layouts/nics-2-col-layouts.scss */
+  /* line 46, src/scss/2_layouts/nics-2-col-layouts.scss */
   .layout--article-n-side .ga-aside {
     grid-area: side;
     /* no grid support? */
     float: right;
-    width: 33%;
+    width: 38%;
+    max-width: 320px;
+    padding-left: 16px;
+  }
+}
+
+@media (min-width: 980px) {
+  /* line 28, src/scss/2_layouts/nics-2-col-layouts.scss */
+  .layout--article-n-side {
+    grid-template-columns: 65.9575% auto;
+  }
+  /* line 59, src/scss/2_layouts/nics-2-col-layouts.scss */
+  .layout--article-n-side .ga-main {
+    width: 65.9575%;
+  }
+  /* line 63, src/scss/2_layouts/nics-2-col-layouts.scss */
+  .layout--article-n-side .ga-aside {
+    width: 34.0425%;
+    padding-left: 28px;
   }
 }
 
 @media (min-width: 768px) {
-  /* line 57, src/scss/2_layouts/nics-2-col-layouts.scss */
+  /* line 77, src/scss/2_layouts/nics-2-col-layouts.scss */
   .layout--diptych {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
   }
-  /* line 63, src/scss/2_layouts/nics-2-col-layouts.scss */
+  /* line 83, src/scss/2_layouts/nics-2-col-layouts.scss */
   .layout--diptych > * {
     /* no grid support? */
     float: left;

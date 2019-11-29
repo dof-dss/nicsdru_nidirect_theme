@@ -88,8 +88,8 @@ a:hover {
   @include responsive-typo-map($body-text);
   opacity: 1;
   display: block;
-  line-height: 4rem;
-  padding: .6rem 3.5rem;
+  line-height: 1.5;
+  padding: .9rem 3.5rem;
   color: #fff;
   text-decoration: underline;
   outline: none;

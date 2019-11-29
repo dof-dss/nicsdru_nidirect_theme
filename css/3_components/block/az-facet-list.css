@@ -45,16 +45,17 @@
 .az-facet-list .a-nolink:focus {
   background: #0a78cd;
   color: white;
+  outline: none;
 }
 
-/* line 45, src/scss/3_components/block/az-facet-list.scss */
+/* line 46, src/scss/3_components/block/az-facet-list.scss */
 .az-facet-list a.active,
 .az-facet-list .a-nolink.active {
   background: #f0f0f0;
   color: #949494;
 }
 
-/* line 51, src/scss/3_components/block/az-facet-list.scss */
+/* line 52, src/scss/3_components/block/az-facet-list.scss */
 .az-facet-list .no-content,
 .az-facet-list .a-nolink {
   background: #f0f0f0;

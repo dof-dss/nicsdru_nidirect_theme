@@ -20,6 +20,7 @@
 @media (min-width: 768px) {
   /* line 9, src/scss/3_components/navigation/main-menu.scss */
   .main-menu .nav-menu {
+    display: flex;
     margin: 0 auto;
     height: auto;
     max-height: 100%;
@@ -28,32 +29,32 @@
 }
 
 @media (min-width: 768px) {
-  /* line 24, src/scss/3_components/navigation/main-menu.scss */
+  /* line 25, src/scss/3_components/navigation/main-menu.scss */
   .main-menu .nav-item {
     display: inline-block;
   }
 }
 
-/* line 28, src/scss/3_components/navigation/main-menu.scss */
+/* line 29, src/scss/3_components/navigation/main-menu.scss */
 .main-menu .nav-item:first-child, .main-menu .nav-item :last-child {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
 @media (min-width: 768px) {
-  /* line 28, src/scss/3_components/navigation/main-menu.scss */
+  /* line 29, src/scss/3_components/navigation/main-menu.scss */
   .main-menu .nav-item:first-child, .main-menu .nav-item :last-child {
     margin-top: 0;
     margin-bottom: 0;
   }
 }
 
-/* line 39, src/scss/3_components/navigation/main-menu.scss */
+/* line 40, src/scss/3_components/navigation/main-menu.scss */
 .main-menu .nav-link:hover {
   color: #fff;
 }
 
-/* line 45, src/scss/3_components/navigation/main-menu.scss */
+/* line 46, src/scss/3_components/navigation/main-menu.scss */
 .main-menu .nav-link,
 .main-menu .is-active {
   font-size: 1.6rem;
@@ -64,28 +65,29 @@
 }
 
 @media (min-width: 768px) {
-  /* line 45, src/scss/3_components/navigation/main-menu.scss */
+  /* line 46, src/scss/3_components/navigation/main-menu.scss */
   .main-menu .nav-link,
   .main-menu .is-active {
     padding: 1.8rem 2.3rem;
   }
 }
 
-/* line 54, src/scss/3_components/navigation/main-menu.scss */
+/* line 55, src/scss/3_components/navigation/main-menu.scss */
 .main-menu .nav-link:focus,
 .main-menu .is-active:focus {
   background-color: #0b1951;
   border-color: #0b1951;
   text-decoration: underline;
+  outline: none;
 }
 
-/* line 58, src/scss/3_components/navigation/main-menu.scss */
+/* line 60, src/scss/3_components/navigation/main-menu.scss */
 .main-menu .nav-link:focus:not(.is-active),
 .main-menu .is-active:focus:not(.is-active) {
   border: 0;
 }
 
-/* line 64, src/scss/3_components/navigation/main-menu.scss */
+/* line 66, src/scss/3_components/navigation/main-menu.scss */
 .main-menu .is-active {
   background-color: #076cba;
   border-left: 0.8rem solid #0b1951;
@@ -93,7 +95,7 @@
 }
 
 @media (min-width: 768px) {
-  /* line 64, src/scss/3_components/navigation/main-menu.scss */
+  /* line 66, src/scss/3_components/navigation/main-menu.scss */
   .main-menu .is-active {
     padding-bottom: 1.3rem;
     border-left: 0;
@@ -102,7 +104,7 @@
   }
 }
 
-/* line 77, src/scss/3_components/navigation/main-menu.scss */
+/* line 79, src/scss/3_components/navigation/main-menu.scss */
 .main-menu .toggler {
   position: absolute;
   top: -5.6rem;
@@ -117,7 +119,7 @@
 }
 
 @media (min-width: 768px) {
-  /* line 77, src/scss/3_components/navigation/main-menu.scss */
+  /* line 79, src/scss/3_components/navigation/main-menu.scss */
   .main-menu .toggler {
     height: 1px;
     width: 1px;
@@ -127,31 +129,31 @@
   }
 }
 
-/* line 96, src/scss/3_components/navigation/main-menu.scss */
+/* line 98, src/scss/3_components/navigation/main-menu.scss */
 .main-menu .toggler:checked + .hamburger > div {
   transform: rotate(135deg);
   /* Turns Lines Into X */
 }
 
-/* line 100, src/scss/3_components/navigation/main-menu.scss */
+/* line 102, src/scss/3_components/navigation/main-menu.scss */
 .main-menu .toggler:checked + .hamburger > div::before, .main-menu .toggler:checked + .hamburger > div::after {
   top: 0;
   transform: rotate(90deg);
 }
 
-/* line 107, src/scss/3_components/navigation/main-menu.scss */
+/* line 109, src/scss/3_components/navigation/main-menu.scss */
 .main-menu .toggler:checked:hover + .hamburger > div {
   transform: rotate(225deg);
 }
 
-/* line 112, src/scss/3_components/navigation/main-menu.scss */
+/* line 114, src/scss/3_components/navigation/main-menu.scss */
 .main-menu .toggler:checked ~ .nav-menu {
   height: auto;
   max-height: 60rem;
   transition: max-height 1s ease;
 }
 
-/* line 119, src/scss/3_components/navigation/main-menu.scss */
+/* line 121, src/scss/3_components/navigation/main-menu.scss */
 .main-menu .hamburger {
   position: absolute;
   top: -5.6rem;
@@ -167,13 +169,13 @@
 }
 
 @media (min-width: 768px) {
-  /* line 119, src/scss/3_components/navigation/main-menu.scss */
+  /* line 121, src/scss/3_components/navigation/main-menu.scss */
   .main-menu .hamburger {
     display: none;
   }
 }
 
-/* line 136, src/scss/3_components/navigation/main-menu.scss */
+/* line 138, src/scss/3_components/navigation/main-menu.scss */
 .main-menu .hamburger > div {
   position: relative;
   flex: none;
@@ -188,7 +190,7 @@
   /* Moves Line Down */
 }
 
-/* line 148, src/scss/3_components/navigation/main-menu.scss */
+/* line 150, src/scss/3_components/navigation/main-menu.scss */
 .main-menu .hamburger > div::after, .main-menu .hamburger > div::before {
   content: '';
   position: absolute;
@@ -199,7 +201,7 @@
   background: inherit;
 }
 
-/* line 160, src/scss/3_components/navigation/main-menu.scss */
+/* line 162, src/scss/3_components/navigation/main-menu.scss */
 .main-menu .hamburger > div::after {
   top: 0.9rem;
 }

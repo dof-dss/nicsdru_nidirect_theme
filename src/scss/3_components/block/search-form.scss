@@ -44,9 +44,10 @@
       background-color: $white;
       color: $charcoal;
       &:focus {
-        outline: 3px solid;
+        outline: 3px solid $charcoal;
         outline-offset: -2px;
         border-right-width: 1px;
+        border-color: #fff;
         position: relative;
         z-index: 101;
       }
@@ -111,6 +112,10 @@ header .search-form {
     background-color: inherit;
     padding: 0;
     max-width: 640px;
+  }
+
+  @include breakpoint($lap) {
+    margin-top: .9rem;
   }
 
   input {
