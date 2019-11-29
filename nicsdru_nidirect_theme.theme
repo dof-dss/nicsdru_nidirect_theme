@@ -203,7 +203,7 @@ function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
   // Add the standard taxonomy term cache tag as well.
   $cache_tags[] = 'taxonomy_term:' . $variables['term']->id();
   // Render the 'articles by term' view and process the results.
-  $results = _render_articles_by_term( $cache_tags);
+  $results = _render_articles_by_term($cache_tags);
   // Render the 'site subtopics' view and process the results.
   $results += _render_site_subtopics($cache_tags);
   // Sort entries alphabetically (regardless of type).
@@ -224,7 +224,7 @@ function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
  */
 function _render_articles_by_term(&$cache_tags) {
   // Render the 'articles by term' view and process the results.
-  $results=[];
+  $results = [];
   $articles_view = views_embed_view('articles_by_term', 'articles_by_term_embed');
   \Drupal::service('renderer')->renderRoot($articles_view);
   foreach ($articles_view['view_build']['#view']->result as $row) {
@@ -245,7 +245,7 @@ function _render_articles_by_term(&$cache_tags) {
  */
 function _render_site_subtopics(&$cache_tags) {
   // Render the 'site subtopics' view and process the results.
-  $results=[];
+  $results = [];
   $subtopics_view = views_embed_view('site_subtopics', 'by_topic_simple_embed');
   \Drupal::service('renderer')->renderRoot($subtopics_view);
   foreach ($subtopics_view['view_build']['#view']->result as $row) {
