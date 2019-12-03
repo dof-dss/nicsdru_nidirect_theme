@@ -203,7 +203,6 @@ function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
   // Add the standard taxonomy term cache tag as well.
   $cache_tags[] = 'taxonomy_term:' . $variables['term']->id();
   // Render the 'articles by term' view and process the results.
-  $terms_to_override = [];
   $results = _render_articles_by_term($cache_tags);
   // Render the 'site subtopics' view and process the results.
   $results += _render_site_subtopics($cache_tags);
