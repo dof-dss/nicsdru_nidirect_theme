@@ -40,6 +40,7 @@
     &:focus {
       background: $brand-primary-medium;
       color: white;
+      outline: none;
     }
 
     &.active {

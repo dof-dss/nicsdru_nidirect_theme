@@ -43,20 +43,12 @@
 
 %container,
 .container {
-  padding: 0 10px;
-
-  @include breakpoint($phab) {
-    padding: 0 20px 0 30px;
-  }
+  padding: 0 15px;
 
   @include breakpoint($tab) {
     margin: 0 auto;
     max-width: $max-grid-width;
-    padding: 0 10px;
-  }
-
-  @include breakpoint($lap) {
-    padding: 0;
+    padding: 0 20px;
   }
 }
 

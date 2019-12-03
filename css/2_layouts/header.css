@@ -1,1 +1,1 @@
-.header{display:grid;grid-gap:0;grid-template-columns:1fr;justify-content:space-between}@media (min-width: 768px){.header{grid-template-columns:auto 400px;margin:0 auto;max-width:940px;padding:4.3rem 0 3rem}}
+.header{display:grid;grid-gap:0;grid-template-columns:1fr;justify-content:space-between;align-items:center;min-height:8rem}@media (min-width: 600px){.header{min-height:12.9rem}}@media (min-width: 768px){.header{grid-template-columns:45% 42.56%;margin:0 auto;max-width:980px;padding:0 20px}}
