@@ -244,11 +244,20 @@ function _render_articles_by_term(&$cache_tags) {
  * Utility function to render 'site subtopics' view.
  */
 function _render_site_subtopics(&$cache_tags) {
+  // Get a list of taxonomy terms that have been overridden
+  // by campaigns.
+  $terms_to_override = _render_campaign_list();
   // Render the 'site subtopics' view and process the results.
   $results = [];
   $subtopics_view = views_embed_view('site_subtopics', 'by_topic_simple_embed');
   \Drupal::service('renderer')->renderRoot($subtopics_view);
   foreach ($subtopics_view['view_build']['#view']->result as $row) {
+    // Do we need to override?
+    if (array_key_exists($row->tid, $terms_to_override)) {
+      // This will be a link to a campaign (landing page).
+      $results[strtolower($terms_to_override[$row->tid]['#title'])] = $terms_to_override[$row->tid];
+      continue;
+    }
     // This will be a link to another taxonomy page.
     $results[strtolower($row->_entity->getName())] = [
       '#type' => 'link',
@@ -259,4 +268,27 @@ function _render_site_subtopics(&$cache_tags) {
     $cache_tags[] = 'taxonomy_term:' . $row->tid;
   }
   return $results;
+}
+
+/**
+ * Utility function to render 'campaign list' view.
+ */
+function _render_campaign_list() {
+  // Render the 'campaign list' view to see which taxonomy terms
+  // have been overridden.
+  $campaigns_view = views_embed_view('articles_by_term', 'campaigns_embed');
+  \Drupal::service('renderer')->renderRoot($campaigns_view);
+  $terms_to_override = [];
+  // Store taxonomy term tids that are overridden
+  // by campaigns.
+  foreach ($campaigns_view['view_build']['#view']->result as $row) {
+    if (isset($row->_entity->get('field_subtheme')->target_id)) {
+      $terms_to_override[$row->_entity->get('field_subtheme')->target_id] = [
+        '#type' => 'link',
+        '#title' => $row->_entity->getTitle(),
+        '#url' => Url::fromRoute('entity.node.canonical', ['node' => $row->nid]),
+      ];
+    }
+  }
+  return $terms_to_override;
 }
