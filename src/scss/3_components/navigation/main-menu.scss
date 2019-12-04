@@ -4,12 +4,6 @@
 .main-menu {
   background-color: color(brand-primary-medium);
   position: relative;
-  display: grid;
-  grid-gap: 0;
-  grid-template-columns: 15% auto auto 17%;
-  grid-template-rows: 1fr;
-  justify-content: normal;
-  align-items: center;
 
   @include breakpoint($tab) {
     padding: 0
@@ -18,15 +12,19 @@
   .nav {
     &-menu {
       margin: 0;
-      max-width: 986px;
+      width: 100%;
+      max-width: 100%;
+      display: inline-block;
       max-height: 0;
       height: 0;
       overflow: hidden;
 
       @include breakpoint($tab) {
-        display: flex;
+        display: inline-block;
         height: auto;
         max-height: 100%;
+        width: auto;
+        max-width: 986px;
         padding: 0;
         grid-row: 1;
         grid-column: 2;
@@ -122,16 +120,15 @@
     }
 
     /* Show menu */
-    &:checked ~ .nav-menu {
+    &:checked ~ .menu-wrapper {
       height: auto;
       max-height: 60rem;
       transition: max-height 1s ease;
     }
-
-    &:checked ~ .social-media-links {
+    /* Expand every child element in the wrapper */
+    &:checked ~ .menu-wrapper > * {
       height: auto;
-      max-height: 60rem;
-      transition: max-height 1s ease;
+      max-height: 100%;
     }
   }
 

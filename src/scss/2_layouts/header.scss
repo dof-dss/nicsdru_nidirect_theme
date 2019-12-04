@@ -40,11 +40,24 @@
   }
 }
 
+nav .menu-wrapper {
+  @include breakpoint($tab) {
+    height: auto;
+    margin: 0 auto;
+    max-width: $max-grid-width;
+  }
+}
+
 .social-media-links {
-  grid-row: 1;
-  grid-column: 3;
-  justify-self: right;
   max-height: 0;
+  width: 100%;
+  text-align: center;
+
+  @include breakpoint($tab) {
+    display: inline-block;
+    float: right;
+    width: auto;
+  }
 
   ul {
     margin: 0;
