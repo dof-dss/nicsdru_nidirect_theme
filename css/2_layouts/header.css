@@ -1,1 +1,125 @@
-.header{display:grid;grid-gap:0;grid-template-columns:1fr;justify-content:space-between;align-items:center;min-height:8rem}@media (min-width: 600px){.header{min-height:12.9rem}}@media (min-width: 768px){.header{grid-template-columns:45% 42.56%;margin:0 auto;max-width:980px;padding:0 20px}}
+/*
+ * @file
+ * Provides the layout styles for the header area.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 23, src/scss/2_layouts/header.scss */
+.header {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: 1fr;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  min-height: 8rem;
+}
+
+@media (min-width: 600px) {
+  /* line 23, src/scss/2_layouts/header.scss */
+  .header {
+    min-height: 12.9rem;
+  }
+}
+
+@media (min-width: 768px) {
+  /* line 23, src/scss/2_layouts/header.scss */
+  .header {
+    grid-template-columns: 45% 42.56%;
+    margin: 0 auto;
+    max-width: 980px;
+    padding: 0 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  /* line 43, src/scss/2_layouts/header.scss */
+  nav .menu-wrapper {
+    height: auto;
+    margin: 0 auto;
+    max-width: 980px;
+  }
+}
+
+/* line 51, src/scss/2_layouts/header.scss */
+.social-media-links {
+  max-height: 0;
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  /* line 51, src/scss/2_layouts/header.scss */
+  .social-media-links {
+    display: inline-block;
+    float: right;
+    width: auto;
+  }
+}
+
+/* line 62, src/scss/2_layouts/header.scss */
+.social-media-links ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 67, src/scss/2_layouts/header.scss */
+.social-media-links li {
+  display: inline-block;
+  width: 40px;
+  width: 4rem;
+  height: 60px;
+  height: 6rem;
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+  /* Safari inline-block white space bug fix */
+  border: 0;
+}
+
+/* line 79, src/scss/2_layouts/header.scss */
+.social-media-links a {
+  padding: 0;
+  margin: 0;
+  background-color: inherit;
+  background: url("../../images/svg-fallback-sprite.png");
+  background-repeat: no-repeat;
+  display: inline-block;
+  font-size: 0;
+  /* Safari inline-block white space bug fix */
+  text-indent: -9999px;
+  text-decoration: none;
+  width: 40px;
+  width: 4rem;
+  height: 40px;
+  height: 4rem;
+  overflow: hidden;
+  background-color: inherit;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* line 99, src/scss/2_layouts/header.scss */
+.social-media-links a[href*='https://twitter.com'] {
+  background-position: -40px 8px;
+}
+
+/* line 103, src/scss/2_layouts/header.scss */
+.social-media-links a[href*='https://www.facebook.com'] {
+  background-position: 0 8px;
+}
+
+/* line 107, src/scss/2_layouts/header.scss */
+.social-media-links a[href*='https://www.youtube.com'] {
+  background-position: -80px 8px;
+}
+
+/* line 111, src/scss/2_layouts/header.scss */
+.social-media-links a[href*='/news-rss.xml'] {
+  background-position: -120px 8px;
+}
+
+/*# sourceMappingURL=header.css.map */

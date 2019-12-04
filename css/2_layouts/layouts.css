@@ -1,1 +1,54 @@
-.container{padding:0 15px}@media (min-width: 768px){.container{margin:0 auto;max-width:980px;padding:0 20px}}.grid{display:grid;grid-gap:20px;justify-content:space-between}.grid.no-gutter{grid-gap:0}.ga-full{grid-column:1 / -1;float:left;clear:both;width:100%}@supports (display: grid){.grid>*{width:auto !important}}
+/*
+ * @file
+ * Provides the layout styles for common nics 2 column layouts.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 44, src/scss/2_layouts/layouts.scss */
+
+.container {
+  padding: 0 15px;
+}
+
+@media (min-width: 768px) {
+  /* line 44, src/scss/2_layouts/layouts.scss */
+  
+  .container {
+    margin: 0 auto;
+    max-width: 980px;
+    padding: 0 20px;
+  }
+}
+
+/* line 67, src/scss/2_layouts/layouts.scss */
+.grid {
+  display: grid;
+  grid-gap: 20px;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+/* line 73, src/scss/2_layouts/layouts.scss */
+.grid.no-gutter {
+  grid-gap: 0;
+}
+
+/* line 98, src/scss/2_layouts/layouts.scss */
+.ga-full {
+  grid-column: 1 / -1;
+  float: left;
+  clear: both;
+  width: 100%;
+}
+
+/* We need to set the widths used on floated items back to auto, and remove the bottom margin as when we have grid we have gaps. */
+@supports (display: grid) {
+  /* line 109, src/scss/2_layouts/layouts.scss */
+  .grid > * {
+    width: auto !important;
+  }
+}
+
+/*# sourceMappingURL=layouts.css.map */
