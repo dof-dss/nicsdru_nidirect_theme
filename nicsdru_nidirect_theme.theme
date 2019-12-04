@@ -67,12 +67,15 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
     switch ($content_type) {
       case 'health_condition':
         _build_audit_link('health_condition', $variables);
+        \Drupal::messenger()->addWarning(t($variables['audit_link']['#markup']->jsonSerialize()));
         break;
 
       case 'article':
       case 'contact':
       case 'page':
         _build_audit_link('article', $variables);
+        $x = $variables['audit_link']['#markup'];
+        \Drupal::messenger()->addWarning(t($variables['audit_link']['#markup']->jsonSerialize()));
         break;
     }
   }
@@ -179,8 +182,10 @@ function _audit_link($type, $dt, $nid) {
         $link_object = Link::createFromRoute($audit_button_text, 'origins_workflow.audit_controller_content_audit', ['nid' => $nid], $options);
       }
       if ($link_object) {
-        // Return render array.
-        return $link_object->toRenderable();
+        // Return rendered link.
+        $link_rendered = $link_object->toRenderable();
+        \Drupal::service('renderer')->renderRoot($link_rendered);
+        return $link_rendered;
       }
       else {
         return "";
