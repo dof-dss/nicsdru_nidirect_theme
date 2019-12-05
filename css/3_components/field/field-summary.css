@@ -1,1 +1,30 @@
-.page-summary p{font-size:1.7rem;line-height:2.4rem;font-weight:700;margin-top:0}@media screen and (min-width: 600px){.page-summary p{font-size:2.1rem;line-height:3rem}}.page-summary p:first-child{margin-top:0}
+/*
+ * @file
+ * Provides the layout styles for content output from field_summary for any entity.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 13, src/scss/3_components/field/field-summary.scss */
+.page-summary p {
+  font-size: 1.7rem;
+  line-height: 2.4rem;
+  font-weight: 700;
+  margin-top: 0;
+}
+
+@media screen and (min-width: 600px) {
+  /* line 13, src/scss/3_components/field/field-summary.scss */
+  .page-summary p {
+    font-size: 2.1rem;
+    line-height: 3rem;
+  }
+}
+
+/* line 18, src/scss/3_components/field/field-summary.scss */
+.page-summary p:first-child {
+  margin-top: 0;
+}
+
+/*# sourceMappingURL=field-summary.css.map */
