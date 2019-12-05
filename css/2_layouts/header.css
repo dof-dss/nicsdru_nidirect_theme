@@ -44,30 +44,30 @@
   }
 }
 
-/* line 51, src/scss/2_layouts/header.scss */
-.social-media-links {
+/* line 50, src/scss/2_layouts/header.scss */
+nav .menu-wrapper .social-media-links {
   max-height: 0;
   width: 100%;
   text-align: center;
 }
 
 @media (min-width: 768px) {
-  /* line 51, src/scss/2_layouts/header.scss */
-  .social-media-links {
+  /* line 50, src/scss/2_layouts/header.scss */
+  nav .menu-wrapper .social-media-links {
     display: inline-block;
     float: right;
     width: auto;
   }
 }
 
-/* line 62, src/scss/2_layouts/header.scss */
-.social-media-links ul {
+/* line 61, src/scss/2_layouts/header.scss */
+nav .menu-wrapper .social-media-links ul {
   margin: 0;
   padding: 0;
 }
 
-/* line 67, src/scss/2_layouts/header.scss */
-.social-media-links li {
+/* line 66, src/scss/2_layouts/header.scss */
+nav .menu-wrapper .social-media-links li {
   display: inline-block;
   width: 40px;
   width: 4rem;
@@ -80,8 +80,8 @@
   border: 0;
 }
 
-/* line 79, src/scss/2_layouts/header.scss */
-.social-media-links a {
+/* line 78, src/scss/2_layouts/header.scss */
+nav .menu-wrapper .social-media-links a {
   padding: 0;
   margin: 0;
   background-color: inherit;
@@ -102,23 +102,23 @@
   background-repeat: no-repeat;
 }
 
-/* line 99, src/scss/2_layouts/header.scss */
-.social-media-links a[href*='https://twitter.com'] {
+/* line 98, src/scss/2_layouts/header.scss */
+nav .menu-wrapper .social-media-links a[href*='https://twitter.com'] {
   background-position: -40px 8px;
 }
 
-/* line 103, src/scss/2_layouts/header.scss */
-.social-media-links a[href*='https://www.facebook.com'] {
+/* line 102, src/scss/2_layouts/header.scss */
+nav .menu-wrapper .social-media-links a[href*='https://www.facebook.com'] {
   background-position: 0 8px;
 }
 
-/* line 107, src/scss/2_layouts/header.scss */
-.social-media-links a[href*='https://www.youtube.com'] {
+/* line 106, src/scss/2_layouts/header.scss */
+nav .menu-wrapper .social-media-links a[href*='https://www.youtube.com'] {
   background-position: -80px 8px;
 }
 
-/* line 111, src/scss/2_layouts/header.scss */
-.social-media-links a[href*='/news-rss.xml'] {
+/* line 110, src/scss/2_layouts/header.scss */
+nav .menu-wrapper .social-media-links a[href*='/news-rss.xml'] {
   background-position: -120px 8px;
 }
 
