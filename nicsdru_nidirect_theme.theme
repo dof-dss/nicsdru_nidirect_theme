@@ -34,6 +34,21 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
     }
   }
 
+  // Process search view pages.
+  $viewpage = Drupal::routeMatch()->getParameter('view_id');
+  if (isset($viewpage)) {
+    switch ($viewpage) {
+      case "article":
+      case "gp_practices":
+      case "health_conditions":
+      case "publications":
+        $variables['main_content_attr']['class'][] = 'grid';
+        $variables['main_content_attr']['class'][] = 'layout--search-page';
+        $variables['sidebar_first_attr']['class'][] = 'ga-aside';
+        break;
+    }
+  }
+
   if (isset($variables['is_front']) && $variables['is_front'] == TRUE) {
     $variables['main_content_attr']['class'][] = 'grid';
   }
@@ -116,9 +131,12 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
  * Implements hook_preprocess_form().
  */
 function nicsdru_nidirect_theme_preprocess_form(array &$variables) {
-  if ($variables['element']['#id'] == 'views-exposed-form-health-conditions-search-page') {
-    $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form');
-    $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form--page');
+  switch ($variables['element']['#id']) {
+    case "views-exposed-form-health-conditions-search-page":
+    case "views-exposed-form-publications-search-page":
+      $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form');
+      $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form--page');
+      break;
   }
 }
 
