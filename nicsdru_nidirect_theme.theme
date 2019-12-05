@@ -67,14 +67,22 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
     switch ($content_type) {
       case 'health_condition':
         $msg = _build_audit_link('health_condition', $variables);
-        \Drupal::messenger()->addWarning(t($msg->jsonSerialize()));
+        if ($msg) {
+          // Send out 'needs audit' link as a Drupal warning message.
+          // N.B. This will only be visible if the 'System Messages' block is visible.
+          \Drupal::messenger()->addWarning(t($msg->jsonSerialize()));
+        }
         break;
 
       case 'article':
       case 'contact':
       case 'page':
         $msg = _build_audit_link('article', $variables);
-        \Drupal::messenger()->addWarning(t($msg->jsonSerialize()));
+        if ($msg) {
+          // Send out 'needs audit' link as a Drupal warning message.
+          // N.B. This will only be visible if the 'System Messages' block is visible.
+          \Drupal::messenger()->addWarning(t($msg->jsonSerialize()));
+        }
         break;
     }
   }
