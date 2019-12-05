@@ -46,70 +46,70 @@ nav .menu-wrapper {
     margin: 0 auto;
     max-width: $max-grid-width;
   }
-}
 
-.social-media-links {
-  max-height: 0;
-  width: 100%;
-  text-align: center;
+  .social-media-links {
+    max-height: 0;
+    width: 100%;
+    text-align: center;
 
-  @include breakpoint($tab) {
-    display: inline-block;
-    float: right;
-    width: auto;
+    @include breakpoint($tab) {
+      display: inline-block;
+      float: right;
+      width: auto;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: inline-block;
+      width: 40px;
+      width: 4rem;
+      height: 60px;
+      height: 6rem;
+      padding: 0;
+      margin: 0;
+      font-size: 0; /* Safari inline-block white space bug fix */
+      border: 0;
+    }
+
+    a {
+      padding: 0;
+      margin: 0;
+      background-color: inherit;
+      background: url('../../images/svg-fallback-sprite.png');
+      background-repeat: no-repeat;
+      display: inline-block;
+      font-size: 0; /* Safari inline-block white space bug fix */
+      text-indent: -9999px;
+      text-decoration: none;
+      width: 40px;
+      width: 4rem;
+      height: 40px;
+      height: 4rem;
+      overflow: hidden;
+      background-color: inherit;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    a[href*='https://twitter.com'] {
+      background-position: -40px 8px;
+    }
+
+    a[href*='https://www.facebook.com'] {
+      background-position: 0 8px;
+    }
+
+    a[href*='https://www.youtube.com'] {
+      background-position: -80px 8px;
+    }
+
+    a[href*='/news-rss.xml'] {
+      background-position: -120px 8px;
+    }
+
   }
-
-  ul {
-    margin: 0;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    width: 40px;
-    width: 4rem;
-    height: 60px;
-    height: 6rem;
-    padding: 0;
-    margin: 0;
-    font-size: 0; /* Safari inline-block white space bug fix */
-    border: 0;
-  }
-
-  a {
-    padding: 0;
-    margin: 0;
-    background-color: inherit;
-    background: url('../../images/svg-fallback-sprite.png');
-    background-repeat: no-repeat;
-    display: inline-block;
-    font-size: 0; /* Safari inline-block white space bug fix */
-    text-indent: -9999px;
-    text-decoration: none;
-    width: 40px;
-    width: 4rem;
-    height: 40px;
-    height: 4rem;
-    overflow: hidden;
-    background-color: inherit;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-  a[href*='https://twitter.com'] {
-    background-position: -40px 8px;
-  }
-
-  a[href*='https://www.facebook.com'] {
-    background-position: 0 8px;
-  }
-
-  a[href*='https://www.youtube.com'] {
-    background-position: -80px 8px;
-  }
-
-  a[href*='/news-rss.xml'] {
-    background-position: -120px 8px;
-  }
-
 }
