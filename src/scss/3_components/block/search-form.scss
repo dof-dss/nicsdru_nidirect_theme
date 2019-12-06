@@ -119,7 +119,7 @@ header .search-form {
   }
 
   input {
-    height: 4.2rem;
+    height: 4.4rem; // must be min of 44px for good touch target
 
     &[type='search'] {
       padding: 0 .8rem;
