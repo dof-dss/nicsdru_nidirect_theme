@@ -28,34 +28,54 @@
 // Style guide: components.layouts.cards.home-site-topics
 .section--info-services {
   .card-deck {
-    grid-gap: 0 20px;
-    @include breakpoint($mob) {
-      grid-gap: 15px 20px;
+    grid-gap: 1.2rem 20px;
+    @include breakpoint($phab) {
+      grid-gap: 1.5rem 20px;
       grid-template-columns: repeat(2, 1fr);
     }
 
     .card {
       &--title {
-        @include adjust-font-size-to(18px, 4.5);
+        @include adjust-font-size-to(17px, 4);
         font-weight: 700;
-        margin-bottom: 1.2rem;
+        margin-bottom: 0.2rem;
+        @include breakpoint($phab) {
+          @include adjust-font-size-to(18px, 4.5);
+          font-weight: 700;
+          margin-bottom: 0.3rem;
+        }
 
         a {
-          color: $brand-primary-medium;
+          text-decoration: underline;
+          &:focus {
+            text-decoration: none;
+          }
         }
       }
 
       p,
       .more-link {
-        @include adjust-font-size-to(16px);
+        @include adjust-font-size-to(15px, 3.5);
         margin: 0;
+        @include breakpoint($phab) {
+          @include adjust-font-size-to(16px, 3.5);
+        }
       }
 
       .more-link {
         font-weight: 700;
+        margin-top: 0.2rem;
+        @include breakpoint($tab) {
+          margin-top: 0.3rem;
+        }
 
         a {
           color: $brand-secondary;
+          &:focus {
+            background-color: $brand-secondary;
+            outline-color: $brand-secondary;
+            color: $link-focus;
+          }
         }
       }
     }

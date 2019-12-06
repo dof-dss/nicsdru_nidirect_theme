@@ -50,6 +50,10 @@
     width: 1.4rem;
     margin-bottom: .3rem;
     fill: #0c1e63;
+
+    a:focus & {
+      fill: #fff;
+    }
   }
 
   // Icons - arrows

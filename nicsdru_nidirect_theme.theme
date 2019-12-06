@@ -6,10 +6,9 @@
  */
 
 use Drupal\Core\Link;
-use Drupal\Core\Render;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Url;
 use Drupal\user\Entity\User;
-use Drupal\block\Entity\Block;
 use Drupal\Component\Utility\Html;
 
 /**
@@ -206,4 +205,108 @@ function _audit_link($type, $dt, $nid) {
       }
     }
   }
+}
+
+/**
+ * Implements hook_preprocess_taxonomy_term().
+ */
+function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
+  if ($variables['term']->getVocabularyId() != 'site_themes') {
+    // We are only interested in the 'site themes' vocab.
+    return;
+  }
+  $cache_tags = [];
+  // Add a custom cache tag for this taxonomy term 'listing' page.
+  $cache_tags[] = 'taxonomy_term_list:' . $variables['term']->id();
+  // Add the standard taxonomy term cache tag as well.
+  $cache_tags[] = 'taxonomy_term:' . $variables['term']->id();
+  // Render the 'articles by term' view and process the results.
+  $results = _render_articles_by_term($cache_tags);
+  // Render the 'site subtopics' view and process the results.
+  $results += _render_site_subtopics($cache_tags);
+  // Sort entries alphabetically (regardless of type).
+  ksort($results);
+  // Return as an 'item_list' themed render array, with
+  // cache tags set appropriately.
+  $variables['information_services_output'] = [
+    '#theme' => 'item_list',
+    '#items' => $results,
+    '#cache' => [
+      'tags' => $cache_tags,
+    ],
+  ];
+}
+
+/**
+ * Utility function to render 'articles by term' view.
+ */
+function _render_articles_by_term(&$cache_tags) {
+  // Render the 'articles by term' view and process the results.
+  $results = [];
+  $articles_view = views_embed_view('articles_by_term', 'articles_by_term_embed');
+  \Drupal::service('renderer')->renderRoot($articles_view);
+  foreach ($articles_view['view_build']['#view']->result as $row) {
+    // This will be a link to an article.
+    $results[strtolower($row->_entity->getTitle())] = [
+      '#type' => 'link',
+      '#title' => $row->_entity->getTitle(),
+      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $row->nid]),
+    ];
+    // Add cache tag for each article.
+    $cache_tags[] = 'node:' . $row->nid;
+  }
+  return $results;
+}
+
+/**
+ * Utility function to render 'site subtopics' view.
+ */
+function _render_site_subtopics(&$cache_tags) {
+  // Get a list of taxonomy terms that have been overridden
+  // by campaigns.
+  $terms_to_override = _render_campaign_list();
+  // Render the 'site subtopics' view and process the results.
+  $results = [];
+  $subtopics_view = views_embed_view('site_subtopics', 'by_topic_simple_embed');
+  \Drupal::service('renderer')->renderRoot($subtopics_view);
+  foreach ($subtopics_view['view_build']['#view']->result as $row) {
+    // Do we need to override?
+    if (array_key_exists($row->tid, $terms_to_override)) {
+      // This will be a link to a campaign (landing page).
+      $results[strtolower($terms_to_override[$row->tid]['#title'])] = $terms_to_override[$row->tid];
+      continue;
+    }
+    // This will be a link to another taxonomy page.
+    $results[strtolower($row->_entity->getName())] = [
+      '#type' => 'link',
+      '#title' => $row->_entity->getName(),
+      '#url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $row->tid]),
+    ];
+    // Add cache tag for each listed term.
+    $cache_tags[] = 'taxonomy_term:' . $row->tid;
+  }
+  return $results;
+}
+
+/**
+ * Utility function to render 'campaign list' view.
+ */
+function _render_campaign_list() {
+  // Render the 'campaign list' view to see which taxonomy terms
+  // have been overridden.
+  $campaigns_view = views_embed_view('articles_by_term', 'campaigns_embed');
+  \Drupal::service('renderer')->renderRoot($campaigns_view);
+  $terms_to_override = [];
+  // Store taxonomy term tids that are overridden
+  // by campaigns.
+  foreach ($campaigns_view['view_build']['#view']->result as $row) {
+    if (isset($row->_entity->get('field_subtheme')->target_id)) {
+      $terms_to_override[$row->_entity->get('field_subtheme')->target_id] = [
+        '#type' => 'link',
+        '#title' => $row->_entity->getTitle(),
+        '#url' => Url::fromRoute('entity.node.canonical', ['node' => $row->nid]),
+      ];
+    }
+  }
+  return $terms_to_override;
 }

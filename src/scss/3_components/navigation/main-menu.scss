@@ -5,23 +5,43 @@
   background-color: color(brand-primary-medium);
   position: relative;
 
+  @include breakpoint($tab) {
+    padding: 0
+  }
+
   .nav {
     &-menu {
-      margin: 0 auto;
-      max-width: 990px;
+      margin: 0;
+      width: 100%;
+      max-width: 100%;
+      display: inline-block;
       max-height: 0;
       height: 0;
       overflow: hidden;
 
       @include breakpoint($tab) {
+        display: inline-block;
         height: auto;
         max-height: 100%;
+        width: auto;
+        max-width: 986px;
+        padding: 0;
+        grid-row: 1;
+        grid-column: 2;
       }
     }
 
     &-item {
       @include breakpoint($tab) {
         display: inline-block;
+      }
+      &:first-child, :last-child {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        @include breakpoint($tab) {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
       }
     }
 
@@ -34,31 +54,52 @@
 
   .nav-link,
   .is-active {
-    @include adjust-font-size-to(16px, 10);
+    @include adjust-font-size-to(16px, 4);
     color: color(white);
     display: block;
-    padding: 0 2.3rem;
+    padding: 1rem 1.6rem;
+    @include breakpoint($tab) {
+      padding: 1.8rem 2.3rem;
+    }
+    &:focus {
+      background-color: color(brand-secondary);
+      border-color: color(brand-secondary);
+      text-decoration: underline;
+      outline: none;
+      &:not(.is-active) {
+        border: 0;
+      }
+    }
   }
 
   .is-active {
     background-color: color(brand-primary-dark);
+    border-left: 0.8rem solid $brand-secondary;
+    padding-left: 0.8rem;
+
+    @include breakpoint($tab) {
+      padding-bottom: 1.3rem;
+      border-left: 0;
+      padding-left: 2.3rem;
+      border-bottom: 0.5rem solid $brand-secondary;
+    }
   }
 
   .toggler {
     position: absolute;
-    top: -55px;
-    left: 5px;
+    top: -5.6rem;
+    left: 0.5rem;
     z-index: 2;
     cursor: pointer;
-    width: 50px;
-    height: 50px;
+    width: 5rem;
+    height: 5rem;
     opacity: 0;
 
     @include breakpoint($tab) {
       height: 1px;
       width: 1px;
       overflow: hidden;
-      left: -5px;
+      left: -0.5rem;
       top: 0;
     }
 
@@ -79,20 +120,25 @@
     }
 
     /* Show menu */
-    &:checked ~ .nav-menu {
+    &:checked ~ .menu-wrapper {
       height: auto;
-      max-height: 600px;
+      max-height: 60rem;
       transition: max-height 1s ease;
+    }
+    /* Expand every child element in the wrapper */
+    &:checked ~ .menu-wrapper > * {
+      height: auto;
+      max-height: 100%;
     }
   }
 
   .hamburger {
     position: absolute;
-    top: -55px;
-    left: 5px;
+    top: -5.6rem;
+    left: 0.5rem;
     z-index: 1;
-    width: 50px;
-    height: 50px;
+    width: 5rem;
+    height: 5rem;
     padding: 1rem;
     display: flex;
     align-items: center;
@@ -107,7 +153,7 @@
       position: relative;
       flex: none;
       width: 100%;
-      height: 2px;
+      height: 0.3rem;
       background: #fff;
       display: flex;
       align-items: center;
@@ -120,15 +166,15 @@
         content: '';
         position: absolute;
         z-index: 1;
-        top: -10px;
+        top: -0.9rem;
         width: 100%;
-        height: 2px;
+        height: 0.3rem;
         background: inherit;
       }
 
       /* Moves Line Down */
       &::after {
-        top: 10px;
+        top: 0.9rem;
       }
     }
   }
