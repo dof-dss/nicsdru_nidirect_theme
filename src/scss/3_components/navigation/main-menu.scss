@@ -5,20 +5,29 @@
   background-color: color(brand-primary-medium);
   position: relative;
 
+  @include breakpoint($tab) {
+    padding: 0
+  }
+
   .nav {
     &-menu {
-      margin: 0 6rem 0 5rem;
-      max-width: 986px;
+      margin: 0;
+      width: 100%;
+      max-width: 100%;
+      display: inline-block;
       max-height: 0;
       height: 0;
       overflow: hidden;
 
       @include breakpoint($tab) {
-        display: flex;
-        margin: 0 auto;
+        display: inline-block;
         height: auto;
         max-height: 100%;
+        width: auto;
+        max-width: 986px;
         padding: 0;
+        grid-row: 1;
+        grid-column: 2;
       }
     }
 
@@ -111,10 +120,15 @@
     }
 
     /* Show menu */
-    &:checked ~ .nav-menu {
+    &:checked ~ .menu-wrapper {
       height: auto;
       max-height: 60rem;
       transition: max-height 1s ease;
+    }
+    /* Expand every child element in the wrapper */
+    &:checked ~ .menu-wrapper > * {
+      height: auto;
+      max-height: 100%;
     }
   }
 
