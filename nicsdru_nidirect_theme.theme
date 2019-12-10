@@ -66,13 +66,23 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
     $content_type = $variables['element']['#bundle'];
     switch ($content_type) {
       case 'health_condition':
-        _build_audit_link('health_condition', $variables);
+        $msg = _build_audit_link('health_condition', $variables);
+        if ($msg) {
+          // Send out 'needs audit' link as a Drupal warning message.
+          // N.B. This will only be visible if the 'System Messages' block is visible.
+          \Drupal::messenger()->addWarning(t($msg->jsonSerialize()));
+        }
         break;
 
       case 'article':
       case 'contact':
       case 'page':
-        _build_audit_link('article', $variables);
+        $msg = _build_audit_link('article', $variables);
+        if ($msg) {
+          // Send out 'needs audit' link as a Drupal warning message.
+          // N.B. This will only be visible if the 'System Messages' block is visible.
+          \Drupal::messenger()->addWarning(t($msg->jsonSerialize()));
+        }
         break;
     }
   }
@@ -134,11 +144,11 @@ function _build_audit_link($type, &$variables) {
       $nid = $node->id();
       if (!empty($nid)) {
         if ($type == 'health_condition') {
-          $variables['audit_link'] = _audit_link($type, $node->get('field_next_review_date')->value, $nid);
+          return _audit_link($type, $node->get('field_next_review_date')->value, $nid);
         }
         else {
           // This will be an article, contact or page.
-          $variables['audit_link'] = _audit_link($type, $node->get('field_next_audit_due')->value, $nid);
+          return _audit_link($type, $node->get('field_next_audit_due')->value, $nid);
         }
       }
     }
@@ -179,8 +189,10 @@ function _audit_link($type, $dt, $nid) {
         $link_object = Link::createFromRoute($audit_button_text, 'origins_workflow.audit_controller_content_audit', ['nid' => $nid], $options);
       }
       if ($link_object) {
-        // Return render array.
-        return $link_object->toRenderable();
+        // Return rendered link.
+        $link_rendered = $link_object->toRenderable();
+        \Drupal::service('renderer')->renderRoot($link_rendered);
+        return $link_rendered['#markup'];
       }
       else {
         return "";
