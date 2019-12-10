@@ -5,6 +5,7 @@
 
   .nav-menu {
     display: flex;
+    flex-wrap: wrap;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -22,8 +23,8 @@
       color: $brand-primary-dark;
       border-right: 1px solid $brand-primary-dark;
       font-size: 1.4rem;
-      margin-right: 0.5em;
-      padding-right: 0.5em;
+      margin-right: .5em;
+      padding-right: .5em;
       line-height: 1;
     }
 
@@ -60,6 +61,7 @@
       @include breakpoint($tab) {
         width: 4rem;
         height: 4rem;
+        background-size: contain;
       }
 
       display: block;
@@ -68,7 +70,7 @@
       overflow: hidden;
       padding: 0;
       margin: 0;
-      background: center center/contain no-repeat transparent;
+      background: center center/3.6rem auto no-repeat transparent;
       font-size: 0; /* Safari inline-block white space bug fix */
       text-indent: -9999px;
       text-decoration: none;
