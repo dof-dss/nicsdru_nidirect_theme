@@ -41,10 +41,8 @@
 //
 // Style guide: layouts.common.container
 
-%container,
 .container {
   padding: 0 15px;
-
   @include breakpoint($tab) {
     margin: 0 auto;
     max-width: $max-grid-width;
