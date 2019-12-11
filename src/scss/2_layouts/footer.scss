@@ -1,0 +1,24 @@
+/*
+ * @file
+ * Provides the layout styles for the footer area.
+ */
+
+@import '../init';
+
+.footer {
+  width: 100%;
+  background-color: color(grey-light);
+  padding: 18em 0 4.5em;
+
+  &-main.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: end;
+    justify-items: start;
+    width: 100%;
+
+    @include breakpoint($tab) {
+      grid-template-columns: auto 30%;
+    }
+  }
+}
