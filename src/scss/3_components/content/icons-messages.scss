@@ -104,8 +104,7 @@
   }
 }
 
-.info-notice,
-.messages {
+.info-notice {
   @extend %notice-builder;
   border-color: $brand-primary-light;
   background: #fff resolve('i.svg') no-repeat .9rem .9rem / 24px 24px;
@@ -126,30 +125,72 @@ ul.info-notice {
   }
 }
 
-.alert-success {
-  @extend %notice-builder;
-  border-color: $button-action;
-  background: #fff resolve('status.svg') no-repeat .9rem .9rem / 24px 24px;
+// Messages.
+//
+// Messages are part of Drupal core.
+//
+// Style guide: components.messages
+.messages-list {
+  margin: 2.5rem 0;
+  list-style: none;
 
-  @include breakpoint($phab, $no-query: true) {
-    background: #fff resolve('status.svg') no-repeat 1.4rem 1.4rem / 30px 30px;
-  }
-
-  .no-svg & {
-    background-image: resolve('status.png');
+  .field &,
+  .form-wrapper & {
+    margin-bottom: 0;
   }
 }
 
-.warning-notice {
+.messages {
   @extend %notice-builder;
-  border-color: #db6304;
-  background: #fff resolve('warning.svg') no-repeat .9rem .9rem / 24px 24px;
 
-  @include breakpoint($phab, $no-query: true) {
-    background: #fff resolve('warning.svg') no-repeat 1.4rem 1.4rem / 30px 30px;
+  &--error {
+    border-color: #e34f4f;
+    background: #fff resolve('wrong.svg') no-repeat .9rem .9rem / 24px 24px;
+
+    @include breakpoint($phab, $no-query: true) {
+      background: #fff resolve('wrong.svg') no-repeat 1.4rem 1.4rem / 30px 30px;
+    }
+
+    .no-svg & {
+      background-image: resolve('wrong.png');
+    }
   }
 
-  .no-svg & {
-    background-image: resolve('warning.png');
+  &--status {
+    border-color: $button-action;
+    background: #fff resolve('status.svg') no-repeat .9rem .9rem / 24px 24px;
+
+    @include breakpoint($phab, $no-query: true) {
+      background: #fff resolve('status.svg') no-repeat 1.4rem 1.4rem / 30px 30px;
+    }
+
+    .no-svg & {
+      background-image: resolve('status.png');
+    }
+  }
+
+  &--warning {
+    border-color: #db6304;
+    background: #fff resolve('warning.svg') no-repeat .9rem .9rem / 24px 24px;
+
+    @include breakpoint($phab, $no-query: true) {
+      background: #fff resolve('warning.svg') no-repeat 1.4rem 1.4rem / 30px 30px;
+    }
+
+    .no-svg & {
+      background-image: resolve('warning.png');
+    }
+  }
+
+  &__list {
+    margin: 0;
+  }
+
+  &__item {
+    @include adjust-font-size-to(18px);
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 }
