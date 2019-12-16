@@ -1,3 +1,4 @@
-node_modules
 css/**/*.css.map
+css/kss-templates/*.css
+node_modules
 .DS_Store
