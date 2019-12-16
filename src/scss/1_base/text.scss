@@ -1,24 +1,25 @@
+/*
+ * @file
+ * Sets out the base behaviour of text elements.
+ */
 @import '../init';
 
 // Text-level semantics
 //
 // The elements in this section give semantics to inline text.
 //
-// Weight: 1
+// Weight: -6
 //
 // Style guide: base.text
 
 // Body copy
 //
-// The default `font-size` and `line-height` properties are applied to the
-// `<body>` element and all paragraphs. In addition, `<p>` (paragraphs) receive
-// a top and bottom margin.
+// The default `font-size` and `line-height` properties are applied to the `<body>` element and all paragraphs.
+// In addition, `<p>` (paragraphs) receive a top and bottom margin.
 //
 // Markup: kss-templates/grouping-p.twig
 //
-// Weight: -2
-//
-// Style guide: base.grouping.p
+// Style guide: base.text.p
 
 p,
 pre {

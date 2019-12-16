@@ -1,3 +1,7 @@
+/*
+ * @file
+ * Sets out the base behaviour of form elements.
+ */
 @import '../init';
 
 // sass-lint:disable no-vendor-prefixes, no-css-comments
@@ -9,7 +13,7 @@
 // Component classes can override these styles, but if no class applies a style
 // to an HTML form element, these styles will be the ones displayed.
 //
-// Weight: -1
+// Weight: -3
 //
 // Style guide: forms.base
 
@@ -117,8 +121,6 @@ input[type='search']:focus {
 //
 // :hover        - Hover styling.
 // :active:hover - Depressed button styling.
-//
-// Markup: kss-templates/forms-button.twig
 //
 // Style guide: forms.base.button
 @import '../3_components/form/button/button-defs';

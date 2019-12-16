@@ -1,16 +1,20 @@
+/*
+ * @file
+ * Resets and creates defaults for root html elements.
+ */
+
 @import '../init';
 
 // sass-lint:disable no-vendor-prefixes
 
 // Root
 //
-// The HTML root component contains the doctype, HTML element, HEAD element and
-// BODY element. It also contains the CSS for those elements and the `*`
-// universal selector.
+// The HTML root component contains the doctype, HTML element, HEAD element and BODY element. It also contains the CSS
+// for those elements and the `*` universal selector.
+// An example file for the standard markup is included for completeness, however it is not render in the style guide.
+// Otherwise, the style guide will have multiple HTML and BODY elements.
 //
-// markup: kss-templates/base-root.twig
-//
-// weight: 2
+// weight: -10
 //
 // Style guide: base.root
 

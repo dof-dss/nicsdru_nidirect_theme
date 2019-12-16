@@ -1,3 +1,7 @@
+/*
+ * @file
+ * Sets out the base behaviour of links.
+ */
 @import '../init';
 
 // Links
@@ -12,10 +16,13 @@
 // :hover   - A link that is being hovered over.
 // :focus   - A link that has been given keyboard focus.
 // :active  - A link that is being actively clicked.
+// .skip-link - A special form of a link
 //
 // Markup: kss-templates/links-a.twig
 //
-// Style guide: base.link
+// weight: -8
+//
+// Style guide: base.links
 
 a,
 %link {
