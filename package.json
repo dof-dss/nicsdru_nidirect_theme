@@ -62,7 +62,7 @@
     "css-post": "postcss --config config/postcss.config.js --replace \"css/**/*.css\"",
     "scss-dev": "mkdir -p css && node-sass --source-map true --source-comments true --source-map-contents true --output-style expanded -o css src/scss",
     "scss-prod": "mkdir -p css && node-sass --no-source-map --output-style compressed -o css src/scss",
-    "scss-docs": "mkdir -p styleguide && mkdir -p styleguide/css && node-sass --no-source-map --output-style compressed -o styleguide/css src/scss/kss-templates",
+    "scss-docs": "mkdir -p styleguide && mkdir -p styleguide/css && node-sass --no-source-map --output-style compressed -o styleguide/css src/styleguide",
     "scss-kss-builder": "node-sass --no-source-map --output-style compressed config/nics-builder/kss-assets/kss.scss config/nics-builder/kss-assets/kss.css",
     "––––––– IMG and SVG SCRIPTS": "–––––––––––––",
     "imgmin": "mkdir -p images && node imagemin.js",
