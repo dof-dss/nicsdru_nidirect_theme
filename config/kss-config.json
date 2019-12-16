@@ -1,0 +1,18 @@
+{
+  "//": "The source and destination paths are relative to this file.",
+  "source": "../src/",
+  "destination":  "../styleguide/",
+  "builder": "nics-builder/",
+
+  "//": "'styleguide.md' is relative to 'source'",
+  "homepage": "kss-template/styleguide.md",
+
+  "//": "The css and js paths are URLs relative to the style guide destination.",
+  "css": [
+    "https://fonts.googleapis.com/css?family=Open+Sans",
+    "css/kss-styleguide.css"
+  ],
+  "js": [],
+
+  "title": "NI Direct style guide"
+}
