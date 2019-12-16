@@ -7,6 +7,8 @@
 
 // Layouts
 //
+// Layout rules divide the page into sections. Layouts hold one or more modules / components together.
+//
 // The layout styling for major parts of the page  are created 'mobile-first' using the benefits of flexbox and cssgrid,
 // declaring appropriate fallback's where the technology is not widely enough implemented in currently used web
 // browsers. We utilise auto-prefixer to help in this regard to ensure that when prefixing for a declaration is required
