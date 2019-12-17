@@ -3,7 +3,7 @@
  * Provides the layout styles for the header area.
  */
 
-@import '../init';
+@import '../../init';
 
 // Layouts - header
 //
@@ -16,7 +16,7 @@
 // This section of the styleguide is essentially broken into 2 main areas - common classes and utilities that are
 // required and used for layout, then there are a series of individual layouts.
 //
-// Weight: -8
+// Weight: 0
 //
 // Style guide: layouts.header
 
@@ -79,7 +79,7 @@ nav .menu-wrapper {
       padding: 0;
       margin: 0;
       background-color: inherit;
-      background: url('../../images/svg-fallback-sprite.png');
+      background: url('../../../images/svg-fallback-sprite.png');
       background-repeat: no-repeat;
       display: inline-block;
       font-size: 0; /* Safari inline-block white space bug fix */
