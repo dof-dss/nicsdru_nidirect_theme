@@ -15,7 +15,7 @@
 // Container
 //
 // `.container` defines a simple wrapper class that permits the associated tag to fill the width of the page until it
-// reaches a maximum width (defined by the `$max-grid-width` variable in init/variables. When the container reaches
+// reaches a maximum width (defined by the `$max-grid-width` variable in init/variables). When the container reaches
 // the max-width, it is centered on the page. All other layout structures should be nested inside this centered layout
 // to ensure that content does not get too wide on very large screens. Note that `.grid` class which indicates the start
 // of a grid container can be applied at the same level as `.container`, the grid will not be able to stretch beyond
@@ -24,8 +24,6 @@
 // Weight: -1
 //
 // Style guide: layouts.common.container
-
-%container,
 .container {
   padding: 0 15px;
 
@@ -40,16 +38,15 @@
 //
 // `.grid` defines a simple wrapper class that establishes a cssgrid by declaring `display: grid;`. The grid will take
 // the maximum amount of available space available to the element. A grid layout consists of a parent element, with one
-// or more child elements. For NICS purposes the behaviour of the child elements is described by the individual layout
-// more on that later in the guide. The space between child elements is described by the grid-gap attribute which we
-// assign to a variable `$grid-gap`. The gap can be set to none by applying the modifier class `.no-gutter` to the
-// parent grid element.
+// or more child elements. For NICS purposes the behaviour of the child elements is described by applying a modifier
+// class `.layout--*` on the element the `.grid` class is applied more on that later in the guide.
+// The space between child elements is described by the grid-gap attribute which we assign to a variable `$grid-gap`.
+// The gap can be set to none by applying the modifier class `.no-gutter` to the parent grid element.
 //
 // Weight: -1
 //
 // Style guide: layouts.common.grid
-.grid,
-%grid {
+.grid {
   display: grid;
   grid-gap: $grid-gap;
   justify-content: space-between;
@@ -62,9 +59,10 @@
 // Grid areas
 //
 // `.ga-*` class can be applied to child elements in a `.grid` to define grid-area's when using cssgrid. It is not
-// necessary a requirement to add a `.ga*` class to each of the child elements after a grid is established each will be
-// placed in the next available grid row / column. However by adding one of these classes it helps with providing
-// appropriate fallbacks and hopefully helps understanding the intentions of where a child element should be in the grid.
+// necessarily a requirement to add a `.ga*` class to each of the child elements after a grid is established as each
+// child will be placed in the next available grid row / column. However by adding one of these classes it helps with
+// providing appropriate fallbacks and hopefully helps understanding the intentions of where a child element should be
+// in the grid.
 //
 // Weight: -1
 //
@@ -78,7 +76,6 @@
 // Weight: -1
 //
 // Style guide: layouts.common.grid-areas
-
 .ga-full {
   grid-column: 1 / -1;
   // needed for the floated layout

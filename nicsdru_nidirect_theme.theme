@@ -27,7 +27,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       case "page":
       case "recipe":
         $variables['main_content_attr']['class'][] = 'grid';
-        $variables['main_content_attr']['class'][] = 'layout--article-n-side';
+        $variables['main_content_attr']['class'][] = 'layout--main-n-side';
         $variables['sidebar_second_attr']['class'][] = 'ga-aside';
         break;
     }
@@ -42,7 +42,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       case "health_conditions":
       case "publications":
         $variables['main_content_attr']['class'][] = 'grid';
-        $variables['main_content_attr']['class'][] = 'layout--search-page';
+        $variables['main_content_attr']['class'][] = 'layout--side-n-main';
         $variables['sidebar_first_attr']['class'][] = 'ga-aside';
         break;
     }
