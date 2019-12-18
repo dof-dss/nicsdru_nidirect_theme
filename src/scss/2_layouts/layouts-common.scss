@@ -62,8 +62,7 @@
 // Weight: -1
 //
 // Style guide: layouts.common.grid
-.grid,
-%grid {
+.grid {
   display: grid;
   grid-gap: $grid-gap;
   justify-content: space-between;
