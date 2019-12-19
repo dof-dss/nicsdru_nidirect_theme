@@ -26,13 +26,7 @@
  */
 #}
 <div{{ attributes }}>
-  {{ title_prefix }}
-  {% if label %}
-    <h2{{ title_attributes }}>{{ label }}</h2>
-  {% endif %}
-  {{ title_suffix }}
   {% block content %}
-    {{ devel_breakpoint() }}
     {% for article in content.nidirect_article_teasers_by_topic %}
       <div>
         <h2>{{ article.title_link }}</h2>
