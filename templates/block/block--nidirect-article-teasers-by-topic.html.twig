@@ -33,5 +33,7 @@
         <div>{{ article.summary_text }}{{ article.more_link }}</div>
       </div>
     {% endfor %}
+    {# Bubble cache tags up #}
+    {%  set catch_cache = content.nidirect_article_teasers_by_topic|render %}
   {% endblock %}
 </div>
