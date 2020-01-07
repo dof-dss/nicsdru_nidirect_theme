@@ -68,10 +68,6 @@ The `package.json` includes the following commands and tasks:
 
 Run `npm run` to see all the npm scripts.
 
-## Sub-theming
-
-TODO: add in how to sub-theme from this theme.
-
 ## Documentation
 
 ### Page title handling
