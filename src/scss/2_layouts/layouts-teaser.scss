@@ -1,0 +1,69 @@
+/*
+ * @file
+ * Provides styles for content displayed in teaser view mode/layout.
+ */
+
+@import '../init';
+
+// TODO: move the views cruft to somewhere else.
+.latest-news {
+  font-size: 1.6rem;
+
+  li {
+    list-style: none;
+  }
+}
+
+.featured-item {
+  position: relative;
+  padding-bottom: 1rem;
+
+  @include breakpoint($tab) {
+    padding-left: 165px;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    margin: 0 0 0.5rem 0;
+
+    @include breakpoint($tab) {
+      font-size: 1.6rem;
+      margin: 0;
+    }
+  }
+
+  .published-date {
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    margin: 0.5rem 0;
+    color: $grey-dark;
+  }
+
+  .teaser {
+    font-size: 1.5rem;
+    line-height: 2.1rem;
+  }
+
+  .photo {
+    width: 100%;
+    display: block;
+    margin: 0.5rem 0;
+
+    img {
+      width: 100%;
+      margin: 0;
+
+      @include breakpoint($tab) {
+        width: 150px;
+        max-height: 100px;
+      }
+    }
+
+    @include breakpoint($tab) {
+      position: absolute;
+      left: 0;
+      top: 5px;
+    }
+  }
+}
