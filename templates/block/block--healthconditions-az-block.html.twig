@@ -25,7 +25,7 @@
  * @see template_preprocess_block()
  */
 #}
-<div{{ attributes }} role="presentation">
+<div{{ attributes.setAttribute('role', 'presentation') }}>
   {{ title_prefix }}
   {% if label %}
     <p{{ title_attributes.addClass('meta') }}>{{ label }}</p>
