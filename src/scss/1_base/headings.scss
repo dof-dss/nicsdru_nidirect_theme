@@ -1,3 +1,7 @@
+/*
+ * @file
+ * Sets out the base behaviour of heading elements.
+ */
 @import '../init';
 
 // Headings
@@ -6,7 +10,9 @@
 // classes are also available, for when you want to match the font styling of a
 // heading but still want your text to be displayed inline.
 //
-// Markup: ../kss-templates/headings-h.twig
+// Markup: kss-templates/headings-h.twig
+//
+// weight: -7
 //
 // Style guide: base.headings
 

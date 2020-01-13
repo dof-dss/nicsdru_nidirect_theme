@@ -1,24 +1,25 @@
+/*
+ * @file
+ * Sets out the base behaviour of text elements.
+ */
 @import '../init';
 
 // Text-level semantics
 //
 // The elements in this section give semantics to inline text.
 //
-// Weight: 1
+// Weight: -6
 //
 // Style guide: base.text
 
 // Body copy
 //
-// The default `font-size` and `line-height` properties are applied to the
-// `<body>` element and all paragraphs. In addition, `<p>` (paragraphs) receive
-// a top and bottom margin.
+// The default `font-size` and `line-height` properties are applied to the `<body>` element and all paragraphs.
+// In addition, `<p>` (paragraphs) receive a top and bottom margin.
 //
-// Markup: ../kss-templates/grouping-p.twig
+// Markup: kss-templates/grouping-p.twig
 //
-// Weight: -2
-//
-// Style guide: base.grouping.p
+// Style guide: base.text.p
 
 p,
 pre {
@@ -31,7 +32,7 @@ pre {
 // The `<abbr>` element makes the meanings of abbreviations and acronyms visible
 // on hover.
 //
-// Markup: ../kss-templates/text-abbr.twig
+// Markup: kss-templates/text-abbr.twig
 //
 // Style guide: base.text.abbr
 
@@ -57,7 +58,7 @@ abbr[title] {
 // Feel free to use `<b>` in HTML5. `<b>` is meant to highlight words or phrases
 // without conveying additional importance.
 //
-// Markup: ../kss-templates/text-b.twig
+// Markup: kss-templates/text-b.twig
 //
 // Weight: -1
 //
@@ -82,7 +83,7 @@ b {
 //
 // The `<cite>` element represents a reference to a creative work.
 //
-// Markup: ../kss-templates/text-cite.twig
+// Markup: kss-templates/text-cite.twig
 //
 // Style guide: base.text.cite
 
@@ -97,7 +98,7 @@ b {
 // output from a program or computing system. The `<kbd>` element represents
 // user input (typically keyboard input.)
 //
-// Markup: ../kss-templates/text-code.twig
+// Markup: kss-templates/text-code.twig
 //
 // Style guide: base.text.code
 
@@ -118,7 +119,7 @@ var {
 //
 // The `<del>` element indicates blocks of text that have been deleted.
 //
-// Markup: ../kss-templates/text-del.twig
+// Markup: kss-templates/text-del.twig
 //
 // Style guide: base.text.del
 
@@ -130,7 +131,7 @@ var {
 //
 // The `<dfn>` element represents the defining instance of a term.
 //
-// Markup: ../kss-templates/text-dfn.twig
+// Markup: kss-templates/text-dfn.twig
 //
 // Style guide: base.text.dfn
 
@@ -147,7 +148,7 @@ dfn {
 // Feel free to use `<i>` element in HTML5. `<i>` is meant to convey voice,
 // technical terms, etc.
 //
-// Markup: ../kss-templates/text-i.twig
+// Markup: kss-templates/text-i.twig
 //
 // Weight: -1
 //
@@ -162,7 +163,7 @@ dfn {
 //
 // The `<ins>` element indicates additions to the document.
 //
-// Markup: ../kss-templates/text-ins.twig
+// Markup: kss-templates/text-ins.twig
 //
 // Style guide: base.text.ins
 
@@ -175,7 +176,7 @@ dfn {
 // The `<mark>` element highlights a run of text due to its relevance in another
 // context.
 //
-// Markup: ../kss-templates/text-mark.twig
+// Markup: kss-templates/text-mark.twig
 //
 // Style guide: base.text.mark
 
@@ -190,7 +191,7 @@ mark {
 // The `<q>` element represents an inline quote from another source. Longer
 // quotes should use the `<blockquote>` element.
 //
-// Markup: ../kss-templates/text-q.twig
+// Markup: kss-templates/text-q.twig
 //
 // Style guide: base.text.q
 
@@ -203,7 +204,7 @@ q {
 //
 // The `<s>` element indicates blocks of text that are no longer relevant.
 //
-// Markup: ../kss-templates/text-s.twig
+// Markup: kss-templates/text-s.twig
 //
 // Style guide: base.text.s
 
@@ -216,7 +217,7 @@ q {
 // For de-emphasizing inline or blocks of text, use the `<small>` element to set
 // text at 80% the size of the parent.
 //
-// Markup: ../kss-templates/text-small.twig
+// Markup: kss-templates/text-small.twig
 //
 // Style guide: base.text.small
 
@@ -230,7 +231,7 @@ small {
 // The `<sup>` element represents a superscript and the `<sub>` element
 // represents a subscript.
 //
-// Markup: ../kss-templates/text-sub.twig
+// Markup: kss-templates/text-sub.twig
 //
 // Style guide: base.text.sub
 
@@ -256,7 +257,7 @@ sup {
 // To underline text use the `<u>` element. Not recommended since underlines are
 // used by web browsers to style hyperlinks.
 //
-// Markup: ../kss-templates/text-u.twig
+// Markup: kss-templates/text-u.twig
 //
 // Style guide: base.text.u
 
@@ -272,7 +273,7 @@ sup {
 // The text in the `<address>` element usually renders in italic. Most browsers will add a line break before and
 // after the address element, we redefine the default styling here.
 //
-// Markup: ../kss-templates/text-address.twig
+// Markup: kss-templates/text-address.twig
 //
 // Style guide: base.text.address
 
