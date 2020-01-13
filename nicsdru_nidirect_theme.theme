@@ -19,7 +19,7 @@ function nicsdru_nidirect_theme_preprocess_html(array &$variables) {
 
   // Remove Driving Instructor facet block from initial View pageview.
   if ($request->getRequestUri() == '/services/driving-instructors' && is_null($request->getQueryString())) {
-    if($variables['page']['sidebar_first']['drivinginstructorcategories']) {
+    if ($variables['page']['sidebar_first']['drivinginstructorcategories']) {
       $variables['page']['sidebar_first']['drivinginstructorcategories']['#access'] = FALSE;
     }
   }
