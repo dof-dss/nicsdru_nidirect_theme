@@ -5,11 +5,29 @@
  * Functions to support theming in the nicsdru_nidirect_theme theme.
  */
 
+use Drupal\block\Entity\Block;
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
+use Drupal\node\NodeInterface;
 use Drupal\user\Entity\User;
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Template\Attribute;
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function nicsdru_nidirect_theme_preprocess_html(array &$variables) {
+  $request = \Drupal::request();
+
+  // Remove Driving Instructor facet block from initial View pageview.
+  if ($request->getRequestUri() == '/services/driving-instructors' && is_null($request->getQueryString())) {
+    if ($variables['page']['sidebar_first']['drivinginstructorcategories']) {
+      $variables['page']['sidebar_first']['drivinginstructorcategories']['#access'] = FALSE;
+    }
+  }
+}
 
 /**
  * Implements hook_preprocess_page().
@@ -43,7 +61,10 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       case "publications":
         $variables['main_content_attr']['class'][] = 'grid';
         $variables['main_content_attr']['class'][] = 'layout--side-n-main';
+        $variables['main_content_attr']['class'][] = 'search-content';
         $variables['sidebar_first_attr']['class'][] = 'ga-aside';
+        $variables['sidebar_first_attr']['role'] = 'search';
+        $variables['sidebar_first_attr']['aria-label'] = t('filter search results');
         break;
     }
   }
@@ -62,7 +83,6 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
     case "application":
     case "contact":
     case "news":
-    case "page":
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('ga-main');
       break;
   }
@@ -135,6 +155,23 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
+  // amend the role / labelling for search results pages
+  if ($variables['id'] === 'publications' && $variables['display_id'] === 'search_page') {
+    $search_classes = ['ga-main', 'card-deck', 'search-results', 'border-bottom'];
+    if (!isset($variables['attributes']['class'])) {
+      $variables['attributes']['class'] = [];
+    }
+    $variables['attributes']['class'] = array_merge($variables['attributes']['class'], $search_classes);
+    $variables['attributes']['role'] = 'region';
+    $variables['attributes']['aria-label'] = t('search results');
+  }
+}
+
 
 /**
  * Implements hook_preprocess_form().

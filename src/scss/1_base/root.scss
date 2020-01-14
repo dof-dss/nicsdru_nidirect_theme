@@ -43,3 +43,9 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.cke_editable {
+  // applied to body in ckeditor
+  max-width: 620px;
+  margin: 0 15px;
+}
