@@ -34,7 +34,7 @@ function nicsdru_nidirect_theme_preprocess_html(array &$variables) {
  */
 function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
   $node = Drupal::routeMatch()->getParameter('node');
-  if (isset($node) && !empty($node->bundle())) {
+  if (is_object($node) && !empty($node->bundle())) {
     switch ($node->bundle()) {
       case "article":
       case "application":
