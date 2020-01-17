@@ -196,8 +196,8 @@ function nicsdru_nidirect_theme_preprocess_form(array &$variables) {
  * Top level function to build audit links.
  */
 function _build_audit_link($type, &$variables) {
-  // Only start this processing if the 'origins_workflow'
-  // module is installed.
+  // only start this processing if the 'origins_workflow'
+  // module is installed
   if (Drupal::service('module_handler')->moduleExists('origins_workflow')) {
     // Get the current node.
     $node = Drupal::routeMatch()->getParameter('node');
