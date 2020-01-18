@@ -187,6 +187,27 @@ function nicsdru_nidirect_theme_preprocess_form(array &$variables) {
 }
 
 /**
+ * Implements hook_theme_suggestions_form_element_alter().
+ */
+function nicsdru_nidirect_theme_theme_suggestions_form_element_alter(array &$suggestions, array $variables) {
+  $element_type = $variables['element']['#type'];
+  // Suggest a template for radios and checkboxes that will enable label to wrap the input
+  if ($element_type === 'radio' || $element_type === 'checkbox') {
+    $suggestions[] = 'form_element__wrapped';
+  }
+}
+
+/**
+ * Preprocess function for form elements to be wrapped inside a label (radios and checkboxes)
+ */
+function nicsdru_nidirect_theme_preprocess_form_element__wrapped(&$variables) {
+  $variables['label']['#theme'] = 'form_element_label__open';
+  $variables['label_open'] = $variables['label'];
+  unset($variables['label']);
+  $variables['title'] = $variables['element']['#title'];
+}
+
+/**
  * Top level function to build audit links.
  */
 function _build_audit_link($type, &$variables) {
