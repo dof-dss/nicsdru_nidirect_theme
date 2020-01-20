@@ -136,7 +136,7 @@ jobs:
               # Enable ignore variable.
               sed -i -e "s/\#IGNORE/IGNORE/" phpcs.sh
               # Add unwanted paths to this ignore variable.
-              sed -i -e "s/web\/themes\/custom\/THEMENAME\/node_modules/project\/node_modules/" phpcs.sh
+              sed -i -e "s/web\/themes\/custom\/nicsdru_nidirect_theme\/node_modules/project\/node_modules/" phpcs.sh
               # Make the file executable.
               chmod +x /home/circleci/phpcs.sh
               cat /home/circleci/phpcs.sh
