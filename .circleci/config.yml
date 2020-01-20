@@ -62,7 +62,7 @@ jobs:
       - save_cache:
           key: global-composer-{{ checksum "/home/circleci/.composer/composer.lock" }}
           paths:
-            - $HOME/.composer/cache
+            - /home/circleci/project/.composer/cache
       - attach_workspace:
           at: ./
       - restore_cache:
@@ -91,7 +91,7 @@ jobs:
             chmod +x /home/circleci/phpcs.sh
       - run:
           name: PHPCS static analysis
-          command: /home/circleci/project/phpcs.sh /home/circleci "/home/circleci/project"
+          command: /home/circleci/phpcs.sh /home/circleci "/home/circleci/project"
 
   #===== DEBUG ======
   debug_frontend:
