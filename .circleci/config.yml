@@ -55,12 +55,12 @@ jobs:
             sudo apt-get install -y libpng-dev
             sudo docker-php-ext-install gd
       - restore_cache:
-          key: global-composer-{{ checksum "composer.lock" }}
+          key: global-composer-{{ checksum "/home/circleci/.composer/composer.lock" }}
       - run:
           name: Add hirak/prestissimo for faster composer downloads
           command: composer global require hirak/prestissimo
       - save_cache:
-          key: global-composer-{{ checksum "composer.lock" }}
+          key: global-composer-{{ checksum "/home/circleci/.composer/composer.lock" }}
           paths:
             - $HOME/.composer/cache
       - attach_workspace:
@@ -71,11 +71,13 @@ jobs:
           name: Fetch phpcs and dependencies
           command: |
             composer require drupal/coder --no-interaction --optimize-autoloader
-            # Move vendor directory up a level as we don't want to code-check all of that.
-            mv vendor ../
       - save_cache:
-          keys:
-            - composer-{{ checksum "composer.lock" }}
+          key: composer-{{ checksum "composer.lock" }}
+          paths:
+            - vendor
+      - run:
+          name: Move vendor directory out the way.
+          command: mv vendor ../
       - run:
           name: Fetch phpcs convenience script
           command: |
@@ -154,4 +156,3 @@ workflows:
           requires:
             - install
       - phpcs
-      - drupal-check
