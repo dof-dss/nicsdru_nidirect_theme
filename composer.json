@@ -7,9 +7,7 @@
     "homepage": "https://github.com/dof-dss/nicsdru_nidirect_theme",
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.0",
-        "composer/installers": "^1.6",
-        "drupal/core": ">=8.8"
+        "php": ">=7.0"
     },
     "authors": [
         {

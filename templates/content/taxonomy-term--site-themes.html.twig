@@ -24,15 +24,10 @@
  */
 #}
 <div{{ attributes }}>
+  {{ drupal_block('page_title_block', wrapper=false) }}
   {% if information_services_output is defined %}
-    <h1>{{ name }}</h1>
     {{ information_services_output }}
   {%  else %}
-    {{ title_prefix }}
-    {% if not page %}
-      <h2><a href="{{ url }}">{{ name }}</a></h2>
-    {% endif %}
-    {{ title_suffix }}
     {{ content }}
   {%  endif %}
 </div>
