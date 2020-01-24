@@ -1,1 +1,74 @@
-.breadcrumb{margin:1.2rem auto}@media (min-width: 600px){.breadcrumb{margin:2.1rem auto 2.6rem}}@media print{.breadcrumb{display:none}}.breadcrumb--list{list-style:none;margin:0;padding:0}.breadcrumb--item{font-size:1.3rem;line-height:1.8rem;display:inline;list-style-type:none;margin:0 5px 0 0;padding:0}.breadcrumb--item::after{content:'\203A';font-size:1.6rem}.breadcrumb--item:last-child::after{content:''}.breadcrumb a{color:#0a78cd;margin-right:5px;text-decoration:underline}.breadcrumb a:hover{text-decoration:none}.breadcrumb a:focus{color:#fff;text-decoration:none}
+/*
+ * @file
+ * Provides the styling for a navigation breadcrumb.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 15, src/scss/3_components/navigation/breadcrumb.scss */
+.breadcrumb {
+  margin: 1.2rem auto 0;
+}
+
+@media (min-width: 600px) {
+  /* line 15, src/scss/3_components/navigation/breadcrumb.scss */
+  .breadcrumb {
+    margin: 2.1rem auto 0;
+  }
+}
+
+@media print {
+  /* line 15, src/scss/3_components/navigation/breadcrumb.scss */
+  .breadcrumb {
+    display: none;
+  }
+}
+
+/* line 27, src/scss/3_components/navigation/breadcrumb.scss */
+.breadcrumb--list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 33, src/scss/3_components/navigation/breadcrumb.scss */
+.breadcrumb--item {
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  display: inline;
+  list-style-type: none;
+  margin: 0 5px 0 0;
+  padding: 0;
+}
+
+/* line 40, src/scss/3_components/navigation/breadcrumb.scss */
+.breadcrumb--item::after {
+  content: '\203A';
+  font-size: 1.6rem;
+}
+
+/* line 45, src/scss/3_components/navigation/breadcrumb.scss */
+.breadcrumb--item:last-child::after {
+  content: '';
+}
+
+/* line 50, src/scss/3_components/navigation/breadcrumb.scss */
+.breadcrumb a {
+  color: #0a78cd;
+  margin-right: 5px;
+  text-decoration: underline;
+}
+
+/* line 55, src/scss/3_components/navigation/breadcrumb.scss */
+.breadcrumb a:hover {
+  text-decoration: none;
+}
+
+/* line 59, src/scss/3_components/navigation/breadcrumb.scss */
+.breadcrumb a:focus {
+  color: #fff;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=breadcrumb.css.map */
