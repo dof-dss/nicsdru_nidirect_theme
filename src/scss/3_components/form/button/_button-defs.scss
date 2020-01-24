@@ -18,16 +18,16 @@
     color: $txt-color;
   }
 
-  &:hover,
-  &:focus {
-    background-color: $lighten;
-    border-color: $lighten;
+  &:hover {
+    background-color: $darken;
+    border-color: $darken;
   }
 
   &:active {
     background-color: $darken;
     border-color: $darken;
   }
+
 }
 
 @mixin btn-size($size: 'standard') {
@@ -60,7 +60,7 @@
   }
 
   &:focus {
-    outline: 1px dotted $charcoal;
+    outline: 3px solid $charcoal;
   }
 }
 

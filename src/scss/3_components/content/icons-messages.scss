@@ -157,7 +157,7 @@ ul.info-notice {
   }
 
   &--status {
-    border-color: $button-action;
+    border-color: $btn-action;
     background: #fff resolve('status.svg') no-repeat .9rem .9rem / 24px 24px;
 
     @include breakpoint($phab, $no-query: true) {

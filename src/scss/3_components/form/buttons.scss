@@ -22,7 +22,7 @@
 // Style guide: components.buttons.call-to-action
 .call-to-action {
   @extend %btn;
-  @include btn-color($button-action);
+  @include btn-color($btn-action);
   @include btn-size('large');
   position: relative;
   padding-right: 3.9rem;
@@ -46,3 +46,5 @@
     width: 1.5rem;
   }
 }
+
+
