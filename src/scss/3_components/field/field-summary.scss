@@ -9,14 +9,12 @@ $field-summary: (
   md: (21px, 3rem)
 );
 
-.page-summary {
-  p {
-    @include responsive-typo-map($field-summary);
-    font-weight: 700;
-    margin-top: 0;
+.page-summary,
+.page-summary p {
+  @include responsive-typo-map($field-summary);
+  font-weight: 700;
 
-    &:first-child {
-      margin-top: 0;
-    }
+  &:first-child {
+    margin-top: 0;
   }
 }
