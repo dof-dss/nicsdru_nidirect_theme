@@ -87,7 +87,6 @@
     "build-css": "npm-run-all --parallel css-lint* scss-prod --sequential css-post",
     "build-js": "npm run js",
     "build-img": "npm run imgmin",
-    "build-docs": "npm run docs-build",
     "-svg": "npm run svgmin",
     "lint": "npm-run-all --parallel css-lint js-lint"
   },
