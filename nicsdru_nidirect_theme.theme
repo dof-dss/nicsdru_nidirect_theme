@@ -47,6 +47,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         $variables['main_content_attr']['class'][] = 'grid';
         $variables['main_content_attr']['class'][] = 'layout--main-n-side';
         $variables['sidebar_second_attr']['class'][] = 'ga-aside';
+        $variables['#attached']['library'][] = 'nicsdru_nidirect_theme/nidirect-table-of-contents';
         break;
     }
   }
