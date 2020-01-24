@@ -1,9 +1,17 @@
 /*
  * @file
- *
+ * Provides the styling for menus other than the main menu on the site.
  */
 @import '../../init';
 
+// Sub menus
+//
+// The sub menus component provides some base styling for lists of navigational links that may or may not be contained
+// in a `<nav>` tag. They are commonly found on the side of pages, for example a list of related content or a table of
+// the current pages contents. There are some modifiers commonly applied (which are provided in the equivalent 4_states
+// scss file) to these menus to meet specific design concepts.
+//
+// Style guide: components.navigation.sub-menus
 .sub-menu {
   .nav {
     &-menu {

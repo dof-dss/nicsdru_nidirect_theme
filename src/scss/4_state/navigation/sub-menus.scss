@@ -23,4 +23,18 @@
 //
 .toc {
   background-color: transparent;
+
+  &-aside {
+    display: none;
+
+    @include breakpoint($tab) {
+      display: block;
+    }
+  }
+
+  &-main {
+    @include breakpoint($tab) {
+      @include visually-hidden;
+    }
+  }
 }
