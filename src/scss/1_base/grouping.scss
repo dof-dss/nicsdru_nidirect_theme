@@ -98,13 +98,9 @@ ul {
 }
 
 li {
-  @include responsive-typo-map($normal-text);
+  @include responsive-typo-map($body-text);
   color: color(text);
-  margin-bottom: .8rem;
-
-  @include breakpoint($tab) {
-    margin-bottom: .9rem;
-  }
+  margin-bottom: .5em;
 
   &:last-child {
     margin-bottom: 0;
