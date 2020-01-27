@@ -5,20 +5,23 @@
 @import '../../init';
 @import 'button/button-defs';
 
-main form:not(.search-form) {
+main form {
   margin: 0;
   padding: 0;
   max-width: 800px;
 
-  .form-wrapper:not(.form-actions) {
+  .form-actions {
+    margin: 2.5em 0;
+  }
 
-    margin: 0 0 2.5em;
+  .form-item {
+    position: relative;
+  }
 
-    > .form-item {
-      position: relative;
-      padding: 0;
-      margin: 0 0 2em;
-    }
+  & > .form-item,
+  .form-wrapper > .form-item {
+    padding: 0;
+    margin: 0 0 2em;
   }
 
   .description {
