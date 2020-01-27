@@ -1,14 +1,1 @@
-/*
- * @file
- * Provides the layout styles for content output from field_summary for any entity.
- */
-/* Vertical rhythm presets =========================================== */
-/* Set the base images folder */
-/* Layout ============================================================ */
-/* Breakpoints ======================================================== */
-/* line 8, src/scss/3_components/field/vcard.scss */
-.vcard .email {
-  margin-top: 1.8rem;
-}
-
-/*# sourceMappingURL=vcard.css.map */
+.vcard .email{margin-top:1.8rem}
