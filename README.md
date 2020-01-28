@@ -68,13 +68,17 @@ The `package.json` includes the following commands and tasks:
 
 Run `npm run` to see all the npm scripts.
 
-## Sub-theming
-
-TODO: add in how to sub-theme from this theme.
-
 ## Documentation
 
-TODO: add documentation.
+### Page title handling
+
+Drupal normally adds the label or title variable to the `page.twig.html` template, and where this needs to appear in
+a separate location for other content variants it requires the use of a secondary template variable + preprocessing
+to show/hide the correct value.
+
+Drupal 8 introduces a page title block that is rendered in a given template with the `{{ drupal_block('page_title_block', wrapper=false) }}`
+Twig extension to render Drupal blocks in-situ. This approach offers maximum flexibility and moves any conditional
+logic from preprocess hooks into the block configuration itself.
 
 [autoprefixer]: https://github.com/postcss/autoprefixer
 
