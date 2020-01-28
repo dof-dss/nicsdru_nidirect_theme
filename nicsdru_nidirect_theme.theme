@@ -118,6 +118,8 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
           // Send out 'needs audit' link as a Drupal warning message.
           // N.B. This will only be visible if the 'System Messages' block is visible.
           \Drupal::messenger()->addWarning(t($msg->jsonSerialize()));
+          // Make sure that this page is not cached.
+          $variables['#cache'] = ['max-age' => 0];
         }
         break;
     }
