@@ -19,7 +19,7 @@
     @include responsive-typo-map($body-text);
     color: #fff;
     background-color: $charcoal;
-    padding: 0.3334em .6rem;
+    padding: .3334em .6rem;
     margin: 0;
 
     &.webform-counter-warning .text-count {
