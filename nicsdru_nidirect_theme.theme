@@ -5,15 +5,11 @@
  * Functions to support theming in the nicsdru_nidirect_theme theme.
  */
 
-use Drupal\block\Entity\Block;
-use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
-use Drupal\node\NodeInterface;
 use Drupal\user\Entity\User;
 use Drupal\Component\Utility\Html;
-use Drupal\Core\Template\Attribute;
 
 /**
  * Implements hook_preprocess_html().
@@ -105,7 +101,8 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
         $msg = _build_audit_link('health_condition', $variables);
         if ($msg) {
           // Send out 'needs audit' link as a Drupal warning message.
-          // N.B. This will only be visible if the 'System Messages' block is visible.
+          // N.B. This will only be visible if the 'System Messages'
+          // block is visible.
           \Drupal::messenger()->addWarning(t($msg->jsonSerialize()));
           // Make sure that this page is not cached.
           $variables['#cache'] = ['max-age' => 0];
@@ -118,7 +115,8 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
         $msg = _build_audit_link('article', $variables);
         if ($msg) {
           // Send out 'needs audit' link as a Drupal warning message.
-          // N.B. This will only be visible if the 'System Messages' block is visible.
+          // N.B. This will only be visible if the 'System Messages'
+          // block is visible.
           \Drupal::messenger()->addWarning(t($msg->jsonSerialize()));
           // Make sure that this page is not cached.
           $variables['#cache'] = ['max-age' => 0];
@@ -171,7 +169,7 @@ function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
       'ga-main',
       'card-deck',
       'search-results',
-      'border-bottom'
+      'border-bottom',
     ];
 
     if (!isset($variables['attributes']['class'])) {
