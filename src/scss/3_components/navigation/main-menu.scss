@@ -93,6 +93,12 @@
         font-size: 0; /* Safari inline-block white space bug fix */
         text-indent: -9999px;
         text-decoration: none;
+
+        &:focus {
+          text-decoration: none;
+          outline-color: $white;
+          outline-offset: -1px;
+        }
       }
 
       a[href*='https://twitter.com'] {

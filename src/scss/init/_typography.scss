@@ -29,9 +29,9 @@ $body-text: (
 
 $small-text: (
   null: (1.4rem, 1.7143),
-  sm: (1.6rem, 1.5),
-  xl: 18px,
-  xxl: 20px,
+  sm: (1.4rem, 1.7143),
+  xl: (1.6rem, 1.6875),
+  xxl: (1.7rem, 1.7647),
 );
 
 $breadcrumb-text: (
@@ -50,8 +50,8 @@ $normal-text: (
 
 $large-text: (
   null: (18px, 1.3334),
-  lg: (21px, 1.2857),
-  xxl: (24px, 1.25)
+  lg: (21px, 1.4286),
+  xxl: (24px, 1.3334)
 );
 
 $xl-text: (
@@ -67,9 +67,9 @@ $xxl-text: (
 );
 
 $h1-text: (
-  null: (28px, 3.2rem, 0 0 2.4rem),
-  lg: (32px, 3.6rem, 0 0 2.7rem),
-  xxl: (36px, 4.5rem, 0 0 3rem)
+  null: (28px, 3.2rem, 3.2rem 0 2.1rem),
+  lg: (32px, 3.6rem, 3.2rem 0 2.8rem),
+  xxl: (36px, 4.5rem, 4rem 0 3rem)
 );
 
 $h2-text: (
@@ -115,4 +115,10 @@ $btn-medium: (
 $btn-large: (
   null: (21px, 2.4rem),
   lg: (24px, 3rem)
+);
+
+$form-legend: (
+  null: (21px, 2.4rem, 0 0 1.2rem),
+  lg: (24px, 2.7rem, 0 0 1.8rem),
+  xxl: (28px, 3rem, 0 0 2rem)
 );
