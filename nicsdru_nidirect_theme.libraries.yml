@@ -19,6 +19,7 @@ nidirect-global-styles:
     # The SMACSS category, "layout", is loaded after "base" styles.
     layout:
       css/2_layouts/layouts-common.css: { weight: -100, minified: true }
+      css/2_layouts/layouts-teaser.css: { minified: true }
       css/2_layouts/nics-2-col-layouts.css: { minified: true }
     # The SMACSS category, "component", is loaded after "base and layout" styles.
     component:
@@ -31,8 +32,10 @@ nidirect-global-styles:
       css/3_components/navigation/breadcrumb.css: { minified: true }
       css/3_components/navigation/sub-menus.css: { minified: true }
       css/3_components/navigation/book.css: { minified: true }
-      css/3_components/block/search-form.css: { minified: true }
       css/3_components/form/buttons.css: { minified: true }
+      css/3_components/form/form.css: { minified: true }
+      css/3_components/form/webform.css: { minified: true }
+      css/3_components/form/search-form.css: { minified: true }
       css/3_components/content/icons-messages.css: { minified: true }
       css/3_components/content/lists.css: { minified: true }
       css/3_components/field/file-link.css: { minified: true }
