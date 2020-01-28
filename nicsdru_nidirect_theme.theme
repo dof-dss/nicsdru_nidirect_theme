@@ -5,15 +5,11 @@
  * Functions to support theming in the nicsdru_nidirect_theme theme.
  */
 
-use Drupal\block\Entity\Block;
-use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
-use Drupal\node\NodeInterface;
 use Drupal\user\Entity\User;
 use Drupal\Component\Utility\Html;
-use Drupal\Core\Template\Attribute;
 
 /**
  * Implements hook_preprocess_html().
@@ -105,8 +101,11 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
         $msg = _build_audit_link('health_condition', $variables);
         if ($msg) {
           // Send out 'needs audit' link as a Drupal warning message.
-          // N.B. This will only be visible if the 'System Messages' block is visible.
+          // N.B. This will only be visible if the 'System Messages'
+          // block is visible.
           \Drupal::messenger()->addWarning(t($msg->jsonSerialize()));
+          // Make sure that this page is not cached.
+          $variables['#cache'] = ['max-age' => 0];
         }
         break;
 
@@ -116,8 +115,11 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
         $msg = _build_audit_link('article', $variables);
         if ($msg) {
           // Send out 'needs audit' link as a Drupal warning message.
-          // N.B. This will only be visible if the 'System Messages' block is visible.
+          // N.B. This will only be visible if the 'System Messages'
+          // block is visible.
           \Drupal::messenger()->addWarning(t($msg->jsonSerialize()));
+          // Make sure that this page is not cached.
+          $variables['#cache'] = ['max-age' => 0];
         }
         break;
     }
@@ -167,7 +169,7 @@ function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
       'ga-main',
       'card-deck',
       'search-results',
-      'border-bottom'
+      'border-bottom',
     ];
 
     if (!isset($variables['attributes']['class'])) {
@@ -222,7 +224,7 @@ function _build_audit_link($type, &$variables) {
  * Utility function to build the audit link html.
  */
 function _audit_link($type, $dt, $nid) {
-  if (strtotime($dt) < Drupal::time()->getCurrentTime()) {
+  if (!empty($dt) && (strtotime($dt) < Drupal::time()->getCurrentTime())) {
     // Next review date is in the past,
     // so this node is due for audit - display node edit link
     // (if the user is allowed to see it).
