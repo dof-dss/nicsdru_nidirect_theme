@@ -78,9 +78,9 @@ main form {
       }
     }
 
-    &.element-invisible + .form-radios {
+    &.visually-hidden + .form-radios {
       margin-top: -4px;
-      margin-top: -0.4rem;
+      margin-top: -.4rem;
       @include breakpoint($phab, $no-query: true) {
         margin-top: -6px;
         margin-top: -.6rem;
@@ -208,8 +208,8 @@ main form {
     & ~ label {
       position: relative;
       left: 0;
-      margin: 0.5em 0;
-      padding: 0.9rem 1.5rem 0.9rem 3rem;
+      margin: .5em 0;
+      padding: .9rem 1.5rem .9rem 3rem;
       @include adjust-font-size-to(16px, 4);
       display: inline-block;
       vertical-align: baseline;
