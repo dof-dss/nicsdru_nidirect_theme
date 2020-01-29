@@ -5,6 +5,7 @@
  * Functions to support theming in the nicsdru_nidirect_theme theme.
  */
 
+use Drupal\Core\Template\Attribute;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
@@ -49,7 +50,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
   }
 
   // Process search view pages.
-  $viewpage = Drupal::routeMatch()->getParameter('view_id');
+  $viewpage = \Drupal::routeMatch()->getParameter('view_id');
   if (isset($viewpage)) {
     $search_layout_classes = ['grid', 'layout--side-n-main', 'search-content'];
     switch ($viewpage) {
@@ -66,8 +67,8 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
   }
 
   // Contacts page uses multiple routes defined in nidirect_contacts module.
-  $route = Drupal::routeMatch()->getRouteName();
-  if ($route == "nidirect_contacts.default" or $route == "nidirect_contacts.letter") {
+  $route = \Drupal::routeMatch()->getRouteName();
+  if ($route == "nidirect_contacts.default" || $route == "nidirect_contacts.letter") {
     $layout_classes[] =  'search-content';
     $variables['main_content_attr']->addClass($layout_classes);
     if ($variables['content_content_attr'] instanceof Attribute) {
@@ -199,11 +200,10 @@ function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
 function nicsdru_nidirect_theme_preprocess_form(array &$variables) {
   switch ($variables['element']['#id']) {
     case "views-exposed-form-contacts-contact-search":
-    case "views-exposed-form-health-conditions-search-page":
-    case "views-exposed-form-publications-search-page":
-    case "views-exposed-form-contacts-contact-search":
     case "views-exposed-form-driving-instructors-driving-instructor-results":
     case "views-exposed-form-gp-practices-find-a-gp":
+    case "views-exposed-form-health-conditions-search-page":
+    case "views-exposed-form-publications-search-page":
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form');
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form--page');
       break;
