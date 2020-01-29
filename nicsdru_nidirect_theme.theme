@@ -71,8 +71,8 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
   if ($route == "nidirect_contacts.default" || $route == "nidirect_contacts.letter") {
     $layout_classes[] =  'search-content';
     $variables['main_content_attr']->addClass($layout_classes);
-    if ($variables['content_content_attr'] instanceof Attribute) {
-      $variables['content_content_attr']
+    if ($variables['content_wrapper_attr'] instanceof Attribute) {
+      $variables['content_wrapper_attr']
         ->addClass('ga-main')
         ->setAttribute('role', 'presentation');
     }
