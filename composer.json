@@ -3,7 +3,7 @@
     "type": "drupal-custom-theme",
     "description": "Drupal 8 theme for nidirect website",
     "keywords": ["Drupal", "theme"],
-    "license": "GPL-2.0+",
+    "license": "MIT",
     "homepage": "https://github.com/dof-dss/nicsdru_nidirect_theme",
     "minimum-stability": "dev",
     "require": {
