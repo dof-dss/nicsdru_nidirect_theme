@@ -193,6 +193,7 @@ function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
  */
 function nicsdru_nidirect_theme_preprocess_form(array &$variables) {
   switch ($variables['element']['#id']) {
+    case "views-exposed-form-contacts-a-z-contacts-by-letter":
     case "views-exposed-form-contacts-contact-search":
     case "views-exposed-form-driving-instructors-driving-instructor-results":
     case "views-exposed-form-gp-practices-find-a-gp":
