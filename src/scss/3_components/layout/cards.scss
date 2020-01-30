@@ -1,0 +1,34 @@
+/*
+ * @file
+ * Provides the styling for creating a card component.
+ */
+
+@import '../../init';
+
+// Card component
+//
+// A fairly simple component to group a number of related elements. It is envisaged that this component will frequently
+// change state. These are dealt with in the states section of the theme.
+//
+// Style guide: components.layouts.cards
+.card {
+  &-deck {
+    grid-template-columns: repeat(1, 1fr);
+
+    $selector: ();
+    $suffixes: ('top', 'bottom');
+    // this declaration creates a number of modifier classes for a border on the `.card` children under `.card-deck`
+    // one modifier for each item in the $suffixes list.
+    @each $suffix in $suffixes {
+      $selector: unquote('border-#{$suffix}');
+
+      &.#{$selector} .card {
+        #{$selector}: 1px solid;
+      }
+    }
+  }
+
+  &--title {
+    margin-top: 0;
+  }
+}

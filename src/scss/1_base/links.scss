@@ -1,3 +1,7 @@
+/*
+ * @file
+ * Sets out the base behaviour of links.
+ */
 @import '../init';
 
 // Links
@@ -12,10 +16,13 @@
 // :hover   - A link that is being hovered over.
 // :focus   - A link that has been given keyboard focus.
 // :active  - A link that is being actively clicked.
+// .skip-link - A special form of a link
 //
-// Markup: ../kss-templates/links-a.twig
+// Markup: kss-templates/links-a.twig
 //
-// Style guide: base.link
+// weight: -8
+//
+// Style guide: base.links
 
 a,
 %link {
@@ -41,7 +48,12 @@ a:focus {
 
 // address 'outline' inconsistency between Chrome and other browsers
 a:focus {
-  outline: thin dotted;
+  outline: 3px solid $brand-primary-medium;
+  outline-offset: 0;
+  background-color: $brand-primary-medium;
+  color: $link-focus;
+  text-decoration: none;
+  border-bottom: 1px solid;
 }
 
 a:active {
@@ -58,6 +70,39 @@ a:active {
 a:active,
 a:hover {
   outline-width: 0;
+}
+
+.skip-link,
+.skip-link:visited {
+  opacity: .5;
+  transition: opacity .3s 0s;
+  color: #fff;
+  background-color: $charcoal;
+  outline: none;
+  text-align: center;
+
+  &::after {
+    content: ' ';
+    display: inline-block;
+    width: 1.5em;
+    height: .75em;
+    background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAPCAQAAAC7b6xuAAAAsUlEQVR4AY3LQ2KEURSFwbOU2LbNcTQMd5s1xLaNL7i/0a9rXpJYYpNSOdHINhuSmOcT2KfCERo4B75ZFeeYQ6odwVyIUZ4wx9TmhPogPDAoiUEeMKfUFwyPDMrQzx3mnOZUOEsEQw+3mEvaFKAuEoYURwfXmGs6gnCKebKQQBuXmFt6JGojYVjZaOEcc8eKMxgaOIOAhREVRi0nsTAqN6q5doQ0pnjhL4yreMxylBd+ABWdFyV4bCZyAAAAAElFTkSuQmCC') no-repeat 50% 50%;
+    background-size: 1.6rem auto;
+  }
+}
+
+.skip-link:focus {
+  @include responsive-typo-map($body-text);
+  opacity: 1;
+  display: block;
+  line-height: 1.5;
+  padding: .9rem 3.5rem;
+  color: #fff;
+  text-decoration: underline;
+  outline: none;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: $charcoal;
 }
 
 @media print {

@@ -1,8 +1,12 @@
+/*
+ * @file
+ * Sets out the base behaviour of embedded content, for example images.
+ */
 @import '../init';
 
 // Embedded content
 //
-// Weight: 2
+// Weight: -4
 //
 // Style guide: base.embedded
 
@@ -10,7 +14,7 @@
 //
 // An `<img>` element represents an image.
 //
-// Markup: ../kss-templates/embedded-img.twig
+// Markup: kss-templates/embedded-img.twig
 //
 // Style guide: base.embedded.img
 
@@ -33,7 +37,7 @@ svg {
 //
 // A `<svg>` element represents an image encoded as a Scalable Vector Graphic.
 //
-// Markup: ../kss-templates/embedded-svg.twig
+// Markup: kss-templates/embedded-svg.twig
 //
 // Style guide: base.embedded.svg
 

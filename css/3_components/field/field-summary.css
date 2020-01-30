@@ -1,1 +1,1 @@
-.page-summary p{font-size:1.7rem;line-height:2.4rem;font-weight:700;margin-top:0}@media screen and (min-width: 600px){.page-summary p{font-size:2.1rem;line-height:3rem}}.page-summary p:first-child{margin-top:0}
+.page-summary,.page-summary p{font-size:1.7rem;line-height:2.4rem;font-weight:700}@media screen and (min-width: 600px){.page-summary,.page-summary p{font-size:2.1rem;line-height:3rem}}.page-summary:first-child,.page-summary p:first-child{margin-top:0}

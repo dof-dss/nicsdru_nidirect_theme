@@ -1,3 +1,4 @@
-node_modules
 css/**/*.css.map
+node_modules
+styleguide
 .DS_Store

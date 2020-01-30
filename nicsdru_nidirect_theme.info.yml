@@ -5,11 +5,27 @@ package: NICS
 core: 8.x
 libraries:
   - nicsdru_nidirect_theme/nidirect-global-styles
+  - nicsdru_nidirect_theme/nidirect-specific-styles
+
+ckeditor_stylesheets:
+  - css/1_base/root.css
+  - css/1_base/html5.css
+  - css/1_base/headings.css
+  - css/1_base/grouping.css
+  - css/1_base/links.css
+  - css/1_base/tables.css
+  - css/1_base/text.css
+  - css/3_components/field/field-summary.css
+  - css/3_components/content/icons-messages.css
 
 libraries-override:
   origins_common/in-page-navigation:
     js:
       js/in_page_navigation.js : js/in_page_navigation.js
+  webform/webform.element.counter:
+    css:
+      component:
+        css/webform.element.counter.css: false
 
 base theme: nicsdru_origins_theme
 

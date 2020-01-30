@@ -14,10 +14,10 @@
 
 .breadcrumb,
 %breadcrumb {
-  margin: 1.2rem auto;
+  margin: 1.2rem auto 0;
 
   @include breakpoint($phab) {
-    margin: 2.1rem auto 2.6rem;
+    margin: 2.1rem auto 0;
   }
 
   @media print {
@@ -31,14 +31,15 @@
   }
 
   &--item {
-    @include adjust-font-size-to(13px, 3);
+    @include adjust-font-size-to(14px, 4);
     display: inline;
     list-style-type: none;
     margin: 0 5px 0 0;
     padding: 0;
 
     &::after {
-      content: '>';
+      content: '\203A';
+      font-size: 1.6rem;
     }
 
     &:last-child::after {
@@ -47,11 +48,16 @@
   }
 
   a {
-    color: color(brand-secondary);
+    color: color(brand-primary-medium);
     margin-right: 5px;
     text-decoration: underline;
 
     &:hover {
+      text-decoration: none;
+    }
+
+    &:focus {
+      color: #fff;
       text-decoration: none;
     }
   }
