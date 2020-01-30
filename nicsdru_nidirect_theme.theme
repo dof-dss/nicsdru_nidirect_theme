@@ -69,7 +69,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
   // Contacts page uses multiple routes defined in nidirect_contacts module.
   $route = \Drupal::routeMatch()->getRouteName();
   if ($route == "nidirect_contacts.default" || $route == "nidirect_contacts.letter") {
-    $layout_classes[] =  'search-content';
+    $layout_classes[] = 'search-content';
     $variables['main_content_attr']->addClass($layout_classes);
     if ($variables['content_wrapper_attr'] instanceof Attribute) {
       $variables['content_wrapper_attr']
