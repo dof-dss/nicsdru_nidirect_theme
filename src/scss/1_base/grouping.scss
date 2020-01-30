@@ -1,8 +1,12 @@
+/*
+ * @file
+ * Sets out the base behaviour of grouping elements.
+ */
 @import '../init';
 
 // Grouping content
 //
-// Weight: 1
+// Weight: -5
 //
 // Style guide: base.grouping
 
@@ -94,13 +98,9 @@ ul {
 }
 
 li {
-  @include responsive-typo-map($normal-text);
+  @include responsive-typo-map($body-text);
   color: color(text);
-  margin-bottom: .8rem;
-
-  @include breakpoint($tab) {
-    margin-bottom: .9rem;
-  }
+  margin-bottom: .5em;
 
   &:last-child {
     margin-bottom: 0;
@@ -115,7 +115,7 @@ li {
 // Optionally, a `<figcaption>` element inside the `<figure>` represents the
 // caption of the figure.
 //
-// Markup: ../kss-templates/grouping-figure.twig
+// Markup: kss-templates/grouping-figure.twig
 //
 // Style guide: base.grouping.figure
 
@@ -134,7 +134,7 @@ figure {
 // change in a story, or a transition to another topic within a section of a
 // reference book.
 //
-// Markup: ../kss-templates/grouping-hr.twig
+// Markup: kss-templates/grouping-hr.twig
 //
 // Style guide: base.grouping.hr
 
@@ -150,30 +150,12 @@ hr {
   margin: 6px 0;
 }
 
-// Body copy
-//
-// The default `font-size` and `line-height` properties are applied to the
-// `<body>` element and all paragraphs. In addition, `<p>` (paragraphs) receive
-// a top and bottom margin.
-//
-// Markup: ../kss-templates/grouping-p.twig
-//
-// Weight: -2
-//
-// Style guide: base.grouping.p
-
-p,
-pre {
-  // Set units of vertical rhythm on the top and bottom margin.
-  margin: rhythm(2) 0;
-}
-
 // Pre-formatted text
 //
 // The `<pre>` element represents a block of pre-formatted text, such as
 // fragments of computer code, ASCII art, etc.
 //
-// Markup: ../kss-templates/grouping-pre.twig
+// Markup: kss-templates/grouping-pre.twig
 //
 // Style guide: base.grouping.pre
 

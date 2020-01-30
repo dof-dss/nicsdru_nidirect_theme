@@ -5,19 +5,96 @@
  * Functions to support theming in the nicsdru_nidirect_theme theme.
  */
 
+use Drupal\Core\Template\Attribute;
 use Drupal\Core\Link;
+use Drupal\Core\Render\Markup;
+use Drupal\Core\Url;
 use Drupal\user\Entity\User;
+use Drupal\Component\Utility\Html;
 
 /**
- * Implements hook_preprocess_page() for page.html.twig.
+ * Implements hook_preprocess_html().
+ */
+function nicsdru_nidirect_theme_preprocess_html(array &$variables) {
+  $request = \Drupal::request();
+
+  // Remove Driving Instructor facet block from initial View pageview.
+  if ($request->getRequestUri() == '/services/driving-instructors' && is_null($request->getQueryString())) {
+    if ($variables['page']['sidebar_first']['drivinginstructorcategories']) {
+      $variables['page']['sidebar_first']['drivinginstructorcategories']['#access'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
  */
 function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
-  if ($node = \Drupal::routeMatch()->getParameter('node')) {
-    if ($node->bundle() == 'article') {
-      $variables['main_content_attr']['class'][] = 'grid';
-      $variables['main_content_attr']['class'][] = 'layout--article-n-side';
-      $variables['sidebar_second_attr']['class'][] = 'ga-aside';
+  $layout_classes = ['grid', 'layout--main-n-side'];
+  $node = Drupal::routeMatch()->getParameter('node');
+  if (is_object($node) && !empty($node->bundle())) {
+    switch ($node->bundle()) {
+      case "article":
+      case "application":
+      case "contact":
+      case "gp-practice":
+      case "health_condition":
+      case "news":
+      case "page":
+      case "recipe":
+        $variables['main_content_attr']->addClass($layout_classes);
+        $variables['sidebar_second_attr']->addClass('ga-aside');
+        $variables['#attached']['library'][] = 'nicsdru_nidirect_theme/nidirect-table-of-contents';
+        break;
     }
+  }
+
+  // Process search view pages.
+  $viewpage = \Drupal::routeMatch()->getParameter('view_id');
+  if (isset($viewpage)) {
+    $search_layout_classes = ['grid', 'layout--side-n-main', 'search-content'];
+    switch ($viewpage) {
+      case "gp_practices":
+      case "health_conditions":
+      case "publications":
+        $variables['main_content_attr']->addClass($search_layout_classes);
+        $variables['sidebar_first_attr']
+          ->addClass('ga-aside')
+          ->setAttribute('role', 'search')
+          ->setAttribute('aria-label', t('filter search results'));
+        break;
+    }
+  }
+
+  // Contacts page uses multiple routes defined in nidirect_contacts module.
+  $route = \Drupal::routeMatch()->getRouteName();
+  if ($route == "nidirect_contacts.default" || $route == "nidirect_contacts.letter") {
+    $layout_classes[] = 'search-content';
+    $variables['main_content_attr']->addClass($layout_classes);
+    if ($variables['content_wrapper_attr'] instanceof Attribute) {
+      $variables['content_wrapper_attr']
+        ->addClass('ga-main')
+        ->setAttribute('role', 'presentation');
+    }
+    $variables['sidebar_second_attr']->addClass('ga-aside');
+  }
+
+  if (isset($variables['is_front']) && $variables['is_front'] == TRUE) {
+    $variables['main_content_attr']->addClass('grid');
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
+  switch ($variables['node']->getType()) {
+    case "article":
+    case "application":
+    case "contact":
+    case "news":
+      $variables['attributes']['class'][] = Html::cleanCssIdentifier('ga-main');
+      break;
   }
 }
 
@@ -34,15 +111,102 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
     $content_type = $variables['element']['#bundle'];
     switch ($content_type) {
       case 'health_condition':
-        _build_audit_link('health_condition', $variables);
+        $msg = _build_audit_link('health_condition', $variables);
+        if ($msg) {
+          // Send out 'needs audit' link as a Drupal warning message.
+          // N.B. This will only be visible if the 'System Messages'
+          // block is visible.
+          \Drupal::messenger()->addWarning(t($msg->jsonSerialize()));
+          // Make sure that this page is not cached.
+          $variables['#cache'] = ['max-age' => 0];
+        }
         break;
 
       case 'article':
       case 'contact':
       case 'page':
-        _build_audit_link('article', $variables);
+        $msg = _build_audit_link('article', $variables);
+        if ($msg) {
+          // Send out 'needs audit' link as a Drupal warning message.
+          // N.B. This will only be visible if the 'System Messages'
+          // block is visible.
+          \Drupal::messenger()->addWarning(t($msg->jsonSerialize()));
+          // Make sure that this page is not cached.
+          $variables['#cache'] = ['max-age' => 0];
+        }
         break;
     }
+  }
+  // Add a class to the anchor tag on application link fields & append the icon.
+  if (isset($variables['element'])
+    && $variables['element']['#field_name'] == 'field_link'
+    && $variables['element']['#bundle'] == 'application'
+  ) {
+    foreach ($variables['items'] as $key => $item) {
+      $icon = '<svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg>';
+      $title = $item['content']['#title'];
+      $classes = ['btn', 'call-to-action'];
+
+      $formattedTitle = Markup::create($title . $icon);
+
+      $variables['items'][0]['content']['#title'] = $formattedTitle;
+      $variables['items'][0]['content']['#url']->setOption('attributes', ['class' => $classes]);
+    }
+  }
+  // Amend classes on the standard address field output.
+  if (isset($variables['element'])
+    && $variables['element']['#field_type'] == 'address'
+  ) {
+    for ($i = 0; $i < count($variables['items']); $i++) {
+      $variables['items'][$i]["content"]["#prefix"] = '<p class="adr" translate="no">';
+      if (($key = array_search('address-line1', $variables['items'][$i]['content']['address_line1']['#attributes']['class'])) !== FALSE) {
+        unset($variables['items'][$i]['content']['address_line1']['#attributes']['class'][$key]);
+      }
+      $variables['items'][$i]['content']['address_line1']['#attributes']['class'][] = 'street-address';
+      if (($key = array_search('address-line2', $variables['items'][$i]['content']['address_line2']['#attributes']['class'])) !== FALSE) {
+        unset($variables['items'][$i]['content']['address_line2']['#attributes']['class'][$key]);
+      }
+      $variables['items'][$i]['content']['address_line2']['#attributes']['class'][] = 'street-address';
+      $i++;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
+  // Amend the role / labelling for search results pages.
+  if ($variables['id'] === 'publications' && $variables['display_id'] === 'search_page') {
+    $search_classes = [
+      'ga-main',
+      'card-deck',
+      'search-results',
+      'border-bottom',
+    ];
+
+    if ($variables['attributes'] instanceof Attribute) {
+      $variables['attributes']
+        ->addClass($search_classes)
+        ->setAttribute('role', 'region')
+        ->setAttribute('aria-label', t('search results'));
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_form().
+ */
+function nicsdru_nidirect_theme_preprocess_form(array &$variables) {
+  switch ($variables['element']['#id']) {
+    case "views-exposed-form-contacts-contact-search":
+    case "views-exposed-form-driving-instructors-driving-instructor-results":
+    case "views-exposed-form-gp-practices-find-a-gp":
+    case "views-exposed-form-health-conditions-search-page":
+    case "views-exposed-form-publications-search-page":
+      $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form');
+      $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form--page');
+      break;
   }
 }
 
@@ -52,18 +216,18 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
 function _build_audit_link($type, &$variables) {
   // Only start this processing if the 'origins_workflow'
   // module is installed.
-  if (\Drupal::service('module_handler')->moduleExists('origins_workflow')) {
+  if (Drupal::service('module_handler')->moduleExists('origins_workflow')) {
     // Get the current node.
-    $node = \Drupal::routeMatch()->getParameter('node');
+    $node = Drupal::routeMatch()->getParameter('node');
     if (!empty($node)) {
       $nid = $node->id();
       if (!empty($nid)) {
         if ($type == 'health_condition') {
-          $variables['audit_link'] = _audit_link($type, $node->get('field_next_review_date')->value, $nid);
+          return _audit_link($type, $node->get('field_next_review_date')->value, $nid);
         }
         else {
           // This will be an article, contact or page.
-          $variables['audit_link'] = _audit_link($type, $node->get('field_next_audit_due')->value, $nid);
+          return _audit_link($type, $node->get('field_next_audit_due')->value, $nid);
         }
       }
     }
@@ -74,15 +238,15 @@ function _build_audit_link($type, &$variables) {
  * Utility function to build the audit link html.
  */
 function _audit_link($type, $dt, $nid) {
-  if (strtotime($dt) < \Drupal::time()->getCurrentTime()) {
+  if (!empty($dt) && (strtotime($dt) < Drupal::time()->getCurrentTime())) {
     // Next review date is in the past,
     // so this node is due for audit - display node edit link
     // (if the user is allowed to see it).
-    $account = User::load(\Drupal::currentUser()->id());
+    $account = User::load(Drupal::currentUser()->id());
     if ($account->hasPermission('audit content')) {
       // Retrieve audit text from config.
-      $audit_button_text = \Drupal::config('origins_workflow.auditsettings')->get('audit_button_text');
-      $audit_button_hover_text = \Drupal::config('origins_workflow.auditsettings')->get('audit_button_hover_text');
+      $audit_button_text = Drupal::config('origins_workflow.auditsettings')->get('audit_button_text');
+      $audit_button_hover_text = Drupal::config('origins_workflow.auditsettings')->get('audit_button_hover_text');
       // Set up common attributes for links.
       $options = [
         'attributes' => [
@@ -104,12 +268,118 @@ function _audit_link($type, $dt, $nid) {
         $link_object = Link::createFromRoute($audit_button_text, 'origins_workflow.audit_controller_content_audit', ['nid' => $nid], $options);
       }
       if ($link_object) {
-        // Return render array.
-        return $link_object->toRenderable();
+        // Return rendered link.
+        $link_rendered = $link_object->toRenderable();
+        \Drupal::service('renderer')->renderRoot($link_rendered);
+        return $link_rendered['#markup'];
       }
       else {
         return "";
       }
     }
   }
+}
+
+/**
+ * Implements hook_preprocess_taxonomy_term().
+ */
+function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
+  if ($variables['term']->getVocabularyId() != 'site_themes') {
+    // We are only interested in the 'site themes' vocab.
+    return;
+  }
+  $cache_tags = [];
+  // Add a custom cache tag for this taxonomy term 'listing' page.
+  $cache_tags[] = 'taxonomy_term_list:' . $variables['term']->id();
+  // Add the standard taxonomy term cache tag as well.
+  $cache_tags[] = 'taxonomy_term:' . $variables['term']->id();
+  // Render the 'articles by term' view and process the results.
+  $results = _render_articles_by_term($cache_tags);
+  // Render the 'site subtopics' view and process the results.
+  $results += _render_site_subtopics($cache_tags);
+  // Sort entries alphabetically (regardless of type).
+  ksort($results);
+  // Return as an 'item_list' themed render array, with
+  // cache tags set appropriately.
+  $variables['information_services_output'] = [
+    '#theme' => 'item_list',
+    '#items' => $results,
+    '#cache' => [
+      'tags' => $cache_tags,
+    ],
+  ];
+}
+
+/**
+ * Utility function to render 'articles by term' view.
+ */
+function _render_articles_by_term(&$cache_tags) {
+  // Render the 'articles by term' view and process the results.
+  $results = [];
+  $articles_view = views_embed_view('articles_by_term', 'articles_by_term_embed');
+  \Drupal::service('renderer')->renderRoot($articles_view);
+  foreach ($articles_view['view_build']['#view']->result as $row) {
+    // This will be a link to an article.
+    $results[strtolower($row->_entity->getTitle())] = [
+      '#type' => 'link',
+      '#title' => $row->_entity->getTitle(),
+      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $row->nid]),
+    ];
+    // Add cache tag for each article.
+    $cache_tags[] = 'node:' . $row->nid;
+  }
+  return $results;
+}
+
+/**
+ * Utility function to render 'site subtopics' view.
+ */
+function _render_site_subtopics(&$cache_tags) {
+  // Get a list of taxonomy terms that have been overridden
+  // by campaigns.
+  $terms_to_override = _render_campaign_list();
+  // Render the 'site subtopics' view and process the results.
+  $results = [];
+  $subtopics_view = views_embed_view('site_subtopics', 'by_topic_simple_embed');
+  \Drupal::service('renderer')->renderRoot($subtopics_view);
+  foreach ($subtopics_view['view_build']['#view']->result as $row) {
+    // Do we need to override?
+    if (array_key_exists($row->tid, $terms_to_override)) {
+      // This will be a link to a campaign (landing page).
+      $results[strtolower($terms_to_override[$row->tid]['#title'])] = $terms_to_override[$row->tid];
+      continue;
+    }
+    // This will be a link to another taxonomy page.
+    $results[strtolower($row->_entity->getName())] = [
+      '#type' => 'link',
+      '#title' => $row->_entity->getName(),
+      '#url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $row->tid]),
+    ];
+    // Add cache tag for each listed term.
+    $cache_tags[] = 'taxonomy_term:' . $row->tid;
+  }
+  return $results;
+}
+
+/**
+ * Utility function to render 'campaign list' view.
+ */
+function _render_campaign_list() {
+  // Render the 'campaign list' view to see which taxonomy terms
+  // have been overridden.
+  $campaigns_view = views_embed_view('articles_by_term', 'campaigns_embed');
+  \Drupal::service('renderer')->renderRoot($campaigns_view);
+  $terms_to_override = [];
+  // Store taxonomy term tids that are overridden
+  // by campaigns.
+  foreach ($campaigns_view['view_build']['#view']->result as $row) {
+    if (isset($row->_entity->get('field_subtheme')->target_id)) {
+      $terms_to_override[$row->_entity->get('field_subtheme')->target_id] = [
+        '#type' => 'link',
+        '#title' => $row->_entity->getTitle(),
+        '#url' => Url::fromRoute('entity.node.canonical', ['node' => $row->nid]),
+      ];
+    }
+  }
+  return $terms_to_override;
 }

@@ -1,0 +1,1 @@
+@media (min-width: 768px){.layout--triptych{grid-template-columns:repeat(3, 1fr);grid-gap:20px}.layout--triptych>*{float:left;width:33%}}

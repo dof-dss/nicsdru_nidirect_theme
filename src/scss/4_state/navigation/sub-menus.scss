@@ -1,0 +1,40 @@
+/*
+ * @file
+ *
+ */
+@import '../../init';
+
+//
+.rel-menu {
+  border-top: 5px solid color(brand-primary-medium);
+  background-color: color(brand-primary-lightest);
+  padding: 27px 10px 9px;
+
+  .menu-title {
+    @include adjust-font-size-to(24px, 4.5);
+    margin: 0 0 2.1rem;
+  }
+
+  .nav-menu {
+    margin-bottom: 2.7rem;
+  }
+}
+
+//
+.toc {
+  background-color: transparent;
+
+  &-aside {
+    display: none;
+
+    @include breakpoint($tab) {
+      display: block;
+    }
+  }
+
+  &-main {
+    @include breakpoint($tab) {
+      @include visually-hidden;
+    }
+  }
+}
