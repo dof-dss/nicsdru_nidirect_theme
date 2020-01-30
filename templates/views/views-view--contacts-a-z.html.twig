@@ -44,36 +44,33 @@
     {{ title }}
   {% endif %}
 
-  {% if exposed %}
-    <div class="view-filters">
-      {{ exposed }}
-    </div>
-  {% endif %}
+  <div role="search" aria-label="{{ 'filter list of contacts'|t }}">
+    {% if exposed %}
+        {{ exposed }}
+    {% endif %}
 
-  {% if header %}
-    <div class="view-header">
-      {{ header }}
-    </div>
-  {% endif %}
+    {% if header %}
+        {{ header }}
+    {% endif %}
 
-  {% if links %}
-    <div class="view-links">
-      {% for link in links %}
-        {{ link }}
-        {% if not loop.last %}
-          |
-        {% endif %}
-      {% endfor %}
-    </div>
-  {% endif %}
-
+    {% if links %}
+      <div class="view-links" aria-label="{{ 'search options'|t }}">
+        {% for link in links %}
+          {{ link }}
+          {% if not loop.last %}
+            |
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
 
   {% if rows %}
-    <div class="view-content">
+    <div class="view-content" aria-label="{{ 'list of contacts'|t }}" role="region">
       {{ rows }}
     </div>
   {% elseif empty %}
-    <div class="view-empty">
+    <div class="view-empty" aria-label="{{ 'list of contact search results'|t }}" role="region">
       {{ empty }}
     </div>
   {% endif %}
