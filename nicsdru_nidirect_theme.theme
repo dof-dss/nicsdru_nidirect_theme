@@ -177,6 +177,7 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
  */
 function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
   // Amend the role / labelling for search results pages.
+  $search_classes = ['ga-main', 'card-deck', 'border-bottom', 'search-results'];
   if ($variables['id'] === 'publications' && $variables['display_id'] === 'search_page') {
     $search_classes = [
       'ga-main',
@@ -191,6 +192,15 @@ function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
         ->setAttribute('role', 'region')
         ->setAttribute('aria-label', t('search results'));
     }
+  }
+
+  if ($variables['id'] === 'gp_practices' && $variables['display_id'] === 'find_a_gp') {
+    if (!isset($variables['attributes']['class'])) {
+      $variables['attributes']['class'] = [];
+    }
+    $variables['attributes']['class'] = array_merge($variables['attributes']['class'], $search_classes);
+    $variables['attributes']['role'] = 'region';
+    $variables['attributes']['aria-label'] = t('search results');
   }
 }
 
