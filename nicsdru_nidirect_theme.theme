@@ -5,15 +5,12 @@
  * Functions to support theming in the nicsdru_nidirect_theme theme.
  */
 
-use Drupal\block\Entity\Block;
-use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Template\Attribute;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
-use Drupal\node\NodeInterface;
 use Drupal\user\Entity\User;
 use Drupal\Component\Utility\Html;
-use Drupal\Core\Template\Attribute;
 
 /**
  * Implements hook_preprocess_html().
@@ -33,6 +30,7 @@ function nicsdru_nidirect_theme_preprocess_html(array &$variables) {
  * Implements hook_preprocess_page().
  */
 function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
+  $layout_classes = ['grid', 'layout--main-n-side'];
   $node = Drupal::routeMatch()->getParameter('node');
   if (is_object($node) && !empty($node->bundle())) {
     switch ($node->bundle()) {
@@ -44,34 +42,45 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       case "news":
       case "page":
       case "recipe":
-        $variables['main_content_attr']['class'][] = 'grid';
-        $variables['main_content_attr']['class'][] = 'layout--main-n-side';
-        $variables['sidebar_second_attr']['class'][] = 'ga-aside';
+        $variables['main_content_attr']->addClass($layout_classes);
+        $variables['sidebar_second_attr']->addClass('ga-aside');
         $variables['#attached']['library'][] = 'nicsdru_nidirect_theme/nidirect-table-of-contents';
         break;
     }
   }
 
   // Process search view pages.
-  $viewpage = Drupal::routeMatch()->getParameter('view_id');
+  $viewpage = \Drupal::routeMatch()->getParameter('view_id');
   if (isset($viewpage)) {
+    $search_layout_classes = ['grid', 'layout--side-n-main', 'search-content'];
     switch ($viewpage) {
-      case "article":
       case "gp_practices":
       case "health_conditions":
       case "publications":
-        $variables['main_content_attr']['class'][] = 'grid';
-        $variables['main_content_attr']['class'][] = 'layout--side-n-main';
-        $variables['main_content_attr']['class'][] = 'search-content';
-        $variables['sidebar_first_attr']['class'][] = 'ga-aside';
-        $variables['sidebar_first_attr']['role'] = 'search';
-        $variables['sidebar_first_attr']['aria-label'] = t('filter search results');
+        $variables['main_content_attr']->addClass($search_layout_classes);
+        $variables['sidebar_first_attr']
+          ->addClass('ga-aside')
+          ->setAttribute('role', 'search')
+          ->setAttribute('aria-label', t('filter search results'));
         break;
     }
   }
 
+  // Contacts page uses multiple routes defined in nidirect_contacts module.
+  $route = \Drupal::routeMatch()->getRouteName();
+  if ($route == "nidirect_contacts.default" || $route == "nidirect_contacts.letter") {
+    $layout_classes[] =  'search-content';
+    $variables['main_content_attr']->addClass($layout_classes);
+    if ($variables['content_wrapper_attr'] instanceof Attribute) {
+      $variables['content_wrapper_attr']
+        ->addClass('ga-main')
+        ->setAttribute('role', 'presentation');
+    }
+    $variables['sidebar_second_attr']->addClass('ga-aside');
+  }
+
   if (isset($variables['is_front']) && $variables['is_front'] == TRUE) {
-    $variables['main_content_attr']['class'][] = 'grid';
+    $variables['main_content_attr']->addClass('grid');
   }
 }
 
@@ -105,8 +114,11 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
         $msg = _build_audit_link('health_condition', $variables);
         if ($msg) {
           // Send out 'needs audit' link as a Drupal warning message.
-          // N.B. This will only be visible if the 'System Messages' block is visible.
+          // N.B. This will only be visible if the 'System Messages'
+          // block is visible.
           \Drupal::messenger()->addWarning(t($msg->jsonSerialize()));
+          // Make sure that this page is not cached.
+          $variables['#cache'] = ['max-age' => 0];
         }
         break;
 
@@ -116,8 +128,11 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
         $msg = _build_audit_link('article', $variables);
         if ($msg) {
           // Send out 'needs audit' link as a Drupal warning message.
-          // N.B. This will only be visible if the 'System Messages' block is visible.
+          // N.B. This will only be visible if the 'System Messages'
+          // block is visible.
           \Drupal::messenger()->addWarning(t($msg->jsonSerialize()));
+          // Make sure that this page is not cached.
+          $variables['#cache'] = ['max-age' => 0];
         }
         break;
     }
@@ -167,16 +182,15 @@ function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
       'ga-main',
       'card-deck',
       'search-results',
-      'border-bottom'
+      'border-bottom',
     ];
 
-    if (!isset($variables['attributes']['class'])) {
-      $variables['attributes']['class'] = [];
+    if ($variables['attributes'] instanceof Attribute) {
+      $variables['attributes']
+        ->addClass($search_classes)
+        ->setAttribute('role', 'region')
+        ->setAttribute('aria-label', t('search results'));
     }
-
-    $variables['attributes']['class'] = array_merge($variables['attributes']['class'], $search_classes);
-    $variables['attributes']['role'] = 'region';
-    $variables['attributes']['aria-label'] = t('search results');
   }
 }
 
@@ -186,6 +200,8 @@ function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
 function nicsdru_nidirect_theme_preprocess_form(array &$variables) {
   switch ($variables['element']['#id']) {
     case "views-exposed-form-contacts-contact-search":
+    case "views-exposed-form-driving-instructors-driving-instructor-results":
+    case "views-exposed-form-gp-practices-find-a-gp":
     case "views-exposed-form-health-conditions-search-page":
     case "views-exposed-form-publications-search-page":
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form');
@@ -222,7 +238,7 @@ function _build_audit_link($type, &$variables) {
  * Utility function to build the audit link html.
  */
 function _audit_link($type, $dt, $nid) {
-  if (strtotime($dt) < Drupal::time()->getCurrentTime()) {
+  if (!empty($dt) && (strtotime($dt) < Drupal::time()->getCurrentTime())) {
     // Next review date is in the past,
     // so this node is due for audit - display node edit link
     // (if the user is allowed to see it).
