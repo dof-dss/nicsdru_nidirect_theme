@@ -51,8 +51,17 @@ fieldset,
     margin-top: -.5em !important;
   }
 
-  & > .form-item {
-    margin: 1em 0 0 0;
+  & > .form-item,
+  & > .fieldset-wrapper > .form-item,
+  fieldset {
+    margin: 1em 0 1em;
+    &:last-child {
+      margin: 1em 0 0;
+    }
+    &:first-child,
+    &:first-of-type {
+      margin: 0 0 1em;
+    }
   }
 }
 
@@ -65,9 +74,8 @@ fieldset h2,
 }
 
 label, .label {
-
   @include responsive-typo-map($body-text);
-  margin: 0 0 .5em;
+  margin: 0;
   padding: 0;
   font-weight: normal;
   color: $charcoal;
@@ -89,6 +97,18 @@ label, .label {
       margin-top: -.6rem;
     }
   }
+}
+
+[type='text'],
+[type='search'],
+[type='tel'],
+[type='url'],
+[type='email'],
+[type='password'],
+[type='date'],
+[type='time'],
+[type='number'] {
+  max-width: 56rem;
 }
 
 select,
