@@ -178,7 +178,7 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
 function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
   // Amend the role / labelling for search results pages.
   if ($variables['id'] === 'publications' && $variables['display_id'] === 'search_page') {
-    $search_classes = ['ga-main', 'card-deck', 'search-results', 'border-bottom'];
+    $search_classes = ['ga-main', 'card-deck', 'border-bottom', 'search-results'];
     if (!isset($variables['attributes']['class'])) {
       $variables['attributes']['class'] = [];
     }
