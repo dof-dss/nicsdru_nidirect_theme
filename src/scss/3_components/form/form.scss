@@ -99,6 +99,18 @@ label, .label {
   }
 }
 
+[type='text'],
+[type='search'],
+[type='tel'],
+[type='url'],
+[type='email'],
+[type='password'],
+[type='date'],
+[type='time'],
+[type='number'] {
+  max-width: 56rem;
+}
+
 select,
 [type='text'],
 [type='search'],
