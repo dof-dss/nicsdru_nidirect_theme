@@ -33,7 +33,7 @@
 ]
 %}
 {{ attach_library('nicsdru_origins_theme/toggle-list') }}
-<nav{{ attributes.removeClass('views-element-container').addClass(classes).setAttribute('aria-labelledby', 'related-content').removeAttribute('id') }}>
+<div{{ attributes.removeClass('views-element-container').addClass(classes).setAttribute('aria-labelledby', 'related-content').removeAttribute('id') }}>
   {{ title_prefix }}
   {% if label %}
     <h2{{ title_attributes.addClass('menu-title').setAttribute('id', 'related-content') }}>{{ label }}</h2>
@@ -42,4 +42,4 @@
   {% block content %}
     {{ content }}
   {% endblock %}
-</nav>
+</div>
