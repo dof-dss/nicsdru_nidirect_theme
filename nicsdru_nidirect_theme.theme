@@ -177,20 +177,24 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
  */
 function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
   // Amend the role / labelling for search results pages.
+  $search_classes = ['ga-main', 'card-deck', 'border-bottom', 'search-results'];
   if ($variables['id'] === 'publications' && $variables['display_id'] === 'search_page') {
-    $search_classes = [
-      'ga-main',
-      'card-deck',
-      'search-results',
-      'border-bottom',
-    ];
-
-    if ($variables['attributes'] instanceof Attribute) {
-      $variables['attributes']
-        ->addClass($search_classes)
-        ->setAttribute('role', 'region')
-        ->setAttribute('aria-label', t('search results'));
+    $search_classes = ['ga-main', 'card-deck', 'border-bottom', 'search-results'];
+    if (!isset($variables['attributes']['class'])) {
+      $variables['attributes']['class'] = [];
     }
+    $variables['attributes']['class'] = array_merge($variables['attributes']['class'], $search_classes);
+    $variables['attributes']['role'] = 'region';
+    $variables['attributes']['aria-label'] = t('search results');
+  }
+
+  if ($variables['id'] === 'gp_practices' && $variables['display_id'] === 'find_a_gp') {
+    if (!isset($variables['attributes']['class'])) {
+      $variables['attributes']['class'] = [];
+    }
+    $variables['attributes']['class'] = array_merge($variables['attributes']['class'], $search_classes);
+    $variables['attributes']['role'] = 'region';
+    $variables['attributes']['aria-label'] = t('search results');
   }
 }
 
@@ -199,6 +203,7 @@ function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
  */
 function nicsdru_nidirect_theme_preprocess_form(array &$variables) {
   switch ($variables['element']['#id']) {
+    case "views-exposed-form-contacts-a-z-contacts-by-letter":
     case "views-exposed-form-contacts-contact-search":
     case "views-exposed-form-driving-instructors-driving-instructor-results":
     case "views-exposed-form-gp-practices-find-a-gp":
