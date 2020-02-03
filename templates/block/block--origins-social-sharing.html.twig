@@ -25,18 +25,10 @@
  * @see template_preprocess_block()
  */
 #}
-{%
-  set classes = [
-  'sub-menu',
-  'rel-menu',
-  'toggle-list',
-]
-%}
-{{ attach_library('nicsdru_origins_theme/toggle-list') }}
-<div{{ attributes.removeClass('views-element-container').addClass(classes).setAttribute('aria-labelledby', 'related-content').removeAttribute('id') }}>
+<div{{ attributes.addClass('container') }}>
   {{ title_prefix }}
   {% if label %}
-    <h2{{ title_attributes.addClass('menu-title').setAttribute('id', 'related-content') }}>{{ label }}</h2>
+    <h2{{ title_attributes }}>{{ label }}</h2>
   {% endif %}
   {{ title_suffix }}
   {% block content %}
