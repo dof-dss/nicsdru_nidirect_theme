@@ -62,8 +62,8 @@
 
     input[type=radio] + &,
     input[type=checkbox] + & {
-      width: max-content;
-      max-width: 300px;
+      width: fit-content;
+      min-width: 150px;
     }
 
     &:after,
@@ -86,6 +86,23 @@
   // webform css adds margin - no need for margins on child labels
   label {
     margin: 0;
+  }
+}
+
+.js-webform-radios.webform-options-display-one-column {
+  label {
+    max-width: 50%;
+  }
+  input.error + .form-item--error-message {
+    top: .5em;
+    left: calc(50% + .9rem);
+    max-width: calc(50% - .9rem);
+    & > .error:after {
+      border-bottom-color: transparent;
+      border-right: .9rem solid $hc-red;
+      top: 1.3rem;
+      left: -1.8rem;
+    }
   }
 }
 
