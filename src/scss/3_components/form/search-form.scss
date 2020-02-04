@@ -199,3 +199,10 @@ header .search-form {
     background-color: $brand-tertiary;
   }
 }
+
+// Set the view links on search views so that they match design @ see /contacts/*
+.search-results {
+  .view-links {
+    @include adjust-font-size-to(16px, 4);
+  }
+}

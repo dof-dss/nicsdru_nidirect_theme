@@ -13,7 +13,7 @@
  */
 #}
 {% if content %}
-<div class="container" role="presentation">
-  {{ content }}
-</div>
+  <div{{ attributes.addClass('container').setAttribute('role', 'presentation') }}>
+    {{ content }}
+  </div>
 {% endif %}
