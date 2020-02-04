@@ -211,10 +211,12 @@ input[type="radio"], .form-radio, input[type="checkbox"], .form-checkbox {
 
   @include adjust-font-size-to(16px, 4);
 
-  // css trick to vertically center in parent div
+
   position: absolute;
-  top: 50%;
-  transform: translate(0,-50%);
+  // css trick to vertically center in parent div
+  //top: 50%;
+  //transform: translate(0,-50%);
+  top: calc(1em + .5rem);
   z-index: 1;
   left: 1rem;
   clear: both;
@@ -246,7 +248,7 @@ input[type="radio"], .form-radio, input[type="checkbox"], .form-checkbox {
 
   &.error ~ label {
     border-color: $error;
-    outline-color: $error !important;
+    outline-color: $error;
     background-color: $error-bg;
     box-shadow: none;
     color: $charcoal;
@@ -257,10 +259,12 @@ input[type="radio"], .form-radio, input[type="checkbox"], .form-checkbox {
   }
 
   &:checked ~ label {
+    border-color: $brand-primary-medium;
     background-color: $brand-primary-lightest;
   }
 
   &:focus ~ label {
+    border-color: $brand-primary-medium;
     outline: 3px solid $brand-primary-medium;
     outline-offset: -2px;
   }
