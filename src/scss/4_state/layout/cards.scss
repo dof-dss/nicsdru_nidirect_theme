@@ -55,8 +55,10 @@
   .view--count {
     margin-top: 0;
   }
+}
 
-  &.view-search {
+.search-content {
+  .view-search {
     max-width: 720px;
   }
 }
