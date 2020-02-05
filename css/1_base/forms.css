@@ -38,8 +38,8 @@ input {
 }
 
 /* line 59, src/scss/1_base/forms.scss */
-input[type='text']:focus,
-input[type='search']:focus {
+[type='text']:focus,
+[type='search']:focus {
   outline: 0;
 }
 
@@ -83,6 +83,8 @@ input[type='search']:focus {
   padding: 1rem;
   text-align: center;
   vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position-y: center;
 }
 
 @media (min-width: 600px) {
@@ -93,17 +95,17 @@ input[type='search']:focus {
   }
 }
 
-/* line 57, src/scss/3_components/form/button/_button-defs.scss */
+/* line 59, src/scss/3_components/form/button/_button-defs.scss */
 .btn:link, .btn:visited {
   color: #fff;
 }
 
-/* line 62, src/scss/3_components/form/button/_button-defs.scss */
+/* line 64, src/scss/3_components/form/button/_button-defs.scss */
 .btn:focus {
   outline: 3px solid #333;
 }
 
-/* line 69, src/scss/3_components/form/button/_button-defs.scss */
+/* line 85, src/scss/3_components/form/button/_button-defs.scss */
 .btn[disabled],
 button[disabled],
 [disabled][type='button'],
@@ -113,7 +115,7 @@ button[disabled],
   color: #e8e7e7;
 }
 
-/* line 74, src/scss/3_components/form/button/_button-defs.scss */
+/* line 90, src/scss/3_components/form/button/_button-defs.scss */
 .btn[disabled]:hover,
 button[disabled]:hover,
 [disabled]:hover[type='button'],

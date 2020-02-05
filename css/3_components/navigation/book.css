@@ -27,7 +27,7 @@
   margin: 0;
 }
 
-/* line 25, src/scss/3_components/navigation/book.scss */
+/* line 24, src/scss/3_components/navigation/book.scss */
 .book-navigation li.page-previous {
   text-align: left;
   background-color: #dfdfdf;
@@ -40,7 +40,7 @@
   padding-right: .7rem;
 }
 
-/* line 35, src/scss/3_components/navigation/book.scss */
+/* line 36, src/scss/3_components/navigation/book.scss */
 .book-navigation a,
 .book-navigation span {
   display: table-cell;
@@ -48,21 +48,21 @@
 }
 
 @media (min-width: 480px) {
-  /* line 42, src/scss/3_components/navigation/book.scss */
+  /* line 43, src/scss/3_components/navigation/book.scss */
   .book-navigation li {
     display: table-cell;
     vertical-align: middle;
     padding: 1.7rem;
     margin: 0;
   }
-  /* line 49, src/scss/3_components/navigation/book.scss */
+  /* line 50, src/scss/3_components/navigation/book.scss */
   .book-navigation a,
   .book-navigation span {
     display: block;
     width: 100%;
     float: none;
   }
-  /* line 56, src/scss/3_components/navigation/book.scss */
+  /* line 57, src/scss/3_components/navigation/book.scss */
   .book-navigation .page-previous,
   .book-navigation .page-next {
     padding: .7rem 2.1rem .7rem .7rem;
@@ -71,7 +71,7 @@
     border-left: 7px solid #dfdfdf;
     width: 42%;
   }
-  /* line 65, src/scss/3_components/navigation/book.scss */
+  /* line 66, src/scss/3_components/navigation/book.scss */
   .book-navigation .page-up {
     width: 16%;
   }

@@ -17,6 +17,8 @@
   padding: 1rem;
   text-align: center;
   vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position-y: center;
 }
 
 @media (min-width: 600px) {
@@ -27,12 +29,12 @@
   }
 }
 
-/* line 57, src/scss/3_components/form/button/_button-defs.scss */
+/* line 59, src/scss/3_components/form/button/_button-defs.scss */
 .call-to-action:link, .call-to-action:visited {
   color: #fff;
 }
 
-/* line 62, src/scss/3_components/form/button/_button-defs.scss */
+/* line 64, src/scss/3_components/form/button/_button-defs.scss */
 .call-to-action:focus {
   outline: 3px solid #333;
 }
