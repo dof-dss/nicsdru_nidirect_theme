@@ -229,7 +229,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      // sass-lint:disable no-transition-all
       transition: all .4s ease;
+      // sass-lint:enable no-transition-all
 
       /* Hamburger Lines - Top & Bottom */
       &::after,

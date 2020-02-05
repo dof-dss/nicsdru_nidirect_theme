@@ -70,55 +70,59 @@
 //
 // Style guide: components.layouts.cards.home-site-topics
 .section--info-services {
-  .card-deck {
-    grid-gap: 1.2rem 20px;
-    @include breakpoint($phab) {
-      grid-gap: 1.5rem 20px;
-      grid-template-columns: repeat(2, 1fr);
+  .card {
+    &-deck {
+      grid-gap: 1.2rem 20px;
+
+      @include breakpoint($phab) {
+        grid-gap: 1.5rem 20px;
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
-    .card {
-      &--title {
-        @include adjust-font-size-to(17px, 4);
+    &--title {
+      @include adjust-font-size-to(17px, 4);
+      font-weight: 700;
+      margin-bottom: .2rem;
+      @include breakpoint($phab) {
+        @include adjust-font-size-to(18px, 4.5);
         font-weight: 700;
-        margin-bottom: 0.2rem;
-        @include breakpoint($phab) {
-          @include adjust-font-size-to(18px, 4.5);
-          font-weight: 700;
-          margin-bottom: 0.3rem;
-        }
-
-        a {
-          text-decoration: underline;
-          &:focus {
-            text-decoration: none;
-          }
-        }
+        margin-bottom: .3rem;
       }
 
-      p,
-      .more-link {
-        @include adjust-font-size-to(15px, 3.5);
-        margin: 0;
-        @include breakpoint($phab) {
-          @include adjust-font-size-to(16px, 3.5);
+      a {
+        text-decoration: underline;
+
+        &:focus {
+          text-decoration: none;
         }
       }
+    }
 
-      .more-link {
-        font-weight: 700;
-        margin-top: 0.2rem;
-        @include breakpoint($tab) {
-          margin-top: 0.3rem;
-        }
+    p,
+    .more-link {
+      @include adjust-font-size-to(15px, 3.5);
+      margin: 0;
+      @include breakpoint($phab) {
+        @include adjust-font-size-to(16px, 3.5);
+      }
+    }
 
-        a {
-          color: $brand-secondary;
-          &:focus {
-            background-color: $brand-secondary;
-            outline-color: $brand-secondary;
-            color: $link-focus;
-          }
+    .more-link {
+      font-weight: 700;
+      margin-top: .2rem;
+
+      @include breakpoint($tab) {
+        margin-top: .3rem;
+      }
+
+      a {
+        color: $brand-secondary;
+
+        &:focus {
+          background-color: $brand-secondary;
+          outline-color: $brand-secondary;
+          color: $link-focus;
         }
       }
     }
