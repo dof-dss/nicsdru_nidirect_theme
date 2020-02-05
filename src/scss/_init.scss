@@ -36,22 +36,20 @@
 // Weight: -7
 //
 // Style guide: init.libraries
-
-// Add Chroma to manage colors.
 @import '../../node_modules/chroma-sass/sass/chroma';
 @import '../../node_modules/chroma-sass/sass/chroma/kss';
-@import 'init/compass-vr/compass';
+@import '../../node_modules/nicsdru_origins_theme/src/scss/init/compass-vr/compass';
 
 // Functions
 //
-// Custom functions used on this site.
+// Custom functions used on this site. Custom functions are generally used across a number of NICS Drupal themes,
+// therefore import these from the nicsdru_origins_theme via a node_module set up for that theme.
 //
 // Weight: -5
 //
 // Style guide: init.functions
-@import 'init/helpers/strip-unit';
-@import 'init/helpers/breakpoint-helpers';
-@import 'init/helpers/headings';
+@import '../../node_modules/nicsdru_origins_theme/src/scss/init/helpers/headings';
+@import '../../node_modules/nicsdru_origins_theme/src/scss/init/helpers/strip-unit';
 
 // Mixins
 //
@@ -60,5 +58,5 @@
 // Weight: -6
 //
 // Style guide: init.mixins
-@import 'init/visually-hidden/visually-hidden';
-@import 'init/responsive-typo/resp-typo';
+@import '../../node_modules/nicsdru_origins_theme/src/scss/init/visually-hidden/visually-hidden';
+@import '../../node_modules/nicsdru_origins_theme/src/scss/init/responsive-typo/resp-typo';

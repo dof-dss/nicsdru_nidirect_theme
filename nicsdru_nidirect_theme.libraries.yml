@@ -54,6 +54,7 @@ nidirect-specific-styles:
         css/4_state/layout/cards.css: { minified: true }
     theme:
       css/5_theme/entities.css: { minified: true }
+      css/5_theme/searches.css: { minified: true }
 
 fonts:
   css:

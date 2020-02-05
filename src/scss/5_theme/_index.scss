@@ -2,6 +2,7 @@
  * @file
  * Helper partial to outline the order theme files should be loaded - used for reference & in the style guide.
  */
+@import '../init';
 
 // Theme
 //
@@ -11,4 +12,22 @@
 //
 // Weight: -2
 //
-// Style guide: state
+// Style guide: theme
+
+// Entities
+//
+// Provides very specific styling for entities / content types.
+//
+// Weight: 1
+//
+// Style guide: theme.entities
+@import 'entities';
+
+// Searches
+//
+// Provides very specific styling for search index pages.
+//
+// Weight: 2
+//
+// Style guide: theme.searches
+@import 'searches';
