@@ -42,7 +42,6 @@
       }
 
       .ga-aside {
-        padding-top: 4.2rem;
         grid-area: side;
         /* no grid support? */
         float: right;
@@ -69,8 +68,13 @@
       grid-template-columns: .62fr 1-.62fr;
       grid-template-areas: 'main side';
     }
+
     @include breakpoint($lap) {
       grid-template-columns: .659575fr 1-.659575fr;
+    }
+
+    .ga-aside {
+      padding-top: 4.2rem;
     }
   }
 
