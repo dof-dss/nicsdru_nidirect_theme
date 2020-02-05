@@ -3,7 +3,7 @@
  * @file
  * Theme override to display a publication node in search result view mode.
 #}
-<h3><a href="{{ url }}">{{ label }}</a></h3>
+<h3 class="card--title"><a href="{{ url }}">{{ label }}</a></h3>
 <p class="meta">
   <span class="label-inline">{{ content.field_published_date | field_label }}</span>
   <span class="date-display-single">{{ content.field_published_date | field_value }}</span>
