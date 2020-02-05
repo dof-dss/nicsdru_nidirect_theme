@@ -11,7 +11,7 @@
 // top, bottom or both edges of the card. This declaration sets the base color for borders in a card deck as this rarely
 // changes in the site design. It can of course be further overridden with additional states as defined below.
 //
-// Style guide: components.layouts.cards
+// Style guide: state.layout.cards
 .card-deck {
   &.border-top,
   &.border-bottom {
@@ -31,9 +31,10 @@
       padding-bottom: .3rem;
     }
 
-    h3 {
+    h3,
+    .card--title {
       @include adjust-font-size-to(21px, 4);
-      margin-top: 0;
+      margin: 0 0 .6rem;
     }
 
     .meta {
@@ -44,6 +45,19 @@
         margin-left: 1rem;
       }
     }
+
+    .extract {
+      @include adjust-font-size-to(16px, 3.5);
+      margin: 1.5rem 0 1.2rem;
+    }
+  }
+
+  .view--count {
+    margin-top: 0;
+  }
+
+  &.view-search {
+    max-width: 720px;
   }
 }
 

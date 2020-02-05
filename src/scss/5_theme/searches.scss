@@ -1,0 +1,71 @@
+/*
+ * @file
+ * Provides very specific styling for search index pages.
+ */
+@import '../init';
+
+// GP Practice index page
+//
+// GP Practice search page outputs each search result in `.card` wrapper. Inside the wrapper there are a number of
+// details provided for each practice, for example the list practitioners, the address and whether they offer any online
+// services. The code inside the wrapper is all wrapped in a linking anchor tag (which takes the user to the full node
+// page of the given practice). To match the design we introduce here, style overrides for each of the individual
+// lines of code.
+//
+// Markup: ../kss-templates/gp-practice-search-card.twig
+//
+// Weight: -2
+//
+// Style guide: theme.searches.gp-practices
+#views-exposed-form-gp-practices-find-a-gp label {
+  @include adjust-font-size-to(16px, 4);
+}
+
+.search-results--gp-practice {
+  .card {
+    .adr {
+      margin: 0;
+
+      span {
+        display: inline-block;
+        padding-right: .3334em;
+        white-space: nowrap;
+
+        &::after {
+          content: ',';
+        }
+
+        &:last-child::after {
+          content: '';
+        }
+      }
+    }
+
+    .list--gp-practice-members {
+      margin: 0;
+    }
+
+    .list--gp-online-services {
+      margin: .6rem 0 0;
+
+      .list-item {
+        color: #666;
+        background: transparent resolve('status.svg') no-repeat right / 16px 16px;
+        margin-right: 4px;
+        padding-right: 18px;
+
+        @include breakpoint($mob, $no-query: true) {
+          background-size: 18px 18px;
+          margin-right: 7px;
+          padding-right: 22px;
+        }
+
+        @include breakpoint($phab, $no-query: true) {
+          background-size: 21px 21px;
+          margin-right: 9px;
+          padding-right: 25px;
+        }
+      }
+    }
+  }
+}

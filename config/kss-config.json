@@ -1,6 +1,6 @@
 {
   "//": "The source and destination paths are relative to this file.",
-  "source": "../src/",
+  "source": "../src/scss",
   "destination":  "../styleguide/",
   "builder": "nics-builder/",
 
