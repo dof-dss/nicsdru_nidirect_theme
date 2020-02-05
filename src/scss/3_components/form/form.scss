@@ -22,7 +22,7 @@ main form {
 form > .form-item,
 .form-wrapper > .form-item {
   padding: 0;
-  margin: 2em 0 2em;
+  margin: 2em 0;
 }
 
 .description {
@@ -54,10 +54,12 @@ fieldset,
   & > .form-item,
   & > .fieldset-wrapper > .form-item,
   fieldset {
-    margin: 1em 0 1em;
+    margin: 1em 0;
+
     &:last-child {
       margin: 1em 0 0;
     }
+
     &:first-child,
     &:first-of-type {
       margin: 0 0 1em;
@@ -73,7 +75,8 @@ fieldset h2,
   font-weight: normal;
 }
 
-label, .label {
+label,
+.label {
   @include responsive-typo-map($body-text);
   margin: 0;
   padding: 0;
@@ -81,19 +84,15 @@ label, .label {
   color: $charcoal;
 
   & + .form-radios {
-    margin-top: 3px;
     margin-top: .3rem;
     @include breakpoint($phab, $no-query: true) {
-      margin-top: 6px;
       margin-top: .6rem;
     }
   }
 
   &.visually-hidden + .form-radios {
-    margin-top: -4px;
     margin-top: -.4rem;
     @include breakpoint($phab, $no-query: true) {
-      margin-top: -6px;
       margin-top: -.6rem;
     }
   }
@@ -199,11 +198,14 @@ textarea,
   position: relative;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   border-radius: 0;
 }
 
-input[type="radio"], .form-radio, input[type="checkbox"], .form-checkbox {
+input[type='radio'],
+.form-radio,
+input[type='checkbox'],
+.form-checkbox {
 
   @include breakpoint($phab, $no-query: true) {
     @include adjust-font-size-to(18px, 4);
@@ -214,7 +216,7 @@ input[type="radio"], .form-radio, input[type="checkbox"], .form-checkbox {
   // css trick to vertically center in parent div
   position: absolute;
   top: 50%;
-  transform: translate(0,-50%);
+  transform: translate(0, -50%);
   z-index: 1;
   left: 1rem;
   clear: both;
@@ -225,20 +227,21 @@ input[type="radio"], .form-radio, input[type="checkbox"], .form-checkbox {
   line-height: 2.4rem;
   vertical-align: baseline;
   box-shadow: none;
-  border: none;
+  border: 0;
   color: inherit;
 
   // sibling labels
   & ~ label {
+    @include adjust-font-size-to(16px, 4);
     position: relative;
     left: 0;
     margin: .5em 0;
     padding: .9rem 1.5rem .9rem 3rem;
-    @include adjust-font-size-to(16px, 4);
     display: inline-block;
     vertical-align: baseline;
     min-width: 7.5rem;
     border: 1px solid $grey;
+
     @include breakpoint($phab, $no-query: true) {
       @include adjust-font-size-to(18px, 4);
     }
@@ -266,31 +269,37 @@ input[type="radio"], .form-radio, input[type="checkbox"], .form-checkbox {
   }
 }
 
-input[type="radio"], .form-radio {
+input[type='radio'],
+.form-radio {
   border: 2px solid $charcoal;
   border-radius: 50% !important;
   background-color: #fff;
   width: 1.6rem;
   height: 1.6rem;
+
   &:checked {
     background-color: #2daff7;
     border-style: inset;
   }
 }
 
-input[type="checkbox"], .form-checkbox {
+input[type='checkbox'],
+.form-checkbox {
   border: 2px solid $charcoal;
   border-radius: 0;
   background-color: #fff;
   width: 1.6rem;
   height: 1.6rem;
+
   &:checked {
     background-color: #2daff7;
     border-style: inset;
   }
 }
 
-input[type="submit"], input[type="button"], .webform-submit {
+input[type='submit'],
+input[type='button'],
+.webform-submit {
   @extend %btn;
   @include btn-color($btn-primary, #fff);
   @include btn-size('large');

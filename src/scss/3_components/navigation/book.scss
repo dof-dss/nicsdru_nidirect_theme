@@ -20,16 +20,17 @@
     line-height: 2.4rem;
     padding: 1.5rem 2.1rem 1.5rem 1.4rem;
     margin: 0;
-  }
 
-  li.page-previous {
-    text-align: left;
-    background-color: #dfdfdf;
-  }
-  li.page-next {
-    text-align: right;
-    background-color: #dfdfdf;
-    padding-right: .7rem;
+    &.page-previous {
+      text-align: left;
+      background-color: #dfdfdf;
+    }
+
+    &.page-next {
+      text-align: right;
+      background-color: #dfdfdf;
+      padding-right: .7rem;
+    }
   }
 
   a,
