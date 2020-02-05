@@ -62,8 +62,8 @@
 
     input[type='radio'] + &,
     input[type='checkbox'] + & {
-      width: max-content;
-      max-width: 300px;
+      width: fit-content;
+      min-width: 150px;
     }
 
     &::after,
@@ -88,4 +88,20 @@
     margin: 0;
   }
 }
+
+.webform-submission-form {
+  .form-submit:not(:first-child) {
+    margin-left: 1.5em;
+  }
+}
+
+input[type='submit'].webform-button--next {
+  @extend %btn-right;
+}
+
+input[type='submit'].webform-button--previous {
+  @extend %btn-left;
+  @include btn-color($btn, $charcoal);
+}
+
 
