@@ -20,7 +20,8 @@ main form {
 }
 
 form > .form-item,
-.form-wrapper > .form-item {
+.form-wrapper > .form-item,
+fieldset {
   padding: 0;
   margin: 2em 0 2em;
 }
@@ -52,8 +53,7 @@ fieldset,
   }
 
   & > .form-item,
-  & > .fieldset-wrapper > .form-item,
-  fieldset {
+  & > .fieldset-wrapper > .form-item {
     margin: 1em 0 1em;
     &:last-child {
       margin: 1em 0 0;
@@ -73,7 +73,7 @@ fieldset h2,
   font-weight: normal;
 }
 
-label, .label {
+label, .label, fieldset fieldset:first-child legend {
   @include responsive-typo-map($body-text);
   margin: 0;
   padding: 0;
