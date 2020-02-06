@@ -60,21 +60,21 @@
     box-shadow: 6px 6px 9px 0 rgba(0, 0, 0, .3);
     opacity: 1;
 
-    input[type=radio] + &,
-    input[type=checkbox] + & {
+    input[type='radio'] + &,
+    input[type='checkbox'] + & {
       width: max-content;
       max-width: 300px;
     }
 
-    &:after,
-    &:before {
+    &::after,
+    &::before {
       content: '';
       border: .9rem solid transparent;
       position: absolute;
       left: .9rem;
     }
 
-    &:after {
+    &::after {
       border-bottom: .9rem solid $hc-red;
       top: -1.8rem;
     }

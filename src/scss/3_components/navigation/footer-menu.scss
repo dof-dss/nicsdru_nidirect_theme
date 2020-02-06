@@ -5,6 +5,7 @@
 
   a {
     color: $link;
+
     &:focus {
       outline-color: $link;
       background-color: $link;
@@ -32,7 +33,8 @@
   }
 
   &-main {
-    padding-top: 0.3rem;
+    padding-top: .3rem;
+
     .nav-menu {
       display: flex;
       flex-wrap: wrap;
@@ -84,17 +86,6 @@
       }
 
       a {
-
-        &:focus {
-          border: 0;
-          outline-offset: -2px;
-        }
-
-        @include breakpoint($tab) {
-          width: 4rem;
-          height: 4rem;
-        }
-
         display: block;
         width: 4.4rem;
         height: 4.4rem;
@@ -105,6 +96,16 @@
         font-size: 0; /* Safari inline-block white space bug fix */
         text-indent: -9999px;
         text-decoration: none;
+
+        &:focus {
+          border: 0;
+          outline-offset: -2px;
+        }
+
+        @include breakpoint($tab) {
+          width: 4rem;
+          height: 4rem;
+        }
       }
 
       a[href*='https://twitter.com'] {
@@ -125,5 +126,3 @@
     }
   }
 }
-
-

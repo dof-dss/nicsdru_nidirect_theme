@@ -17,12 +17,14 @@ use Drupal\Component\Utility\Html;
  */
 function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
   $layout_classes = ['grid', 'layout--main-n-side'];
+  $search_layout_classes = ['grid', 'layout--side-n-main', 'search-content'];
   $node = Drupal::routeMatch()->getParameter('node');
   if (is_object($node) && !empty($node->bundle())) {
     switch ($node->bundle()) {
       case "article":
       case "application":
-      case "gp-practice":
+      case "contact":
+      case "gp_practice":
       case "health_condition":
       case "news":
       case "page":
@@ -31,19 +33,13 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         $variables['sidebar_second_attr']->addClass('ga-aside');
         $variables['#attached']['library'][] = 'nicsdru_nidirect_theme/nidirect-table-of-contents';
         break;
-      case "contact":
-        $variables['main_content_attr']->addClass($layout_classes);
-        $variables['sidebar_second_attr']->addClass('ga-aside');
-        break;
     }
   }
 
   // Process search view pages.
   $viewpage = \Drupal::routeMatch()->getParameter('view_id');
   if (isset($viewpage)) {
-    $search_layout_classes = ['grid', 'layout--side-n-main', 'search-content'];
     switch ($viewpage) {
-      case "gp_practices":
       case "health_conditions":
       case "publications":
         $variables['main_content_attr']->addClass($search_layout_classes);
@@ -51,6 +47,10 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
           ->addClass('ga-aside')
           ->setAttribute('role', 'search')
           ->setAttribute('aria-label', t('filter search results'));
+        break;
+      case "search":
+        $layout_classes[] = 'search-content';
+        $variables['main_content_attr']->addClass('search-content');
         break;
     }
   }
@@ -66,6 +66,14 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         ->setAttribute('role', 'presentation');
     }
     $variables['sidebar_second_attr']->addClass('ga-aside');
+  }
+
+  if ($route == "nidirect_gp.gp_search") {
+    $variables['main_content_attr']->addClass($search_layout_classes);
+    $variables['sidebar_first_attr']
+      ->addClass('ga-aside')
+      ->setAttribute('role', 'search')
+      ->setAttribute('aria-label', t('filter search results'));
   }
 
   if (isset($variables['is_front']) && $variables['is_front'] == TRUE) {
