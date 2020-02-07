@@ -91,15 +91,18 @@ label,
   }
 
   &.visually-hidden {
+
     & + .form-radios {
       margin-top: -.4rem;
       @include breakpoint($phab, $no-query: true) {
         margin-top: -.6rem;
       }
     }
+
     & + input {
       margin-top: -1.5em;
     }
+
   }
 }
 
