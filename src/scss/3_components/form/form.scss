@@ -214,15 +214,14 @@ input[type='checkbox'],
 
   @include breakpoint($phab, $no-query: true) {
     @include adjust-font-size-to(18px, 4);
+    top: 2.3rem;
   }
 
   @include adjust-font-size-to(16px, 4);
 
-  // css trick to vertically center in parent div
+  // Position to look like it's inside it's associated label
   position: absolute;
-  //top: 50%;
-  //transform: translate(0, -50%);
-  top: 2.2rem;
+  top: 2.1rem;
   z-index: 1;
   left: 1rem;
   clear: both;
@@ -242,14 +241,16 @@ input[type='checkbox'],
     position: relative;
     left: 0;
     margin: .5em 0 0;
-    padding: .9rem 1.5rem .9rem 3rem;
+    padding: .55em 1.5rem .45em 3rem; // Right padding makes space for the input to sit in
     display: inline-block;
     vertical-align: baseline;
     min-width: 7.5rem;
+    min-height: 4.4rem;
     border: 1px solid $grey;
 
     @include breakpoint($phab, $no-query: true) {
       @include adjust-font-size-to(18px, 4);
+      min-height: 4.5rem;
     }
   }
 
