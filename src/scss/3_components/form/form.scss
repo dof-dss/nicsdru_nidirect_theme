@@ -112,7 +112,13 @@ label,
 [type='date'],
 [type='time'],
 [type='number'] {
-  max-width: 56rem;
+  max-width: 29rem;
+  @include breakpoint($phab, $no-query: true) {
+    max-width: 45rem;
+  }
+  @include breakpoint($tab, $no-query: true) {
+    max-width: 56rem;
+  }
 }
 
 select,
@@ -165,7 +171,7 @@ textarea {
   line-height: 1.3;
   padding: .6em 1.4em .5em .8em;
   box-sizing: border-box;
-  margin: rhythm(1) 0 0;
+  margin: .5em 0;
   border: 1px solid $grey-dark;
   border-radius: 0;
   -moz-appearance: none;
@@ -223,7 +229,7 @@ input[type='checkbox'],
   position: absolute;
   top: 2.1rem;
   z-index: 1;
-  left: 1rem;
+  left: 1.2rem;
   clear: both;
   margin: 0;
   padding: 0;
@@ -233,6 +239,7 @@ input[type='checkbox'],
   vertical-align: baseline;
   box-shadow: none;
   border: 0;
+  outline: none;
   color: inherit;
 
   // sibling labels
@@ -241,7 +248,7 @@ input[type='checkbox'],
     position: relative;
     left: 0;
     margin: .5em 0 0;
-    padding: .55em 1.5rem .45em 3rem; // Right padding makes space for the input to sit in
+    padding: .55em 1.5rem .45em 3.6rem; // Right padding makes space for the input to sit in
     display: inline-block;
     vertical-align: baseline;
     min-width: 7.5rem;
@@ -278,15 +285,15 @@ input[type='checkbox'],
 
 input[type='radio'],
 .form-radio {
+  appearance: none;
   border: 2px solid $charcoal;
   border-radius: 50% !important;
   background-color: #fff;
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.8rem;
+  height: 1.8rem;
 
   &:checked {
     background-color: #2daff7;
-    border-style: inset;
   }
 }
 
@@ -295,8 +302,8 @@ input[type='checkbox'],
   border: 2px solid $charcoal;
   border-radius: 0;
   background-color: #fff;
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.8rem;
+  height: 1.8rem;
 
   &:checked {
     background-color: #2daff7;
