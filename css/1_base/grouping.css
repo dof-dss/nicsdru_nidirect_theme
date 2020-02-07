@@ -1,1 +1,83 @@
-blockquote{margin:.6rem 1.8rem}dl,menu,ol,ul{margin:.6rem 0}ol ol,ol ul,ul ol,ul ul{margin:0}dd{margin:0 0 0 1.8rem}menu,ol,ul{padding:0 0 0 1.8rem}li{font-size:1.6rem;line-height:1.5;color:#333;margin-bottom:.5em}@media screen and (min-width: 768px){li{font-size:1.8rem}}li:last-child{margin-bottom:0}figure{margin:0}hr{box-sizing:content-box;border:0;border-top:1px solid #e8e7e7;height:0;overflow:visible;padding-bottom:-1px;margin:6px 0}pre{white-space:pre-wrap}
+/*
+ * @file
+ * Sets out the base behaviour of grouping elements.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 28, src/scss/1_base/grouping.scss */
+blockquote {
+  margin: 0.6rem 1.8rem;
+}
+
+/* line 68, src/scss/1_base/grouping.scss */
+dl,
+menu,
+ol,
+ul {
+  margin: 0.6rem 0;
+}
+
+/* line 79, src/scss/1_base/grouping.scss */
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+  margin: 0;
+}
+
+/* line 89, src/scss/1_base/grouping.scss */
+dd {
+  margin: 0 0 0 1.8rem;
+}
+
+/* line 94, src/scss/1_base/grouping.scss */
+menu,
+ol,
+ul {
+  padding: 0 0 0 1.8rem;
+}
+
+/* line 100, src/scss/1_base/grouping.scss */
+li {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: .5em;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 100, src/scss/1_base/grouping.scss */
+  li {
+    font-size: 1.8rem;
+  }
+}
+
+/* line 105, src/scss/1_base/grouping.scss */
+li:last-child {
+  margin-bottom: 0;
+}
+
+/* line 122, src/scss/1_base/grouping.scss */
+figure {
+  margin: 0;
+}
+
+/* line 141, src/scss/1_base/grouping.scss */
+hr {
+  box-sizing: content-box;
+  border: 0;
+  border-top: 1px solid #e8e7e7;
+  height: 0;
+  overflow: visible;
+  padding-bottom: -1px;
+  margin: 6px 0;
+}
+
+/* line 162, src/scss/1_base/grouping.scss */
+pre {
+  white-space: pre-wrap;
+}
+
+/*# sourceMappingURL=grouping.css.map */

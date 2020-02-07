@@ -56,8 +56,8 @@ input {
   overflow: visible;
 }
 
-input[type='text']:focus,
-input[type='search']:focus {
+[type='text']:focus,
+[type='search']:focus {
   outline: 0; // For Safari
 }
 
