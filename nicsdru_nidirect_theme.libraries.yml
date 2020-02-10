@@ -19,7 +19,6 @@ nidirect-global-styles:
     # The SMACSS category, "layout", is loaded after "base" styles.
     layout:
       css/2_layouts/layouts-common.css: { weight: -100, minified: true }
-      css/2_layouts/layouts-teaser.css: { minified: true }
       css/2_layouts/nics-2-col-layouts.css: { minified: true }
     # The SMACSS category, "component", is loaded after "base and layout" styles.
     component:
@@ -55,6 +54,7 @@ nidirect-specific-styles:
     theme:
       css/5_theme/entities.css: { minified: true }
       css/5_theme/searches.css: { minified: true }
+      css/5_theme/views.css: { minified: true }
 
 fonts:
   css:
