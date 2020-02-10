@@ -32,16 +32,15 @@
     }
 
     h3,
-    .card--title {
+    .card__title {
       @include adjust-font-size-to(21px, 4);
       margin: 0 0 .6rem;
     }
 
-    .meta {
-      @include adjust-font-size-to(16px, 4);
+    .card__meta {
       margin: 1.5rem 0;
 
-      &-list-item {
+      .meta-list-item {
         margin-left: 1rem;
       }
     }
@@ -82,7 +81,7 @@
       }
     }
 
-    &--title {
+    &__title {
       @include adjust-font-size-to(17px, 4);
       font-weight: 700;
       margin-bottom: .2rem;

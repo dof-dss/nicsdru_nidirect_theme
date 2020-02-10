@@ -28,7 +28,47 @@
     }
   }
 
-  &--title {
+  &__title {
     margin-top: 0;
+  }
+
+  &__meta {
+    @include adjust-font-size-to(16px, 4);
+  }
+
+  // Featured news card
+  //
+  // A specific card layout that takes .
+  //
+  // Style guide: components.layouts.cards.featured-news
+  &--featured-news {
+    display: grid;
+    grid-template-columns: 150px auto;
+    grid-gap: 0 1.5rem;
+    margin-bottom: 2.7rem;
+
+    & > * {
+      grid-column: 2;
+      margin: 0;
+    }
+
+    .card {
+      &__title {
+        @include adjust-font-size-to(18px, 4);
+      }
+
+      &__meta {
+        color: $meta;
+      }
+
+      &__content {
+        @include adjust-font-size-to(16px, 3.5);
+      }
+
+      &__image {
+        grid-column: 1;
+        grid-row: 1 / 10;
+      }
+    }
   }
 }

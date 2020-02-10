@@ -64,7 +64,7 @@
   }
 
   &--main-n-side {
-    @include breakpoint($tab) {
+  @include breakpoint($tab) {
       grid-template-columns: .62fr 1-.62fr;
       grid-template-areas: 'main side';
     }
