@@ -57,6 +57,7 @@ $chroma: add-colors('functional', (
   // Colors used in the main content area.
   text:                   'charcoal',
   headings:               #19315a,
+  meta:                   'grey-dark',
 
   link:                   #0e6bb3,
   link-visited:           #5e60b5,
@@ -117,6 +118,7 @@ $brand-tertiary: color(brand-tertiary);
 
 $text: color('text');
 $headings: color(headings);
+$meta: color('grey-dark');
 
 $link: color(link);
 $link-hover: color(link-hover);
