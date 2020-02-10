@@ -13,20 +13,6 @@ use Drupal\user\Entity\User;
 use Drupal\Component\Utility\Html;
 
 /**
- * Implements hook_preprocess_html().
- */
-function nicsdru_nidirect_theme_preprocess_html(array &$variables) {
-  $request = \Drupal::request();
-
-  // Remove Driving Instructor facet block from initial View pageview.
-  if ($request->getRequestUri() == '/services/driving-instructors' && is_null($request->getQueryString())) {
-    if ($variables['page']['sidebar_first']['drivinginstructorcategories']) {
-      $variables['page']['sidebar_first']['drivinginstructorcategories']['#access'] = FALSE;
-    }
-  }
-}
-
-/**
  * Implements hook_preprocess_page().
  */
 function nicsdru_nidirect_theme_preprocess_page(array &$variables) {

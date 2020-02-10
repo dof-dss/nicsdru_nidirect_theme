@@ -72,6 +72,10 @@ a:hover {
   outline-width: 0;
 }
 
+a[aria-hidden=true] {
+  @include visually-hidden;
+}
+
 .skip-link,
 .skip-link:visited {
   opacity: .75;
