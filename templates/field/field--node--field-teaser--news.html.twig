@@ -46,19 +46,25 @@
   {% if multiple %}
     <div{{ attributes }}>
       {% for item in items %}
-        {{ item.content }}
+        <div{{ item.attributes }}>{{ item.content }}</div>
       {% endfor %}
     </div>
   {% else %}
     {% for item in items %}
-      <div{{ attributes }}>{{ item.content }}</div>
+      <p{{ attributes.addClass('card__content') }}>{{ item.content }}</p>
     {% endfor %}
   {% endif %}
 {% else %}
   <div{{ attributes }}>
-    <h2{{ title_attributes.addClass(title_classes) }}>{{ 'Map location'|t }}</h2>
+    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+    {% if multiple %}
+      <div>
+    {% endif %}
     {% for item in items %}
-      {{ item.content }}
+      <div{{ item.attributes }}>{{ item.content }}</div>
     {% endfor %}
+    {% if multiple %}
+      </div>
+    {% endif %}
   </div>
 {% endif %}

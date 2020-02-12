@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Theme override to display a news node in teaser view mode.
+ * Theme override to display a node.
  *
  * Available variables:
  * - node: The node entity with limited access to object properties and methods.
@@ -64,27 +64,46 @@
  *   is an administrator.
  *
  * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
  */
 #}
-{{ title_prefix }}
-{% if label and not page %}
-  <h3{{ title_attributes.addClass('card__title') }}>
-    <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-  </h3>
-{% endif %}
-{{ title_suffix }}
-{% if content.field_published_date %}
-  {% spaceless %}
-    <p class="card__meta">
-      <span class="visually-hidden">{{ 'Published:'|t }}</span>
-      {{ content.field_published_date | field_value }}
-    </p>
-  {% endspaceless %}
-{% endif %}
-{% if content_attributes is not empty %}
-<div{{ content_attributes }}>
+<a href="{{ url }}" rel="bookmark">
+  {{- title_prefix -}}
+    <h3{{ title_attributes.addClass('card__title') }}>
+      {{- label -}}
+    </h3>
+  {{- title_suffix -}}
+  {% if content.field_gp_practice_lead %}
+    {% spaceless %}
+      <ul class="list--no-bullet list--inline list--gp-practice-members">
+        <li class="list-item">{{- content.field_gp_practice_lead[0]['#plain_text'] -}}</li>
+        {% for key, item in content.field_gp_practice_member if key|first != '#' %}
+          <li class="list-item">{{ item }}</li>
+        {% endfor %}
+      </ul>
+    {% endspaceless %}
   {% endif %}
-  {{- content|without('field_published_date') -}}
-  {% if  content_attributes is not empty %}
-</div>
-{% endif %}
+  {% set address_field %}
+    {{- content|without('field_gp_practice_lead', 'field_gp_practice_member', 'field_gp_prescriptions', 'field_gp_appointments') -}}
+  {% endset %}
+  {% spaceless %}
+    {{ address_field|striptags('<p><span>')|raw }}
+  {% endspaceless %}
+
+  {% if content.field_gp_appointments or content.field_gp_prescriptions %}
+    <p class="visually-hidden">The practice offers the following online services</p>
+    {% spaceless %}
+      <ul class="list--no-bullet list--inline list--gp-online-services">
+        {% if content.field_gp_appointments %}
+          <li class="list-item">Online Appointments</li>
+        {% endif %}
+        {% if content.field_gp_prescriptions %}
+          <li class="list-item">Repeat prescriptions</li>
+        {% endif %}
+      </ul>
+    {% endspaceless %}
+  {% endif %}
+</a>

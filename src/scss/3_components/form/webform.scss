@@ -32,14 +32,22 @@
 
 /* Error Tool Tip Styles*/
 .form-item--error-message {
-  position: absolute;
+  position: relative;
   top: 100%;
   left: -1px;
   margin-top: -1px;
   z-index: 101;
+  width: fit-content;
+  max-width: 56rem;
 
   .webform-counter + & {
     margin-top: calc(.5em - 1px);
+  }
+
+  .webform-counter + &,
+  [type=radio] + &,
+  [type=checkbox] + & {
+    position: absolute;
   }
 
   & > * {
@@ -51,35 +59,52 @@
     @include responsive-typo-map($body-text);
     font-weight: bold;
     display: block;
+    position: absolute;
     position: relative;
     padding: .9rem;
     color: $white;
     background-color: $hc-red;
     border: 1px solid $hc-red;
     border-radius: 3px;
-    box-shadow: 6px 6px 9px 0 rgba(0, 0, 0, .3);
+    box-shadow: 4px 4px 9px 0 rgba(0, 0, 0, .3);
     opacity: 1;
 
-    input[type=radio] + &,
-    input[type=checkbox] + & {
-      width: max-content;
-      max-width: 300px;
-    }
-
-    &:after,
-    &:before {
+    &::after {
       content: '';
       border: .9rem solid transparent;
+      border-bottom-color: $hc-red;
       position: absolute;
-      left: .9rem;
-    }
-
-    &:after {
-      border-bottom: .9rem solid $hc-red;
       top: -1.8rem;
+      left: .9rem;
     }
   }
 }
+
+.webform-options-display-one-column {
+  input ~ label {
+    width: calc(60% - .9rem);
+  }
+
+  .form-item--error-message {
+    width: calc(40% - .9rem);
+    top: .5em;
+    left: 60%;
+
+    > .error::after {
+      border-bottom-color: transparent;
+      border-right-color: $hc-red;
+      top: .75em;
+      left: -1.8rem;
+    }
+  }
+}
+
+.webform-options-display-side-by-side .form-item--error-message {
+  top: calc(100% + .9rem);
+  width: max-content;
+  min-width: 16rem;
+}
+
 
 /* webform radios and checkboxes displayed inline are wrapped with this class */
 .webform-options-display-side-by-side {
@@ -88,4 +113,20 @@
     margin: 0;
   }
 }
+
+.webform-submission-form {
+  .form-submit:not(:first-child) {
+    margin-left: 1.5em;
+  }
+}
+
+input[type='submit'].webform-button--next {
+  @extend %btn-right;
+}
+
+input[type='submit'].webform-button--previous {
+  @extend %btn-left;
+  @include btn-color($btn, $charcoal);
+}
+
 

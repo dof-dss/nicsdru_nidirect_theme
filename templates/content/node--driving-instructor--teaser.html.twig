@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Theme override to display a news node in teaser view mode.
+ * Twig template for driving instructor teaser display mode.
  *
  * Available variables:
  * - node: The node entity with limited access to object properties and methods.
@@ -66,25 +66,12 @@
  * @see template_preprocess_node()
  */
 #}
-{{ title_prefix }}
-{% if label and not page %}
-  <h3{{ title_attributes.addClass('card__title') }}>
-    <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-  </h3>
-{% endif %}
-{{ title_suffix }}
-{% if content.field_published_date %}
-  {% spaceless %}
-    <p class="card__meta">
-      <span class="visually-hidden">{{ 'Published:'|t }}</span>
-      {{ content.field_published_date | field_value }}
-    </p>
-  {% endspaceless %}
-{% endif %}
-{% if content_attributes is not empty %}
-<div{{ content_attributes }}>
-  {% endif %}
-  {{- content|without('field_published_date') -}}
   {% if  content_attributes is not empty %}
-</div>
-{% endif %}
+  <div{{ content_attributes }}>
+    {% endif %}
+    <h3>{{ content.group_teaser_title.field_di_lastname | field_value }},{{ content.group_teaser_title.field_di_firstname | field_value }}</h3>
+    <span>ADI / AMI number:</span> {{ content.field_di_adi_no | field_value }}
+    {{ content | without('group_teaser_title', 'field_di_adi_no') }}
+    {% if  content_attributes is not empty %}
+  </div>
+  {% endif %}

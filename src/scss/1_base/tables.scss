@@ -14,6 +14,8 @@
 //
 // Style guide: base.table
 
+$table-border-color: #666 !default;
+
 table {
   // Add vertical rhythm margins.
   @include leader(1);
@@ -21,12 +23,71 @@ table {
   // Remove most spacing between table cells.
   border-collapse: collapse;
   border-spacing: 0;
-  // Prevent cramped-looking tables
+  // Prevent cramped-looking tables.
   width: 100%;
+
+  &.table-fixed-width {
+    table-layout: fixed;
+  }
+
+  p {
+    margin: .9rem 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 td,
 th {
+  @include adjust-font-size-to(14px, 3.5);
+  box-sizing: border-box;
   // Remove most spacing between table cells.
-  padding: 0;
+  border-right: 1px solid $table-border-color;
+  border-top: 1px solid $table-border-color;
+  padding: .2rem;
+  text-align: left;
+  vertical-align: top;
+
+  @include breakpoint($phab, $no-query: true) {
+    @include adjust-font-size-to(16px, 4);
+    padding: .4rem;
+  }
+
+  & * {
+    @include adjust-font-size-to(16px, 4);
+  }
+
+  &:first-child {
+    border-left: 1px solid $table-border-color;
+  }
+}
+
+th {
+  background-color: $brand-primary-light;
+  border-bottom: 1px solid $table-border-color;
+
+  &:last-child {
+    border-right: 1px solid $table-border-color;
+  }
+}
+
+td {
+  background-color: #fff;
+  border-bottom: 1px solid $table-border-color;
+}
+
+tr {
+  &:nth-child(odd) td {
+    background: $grey-lightest;
+  }
+
+  &:nth-child(even) td {
+    background: #fff;
+  }
 }

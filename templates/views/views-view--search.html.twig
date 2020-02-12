@@ -37,41 +37,34 @@
     'view-id-' ~ id,
     'view-display-id-' ~ display_id,
     dom_id ? 'js-view-dom-id-' ~ dom_id,
+    'ga-main',
+    'card-deck',
     'search-results',
+    'border-bottom',
   ]
 %}
 <div {{attributes.addClass(classes)}}>
   {% if title %}
     {{ title }}
   {% endif %}
-
-  <div role="search" aria-label="{{ 'filter list of contacts'|t }}">
-    {% if exposed %}
+  {% if exposed %}
+    <div class="view-filters" role="search" aria-label="{{ "filter search results"|t }}">
       {{ exposed }}
-    {% endif %}
-
-    {% if header %}
-      {{ header }}
-    {% endif %}
-
-    {% if links %}
-      <div class="view-links" aria-label="{{ 'search options'|t }}">
-        {% for link in links %}
-          {{ link }}
-          {% if not loop.last %}
-            |
-          {% endif %}
-        {% endfor %}
-      </div>
-    {% endif %}
-  </div>
+    </div>
+  {% endif %}
 
   {% if rows %}
-    <div class="view-content" aria-label="{{ 'list of contacts'|t }}" role="region">
+    <div class="view-content" role="region" aria-label="{{ "search results"|t }}">
+      {% if header %}
+          {{ header }}
+      {% endif %}
       {{ rows }}
     </div>
   {% elseif empty %}
-    <div class="view-empty" aria-label="{{ 'list of contact search results'|t }}" role="region">
+    <div class="view-empty" role="region" aria-label="{{ "search results"|t }}">
+      {% if header %}
+          {{ header }}
+      {% endif %}
       {{ empty }}
     </div>
   {% endif %}

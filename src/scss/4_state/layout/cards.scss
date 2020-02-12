@@ -11,7 +11,7 @@
 // top, bottom or both edges of the card. This declaration sets the base color for borders in a card deck as this rarely
 // changes in the site design. It can of course be further overridden with additional states as defined below.
 //
-// Style guide: components.layouts.cards
+// Style guide: state.layout.cards
 .card-deck {
   &.border-top,
   &.border-bottom {
@@ -31,19 +31,34 @@
       padding-bottom: .3rem;
     }
 
-    h3 {
+    h3,
+    .card__title {
       @include adjust-font-size-to(21px, 4);
-      margin-top: 0;
+      margin: 0 0 .6rem;
     }
 
-    .meta {
-      @include adjust-font-size-to(16px, 4);
+    .card__meta {
       margin: 1.5rem 0;
 
-      &-list-item {
+      .meta-list-item {
         margin-left: 1rem;
       }
     }
+
+    .extract {
+      @include adjust-font-size-to(16px, 3.5);
+      margin: 1.5rem 0 1.2rem;
+    }
+  }
+
+  .view--count {
+    margin-top: 0;
+  }
+}
+
+.search-content {
+  .view-search {
+    max-width: 720px;
   }
 }
 
@@ -56,55 +71,59 @@
 //
 // Style guide: components.layouts.cards.home-site-topics
 .section--info-services {
-  .card-deck {
-    grid-gap: 1.2rem 20px;
-    @include breakpoint($phab) {
-      grid-gap: 1.5rem 20px;
-      grid-template-columns: repeat(2, 1fr);
+  .card {
+    &-deck {
+      grid-gap: 1.2rem 20px;
+
+      @include breakpoint($phab) {
+        grid-gap: 1.5rem 20px;
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
-    .card {
-      &--title {
-        @include adjust-font-size-to(17px, 4);
+    &__title {
+      @include adjust-font-size-to(17px, 4);
+      font-weight: 700;
+      margin-bottom: .2rem;
+      @include breakpoint($phab) {
+        @include adjust-font-size-to(18px, 4.5);
         font-weight: 700;
-        margin-bottom: 0.2rem;
-        @include breakpoint($phab) {
-          @include adjust-font-size-to(18px, 4.5);
-          font-weight: 700;
-          margin-bottom: 0.3rem;
-        }
-
-        a {
-          text-decoration: underline;
-          &:focus {
-            text-decoration: none;
-          }
-        }
+        margin-bottom: .3rem;
       }
 
-      p,
-      .more-link {
-        @include adjust-font-size-to(15px, 3.5);
-        margin: 0;
-        @include breakpoint($phab) {
-          @include adjust-font-size-to(16px, 3.5);
+      a {
+        text-decoration: underline;
+
+        &:focus {
+          text-decoration: none;
         }
       }
+    }
 
-      .more-link {
-        font-weight: 700;
-        margin-top: 0.2rem;
-        @include breakpoint($tab) {
-          margin-top: 0.3rem;
-        }
+    p,
+    .more-link {
+      @include adjust-font-size-to(15px, 3.5);
+      margin: 0;
+      @include breakpoint($phab) {
+        @include adjust-font-size-to(16px, 3.5);
+      }
+    }
 
-        a {
-          color: $brand-secondary;
-          &:focus {
-            background-color: $brand-secondary;
-            outline-color: $brand-secondary;
-            color: $link-focus;
-          }
+    .more-link {
+      font-weight: 700;
+      margin-top: .2rem;
+
+      @include breakpoint($tab) {
+        margin-top: .3rem;
+      }
+
+      a {
+        color: $brand-secondary;
+
+        &:focus {
+          background-color: $brand-secondary;
+          outline-color: $brand-secondary;
+          color: $link-focus;
         }
       }
     }
