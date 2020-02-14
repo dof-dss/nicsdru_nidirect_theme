@@ -82,7 +82,9 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
   }
 
   if (isset($variables['is_front']) && $variables['is_front'] == TRUE) {
-    $variables['main_content_attr']->addClass('grid');
+    $front_classes = ['grid', 'layout--front'];
+    $variables['main_content_attr']->addClass($front_classes);
+    $variables['sidebar_second_attr']->addClass('section--popular');
   }
 }
 
