@@ -25,10 +25,10 @@
  * @see template_preprocess_block()
  */
 #}
-{% set classes = ['section--featured', 'ga-full'] %}
-{% set attributes = attributes.removeClass('views-element-container').addClass(classes) %}
-{% set attributes = attributes.removeAttribute('id') %}
-<section{{ attributes }}>
+{% set attributes = attributes.removeClass('views-element-container') %}
+{% set attributes = attributes.setAttribute('id', 'gtm-home-popular-info') %}
+{% set attributes = attributes.setAttribute('role', 'presentation') %}
+<div{{ attributes.setAttribute('role', 'presentation') }}>
   {{ title_prefix }}
   {% if label %}
     <h2{{ title_attributes }}>{{ label }}</h2>
@@ -37,4 +37,4 @@
   {% block content %}
     {{ content }}
   {% endblock %}
-</section>
+</div>
