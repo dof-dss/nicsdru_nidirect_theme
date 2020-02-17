@@ -9,6 +9,8 @@ use Drupal\Core\Template\Attribute;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
 use Drupal\user\Entity\User;
 use Drupal\Component\Utility\Html;
 
@@ -234,7 +236,13 @@ function _build_audit_link($type, &$variables) {
     // Get the current node.
     $node = Drupal::routeMatch()->getParameter('node');
     if (!empty($node)) {
-      $nid = $node->id();
+      $nid = NULL;
+      if (is_object($node) && ($node instanceof NodeInterface)) {
+        $nid = $node->id();
+      } elseif (is_string($node)) {
+        $nid = $node;
+        $node = Node::load($nid);
+      }
       if (!empty($nid)) {
         if ($type == 'health_condition') {
           return _audit_link($type, $node->get('field_next_review_date')->value, $nid);
