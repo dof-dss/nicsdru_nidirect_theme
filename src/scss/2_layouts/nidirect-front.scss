@@ -1,0 +1,37 @@
+/*
+ * @file
+ * Provides the layout styles for nidirect front page.
+ */
+
+@import '../init';
+
+// Front page layout
+//
+// The front page is a bespoke page
+//
+// Markup: ../kss-templates/layouts-front.twig
+//
+// Weight: -6
+//
+// Style guide: layouts.front
+
+.layout--front {
+  grid-template-columns: 68% 1fr;
+  grid-gap: 0 20px;
+}
+
+.section {
+  &--info-services,
+  &--popular {
+    padding-bottom: 2.7rem;
+  }
+
+  &--popular {
+    background-color: $grey-light;
+    padding: 0 15px;
+  }
+
+  &--featured {
+    border-top: 10px solid color(brand-primary-medium);
+  }
+}
