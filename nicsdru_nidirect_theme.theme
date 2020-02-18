@@ -239,7 +239,7 @@ function _build_audit_link($type, &$variables) {
       $nid = NULL;
       if (is_object($node) && ($node instanceof NodeInterface)) {
         $nid = $node->id();
-      } 
+      }
       elseif (is_string($node)) {
         $nid = $node;
         $node = Node::load($nid);
