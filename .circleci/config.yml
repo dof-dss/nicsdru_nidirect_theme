@@ -82,11 +82,11 @@ jobs:
           name: Fetch phpcs convenience script
           command: |
             cd /home/circleci
-            curl https://raw.githubusercontent.com/dof-dss/nidirect-drupal/development/phpcs.sh -o /home/circleci/phpcs.sh
+            curl https://raw.githubusercontent.com/dof-dss/nidirect-drupal/master/phpcs.sh -o /home/circleci/phpcs.sh
             # Enable ignore variable.
             sed -i -e "s/\#IGNORE/IGNORE/" phpcs.sh
             # Add unwanted paths to this ignore variable.
-            sed -i -e "s/web\/themes\/custom\/nicsdru_nidirect_theme\/node_modules/project\/node_modules/" phpcs.sh
+            sed -i -e "s/web\/themes\/custom\/THEMENAME\/node_modules/project\/node_modules,\${DRUPAL_DEPLOY_PATH}\/vendor/" phpcs.sh
             # Make the file executable.
             chmod +x /home/circleci/phpcs.sh
       - run:
@@ -136,7 +136,7 @@ jobs:
               # Enable ignore variable.
               sed -i -e "s/\#IGNORE/IGNORE/" phpcs.sh
               # Add unwanted paths to this ignore variable.
-              sed -i -e "s/web\/themes\/custom\/nicsdru_nidirect_theme\/node_modules/project\/node_modules/" phpcs.sh
+              sed -i -e "s/web\/themes\/custom\/THEMENAME\/node_modules/project\/node_modules,\${DRUPAL_DEPLOY_PATH}\/vendor/" phpcs.sh
               # Make the file executable.
               chmod +x /home/circleci/phpcs.sh
               cat /home/circleci/phpcs.sh
