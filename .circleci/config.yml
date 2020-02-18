@@ -54,6 +54,8 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y libpng-dev
             sudo docker-php-ext-install gd
+      - checkout
+      # Restore global composer cache.
       - restore_cache:
           key: global-composer-{{ checksum "/home/circleci/.composer/composer.lock" }}
       - run:
@@ -65,6 +67,7 @@ jobs:
             - /home/circleci/project/.composer/cache
       - attach_workspace:
           at: ./
+          # Restore project composer cache.
       - restore_cache:
           key: composer-{{ checksum "composer.lock" }}
       - run:
