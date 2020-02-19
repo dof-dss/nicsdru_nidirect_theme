@@ -1,0 +1,47 @@
+/* =====================================================
+ * Styling unique to CKEditor
+ * =====================================================*/
+
+@import '../init';
+
+.cke_editable {
+
+  // applied to body in ckeditor
+  max-width: $article-max-width;
+  margin: 18px;
+
+  &:before {
+    // Create a semi-transparent overlay over the right margin of the content.
+    // This will visually 'fade out' content overflowing into the margin.
+    content: '';
+    display: block;
+    width: 18px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: $article-max-width + 18px;
+    background-color: rgba(255, 255, 255, .5);
+    box-sizing: border-box;
+    border-left: 1px solid rgba(255, 255, 255, .85);
+  }
+
+  &::after {
+    // Create a semi-transparent 'out-of-bounds' area to the right of content + margin
+    content: 'Content must not cross the margin into this area.';
+    display: block;
+    box-sizing: content-box;
+    width: 120px;
+    height: 100%;
+    padding: 15px 100% 15px 15px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: $article-max-width + 36px;
+    z-index: 10000;
+    background-color: rgba(#000, .667);
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.5;
+    color: #eee;
+  }
+}
