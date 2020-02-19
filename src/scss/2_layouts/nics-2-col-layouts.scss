@@ -32,7 +32,7 @@
   &--main-n-side,
   &--side-n-main {
     @include breakpoint($tab) {
-      grid-gap: 24px;
+      grid-gap: $grid-gap;
 
       .ga-main {
         grid-area: main;
@@ -51,16 +51,16 @@
 
     @include breakpoint($lap) {
 
-      grid-gap: 28px;
+      grid-gap: $grid-gap-lg;
 
       .ga-main {
         /* no grid support? */
-        width: 65.958%; // 620px
+        width: $article-float-max-width;
       }
 
       .ga-aside {
         /* no grid support? */
-        width: 31.064%; // 292px
+        width: $aside-float-max-width;
       }
     }
   }
@@ -72,7 +72,7 @@
     }
 
     @include breakpoint($lap) {
-      grid-template-columns: 620fr 292fr;
+      grid-template-columns: $article-grid-max-width $aside-grid-max-width;
     }
 
     .ga-aside {
@@ -96,7 +96,7 @@
       }
     }
     @include breakpoint($lap) {
-      grid-template-columns: 292fr 620fr;
+      grid-template-columns: $aside-grid-max-width $article-grid-max-width;
     }
   }
 
