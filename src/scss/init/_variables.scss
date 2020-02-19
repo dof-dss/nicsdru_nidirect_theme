@@ -32,8 +32,15 @@ $image-url-subdirectory: 'images' !default;
 
 /* Layout ============================================================ */
 $max-grid-width: 980px;
-$grid-gap: 20px;
-$total-columns: 12;
+$grid-gap: 24px;
+$grid-gap-lg: 28px;
+$total-columns: 940; // yep - 940
+$article-max-width: 620px;
+$aside-max-width: 292px;
+$article-grid-max-width: 620fr;
+$aside-grid-max-width: 292fr;
+$article-float-max-width: 65.958%; // of 940 = 620
+$aside-float-max-width: 31.064%; // of 940 = 292
 
 /* Breakpoints ======================================================== */
 $mob: 480px;

@@ -32,7 +32,7 @@
   &--main-n-side,
   &--side-n-main {
     @include breakpoint($tab) {
-      grid-gap: 16px;
+      grid-gap: $grid-gap;
 
       .ga-main {
         grid-area: main;
@@ -45,32 +45,34 @@
         grid-area: side;
         /* no grid support? */
         float: right;
-        width: 38%;
+        width: 34%;
       }
     }
 
     @include breakpoint($lap) {
-      grid-gap: 28px;
+
+      grid-gap: $grid-gap-lg;
 
       .ga-main {
-        width: 65.9575%;
+        /* no grid support? */
+        width: $article-float-max-width;
       }
 
       .ga-aside {
-        width: 34.0425%;
-        //padding-left: 28px;
+        /* no grid support? */
+        width: $aside-float-max-width;
       }
     }
   }
 
   &--main-n-side {
   @include breakpoint($tab) {
-      grid-template-columns: .62fr 1-.62fr;
+      grid-template-columns: 2fr 1fr;
       grid-template-areas: 'main side';
     }
 
     @include breakpoint($lap) {
-      grid-template-columns: .659575fr 1-.659575fr;
+      grid-template-columns: $article-grid-max-width $aside-grid-max-width;
     }
 
     .ga-aside {
@@ -80,7 +82,7 @@
 
   &--side-n-main {
     @include breakpoint($tab) {
-      grid-template-columns: 1-.62fr .62fr;
+      grid-template-columns: 1fr 2fr;
       grid-template-areas: 'side main';
 
       .ga-main {
@@ -94,7 +96,7 @@
       }
     }
     @include breakpoint($lap) {
-      grid-template-columns: 1-.659575fr .659575fr;
+      grid-template-columns: $aside-grid-max-width $article-grid-max-width;
     }
   }
 
