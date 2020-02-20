@@ -197,15 +197,6 @@ function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
     $variables['attributes']['role'] = 'region';
     $variables['attributes']['aria-label'] = t('search results');
   }
-
-  if ($variables['id'] === 'gp_practices' && $variables['display_id'] === 'find_a_gp') {
-    if (!isset($variables['attributes']['class'])) {
-      $variables['attributes']['class'] = [];
-    }
-    $variables['attributes']['class'] = array_merge($variables['attributes']['class'], $search_classes);
-    $variables['attributes']['role'] = 'region';
-    $variables['attributes']['aria-label'] = t('search results');
-  }
 }
 
 /**
