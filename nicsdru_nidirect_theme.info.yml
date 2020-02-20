@@ -15,6 +15,7 @@ ckeditor_stylesheets:
   - css/1_base/links.css
   - css/1_base/tables.css
   - css/1_base/text.css
+  - css/3_components/ckeditor.css
   - css/3_components/field/field-summary.css
   - css/3_components/content/icons-messages.css
 
