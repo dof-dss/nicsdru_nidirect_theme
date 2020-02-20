@@ -33,10 +33,17 @@
 {%
   set classes = [
     dom_id ? 'js-view-dom-id-' ~ dom_id,
-    'search-results--gp-practice'
+    'search-results--gp-practice',
+    'ga-main',
+    'card-deck',
+    'border-bottom',
+    'search-results',
   ]
 %}
-<div{{ attributes.addClass(classes) }}>
+{% set attributes = attributes.addClass(classes) %}
+{% set attributes = attributes.setAttribute('role', 'region') %}
+{% set attributes = attributes.setAttribute('aria-label', 'search results'|t) %}
+<div{{ attributes }}>
   {{ title_prefix }}
   {{ title }}
   {{ title_suffix }}
