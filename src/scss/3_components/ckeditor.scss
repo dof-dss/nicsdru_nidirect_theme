@@ -10,7 +10,7 @@
   max-width: $article-max-width;
   margin: 18px;
 
-  &:before {
+  &::before {
     // Create a semi-transparent overlay over the right margin of the content.
     // This will visually 'fade out' content overflowing into the margin.
     content: '';
