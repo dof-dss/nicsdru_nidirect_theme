@@ -29,7 +29,6 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       case "health_condition":
       case "news":
       case "page":
-      case "recipe":
         $variables['main_content_attr']->addClass($layout_classes);
         $variables['sidebar_second_attr']->addClass('ga-aside');
         $variables['#attached']['library'][] = 'nicsdru_nidirect_theme/nidirect-table-of-contents';
@@ -191,15 +190,6 @@ function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
       'border-bottom',
       'search-results'
     ];
-    if (!isset($variables['attributes']['class'])) {
-      $variables['attributes']['class'] = [];
-    }
-    $variables['attributes']['class'] = array_merge($variables['attributes']['class'], $search_classes);
-    $variables['attributes']['role'] = 'region';
-    $variables['attributes']['aria-label'] = t('search results');
-  }
-
-  if ($variables['id'] === 'gp_practices' && $variables['display_id'] === 'find_a_gp') {
     if (!isset($variables['attributes']['class'])) {
       $variables['attributes']['class'] = [];
     }
