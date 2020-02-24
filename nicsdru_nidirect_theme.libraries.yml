@@ -39,6 +39,7 @@ nidirect-global-styles:
       css/3_components/form/search-form.css: { minified: true }
       css/3_components/content/icons-messages.css: { minified: true }
       css/3_components/content/lists.css: { minified: true }
+      css/3_components/content/tables.css: { minified: true }
       css/3_components/field/file-link.css: { minified: true }
 
 nidirect-specific-styles:

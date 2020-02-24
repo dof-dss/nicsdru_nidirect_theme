@@ -31,6 +31,13 @@
 .layout {
   &--main-n-side,
   &--side-n-main {
+
+    // Hide overflowing content in columns
+    .ga-main,
+    .ga-aside {
+      overflow-x: hidden;
+    }
+
     @include breakpoint($tab) {
       grid-gap: $grid-gap;
 

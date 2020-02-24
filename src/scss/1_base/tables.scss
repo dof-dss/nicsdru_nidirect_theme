@@ -25,10 +25,10 @@ table {
   border-spacing: 0;
   // Prevent cramped-looking tables.
   width: 100%;
-
-  &.table-fixed-width {
-    table-layout: fixed;
-  }
+  // Allow overflowing tables to scroll horizontally (experimental).
+  // Note this only works if the table's parent element has overflow: hidden.
+  display: block;
+  overflow-x: auto;
 
   p {
     margin: .9rem 0;
