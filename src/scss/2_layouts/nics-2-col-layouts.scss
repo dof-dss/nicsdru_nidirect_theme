@@ -31,7 +31,6 @@
 .layout {
   &--main-n-side,
   &--side-n-main {
-    
     @include breakpoint($tab) {
       grid-gap: $grid-gap;
 
