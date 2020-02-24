@@ -27,6 +27,11 @@ libraries-override:
     css:
       component:
         css/webform.element.counter.css: false
+  eu_cookie_compliance/eu_cookie_compliance_bare:
+    css:
+      state:
+        css/eu_cookie_compliance.bare.css: css/4_state/block/eu-cookie-compliance.css
+
 
 base theme: nicsdru_origins_theme
 
