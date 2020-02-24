@@ -47,4 +47,22 @@
   }
 }
 
+.btn {
+  @extend %btn;
+
+  &-standard {
+    @include btn-color();
+    @include btn-size();
+  }
+
+  &-primary {
+    @include btn-color($btn-primary, #fff);
+    @include btn-size();
+  }
+
+  &-action {
+    @include btn-color($btn-action);
+  }
+}
+
 
