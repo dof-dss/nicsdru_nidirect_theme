@@ -95,10 +95,12 @@ menu,
 ol,
 ul {
   padding: 0 0 0 $indent-amount;
+
   &.split-list {
     columns: 2;
     column-gap: 3.6rem;
   }
+  
 }
 
 li {
