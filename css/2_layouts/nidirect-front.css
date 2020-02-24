@@ -1,1 +1,31 @@
-.layout--front{grid-template-columns:66% 1fr;grid-gap:0 20px}.section--info-services,.section--popular{padding-bottom:2.7rem}.section--popular{background-color:#e8e7e7;padding:0 15px}.section--featured{border-top:10px solid #0a78cd}
+/*
+ * @file
+ * Provides the layout styles for nidirect front page.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 18, src/scss/2_layouts/nidirect-front.scss */
+.layout--front {
+  grid-template-columns: 66% 1fr;
+  grid-gap: 0 20px;
+}
+
+/* line 24, src/scss/2_layouts/nidirect-front.scss */
+.section--info-services, .section--popular {
+  padding-bottom: 2.7rem;
+}
+
+/* line 29, src/scss/2_layouts/nidirect-front.scss */
+.section--popular {
+  background-color: #e8e7e7;
+  padding: 0 15px;
+}
+
+/* line 34, src/scss/2_layouts/nidirect-front.scss */
+.section--featured {
+  border-top: 10px solid #0a78cd;
+}
+
+/*# sourceMappingURL=nidirect-front.css.map */
