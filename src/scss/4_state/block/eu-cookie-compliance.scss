@@ -1,0 +1,67 @@
+@import '../../init';
+
+.sliding-popup-bottom,
+.sliding-popup-top {
+  z-index: 99999;
+  //text-align: center;
+}
+
+.sliding-popup-bottom {
+  position: fixed;
+}
+
+.sliding-popup-top {
+  position: relative;
+}
+
+.eu-cookie-compliance {
+  &-banner {
+    background: rgba(4, 31, 52, .95);
+    padding-bottom: 2.7rem;
+  }
+
+  &-buttons {
+    .btn:focus {
+      outline-color: #fff;
+    }
+  }
+
+  &-message {
+    p {
+      @include adjust-font-size-to(16px, 4);
+      color: white;
+
+      &:first-child {
+        @include adjust-font-size-to(24px, 5);
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.eu-cookie-compliance-default-button,
+.eu-cookie-compliance-secondary-button,
+.eu-cookie-compliance-more-button,
+.eu-cookie-compliance-hide-button,
+.eu-cookie-withdraw-tab {
+  cursor: pointer;
+}
+
+.eu-cookie-withdraw-wrapper.sliding-popup-top,
+.eu-cookie-withdraw-wrapper.sliding-popup-top .eu-cookie-withdraw-banner {
+  transform: scaleY(-1);
+}
+
+.eu-cookie-withdraw-tab {
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, -100%);
+  left: 50%;
+}
+
+.eu-cookie-withdraw-wrapper.sliding-popup-top .eu-cookie-withdraw-tab {
+  transform: translate(-50%, -100%) scaleY(-1);
+}
