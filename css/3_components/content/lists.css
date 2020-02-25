@@ -1,1 +1,1 @@
-.list--no-bullet{list-style:none;padding:0}.list--inline .list li,.list--inline .list-item{display:inline-block;padding-right:.334em;white-space:nowrap}
+.list--no-bullet{list-style:none;padding:0}.list--inline .list li,.list--inline .list-item{display:inline-block;padding-right:.334em;white-space:nowrap}.split-list{-webkit-columns:2;-moz-columns:2;columns:2;-webkit-column-gap:3.6rem;-moz-column-gap:3.6rem;column-gap:3.6rem}
