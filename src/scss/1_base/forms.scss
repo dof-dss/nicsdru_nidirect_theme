@@ -33,38 +33,11 @@ textarea {
   border: 1px solid;
   border-radius: 0 !important;
   max-width: 100%;
-  // Change font properties to `inherit` in all browsers (opinionated).
-  font: inherit;
-  font-size: 100%;
-  // Remove the margin in Firefox and Safari.
-  margin: 0;
-}
-
-// Show the overflow in IE.
-button {
-  overflow: visible;
-}
-
-// Remove the inheritance of text transform in Edge, Firefox, and IE.
-button,
-select {
-  text-transform: none;
-}
-
-// Show the overflow in Edge.
-input {
-  overflow: visible;
 }
 
 [type='text']:focus,
 [type='search']:focus {
   outline: 0; // For Safari
-}
-
-// Correct the cursor style of increment and decrement buttons in Chrome.
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
-  height: auto;
 }
 
 [type='search'] {
@@ -86,12 +59,6 @@ input {
   opacity: .54;
 }
 
-::-webkit-file-upload-button {
-  // Correct the inability to style clickable types in iOS and Safari.
-  -webkit-appearance: button;
-  // Change font properties to `inherit` in Safari.
-  font: inherit;
-}
 // Button
 //
 // In addition to the default styling of `<button>` and
@@ -150,17 +117,6 @@ button,
   // Improve usability and consistency of cursor style between image-type `input` and others.
   cursor: pointer;
   color: color(black);
-
-  // Remove the inner border and padding in Firefox.
-  &::-moz-focus-inner {
-    border-style: none;
-    padding: 0;
-  }
-
-  // Restore the focus styles unset by the previous rule.
-  &:-moz-focusring {
-    outline: 1px dotted ButtonText;
-  }
 
   &:hover,
   &:focus,
@@ -246,14 +202,6 @@ button,
 //
 // Style guide: forms.base.input-radio
 
-[type='checkbox'],
-[type='radio'] {
-  // Add the correct box sizing in IE <11.
-  box-sizing: border-box;
-  // Remove the padding in IE <11.
-  padding: 0;
-}
-
 // Fieldset
 //
 // The `<fieldset>` element groups a set of form fields, optionally under a
@@ -270,18 +218,10 @@ fieldset {
 }
 
 legend {
-  // Correct the text wrapping in Edge and IE.
-  box-sizing: border-box;
   border: 0;
-  display: table;
-  max-width: 100%;
-  white-space: normal;
-  // Correct the color inheritance from `fieldset` elements in IE.
-  color: inherit;
   // Align legend text with a fieldset's text while removing left padding so
   // people aren't caught out if they zero out fieldset padding.
   margin-left: -5px;
-  padding: 0;
 }
 
 // Labels
@@ -331,6 +271,4 @@ optgroup {
 
 textarea {
   @extend %text-form-element !optional;
-  // Remove the default vertical scrollbar in IE.
-  overflow: auto;
 }

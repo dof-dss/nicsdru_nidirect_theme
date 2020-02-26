@@ -37,11 +37,6 @@ pre {
 // Style guide: base.text.abbr
 
 abbr[title] {
-  // Remove the bottom border in Firefox <40.
-  border-bottom: 0;
-  // Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
-  text-decoration: underline dotted;
-
   @media print {
     // Add visible title after abbreviations.
     &::after {
@@ -63,21 +58,10 @@ abbr[title] {
 // Weight: -1
 //
 // Style guide: base.text.b
-
-// Prevent the duplicate application of `bolder` by the next rule in Safari 6.
-
 b,
 strong {
   font-weight: inherit;
 }
-
-// sass-lint:disable no-mergeable-selectors
-strong,
-b {
-  // Add the correct font weight in Chrome, Edge, and Safari.
-  font-weight: bolder;
-}
-// sass-lint:enable no-mergeable-selectors
 
 // Cite
 //
@@ -111,8 +95,6 @@ var {
   // The font-family value ends with ", serif".
   @include adjust-font-size-to($base-font-size);
   font-family: $font-monospace; // The value of $font-monospace ends with ', serif'.
-  // Correct the odd `em` font sizing in all browsers.
-  font-size: 1em;
 }
 
 // Deleted text
@@ -221,11 +203,6 @@ q {
 //
 // Style guide: base.text.small
 
-small {
-  // Add the correct font size in all browsers.
-  font-size: 80%;
-}
-
 // Superscript / Subscript
 //
 // The `<sup>` element represents a superscript and the `<sub>` element
@@ -240,8 +217,6 @@ sup {
   // Prevent `sub` and `sup` elements from affecting the line height in
   // all browsers.
   @include adjust-font-size-to(14px);
-  line-height: 0;
-  position: relative;
 }
 
 sub {
