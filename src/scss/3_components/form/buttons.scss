@@ -32,18 +32,31 @@
     color: color(white);
   }
 
-  .ico-elink {
-    fill: $white;
-  }
-
   .ico-arrow-right {
-    fill: $white;
     height: 2.5rem;
     margin-right: 1.2rem;
     position: absolute;
     right: 0;
     top: calc(50% - 1.25rem);
     width: 1.5rem;
+  }
+}
+
+.btn {
+  @extend %btn;
+
+  &-standard {
+    @include btn-color();
+    @include btn-size();
+  }
+
+  &-primary {
+    @include btn-color($btn-primary, #fff);
+    @include btn-size();
+  }
+
+  &-action {
+    @include btn-color($btn-action);
   }
 }
 

@@ -49,11 +49,6 @@
     height: 1.1rem;
     width: 1.4rem;
     margin-bottom: .3rem;
-    fill: #0c1e63;
-
-    a:focus & {
-      fill: #fff;
-    }
   }
 
   // Icons - arrows
@@ -67,21 +62,19 @@
   //
   // Style guide: components.icons.arrows
   &-arrow-left {
-    fill: $text;
     transform: rotate(180deg);
   }
 
-  &-arrow-right {
-    fill: $text;
-  }
+  // for completeness, include a commented reminder that arrow-right exists and is the default render output.
+  //&-arrow-right {
+  //  transform: rotate(0deg);
+  //}
 
   &-arrow-up {
-    fill: $text;
     transform: rotate(270deg);
   }
 
   &-arrow-down {
-    fill: $text;
     transform: rotate(90deg);
   }
 }

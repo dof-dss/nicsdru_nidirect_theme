@@ -17,7 +17,6 @@
 // Markup: kss-templates/embedded-img.twig
 //
 // Style guide: base.embedded.img
-
 img {
   // Remove the border on images inside links in IE <11.
   border: 0;
@@ -40,10 +39,13 @@ svg {
 // Markup: kss-templates/embedded-svg.twig
 //
 // Style guide: base.embedded.svg
+svg {
+  fill: currentColor;
 
-svg:not(:root) {
-  // Hide the overflow in IE.
-  overflow: hidden;
+  &:not(:root) {
+    // Hide the overflow in IE.
+    overflow: hidden;
+  }
 }
 
 // Address phantom white space in picture element
