@@ -22,6 +22,10 @@
 }
 
 .search-results--gp-practice {
+  &.search-results .card {
+    padding-bottom: 1.5rem;
+  }
+
   .card {
     .adr {
       margin: 0;
@@ -51,6 +55,7 @@
       .list-item {
         color: #666;
         background: transparent resolve('status.svg') no-repeat right / 16px 16px;
+        margin-bottom: 0;
         margin-right: 4px;
         padding-right: 18px;
 

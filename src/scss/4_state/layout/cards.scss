@@ -22,6 +22,12 @@
 
   // Set some additional properties for search result cards
   &.search-results {
+    a:focus {
+      .card__title {
+        background: inherit;
+      }
+    }
+
     @at-root .search-results--title {
       margin-top: 0;
     }
