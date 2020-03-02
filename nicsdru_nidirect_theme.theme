@@ -13,6 +13,7 @@ use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\user\Entity\User;
 use Drupal\Component\Utility\Html;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * Implements hook_preprocess_page().
@@ -80,6 +81,14 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       ->addClass('ga-aside')
       ->setAttribute('role', 'search')
       ->setAttribute('aria-label', t('filter search results'));
+  }
+
+  if ($route == "entity.taxonomy_term.canonical" && $tid = \Drupal::routeMatch()->getRawParameter('taxonomy_term')) {
+    if (Term::load($tid)->getVocabularyId() == "site_themes") {
+      $taxonomy_classes = ['grid', 'layout--front'];
+      $variables['main_content_attr']->addClass($taxonomy_classes);
+      $variables['sidebar_second_attr']->addClass('section--popular');
+    }
   }
 
   if (isset($variables['is_front']) && $variables['is_front'] == TRUE) {
