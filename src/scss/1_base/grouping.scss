@@ -139,13 +139,8 @@ figure {
 // Style guide: base.grouping.hr
 
 hr {
-  // Add the correct box sizing in Firefox.
-  box-sizing: content-box;
   border: 0;
   border-top: 1px solid color(border);
-  height: 0;
-  // Show the overflow in Edge and IE.
-  overflow: visible;
   padding-bottom: -1px;
   margin: 6px 0;
 }

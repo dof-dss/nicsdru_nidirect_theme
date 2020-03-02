@@ -44,14 +44,3 @@ audio:not([controls]) {
   display: none;
   height: 0;
 }
-
-// Add the correct vertical alignment in Chrome, Firefox, and Opera.
-progress {
-  vertical-align: baseline;
-}
-
-// Add the correct display in IE <11, Safari <8, and Firefox <22.
-template,
-[hidden] {
-  display: none;
-}
