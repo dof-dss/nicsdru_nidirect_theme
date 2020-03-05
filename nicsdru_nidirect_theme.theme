@@ -109,6 +109,11 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
     case "news":
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('ga-main');
       break;
+      
+    case "publication":
+      // Change field label to 'Documents'.
+      $variables['content']['field_attachment']['#title'] = t('Documents');
+      break;
   }
 }
 
