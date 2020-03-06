@@ -124,10 +124,12 @@ function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
       $search_string = \Drupal::request()->get('query_contacts_az');
       if (!empty($search_string)) {
         $variables['content']['#title'] = t('Contacts search');
-      } else {
+      }
+      else {
         $variables['content']['#title'] = t('Contacts');
       }
-    } elseif ($this_route == 'nidirect_contacts.letter') {
+    }
+    elseif ($this_route == 'nidirect_contacts.letter') {
       // A letter has been selected from the A-Z.
       $letter = \Drupal::routeMatch()->getParameter('letter');
       $variables['content']['#title'] = t('Contacts - under :letter', [':letter' => strtoupper($letter)]);
@@ -217,7 +219,7 @@ function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
       'ga-main',
       'card-deck',
       'border-bottom',
-      'search-results'
+      'search-results',
     ];
     if (!isset($variables['attributes']['class'])) {
       $variables['attributes']['class'] = [];
