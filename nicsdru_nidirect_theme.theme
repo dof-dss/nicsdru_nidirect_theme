@@ -127,8 +127,7 @@ function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
       } else {
         $variables['content']['#title'] = t('Contacts');
       }
-    }
-    if ($this_route == 'nidirect_contacts.letter') {
+    } elseif ($this_route == 'nidirect_contacts.letter') {
       // A letter has been selected from the A-Z.
       $letter = \Drupal::routeMatch()->getParameter('letter');
       $variables['content']['#title'] = t('Contacts - under :letter', [':letter' => strtoupper($letter)]);
