@@ -18,6 +18,7 @@ ckeditor_stylesheets:
   - css/3_components/ckeditor.css
   - css/3_components/field/field-summary.css
   - css/3_components/content/icons-messages.css
+  - css/3_components/content/lists.css
 
 libraries-override:
   origins_common/in-page-navigation:
