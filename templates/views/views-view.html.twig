@@ -35,7 +35,7 @@
     dom_id ? 'js-view-dom-id-' ~ dom_id,
   ]
 %}
-{%- if title or rows or empty -%}
+{%- if title or rows or empty or exposed or header or footer -%}
   <div{{ attributes.addClass(classes) }}>
     {{ title_prefix }}
     {{ title }}
