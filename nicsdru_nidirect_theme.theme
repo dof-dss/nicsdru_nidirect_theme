@@ -199,7 +199,7 @@ function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
       'ga-main',
       'card-deck',
       'border-bottom',
-      'search-results'
+      'search-results',
     ];
     if (!isset($variables['attributes']['class'])) {
       $variables['attributes']['class'] = [];
@@ -207,6 +207,13 @@ function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
     $variables['attributes']['class'] = array_merge($variables['attributes']['class'], $search_classes);
     $variables['attributes']['role'] = 'region';
     $variables['attributes']['aria-label'] = t('search results');
+  }
+  if ($variables['view']->current_display == 'contacts_by_letter') {
+    // Do not show search box if we are in a letter search.
+    $route = \Drupal::routeMatch()->getRouteName();
+    if ($route == "nidirect_contacts.letter") {
+      $variables['exposed'] = NULL;
+    }
   }
 }
 
