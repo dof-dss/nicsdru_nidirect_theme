@@ -50,6 +50,7 @@ nidirect-specific-styles:
       css/3_components/content/utilities.css: { minified: true }
       css/3_components/field/field-summary.css: { minified: true }
       css/3_components/field/vcard.css: { minified: true }
+      css/3_components/drupal-diff.css: { minified: true }
     state:
         css/4_state/navigation/sub-menus.css: { minified: true }
         css/4_state/layout/cards.css: { minified: true }
@@ -71,3 +72,4 @@ nidirect-table-of-contents:
     - core/drupal
     - core/jquery
     - core/jquery.once
+
