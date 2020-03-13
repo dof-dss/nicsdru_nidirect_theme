@@ -1,7 +1,19 @@
 /* eslint-disable */
-(function ($, Drupal) {
+(function ($, Drupal, drupalSettings) {
   Drupal.behaviors.nicsdruNidirectToc = {
     attach: function attach (context) {
+
+      if (typeof drupalSettings.origins_toc.settings !== 'undefined') {
+        var toc_settings = drupalSettings.origins_toc.settings;
+      } else {
+        return;
+      }
+
+      // Check if Toc is enabled for this entity type and this entity.
+      if (toc_settings.toc_enable != 1 || toc_settings.toc_entity_enable != 1) {
+        return;
+      }
+
       var tocHeadings = $('#main-article h2');
       var $tocList = $('<ul class="nav-menu" />');
       var $headingText = Drupal.t('On this page');
@@ -40,4 +52,4 @@
       }
     }
   };
-})(jQuery, Drupal);
+})(jQuery, Drupal, drupalSettings);
