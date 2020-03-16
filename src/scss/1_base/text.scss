@@ -27,6 +27,12 @@ pre {
   color: color(text);
 }
 
+// Tighten lists up closer to the preceding paragraph.
+p + ul,
+p + ol {
+  margin-top: -1.2rem;
+}
+
 // Abbreviation / Acronym
 //
 // The `<abbr>` element makes the meanings of abbreviations and acronyms visible
