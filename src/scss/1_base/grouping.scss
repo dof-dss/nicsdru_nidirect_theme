@@ -70,7 +70,7 @@ menu,
 ol,
 ul {
   // Address margins set differently in IE 6/7.
-  margin: rhythm(1) 0;
+  margin: 1em 0 1.5em;
 }
 
 // Turn off margins on nested lists.
@@ -102,8 +102,32 @@ li {
   color: color(text);
   margin-bottom: .5em;
 
+  // last list item - no margin bottom
   &:last-child {
     margin-bottom: 0;
+  }
+
+  // Generic styling for block elements nested in list items.
+  p {
+    display: inline;
+  }
+
+  & > * {
+    margin: .5em 0;
+    vertical-align: top;
+  }
+
+  & > :first-child {
+    margin-top: 0;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+
+  & > :only-child,
+  & > :first-of-type:last-of-type {
+    margin: 0;
   }
 }
 
