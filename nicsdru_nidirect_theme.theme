@@ -118,6 +118,31 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
 }
 
 /**
+ * Implements hook_preprocess_block().
+ */
+function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
+  // Fine grained control over the title of the contacts page.
+  if ($variables['plugin_id'] == 'page_title_block') {
+    $this_route = \Drupal::routeMatch()->getRouteName();
+    if ($this_route == 'nidirect_contacts.default') {
+      // Is there a text search string?
+      $search_string = \Drupal::request()->get('query_contacts_az');
+      if (!empty($search_string)) {
+        $variables['content']['#title'] = t('Contacts search');
+      }
+      else {
+        $variables['content']['#title'] = t('Contacts');
+      }
+    }
+    elseif ($this_route == 'nidirect_contacts.letter') {
+      // A letter has been selected from the A-Z.
+      $letter = \Drupal::routeMatch()->getParameter('letter');
+      $variables['content']['#title'] = t('Contacts - under :letter', [':letter' => strtoupper($letter)]);
+    }
+  }
+}
+
+/**
  * Implements hook_preprocess_field().
  */
 function nicsdru_nidirect_theme_preprocess_field(&$variables) {
