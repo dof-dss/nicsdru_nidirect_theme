@@ -50,10 +50,6 @@
       {{ exposed }}
     {% endif %}
 
-    {% if header %}
-      {{ header }}
-    {% endif %}
-
     {% if links %}
       <div class="view-links" aria-label="{{ 'search options'|t }}">
         {% for link in links %}
@@ -63,6 +59,10 @@
           {% endif %}
         {% endfor %}
       </div>
+    {% endif %}
+
+    {% if header %}
+      {{ header }}
     {% endif %}
   </div>
 
