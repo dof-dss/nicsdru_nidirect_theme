@@ -45,7 +45,7 @@
     {{ title }}
   {% endif %}
 
-  <div role="search" aria-label="{{ 'filter list of contacts'|t }}">
+  <div role="search" aria-label="{{ 'filter list of contacts'|t }}" class="{{ form_status }}">
     {% if exposed %}
       {{ exposed }}
     {% endif %}
