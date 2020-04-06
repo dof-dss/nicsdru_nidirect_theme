@@ -64,6 +64,10 @@
         {% endfor %}
       </div>
     {% endif %}
+
+    {% if row_count %}
+      <h2 class="view--count">{{ row_count }}</h2>
+    {% endif %}
   </div>
 
   {% if rows %}
