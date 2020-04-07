@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Theme override to display a block.
+ * Default theme implementation to display a block.
  *
  * Available variables:
  * - plugin_id: The ID of the block implementation.
@@ -23,10 +23,12 @@
  *   displayed after the main title tag that appears in the template.
  *
  * @see template_preprocess_block()
+ *
+ * @ingroup themeable
  */
 #}
 {% set classes = ['section--featured', 'ga-full'] %}
-{% set attributes = attributes.removeClass('views-element-container').addClass('card') %}
+{% set attributes = attributes.addClass(classes) %}
 {% set attributes = attributes.removeAttribute('id') %}
 <section{{ attributes }}>
   {{ title_prefix }}
