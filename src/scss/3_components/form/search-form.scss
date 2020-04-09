@@ -22,10 +22,6 @@
   max-width: 500px;
   margin-bottom: 1.5em;
 
-  &.contact_search_results {
-    margin-bottom: 0; // On search results page, no bottom margin under search box.
-  }
-
   @include breakpoint($phab, $no-query: true) {
     grid-template-columns: auto 6rem; // 1st column contains search box, 2nd contains the submit button.
   }
