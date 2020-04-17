@@ -102,6 +102,8 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
  * Implements hook_preprocess_node().
  */
 function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
+  $variables['show_title'] = TRUE;
+
   switch ($variables['node']->getType()) {
     case "article":
     case "application":
@@ -113,6 +115,13 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
     case "publication":
       // Change field label to 'Documents'.
       $variables['content']['field_attachment']['#title'] = t('Documents');
+      break;
+
+    case "landing_page":
+    case "page":
+      // Omit the title on these content types; causes trouble with search indexing.
+      // Resolvable with either suitable block config or specific node templates for these types.
+      $variables['show_title'] = FALSE;
       break;
   }
 }

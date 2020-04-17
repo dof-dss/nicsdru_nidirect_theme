@@ -71,7 +71,9 @@
  */
 #}
 <article{{ attributes.setAttribute('id', 'main-article').removeAttribute('role') }}>
+  {% if show_title %}
   {{ drupal_block('page_title_block', wrapper=false) }}
+  {% endif %}
   {% if  content_attributes is not empty %}
   <div{{ content_attributes }}>
   {% endif %}
