@@ -15,7 +15,7 @@
   list-style: none;
   margin: 0;
   padding: 1px 0 0 1px;
-  overflow: hidden;
+  //overflow: hidden;
 
   li {
     font-size: 0; // Safari inline-block white space fix
@@ -25,7 +25,8 @@
   }
 
   a,
-  .a-nolink {
+  .a-nolink,
+  .link__self {
     @include adjust-font-size-to(24px, 7.5);
     border: 1px solid $brand-primary-medium;
     color: $brand-primary-medium;
@@ -36,11 +37,13 @@
     text-decoration: none;
     width: 4.5rem;
 
-    &:hover,
+    &:hover {
+      text-decoration: underline;
+      //text-decoration-thickness: 2px;
+    }
+
     &:focus {
-      background: $brand-primary-medium;
-      color: white;
-      outline: none;
+      background: transparent;
     }
 
     &.active {
@@ -50,8 +53,9 @@
   }
 
   .no-content,
-  .a-nolink {
-    background: $grey-lightest;
-    color: $grey;
+  .a-nolink,
+  .link__self {
+    background: $brand-primary-medium;
+    color: white;
   }
 }
