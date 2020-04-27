@@ -150,7 +150,8 @@
   }
 }
 
-ul.info-notice {
+ul.info-notice,
+.form-item.info-notice {
   padding: 1rem 1rem 1rem 4rem;
   @include breakpoint($phab) {
     padding: 1.4rem 1.4rem 1.4rem 7rem;
