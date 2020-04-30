@@ -125,8 +125,8 @@ li {
     margin-bottom: 0;
   }
 
-  & > :only-child,
-  & > :first-of-type:last-of-type {
+  & > p:only-child,
+  & > p:first-of-type:last-of-type {
     margin: 0;
   }
 }

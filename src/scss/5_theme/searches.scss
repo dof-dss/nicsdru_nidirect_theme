@@ -75,6 +75,18 @@
   }
 }
 
+// Contacts index page
+//
+// The contacts search has a few rules that are only applicable to the search page(s) that contacts lists of contacts.
+// These rules are in essence to enhance aesthetics to the original design.
+//
+// Weight: -2
+//
+// Style guide: theme.searches.contacts
+#contacts-az--title {
+  margin-bottom: .5em;
+}
+
 .search-form--contacts {
   margin-bottom: 0; // On contact search results page, no bottom margin under search box.
 }
