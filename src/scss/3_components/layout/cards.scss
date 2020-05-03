@@ -33,7 +33,10 @@
   }
 
   &__meta {
-    @include adjust-font-size-to(16px, 4);
+    @include adjust-font-size-to(15px, 3.6667);
+    @include breakpoint($tab) {
+      @include adjust-font-size-to(16px, 4);
+    }
   }
 
   // Featured news card
@@ -43,9 +46,19 @@
   // Style guide: components.layouts.cards.featured-news
   &--featured-news {
     display: grid;
-    grid-template-columns: 150px auto;
-    grid-gap: 0 1.5rem;
-    margin-bottom: 2.7rem;
+    grid-template-columns: 100px auto;
+    grid-gap: 0 1.2rem;
+    max-width: 720px;
+    margin-bottom: 2.4rem;
+
+    @include breakpoint($mob) {
+      grid-template-columns: 150px auto;
+    }
+
+    @include breakpoint($tab) {
+      grid-gap: 0 1.5rem;
+      margin-bottom: 2.7rem;
+    }
 
     & > * {
       grid-column: 2;
@@ -55,6 +68,10 @@
     .card {
       &__title {
         @include adjust-font-size-to(18px, 4);
+
+        @include breakpoint($mob) {
+          @include adjust-font-size-to(21px, 4.5);
+        }
       }
 
       &__meta {
@@ -63,11 +80,27 @@
 
       &__content {
         @include adjust-font-size-to(16px, 3.5);
+        margin: .4rem 0;
+        grid-column-start: 1;
+        grid-column-end: 3;
+
+        @include breakpoint($mob) {
+          grid-column: 2;
+        }
+
+        @include breakpoint($mob) {
+          margin: .6rem 0;
+        }
       }
 
       &__image {
         grid-column: 1;
         grid-row: 1 / 10;
+        img {
+          width: 100%;
+          margin: 0;
+          float: none;
+        }
       }
     }
   }
