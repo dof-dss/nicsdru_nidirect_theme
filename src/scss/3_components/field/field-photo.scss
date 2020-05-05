@@ -4,21 +4,7 @@
  */
 @import '../../init';
 
-.card__image {
-  display: inline;
-  font-size: .1px;
-  line-height: 0;
-
-  img {
-    clear: right;
-    float: right;
-    width: 48.3871%;
-    max-width: 300px;
-    margin: 9px 0 9px 27px;
-  }
-}
-
-.page-node-type-news .card__image {
+.photo {
   display: inline;
   font-size: .1px;
   line-height: 0;
