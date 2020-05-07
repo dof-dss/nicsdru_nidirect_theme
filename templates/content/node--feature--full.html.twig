@@ -5,9 +5,17 @@
  * candidate for all view modes so may need splitting if the content type
  * uses further view modes in the future.
 #}
-{% set classes = ['card'] %}
-<div class="grid layout--triptych">
-<section{{ attributes.removeAttribute('role').addClass(classes) }}>
+{% set wrapper_classes = [
+  'grid',
+  'card-deck',
+  'card-deck--features']
+%}
+{% set section_classes = [
+  'card',
+  'card--featured']
+%}
+<div {{ attributes.addClass(wrapper_classes) }}>
+<section{{ attributes.removeAttribute('role').addClass(section_classes) }}>
   {{ content.field_photo }}
   {{ title_prefix }}
     <h3{{ title_attributes.addClass('card__title') }}>
