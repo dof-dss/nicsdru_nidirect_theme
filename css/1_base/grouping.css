@@ -1,1 +1,107 @@
-blockquote{margin:.6rem 1.8rem}dl,menu,ol,ul{margin:1em 0 1.5em}ol ol,ol ul,ul ol,ul ul{margin:0}dd{margin:0 0 0 1.8rem}menu,ol,ul{padding:0 0 0 1.8rem}li{font-size:1.6rem;line-height:1.5;color:#333;margin-bottom:.5em}@media screen and (min-width: 768px){li{font-size:1.8rem}}li:last-child{margin-bottom:0}li p{display:inline}li>*{margin:.5em 0;vertical-align:top}li>:first-child{margin-top:0}li>:last-child{margin-bottom:0}li>p:only-child,li>p:first-of-type:last-of-type{margin:0}figure{margin:0}hr{border:0;border-top:1px solid #e8e7e7;padding-bottom:-1px;margin:6px 0}pre{white-space:pre-wrap}
+/*
+ * @file
+ * Sets out the base behaviour of grouping elements.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 28, src/scss/1_base/grouping.scss */
+blockquote {
+  margin: 0.6rem 1.8rem;
+}
+
+/* line 68, src/scss/1_base/grouping.scss */
+dl,
+menu,
+ol,
+ul {
+  margin: 1em 0 1.5em;
+}
+
+/* line 79, src/scss/1_base/grouping.scss */
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+  margin: 0;
+}
+
+/* line 89, src/scss/1_base/grouping.scss */
+dd {
+  margin: 0 0 0 1.8rem;
+}
+
+/* line 94, src/scss/1_base/grouping.scss */
+menu,
+ol,
+ul {
+  padding: 0 0 0 1.8rem;
+}
+
+/* line 100, src/scss/1_base/grouping.scss */
+li {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: .5em;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 100, src/scss/1_base/grouping.scss */
+  li {
+    font-size: 1.8rem;
+  }
+}
+
+/* line 106, src/scss/1_base/grouping.scss */
+li:last-child {
+  margin-bottom: 0;
+}
+
+/* line 111, src/scss/1_base/grouping.scss */
+li p {
+  display: inline;
+}
+
+/* line 115, src/scss/1_base/grouping.scss */
+li > * {
+  margin: .5em 0;
+  vertical-align: top;
+}
+
+/* line 120, src/scss/1_base/grouping.scss */
+li > :first-child {
+  margin-top: 0;
+}
+
+/* line 124, src/scss/1_base/grouping.scss */
+li > :last-child {
+  margin-bottom: 0;
+}
+
+/* line 128, src/scss/1_base/grouping.scss */
+li > p:only-child,
+li > p:first-of-type:last-of-type {
+  margin: 0;
+}
+
+/* line 146, src/scss/1_base/grouping.scss */
+figure {
+  margin: 0;
+}
+
+/* line 165, src/scss/1_base/grouping.scss */
+hr {
+  border: 0;
+  border-top: 1px solid #e8e7e7;
+  padding-bottom: -1px;
+  margin: 6px 0;
+}
+
+/* line 181, src/scss/1_base/grouping.scss */
+pre {
+  white-space: pre-wrap;
+}
+
+/*# sourceMappingURL=grouping.css.map */

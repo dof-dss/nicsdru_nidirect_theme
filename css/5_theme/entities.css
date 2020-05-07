@@ -1,1 +1,83 @@
-.launch-service{margin:1.2rem 0}.page-node-type-gp-practice .launch-service{display:inline-block;margin:2.7rem 1.2rem 0}.page-node-type-gp-practice .call-to-action{font-size:1.8rem;line-height:2.4rem}.list--gp-practice-members .list-item{color:#666;margin:0}.list--gp-practice-members .list-item::after{content:','}.list--gp-practice-members .list-item:last-child::after{content:''}.review-info{font-size:1.6rem;line-height:2.4rem;margin:0}.page-node-type-health-condition p.meta{font-size:1.5rem;line-height:2.4rem;letter-spacing:-.25px;margin:0;padding-bottom:.9rem}.page-node-type-health-condition .block-views-exposed-filter-blockhealth-conditions-search-page{background:transparent}.page-node-type-health-condition #block-healthconditionsatoz-2{padding:0 10px}
+/*
+ * @file
+ * Provides very specific styling for entities / content types.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/*
+ * Application content type
+ * the wrapper around the application link field 'button' needs to inherit some spacing around the element to keep the
+ * pages vertical rhythm.
+ */
+/* line 12, src/scss/5_theme/entities.scss */
+.launch-service {
+  margin: 1.2rem 0;
+}
+
+/*
+ * GP Practice content type
+ * - the wrapper around the application link field 'button' needs to have the spacing around the element tweaked to keep
+ * the pages vertical rhythm.
+ * - adjust the some attrs on the list of practice members
+ */
+/* line 23, src/scss/5_theme/entities.scss */
+.page-node-type-gp-practice .launch-service {
+  display: inline-block;
+  margin: 2.7rem 1.2rem 0;
+}
+
+/* line 28, src/scss/5_theme/entities.scss */
+.page-node-type-gp-practice .call-to-action {
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+}
+
+/* line 34, src/scss/5_theme/entities.scss */
+.list--gp-practice-members .list-item {
+  color: #666;
+  margin: 0;
+}
+
+/* line 38, src/scss/5_theme/entities.scss */
+.list--gp-practice-members .list-item::after {
+  content: ',';
+}
+
+/* line 42, src/scss/5_theme/entities.scss */
+.list--gp-practice-members .list-item:last-child::after {
+  content: '';
+}
+
+/*
+ * Health condition content type
+ * - adjust the text for the last / next review information
+ */
+/* line 52, src/scss/5_theme/entities.scss */
+.review-info {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  margin: 0;
+}
+
+/* line 58, src/scss/5_theme/entities.scss */
+.page-node-type-health-condition p.meta {
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+  letter-spacing: -.25px;
+  margin: 0;
+  padding-bottom: .9rem;
+}
+
+/* line 65, src/scss/5_theme/entities.scss */
+.page-node-type-health-condition .block-views-exposed-filter-blockhealth-conditions-search-page {
+  background: transparent;
+}
+
+/* line 69, src/scss/5_theme/entities.scss */
+.page-node-type-health-condition #block-healthconditionsatoz-2 {
+  padding: 0 10px;
+}
+
+/*# sourceMappingURL=entities.css.map */
