@@ -1,16 +1,1 @@
-/*
- * @file
- * Provides the styling for content revision comparisons.
- */
-/* Vertical rhythm presets =========================================== */
-/* Set the base images folder */
-/* Layout ============================================================ */
-/* Breakpoints ======================================================== */
-/* line 10, src/scss/3_components/drupal-diff.scss */
-.launch-service ins,
-.launch-service del {
-  background: none;
-  text-decoration: none;
-}
-
-/*# sourceMappingURL=drupal-diff.css.map */
+.launch-service ins,.launch-service del{background:none;text-decoration:none}
