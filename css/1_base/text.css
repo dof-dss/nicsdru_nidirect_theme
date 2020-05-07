@@ -1,1 +1,117 @@
-p,pre{font-size:1.6rem;line-height:1.5;margin:1em 0 1.5em;color:#333}@media screen and (min-width: 600px){p,pre{margin:1em 0 1.5em}}@media screen and (min-width: 768px){p,pre{font-size:1.8rem}}p+ul,p+ol{margin-top:-1.2rem}@media print{abbr[title]::after{content:" (" attr(title) ")"}}b,strong{font-weight:inherit}code,kbd,samp,var{font-size:1rem;font-family:"Courier New","DejaVu Sans Mono",monospace,sans-serif}dfn{font-style:italic}mark{background-color:#ff0;color:#fff}q{quotes:'\201C' '\201D' '\2018' '\2019'}sub,sup{font-size:1.4rem}sub{vertical-align:super}sup{vertical-align:sub}address{font-size:1.6rem;line-height:1.5;margin:1em 0 1.5em;font-style:normal}@media screen and (min-width: 600px){address{margin:1em 0 1.5em}}@media screen and (min-width: 768px){address{font-size:1.8rem}}
+/*
+ * @file
+ * Sets out the base behaviour of text elements.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 24, src/scss/1_base/text.scss */
+p,
+pre {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin: 1em 0 1.5em;
+  color: #333;
+}
+
+@media screen and (min-width: 600px) {
+  /* line 24, src/scss/1_base/text.scss */
+  p,
+  pre {
+    margin: 1em 0 1.5em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* line 24, src/scss/1_base/text.scss */
+  p,
+  pre {
+    font-size: 1.8rem;
+  }
+}
+
+/* line 31, src/scss/1_base/text.scss */
+p + ul,
+p + ol {
+  margin-top: -1.2rem;
+}
+
+@media print {
+  /* line 48, src/scss/1_base/text.scss */
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+}
+
+/* line 67, src/scss/1_base/text.scss */
+b,
+strong {
+  font-weight: inherit;
+}
+
+/* line 95, src/scss/1_base/text.scss */
+
+code,
+kbd,
+samp,
+var {
+  font-size: 1rem;
+  font-family: "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
+}
+
+/* line 126, src/scss/1_base/text.scss */
+dfn {
+  font-style: italic;
+}
+
+/* line 171, src/scss/1_base/text.scss */
+mark {
+  background-color: #ff0;
+  color: #fff;
+}
+
+/* line 186, src/scss/1_base/text.scss */
+q {
+  quotes: '\201C' '\201D' '\2018' '\2019';
+}
+
+/* line 221, src/scss/1_base/text.scss */
+sub,
+sup {
+  font-size: 1.4rem;
+}
+
+/* line 228, src/scss/1_base/text.scss */
+sub {
+  vertical-align: super;
+}
+
+/* line 232, src/scss/1_base/text.scss */
+sup {
+  vertical-align: sub;
+}
+
+/* line 261, src/scss/1_base/text.scss */
+address {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin: 1em 0 1.5em;
+  font-style: normal;
+}
+
+@media screen and (min-width: 600px) {
+  /* line 261, src/scss/1_base/text.scss */
+  address {
+    margin: 1em 0 1.5em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* line 261, src/scss/1_base/text.scss */
+  address {
+    font-size: 1.8rem;
+  }
+}
+
+/*# sourceMappingURL=text.css.map */
