@@ -1,1 +1,172 @@
-.sliding-popup-bottom,.sliding-popup-top{z-index:99999}.sliding-popup-bottom{position:fixed}.sliding-popup-top{position:relative}.eu-cookie-compliance-banner{background:rgba(4,31,52,0.95);padding-bottom:2.7rem}.eu-cookie-compliance-buttons .btn:focus{outline-color:#fff}.eu-cookie-compliance-message p{font-size:1.6rem;line-height:2.4rem;color:white}.eu-cookie-compliance-message p:first-child{font-size:2.4rem;line-height:3rem}.eu-cookie-compliance-message p:last-of-type{margin-bottom:0}.eu-cookie-compliance-default-button,.eu-cookie-compliance-secondary-button,.eu-cookie-compliance-more-button,.eu-cookie-compliance-hide-button,.eu-cookie-withdraw-tab{cursor:pointer}.eu-cookie-withdraw-wrapper.sliding-popup-top,.eu-cookie-withdraw-wrapper.sliding-popup-top .eu-cookie-withdraw-banner{-webkit-transform:scaleY(-1);transform:scaleY(-1)}.eu-cookie-withdraw-tab{position:absolute;top:0;-webkit-transform:translate(-50%, -100%);transform:translate(-50%, -100%);left:50%}.eu-cookie-withdraw-wrapper.sliding-popup-top .eu-cookie-withdraw-tab{-webkit-transform:translate(-50%, -100%) scaleY(-1);transform:translate(-50%, -100%) scaleY(-1)}
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 3, src/scss/4_state/block/eu-cookie-compliance.scss */
+.sliding-popup-bottom,
+.sliding-popup-top {
+  z-index: 99999;
+}
+
+/* line 9, src/scss/4_state/block/eu-cookie-compliance.scss */
+.sliding-popup-bottom {
+  position: fixed;
+}
+
+/* line 13, src/scss/4_state/block/eu-cookie-compliance.scss */
+.sliding-popup-top {
+  position: relative;
+}
+
+/* line 18, src/scss/4_state/block/eu-cookie-compliance.scss */
+.eu-cookie-compliance-banner {
+  background: #041f34;
+  padding-bottom: 1.6rem;
+}
+
+@media (min-width: 768px) {
+  /* line 18, src/scss/4_state/block/eu-cookie-compliance.scss */
+  .eu-cookie-compliance-banner {
+    padding-bottom: 2.1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  /* line 26, src/scss/4_state/block/eu-cookie-compliance.scss */
+  .eu-cookie-compliance-banner .popup-content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  /* line 33, src/scss/4_state/block/eu-cookie-compliance.scss */
+  .eu-cookie-compliance-buttons {
+    text-align: right;
+    align-self: end;
+  }
+}
+
+/* line 39, src/scss/4_state/block/eu-cookie-compliance.scss */
+.eu-cookie-compliance-buttons .btn:focus {
+  outline-color: #fff;
+}
+
+/* line 43, src/scss/4_state/block/eu-cookie-compliance.scss */
+.eu-cookie-compliance-buttons .btn-primary {
+  font-size: 1.6rem;
+  line-height: 2.16rem;
+  padding: 1.2rem;
+  margin: 0 .5em 0 0;
+}
+
+@media (min-width: 600px) {
+  /* line 43, src/scss/4_state/block/eu-cookie-compliance.scss */
+  .eu-cookie-compliance-buttons .btn-primary {
+    padding: 1.2rem 2.4rem;
+  }
+}
+
+@media (min-width: 768px) {
+  /* line 43, src/scss/4_state/block/eu-cookie-compliance.scss */
+  .eu-cookie-compliance-buttons .btn-primary {
+    font-size: 1.8rem;
+    line-height: 2.7rem;
+    margin: 0 0 0 .5em;
+    padding: .8rem 2.1rem;
+  }
+}
+
+/* line 58, src/scss/4_state/block/eu-cookie-compliance.scss */
+.eu-cookie-compliance-buttons .btn-primary:hover {
+  background-color: #096DB9;
+  border-color: #096DB9;
+}
+
+/* line 66, src/scss/4_state/block/eu-cookie-compliance.scss */
+.eu-cookie-compliance-message p {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  /* line 66, src/scss/4_state/block/eu-cookie-compliance.scss */
+  .eu-cookie-compliance-message p {
+    font-size: 1.8rem;
+    line-height: 2.7rem;
+  }
+}
+
+/* line 74, src/scss/4_state/block/eu-cookie-compliance.scss */
+.eu-cookie-compliance-message p:first-child {
+  font-size: 2.4rem;
+  line-height: 3.18rem;
+  margin: 1.6rem 0;
+}
+
+@media (min-width: 600px) {
+  /* line 74, src/scss/4_state/block/eu-cookie-compliance.scss */
+  .eu-cookie-compliance-message p:first-child {
+    font-size: 2.8rem;
+    line-height: 3.6rem;
+  }
+}
+
+@media (min-width: 768px) {
+  /* line 74, src/scss/4_state/block/eu-cookie-compliance.scss */
+  .eu-cookie-compliance-message p:first-child {
+    margin: 2.4rem 0 1.2rem;
+    font-weight: bold;
+  }
+}
+
+/* line 88, src/scss/4_state/block/eu-cookie-compliance.scss */
+.eu-cookie-compliance-message p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* line 93, src/scss/4_state/block/eu-cookie-compliance.scss */
+.eu-cookie-compliance-message .find-more-button {
+  color: #1593F4;
+  border-bottom: 1px solid;
+}
+
+/* line 97, src/scss/4_state/block/eu-cookie-compliance.scss */
+.eu-cookie-compliance-message .find-more-button:focus {
+  color: #fff;
+}
+
+/* line 101, src/scss/4_state/block/eu-cookie-compliance.scss */
+.eu-cookie-compliance-message .find-more-button:hover {
+  border-color: #fff;
+}
+
+/* line 108, src/scss/4_state/block/eu-cookie-compliance.scss */
+.eu-cookie-compliance-default-button,
+.eu-cookie-compliance-secondary-button,
+.eu-cookie-compliance-more-button,
+.eu-cookie-compliance-hide-button,
+.eu-cookie-withdraw-tab {
+  cursor: pointer;
+}
+
+/* line 116, src/scss/4_state/block/eu-cookie-compliance.scss */
+.eu-cookie-withdraw-wrapper.sliding-popup-top,
+.eu-cookie-withdraw-wrapper.sliding-popup-top .eu-cookie-withdraw-banner {
+  transform: scaleY(-1);
+}
+
+/* line 121, src/scss/4_state/block/eu-cookie-compliance.scss */
+.eu-cookie-withdraw-tab {
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, -100%);
+  left: 50%;
+}
+
+/* line 128, src/scss/4_state/block/eu-cookie-compliance.scss */
+.eu-cookie-withdraw-wrapper.sliding-popup-top .eu-cookie-withdraw-tab {
+  transform: translate(-50%, -100%) scaleY(-1);
+}
+
+/*# sourceMappingURL=eu-cookie-compliance.css.map */
