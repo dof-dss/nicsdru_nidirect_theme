@@ -138,27 +138,27 @@
 
 // Front page featured cards
 //
-// Overrides / fleshes out the cards component for the home page feature cards.
+// Overrides / fleshes out the cards component for feature cards.
 // Main adjustments are controlling the layout of individual 'card' using css grid declarations this is qualified using
 // the `.grid` class on the same element as the `.card-deck` class is applied to.
 // The main heading of the card `.card--title` and the sub-sequent text selectors have attributes set for font properties
 //
-// Style guide: components.layouts.cards.home-features
-.section--featured {
-  .card {
-    &-deck {
-      grid-gap: 20px;
-      @include breakpoint($tab) {
-        grid-template-columns: repeat(3, 1fr);
+// Style guide: components.layouts.cards.features
 
-        > * {
-          /* no grid support? */
-          float: left;
-          width: 33%;
-        }
-      }
+.card-deck--features {
+
+  grid-gap: 20px;
+  @include breakpoint($tab) {
+    grid-template-columns: repeat(3, 1fr);
+
+    > * {
+      /* no grid support? */
+      float: left;
+      width: 33%;
     }
+  }
 
+  .card {
     &__image {
 
       img {
@@ -218,3 +218,4 @@
     }
   }
 }
+
