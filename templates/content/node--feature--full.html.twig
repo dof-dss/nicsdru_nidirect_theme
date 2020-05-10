@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Theme override to display a feature node. This is a template
+ * candidate for all view modes so may need splitting if the content type
+ * uses further view modes in the future.
+#}
+{% set wrapper_classes = [
+  'grid',
+  'card-deck',
+  'card-deck--features']
+%}
+{% set section_classes = [
+  'card',
+  'card--featured']
+%}
+<div {{ attributes.addClass(wrapper_classes) }}>
+<section{{ attributes.removeAttribute('role').addClass(section_classes) }}>
+  {{ content.field_photo }}
+  {{ title_prefix }}
+    <h3{{ title_attributes.addClass('card__title') }}>
+      <a href="{{ content.field_link_url[0]['#url']|render }}" rel="bookmark">{{ label }}</a>
+    </h3>
+  {{ title_suffix }}
+  {% if content.field_teaser %}
+    <p>
+      {{ content.field_teaser | field_value }}
+      <a href="{{ content.field_link_url[0]['#url']|render }}">... more</a>
+    </p>
+  {% endif %}
+</section>
+</div>
+{{ content | without('field_photo', 'field_link_url', 'field_teaser') }}
