@@ -16,13 +16,49 @@
 
 .eu-cookie-compliance {
   &-banner {
-    background: rgba(4, 31, 52, .95);
-    padding-bottom: 2.7rem;
+    background: #041f34;
+    padding-bottom: 1.6rem;
+
+    @include breakpoint($tab) {
+      padding-bottom: 2.1rem;
+    }
+
+    .popup-content {
+      @include breakpoint($tab) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
   }
 
   &-buttons {
+    @include breakpoint($tab) {
+      text-align: right;
+      align-self: end;
+    }
+
     .btn:focus {
       outline-color: #fff;
+    }
+
+    .btn-primary {
+      @include adjust-font-size-to(16px, 3.6);
+      padding: 1.2rem;
+      margin: 0 .5em 0 0;
+
+      @include breakpoint($phab) {
+        padding: 1.2rem 2.4rem;
+      }
+
+      @include breakpoint($tab) {
+        @include adjust-font-size-to(18px, 4.5);
+        margin: 0 0 0 .5em;
+        padding: .8rem 2.1rem;
+      }
+
+      &:hover {
+        background-color: #096db9;
+        border-color: #096db9;
+      }
     }
   }
 
@@ -31,12 +67,39 @@
       @include adjust-font-size-to(16px, 4);
       color: white;
 
+      @include breakpoint($tab) {
+        @include adjust-font-size-to(18px, 4.5);
+      }
+
       &:first-child {
-        @include adjust-font-size-to(24px, 5);
+        @include adjust-font-size-to(24px, 5.3);
+        margin: 1.6rem 0;
+
+        @include breakpoint($phab) {
+          @include adjust-font-size-to(28px, 6);
+        }
+
+        @include breakpoint($tab) {
+          margin: 2.4rem 0 1.2rem;
+          font-weight: bold;
+        }
       }
 
       &:last-of-type {
         margin-bottom: 0;
+      }
+    }
+
+    .find-more-button {
+      color: #1593f4;
+      border-bottom: 1px solid;
+
+      &:focus {
+        color: #fff;
+      }
+
+      &:hover {
+        border-color: #fff;
       }
     }
   }
