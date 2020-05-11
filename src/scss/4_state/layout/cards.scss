@@ -135,3 +135,87 @@
     }
   }
 }
+
+// Front page featured cards
+//
+// Overrides / fleshes out the cards component for feature cards.
+// Main adjustments are controlling the layout of individual 'card' using css grid declarations this is qualified using
+// the `.grid` class on the same element as the `.card-deck` class is applied to.
+// The main heading of the card `.card--title` and the sub-sequent text selectors have attributes set for font properties
+//
+// Style guide: components.layouts.cards.features
+
+.card-deck--features {
+
+  grid-gap: 20px;
+  @include breakpoint($tab) {
+    grid-template-columns: repeat(3, 1fr);
+
+    > * {
+      /* no grid support? */
+      float: left;
+      width: 33%;
+    }
+  }
+
+  .card {
+    &__image {
+
+      img {
+        width: 100%;
+      }
+
+      @include breakpoint($mob) {
+        clear: left;
+        float: left;
+        width: calc(33% - 10px);
+      }
+
+      @include breakpoint($tab) {
+        clear: none;
+        float: none;
+        width: 100%;
+      }
+    }
+
+    & > *:not(.card__image) {
+
+      @include breakpoint($mob) {
+        margin-left: calc(33% + 10px);
+      }
+
+      @include breakpoint($tab) {
+        margin-left: 0;
+      }
+    }
+
+    &__title {
+      @include adjust-font-size-to(18px, 4);
+      font-weight: 700;
+      margin: .8rem 0;
+
+      @include breakpoint($tab) {
+        @include adjust-font-size-to(18px, 4.5);
+        margin: .9rem 0;
+      }
+
+      a {
+        text-decoration: none;
+
+        &:hover {
+          border-bottom: 1px solid;
+        }
+      }
+    }
+
+    p {
+      @include adjust-font-size-to(15px, 4);
+      margin: 0;
+
+      @include breakpoint($phab) {
+        @include adjust-font-size-to(16px, 4);
+      }
+    }
+  }
+}
+

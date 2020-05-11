@@ -5,7 +5,12 @@
  * candidate for all view modes so may need splitting if the content type
  * uses further view modes in the future.
 #}
-{% set classes = ['card'] %}
+{%
+  set classes = [
+    'card',
+    'card--featured',
+  ]
+%}
 <section{{ attributes.removeAttribute('role').addClass(classes) }}>
   {{ content.field_photo }}
   {{ title_prefix }}
