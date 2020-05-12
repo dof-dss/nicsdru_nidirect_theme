@@ -59,8 +59,13 @@ nidirect-specific-styles:
       css/5_theme/entities.css: { minified: true }
       css/5_theme/searches.css: { minified: true }
       css/5_theme/views.css: { minified: true }
+      '//fonts.googleapis.com/css?family=Lato': { type: external }
 
-fonts:
-  css:
-    theme:
-      '//fonts.googleapis.com/css?family=lato': { type: external, minified: true }
+nidirect-table-of-contents:
+  version: VERSION
+  js:
+    js/in_page_navigation.js: { minified: true }
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
