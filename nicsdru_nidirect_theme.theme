@@ -95,6 +95,13 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       }
       break;
 
+    // Ensure the side-bar in the node preview is visible to accurately
+    // reflect how the published node will look.
+    case 'entity.node.preview':
+      $variables['main_content_attr']->addClass($layout_classes);
+      $variables['sidebar_second_attr']->addClass('ga-aside');
+      break;
+
     default:
       break;
   }
