@@ -63,31 +63,40 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
 
   // Contacts page uses multiple routes defined in nidirect_contacts module.
   $route = \Drupal::routeMatch()->getRouteName();
-  if ($route == "nidirect_contacts.default" || $route == "nidirect_contacts.letter") {
-    $layout_classes[] = 'search-content';
-    $variables['main_content_attr']->addClass($layout_classes);
-    if ($variables['content_wrapper_attr'] instanceof Attribute) {
-      $variables['content_wrapper_attr']
-        ->addClass('ga-main')
-        ->setAttribute('role', 'presentation');
-    }
-    $variables['sidebar_second_attr']->addClass('ga-aside');
-  }
 
-  if ($route == "nidirect_gp.gp_search") {
-    $variables['main_content_attr']->addClass($search_layout_classes);
-    $variables['sidebar_first_attr']
-      ->addClass('ga-aside')
-      ->setAttribute('role', 'search')
-      ->setAttribute('aria-label', t('filter search results'));
-  }
+  switch ($route) {
+    // Contacts page uses multiple routes defined in nidirect_contacts module.
+    case 'nidirect_contacts.default':
+    case 'nidirect_contacts.letter':
+      $layout_classes[] = 'search-content';
+      $variables['main_content_attr']->addClass($layout_classes);
+      if ($variables['content_wrapper_attr'] instanceof Attribute) {
+        $variables['content_wrapper_attr']
+          ->addClass('ga-main')
+          ->setAttribute('role', 'presentation');
+      }
+      $variables['sidebar_second_attr']->addClass('ga-aside');
+      break;
 
-  if ($route == "entity.taxonomy_term.canonical" && $tid = \Drupal::routeMatch()->getRawParameter('taxonomy_term')) {
-    if (Term::load($tid)->getVocabularyId() == "site_themes") {
-      $taxonomy_classes = ['grid', 'layout--front'];
-      $variables['main_content_attr']->addClass($taxonomy_classes);
-      $variables['sidebar_second_attr']->addClass('section--popular');
-    }
+    case 'nidirect_gp.gp_search':
+      $variables['main_content_attr']->addClass($search_layout_classes);
+      $variables['sidebar_first_attr']
+        ->addClass('ga-aside')
+        ->setAttribute('role', 'search')
+        ->setAttribute('aria-label', t('filter search results'));
+      break;
+
+    case 'entity.taxonomy_term.canonical':
+      $tid = \Drupal::routeMatch()->getRawParameter('taxonomy_term');
+      if (Term::load($tid)->getVocabularyId() == "site_themes") {
+        $taxonomy_classes = ['grid', 'layout--front'];
+        $variables['main_content_attr']->addClass($taxonomy_classes);
+        $variables['sidebar_second_attr']->addClass('section--popular');
+      }
+      break;
+
+    default:
+      break;
   }
 
   if (isset($variables['is_front']) && $variables['is_front'] == TRUE) {
