@@ -32,7 +32,6 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       case "page":
         $variables['main_content_attr']->addClass($layout_classes);
         $variables['sidebar_second_attr']->addClass('ga-aside');
-        $variables['#attached']['library'][] = 'nicsdru_nidirect_theme/nidirect-table-of-contents';
         break;
 
       case "contact":
@@ -219,6 +218,17 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
       $variables['items'][$i]['content']['address_line2']['#attributes']['class'][] = 'street-address';
       $i++;
     }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function nicsdru_nidirect_theme_theme_suggestions_field_alter(array &$suggestions, array $variables) {
+  // Force related info/More useful links fields to use the
+  // related_info template.
+  if ($variables['element']['#field_name'] === 'field_related_info') {
+    $suggestions = ['field__field_related_info'];
   }
 }
 

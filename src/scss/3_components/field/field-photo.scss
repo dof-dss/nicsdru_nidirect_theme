@@ -4,16 +4,26 @@
  */
 @import '../../init';
 
-.card__image {
+.photo {
   display: inline;
   font-size: .1px;
   line-height: 0;
 
   img {
-    clear: right;
-    float: right;
-    width: 48.3871%;
-    max-width: 300px;
-    margin: 9px 0 9px 27px;
+    width: 100%;
+    height: auto;
+    margin: 1.6rem 0;
+
+    @include breakpoint($mob) {
+      clear: right;
+      float: right;
+      width: 48.3871%;
+      max-width: 300px;
+      margin-left: 2.4rem;
+    }
+
+    @include breakpoint($tab) {
+      margin: 1.8rem 0 1.8rem 2.7rem;
+    }
   }
 }
