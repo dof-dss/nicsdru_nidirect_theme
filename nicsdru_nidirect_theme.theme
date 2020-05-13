@@ -108,10 +108,20 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       $social_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($social_block);
       $variables['page']['bottom_banner'][] = $social_block_content;
 
-      // Render Related Content block.
-      $related_block = Block::load('views_block__related_content_content_by_theme');
-      $related_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($related_block);
-      $variables['page']['sidebar_second'][] = $related_block_content;
+      switch ($node_preview->getType()) {
+        case 'article':
+        case 'news':
+        case 'application':
+        case 'landing_page':
+        case 'page':
+          // Render Related Content block.
+          $related_block = Block::load('views_block__related_content_content_by_theme');
+          $related_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($related_block);
+          $variables['page']['sidebar_second'][] = $related_block_content;
+        break;
+        default:
+        break;
+      }
 
       // Add classes to main and sidebar regions.
       $variables['main_content_attr']->addClass($layout_classes);
