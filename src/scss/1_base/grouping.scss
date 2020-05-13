@@ -29,39 +29,10 @@ blockquote {
   @include responsive-typo-map($normal-text);
   // set consistent quote types
   quotes: '\201C' '\201D' '\2018' '\2019';
-  position: relative;
-  color: lighten($charcoal, 10%);
-  padding: 0 2.5em;
-
-  &::before {
-    content: '\201C';
-    display: block;
-    position: absolute;
-    top: .3334em;
-    left: 0;
-    font-size: 5em;
-    line-height: 0;
-    color: $grey-medium;
-    font-weight: bold;
-  }
-
-  &::after {
-    content: '\201D';
-    display: block;
-    position: absolute;
-    top: calc(100% + .1em);
-    right: 0;
-    font-size: 5em;
-    line-height: 0;
-    color: $grey-medium;
-    font-weight: bold;
-  }
-
-  cite {
-    display: block;
-    font-style: italic;
-    text-align: right;
-  }
+  color: color(text);
+  border-left: .5em solid $grey-light;
+  margin: 1em $indent-amount 1.5em 0;
+  padding-left: 1em;
 }
 
 // Lists
