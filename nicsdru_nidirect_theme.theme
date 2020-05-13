@@ -108,8 +108,10 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       $social_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($social_block);
       $variables['page']['bottom_banner'][] = $social_block_content;
 
-      // Render Related Content View.
-      $variables['page']['sidebar_second'][] = views_embed_view('related_content', 'content_by_theme', []);
+      // Render Related Content block.
+      $related_block = Block::load('views_block__related_content_content_by_theme');
+      $related_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($related_block);
+      $variables['page']['sidebar_second'][] = $related_block_content;
 
       // Add classes to main and sidebar regions.
       $variables['main_content_attr']->addClass($layout_classes);
