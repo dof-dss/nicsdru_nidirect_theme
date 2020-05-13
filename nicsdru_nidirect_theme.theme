@@ -14,6 +14,8 @@ use Drupal\node\NodeInterface;
 use Drupal\user\Entity\User;
 use Drupal\Component\Utility\Html;
 use Drupal\taxonomy\Entity\Term;
+use Drupal\views\ViewExecutable;
+use Drupal\views\Views;
 
 /**
  * Implements hook_preprocess_page().
@@ -98,8 +100,16 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
     // Ensure the side-bar in the node preview is visible to accurately
     // reflect how the published node will look.
     case 'entity.node.preview':
+      $node_preview = \Drupal::routeMatch()->getParameter('node_preview');
+
+      // Render Social Links block
+      $social_block = \Drupal\block\Entity\Block::load('originssocialsharing');
+      $social_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($social_block);
+      $variables['page']['bottom_banner'][] = $social_block_content;
+
       $variables['main_content_attr']->addClass($layout_classes);
       $variables['sidebar_second_attr']->addClass('ga-aside');
+
       break;
 
     default:
