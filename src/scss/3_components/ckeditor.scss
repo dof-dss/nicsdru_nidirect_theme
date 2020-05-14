@@ -4,6 +4,10 @@
 
 @import '../init';
 
+body {
+  font-family: $base-font-family;
+}
+
 .cke_editable {
 
   // applied to body in ckeditor

@@ -248,11 +248,11 @@ sup {
 
 // Address text
 //
-// The `<address>` tag defines the contact information for the author/owner of a document or an article.
-// If the `<address>` element is inside the `<body>` element, it represents contact information for the document.
-// If the `<address>` element is inside an `<article>` element, it represents contact information for that article.
-// The text in the `<address>` element usually renders in italic. Most browsers will add a line break before and
-// after the address element, we redefine the default styling here.
+// The address element represents contact information for a person, people or organization. It should include physical
+// and/or digital location/contact information and a means of identifying a person(s) or organization the information
+// pertains to.
+//
+// See https://www.w3.org/TR/html52/grouping-content.html#the-address-element.
 //
 // Markup: kss-templates/text-address.twig
 //
@@ -261,4 +261,20 @@ sup {
 address {
   @include responsive-typo-map($normal-text);
   font-style: normal;
+  margin: 1em 0 1.5em;
+  padding: 14px 1em;
+  font-weight: normal;
+  font-style: normal;
+  color: $charcoal;
+  background: $brand-primary-lightest;
+  border-top: 2px solid $brand-primary-light;
+  border-bottom: 2px solid $brand-primary-light;
+
+  @include breakpoint($tab) {
+    padding: 16px 1em;
+  }
+
+  & > *:first-child {
+    margin-top: 0;
+  }
 }
