@@ -6,6 +6,7 @@
  */
 
 use Drupal\block\Entity\Block;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Markup;
@@ -155,6 +156,15 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
     $variables['main_content_attr']->addClass($front_classes);
     $variables['sidebar_second_attr']->addClass('section--popular');
   }
+}
+
+/**
+ * hook_form_BASE_FORM_ID_alter().
+ */
+function nicsdru_nidirect_theme_form_node_preview_form_select_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Additional styles to the node preview form.
+  unset($form['view_mode']);
+  $form['backlink']['#options']['attributes']['class'] += ['btn-standard', 'call-to-action'];
 }
 
 /**
