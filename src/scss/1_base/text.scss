@@ -258,15 +258,17 @@ sup {
 //
 // Style guide: base.text.address
 
-address:not(.vcard) {
+address {
   @include responsive-typo-map($normal-text);
-  font-style: normal;
   margin: 1em 0 1.5em;
-  padding: .5em 1em;
   font-weight: normal;
   font-style: normal;
   color: $charcoal;
-  border-left: .5em solid $grey-light;
+
+  &:not(.vcard) {
+    padding: .5em 1em;
+    border-left: .5em solid $grey-light;
+  }
 
   & > *:first-child {
     margin-top: 0;
