@@ -258,21 +258,15 @@ sup {
 //
 // Style guide: base.text.address
 
-address {
+address:not(.vcard) {
   @include responsive-typo-map($normal-text);
   font-style: normal;
   margin: 1em 0 1.5em;
-  padding: 14px 1em;
+  padding: .5em 1em;
   font-weight: normal;
   font-style: normal;
   color: $charcoal;
-  background: $brand-primary-lightest;
-  border-top: 2px solid $brand-primary-light;
-  border-bottom: 2px solid $brand-primary-light;
-
-  @include breakpoint($tab) {
-    padding: 16px 1em;
-  }
+  border-left: .5em solid $grey-light;
 
   & > *:first-child {
     margin-top: 0;
