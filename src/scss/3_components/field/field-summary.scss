@@ -9,6 +9,7 @@ $field-summary: (
   md: (21px, 3rem)
 );
 
+.nodeSummary, // legacy class still found in some content - TODO: replace with page-summary.
 .page-summary,
 .page-summary p {
   @include responsive-typo-map($field-summary);
