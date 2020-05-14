@@ -30,7 +30,7 @@ html {
   font-size: 100% * ($base-font-size / 16px); /* 3 */
   line-height: 1.5;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
   // On short pages, we want any background gradients to fill the entire height
   // of the browser.
   min-height: 100%;
