@@ -114,12 +114,14 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
           $related_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($related_block);
           $variables['page']['sidebar_second'][] = $related_block_content;
           break;
+
         case 'news':
           // Render Latest news block.
           $news_block = Block::load('views_block__news_latest_news_block');
           $news_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($news_block);
           $variables['page']['sidebar_second'][] = $news_block_content;
           break;
+
         case 'health_condition':
           // Render Health Conditions search block.
           $health_condition_search_block = Block::load('exposedformhealth_conditionssearch_sidebar_2');
@@ -136,6 +138,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
           $health_conditions_related_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($health_conditions_related_block);
           $variables['page']['sidebar_second'][] = $health_conditions_related_block_content;
           break;
+
         default:
           break;
       }
@@ -151,7 +154,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         'application',
         'landing_page',
         'page',
-        'publication'
+        'publication',
       ])) {
         // Render Social Links block.
         $social_block = Block::load('originssocialsharing');
