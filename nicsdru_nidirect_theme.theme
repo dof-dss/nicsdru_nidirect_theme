@@ -16,8 +16,6 @@ use Drupal\node\NodeInterface;
 use Drupal\user\Entity\User;
 use Drupal\Component\Utility\Html;
 use Drupal\taxonomy\Entity\Term;
-use Drupal\views\ViewExecutable;
-use Drupal\views\Views;
 
 /**
  * Implements hook_preprocess_page().
@@ -159,7 +157,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
 }
 
 /**
- * hook_form_BASE_FORM_ID_alter().
+ * Implements hook_form_BASE_FORM_ID_alter().
  */
 function nicsdru_nidirect_theme_form_node_preview_form_select_alter(&$form, FormStateInterface $form_state, $form_id) {
   // Additional styles to the node preview form.
@@ -188,8 +186,9 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
 
     case "landing_page":
     case "page":
-      // Omit the title on these content types; causes trouble with search indexing.
-      // Resolvable with either suitable block config or specific node templates for these types.
+      // Omit the title on these content types; causes trouble with search
+      // indexing. Resolvable with either suitable block config or specific
+      // node templates for these types.
       $variables['show_title'] = FALSE;
       break;
   }
