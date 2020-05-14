@@ -101,8 +101,9 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
     // reflect how the published node will look.
     case 'entity.node.preview':
       $node_preview = \Drupal::routeMatch()->getParameter('node_preview');
+      $node_type = $node_preview->getType();
 
-      switch ($node_preview->getType()) {
+      switch ($node_type) {
         case 'article':
         case 'news':
         case 'application':
@@ -112,11 +113,13 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
           $related_block = Block::load('views_block__related_content_content_by_theme');
           $related_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($related_block);
           $variables['page']['sidebar_second'][] = $related_block_content;
+          break;
         case 'news':
           // Render Latest news block.
           $news_block = Block::load('views_block__news_latest_news_block');
           $news_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($news_block);
           $variables['page']['sidebar_second'][] = $news_block_content;
+          break;
         case 'health_condition':
           // Render Health Conditions search block.
           $health_condition_search_block = Block::load('exposedformhealth_conditionssearch_sidebar_2');
@@ -132,11 +135,28 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
           $health_conditions_related_block = Block::load('healthconditionsrelatedconditions');
           $health_conditions_related_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($health_conditions_related_block);
           $variables['page']['sidebar_second'][] = $health_conditions_related_block_content;
+          break;
         default:
-          // Render Social Links block.
-          $social_block = Block::load('originssocialsharing');
-          $social_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($social_block);
-          $variables['page']['bottom_banner'][] = $social_block_content;
+          break;
+      }
+
+      // Display Social links block on the listed entity types.
+      if (in_array($node_type, [
+        'application',
+        'article',
+        'contact',
+        'embargoed_publication',
+        'health_condition',
+        'news',
+        'application',
+        'landing_page',
+        'page',
+        'publication'
+      ])) {
+        // Render Social Links block.
+        $social_block = Block::load('originssocialsharing');
+        $social_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($social_block);
+        $variables['page']['bottom_banner'][] = $social_block_content;
       }
 
       // Add classes to main and sidebar regions.
