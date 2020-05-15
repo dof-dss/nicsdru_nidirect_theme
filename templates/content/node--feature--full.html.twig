@@ -15,7 +15,7 @@
   'card--featured']
 %}
 <div {{ attributes.addClass(wrapper_classes) }}>
-<section{{ attributes.removeAttribute('role').addClass(section_classes) }}>
+<section {{ attributes.removeAttribute('role').addClass(section_classes).removeClass(['grid', 'card-deck', 'card-deck--features']) }}>
   {{ content.field_photo }}
   {{ title_prefix }}
     <h3{{ title_attributes.addClass('card__title') }}>
