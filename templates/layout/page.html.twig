@@ -91,6 +91,9 @@
     {{ drupal_field('field_additional_info', 'node') }}
   {% endif %}
 {% endif %}
+{% if term.bundle == 'site_themes' %}
+  {{ drupal_field('field_additional_info', 'taxonomy_term') }}
+{% endif %}
 {%- if page.footer -%}
   <footer id="footer" class="footer">
     {{- page.footer -}}
