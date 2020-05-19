@@ -3,23 +3,7 @@
  * Provides the styling for inline responsive images.
  */
 @import '../../init';
-
-@mixin image-float {
-
-  margin: 1.6rem 0;
-
-  @include breakpoint($mob) {
-    clear: right;
-    float: right;
-    width: 48.3871%;
-    max-width: 300px;
-    margin: .8rem 0 .8rem 2.4rem;
-  }
-
-  @include breakpoint($tab) {
-    margin: .9rem 0 .9rem 2.7rem;
-  }
-}
+@import 'responsive-images';
 
 drupal-media {
 

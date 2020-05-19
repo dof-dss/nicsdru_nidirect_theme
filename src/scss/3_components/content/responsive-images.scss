@@ -14,6 +14,7 @@
     width: 48.3871%;
     max-width: 300px;
     margin: .8rem 0 .8rem 2.4rem;
+    transition: width 1s, max-width 1s, margin 1s; // For thwoopable images.
   }
 
   @include breakpoint($tab) {
@@ -26,6 +27,20 @@
   position: relative;
   font-size: 0;
   line-height: 0;
+
+  &.thwooped-modal {
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .9);
+    padding: 5%;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 picture {
@@ -33,21 +48,66 @@ picture {
   img {
     width: 100%;
     height: auto;
+    margin: .8rem 0 2.4rem;
+
+    @include breakpoint($tab) {
+      margin: .9rem 0 2.7rem;
+    }
   }
 
   &[data-picture-mapping='inline'],
   &[data-picture-mapping='inline_expandable'],
-  &[data-picture-mapping='portrait_float'] {
+  &[data-picture-mapping='portrait_float'],
+  &[data-picture-mapping='portrait_float_expandable'] {
 
     img {
-      @include image-float; //hello
-    }
-  }
+      @include image-float;
 
-  &[data-picture-mapping='inline_expandable'] {
+      &.thwooped {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 0 2.4rem;
 
-    img {
-      max-width: $article-max-width;
+        @include breakpoint($tab) {
+          margin: 0 0 2.7rem;
+        }
+      }
     }
   }
 }
+
+
+
+a.thwooper { // Added by JS after all expandable images - when clicked it adds "thwooped" class to img
+
+  // By default do not show the thwooper control
+  display: none;
+  position: absolute;
+  margin: 0;
+  text-indent: -9999px;
+
+  @include breakpoint($mob) {
+    display: block;
+    width: 33px;
+    height: 33px;
+    padding: 4px;
+    right: 5px;
+    top: 14px;
+    z-index: 10;
+    background: rgba(0, 0, 0, .3) resolve('img-expand-icon-x2.png') 4px 4px no-repeat;
+    background-size: 25px 25px;
+    transition: top 1s;
+  }
+
+  &:focus {
+    outline-color: #fff;
+    border: 0;
+  }
+
+  .thwooped + & {
+    background-image: resolve('img-shrink-icon-x2.png');
+    top: 5px;
+  }
+}
+
+
