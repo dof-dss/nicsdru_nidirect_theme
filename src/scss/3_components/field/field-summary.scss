@@ -4,17 +4,15 @@
  */
 @import '../../init';
 
-$field-summary: (
-  null: (17px, 2.4rem),
-  md: (21px, 3rem)
-);
-
+.nodeSummary, // legacy class still found in some content - TODO: replace with page-summary.
 .page-summary,
-.page-summary p {
-  @include responsive-typo-map($field-summary);
+.page-summary p,
+.contact--body p:first-child {
+  @include responsive-typo-map($large-text);
   font-weight: 700;
 
   &:first-child {
     margin-top: 0;
   }
 }
+
