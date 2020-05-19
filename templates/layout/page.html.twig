@@ -86,14 +86,16 @@
 </main>
 {%- if not is_front and page.bottom_banner -%}
   {{- page.bottom_banner -}}
-
-  {% if node.type.entity.type == 'article' %}
-    {{ drupal_field('field_additional_info', 'node') }}
-  {% endif %}
 {% endif %}
+
+{% if node.type.entity.id == 'article' %}
+    {{ drupal_field('field_additional_info', 'node') }}
+{% endif %}
+
 {% if term.bundle == 'site_themes' %}
   {{ drupal_field('field_additional_info', 'taxonomy_term') }}
 {% endif %}
+
 {%- if page.footer -%}
   <footer id="footer" class="footer">
     {{- page.footer -}}
