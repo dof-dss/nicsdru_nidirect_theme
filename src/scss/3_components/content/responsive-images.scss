@@ -1,0 +1,53 @@
+/*
+ * @file
+ * Provides the styling for inline responsive images.
+ */
+@import '../../init';
+
+@mixin image-float {
+
+  margin: 1.6rem 0;
+
+  @include breakpoint($mob) {
+    clear: right;
+    float: right;
+    width: 48.3871%;
+    max-width: 300px;
+    margin: .8rem 0 .8rem 2.4rem;
+  }
+
+  @include breakpoint($tab) {
+    margin: .9rem 0 .9rem 2.7rem;
+  }
+}
+
+.media-image {
+  width: 100%;
+  position: relative;
+  font-size: 0;
+  line-height: 0;
+}
+
+picture {
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  &[data-picture-mapping='inline'],
+  &[data-picture-mapping='inline_expandable'],
+  &[data-picture-mapping='portrait_float'] {
+
+    img {
+      @include image-float; //hello
+    }
+  }
+
+  &[data-picture-mapping='inline_expandable'] {
+
+    img {
+      max-width: $article-max-width;
+    }
+  }
+}
