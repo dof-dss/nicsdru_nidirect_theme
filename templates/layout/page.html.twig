@@ -59,6 +59,7 @@
 {{- page.highlighted -}}
 {{- page.help -}}
 {{- page.top_banner -}}
+{{ banner_display }}
 <main{{ main_content_attr }}>{# @see skiplink in html.html.twig  which targets the ID for this element #}
   {%- if is_front -%}
     <h1 class="visually-hidden page-title ga-full">{{ 'Welcome to NI Direct'|t }}</h1>
@@ -87,6 +88,15 @@
 {%- if not is_front and page.bottom_banner -%}
   {{- page.bottom_banner -}}
 {% endif %}
+
+{% if node.type.entity.id == 'article' %}
+    {{ drupal_field('field_additional_info', 'node') }}
+{% endif %}
+
+{% if term.bundle == 'site_themes' %}
+  {{ drupal_field('field_additional_info', 'taxonomy_term') }}
+{% endif %}
+
 {%- if page.footer -%}
   <footer id="footer" class="footer">
     {{- page.footer -}}

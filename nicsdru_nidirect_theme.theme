@@ -92,6 +92,8 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       $tid = \Drupal::routeMatch()->getRawParameter('taxonomy_term');
       $term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($tid);
 
+      $variables['term'] = $term;
+
       if ($term->bundle() == "site_themes") {
         $taxonomy_classes = ['grid', 'layout--front'];
         $variables['main_content_attr']->addClass($taxonomy_classes);
