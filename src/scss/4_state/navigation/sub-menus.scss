@@ -20,21 +20,31 @@
   }
 }
 
-//
-.toc {
-  background-color: transparent;
+.toc-menu {
+  background: transparent;
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+  margin: 1.5em 0;
+  padding: 0;
 
-  &-aside {
-    display: none;
-
-    @include breakpoint($tab) {
-      display: block;
-    }
+  .menu-title {
+    margin: 1em 0 .5em;
+    font-size: 1.8rem;
+    font-weight: bold;
+    line-height: 2.4rem;
   }
 
-  &-main {
-    @include breakpoint($tab) {
-      @include visually-hidden;
+  ul {
+    margin: 1.2rem 0 2.1rem;
+
+    li {
+      font-size: 16px;
+      line-height: 1.5;
+      padding-bottom: .5em;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
     }
   }
 }
