@@ -5,9 +5,11 @@
 @import '../../init';
 @import 'responsive-images';
 
+// In ckeditor, responsive images are wrapped in drupal-media.
 drupal-media {
 
-  @include image-float;
+  // Instead of floating images, float the drupal-media wrapper instead.
+  @include media-image-float;
 
   picture img {
     width: 100% !important;
@@ -16,6 +18,7 @@ drupal-media {
   }
 }
 
+// Certain media image display (view) modes are not floated and are full width of the content area.
 drupal-media[data-view-mode^='landscape_full'],
 drupal-media[data-view-mode^='portrait_full'] {
   float: none;
@@ -26,6 +29,7 @@ drupal-media[data-view-mode^='portrait_full'] {
 
 .media-image {
 
+  // Styling for the Edit media button
   .media-library-item__edit {
     position: absolute;
     top: 0;
@@ -41,4 +45,3 @@ drupal-media[data-view-mode^='portrait_full'] {
     font-size: 14px;
   }
 }
-
