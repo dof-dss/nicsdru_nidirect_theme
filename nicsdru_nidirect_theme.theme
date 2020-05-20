@@ -250,6 +250,13 @@ function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
  * Implements hook_preprocess_field().
  */
 function nicsdru_nidirect_theme_preprocess_field(&$variables) {
+  if ($variables['element']['#field_name'] == 'field_featured_content' && \Drupal::service('path.matcher')->isFrontPage()) {
+    // Only show 3 items on the homepage.
+    if (count($variables['items']) > 3) {
+      $variables['items'] = array_slice($variables['items'], 0, 3);
+    }
+  }
+
   // Implement audit link.
   if (isset($variables['element'])
     && isset($variables['element']['#entity_type'])
