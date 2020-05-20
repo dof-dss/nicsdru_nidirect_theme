@@ -41,6 +41,13 @@ nidirect-global-styles:
       css/3_components/content/lists.css: { minified: true }
       css/3_components/content/responsive-images.css: { minified: true }
       css/3_components/field/file-link.css: { minified: true }
+  js:
+    js/thwoop-images.js: { minified: true }
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+    - core/modernizr
 
 nidirect-specific-styles:
   version: 1.x
