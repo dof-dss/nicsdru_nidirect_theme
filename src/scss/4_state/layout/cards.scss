@@ -163,6 +163,8 @@
 
       img {
         width: 100%;
+        max-width: 300px;
+        margin: 0;
       }
 
       @include breakpoint($mob) {
@@ -190,13 +192,18 @@
     }
 
     &__title {
-      @include adjust-font-size-to(18px, 4);
+      @include adjust-font-size-to(20px, 4);
       font-weight: 700;
-      margin: .8rem 0;
+      margin: 1.2rem 0 .4rem;
+
+      @include breakpoint($mob) {
+        @include adjust-font-size-to(18px, 4);
+        margin: 0 0 .8rem;
+      }
 
       @include breakpoint($tab) {
         @include adjust-font-size-to(18px, 4.5);
-        margin: .9rem 0;
+        margin: 2rem 0 .7rem;
       }
 
       a {
