@@ -8,8 +8,16 @@
  * - content: Media content.
  *
  * @see template_preprocess_media()
- *
- * @ingroup themeable
  */
 #}
-{{ content }}
+{%
+  set classes = [
+  'media-image',
+]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_suffix.contextual_links }}
+  {% if content %}
+    {{ content }}
+  {% endif %}
+</div>

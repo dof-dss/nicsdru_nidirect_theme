@@ -1,0 +1,192 @@
+/*
+ * @file
+ * Provides the styling for inline responsive images.
+ */
+@import '../../init';
+
+@mixin media-image-float {
+  /*
+   * Simple mixin to output CSS for floating inline, inline_expandable, portrait_float and
+   * portrait_float_expandable images.
+   */
+
+  // Media is full width by default.
+  width: 100%;
+  height: auto;
+  margin: 1.6rem 0;
+
+  // Float media when display gets width enough ...
+  @include breakpoint($mob) {
+    clear: right;
+    float: right;
+    width: 48.3871%;
+    max-width: 300px;
+    margin: .8rem 0 .8rem 2.4rem;
+    transition: width 1s, max-width 1s, margin 1s; // For thwoopable images.
+  }
+
+  @include breakpoint($tab) {
+    margin: .9rem 0 .9rem 2.7rem;
+  }
+}
+
+// The media-image wrapper wraps all responsive images.
+.media-image {
+  width: 100%;
+  position: relative;
+  font-size: 0;
+  line-height: 0;
+
+  // It can act as a modal wrapper for full size expandable images.
+  &.thwooped-modal {
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .9);
+    padding: 5%;
+    justify-content: center;
+    text-align: center;
+
+    // Images inside the model wrapper must be contained in the viewport.
+    img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    // Sometimes the thwooper control is display: none at certain screen sizes.
+    // In a modal, the thwooper control acts as a close button and should be displayed at all times.
+    a.thwooper {
+      display: block !important;
+    }
+  }
+}
+
+picture {
+
+  // Defaults for all images
+  img {
+    width: 100%;
+    height: auto;
+    margin: .8rem 0 2.4rem;
+
+    @include breakpoint($tab) {
+      margin: .9rem 0 2.7rem;
+    }
+  }
+
+  // Floated styles.
+  &[data-picture-mapping='inline'],
+  &[data-picture-mapping='inline_expandable'],
+  &[data-picture-mapping='portrait_float'],
+  &[data-picture-mapping='portrait_float_expandable'] {
+
+    img {
+      @include media-image-float;
+
+      &.thwooped {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 0 2.4rem;
+
+        @include breakpoint($tab) {
+          margin: 0 0 2.7rem;
+        }
+      }
+    }
+  }
+
+  [data-picture-mapping='inline_xl_expandable'] ,
+  [data-picture-mapping='portrait_full_expandable']  {
+    img {
+      max-width: 960px;
+      max-height: 640px;
+      transition: max-width 1s, max-height 1s;
+    }
+  }
+}
+
+
+
+a.thwooper { // Added by JS after all expandable images - when clicked it adds "thwooped" class to img.
+
+  display: none; // By default do not show the thwooper expand/shrink control.
+  position: absolute;
+  margin: 0;
+  text-indent: -9999px;
+
+  width: 44px;
+  height: 44px;
+  padding: 4px;
+  right: 5px;
+  top: 14px;
+  z-index: 10;
+  background: rgba(0, 0, 0, .5) resolve('img-expand-icon-x2.png') 50% 50% no-repeat;
+  background-size: 24px 24px;
+  transition: top .5s;
+
+  &:focus,
+  &:hover {
+    outline: 3px solid #fff;
+    border: 0;
+  }
+
+  // Swap to a shrink image when img is 'thwooped'.
+  .thwooped + & {
+    background-image: resolve('img-shrink-icon-x2.png');
+    top: 5px;
+  }
+
+  // Show the thooper control when screen is big enough to accommodate the expansion.
+
+  [data-picture-mapping='inline_expandable'] &,
+  [data-picture-mapping='portrait_float_expandable'] & {
+
+    // Floated styles are expandable quite early.
+    @include breakpoint($mob) {
+      display: block;
+    }
+  }
+
+  [data-picture-mapping='inline_xl_expandable'] &,
+  [data-picture-mapping='portrait_full_expandable'] & {
+
+    // Full width expandable styles are only expandable when layout becomes two column
+    @include breakpoint($tab) {
+      display: block;
+    }
+  }
+
+  .thwooped-modal & {
+
+    right: 32px;
+    top: 32px;
+
+    // In a modal we change the thwooper control to look like a close button.
+    background-image: none;
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: ' ';
+      top: 11px;
+      left: 20px;
+      width: 4px;
+      height: 22px;
+      background-color: #fff;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}
