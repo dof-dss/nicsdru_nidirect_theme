@@ -14,17 +14,20 @@
 //
 // Style guide: base.table
 
-$table-border-color: #666 !default;
-
 table {
   // Add vertical rhythm margins.
-  @include leader(1);
-  @include trailer(1);
+  margin: 1em 0 1.5em;
+
   // Remove most spacing between table cells.
   border-collapse: collapse;
   border-spacing: 0;
+
   // Prevent cramped-looking tables.
   width: 100%;
+
+  caption {
+    padding: 0 0 .5em;
+  }
 
   p {
     margin: .9rem 0;
@@ -41,22 +44,28 @@ table {
 
 td,
 th {
-  @include adjust-font-size-to(14px, 3.5);
+  @include adjust-font-size-to(14px, 4);
   box-sizing: border-box;
   // Remove most spacing between table cells.
   border-right: 1px solid $table-border-color;
   border-top: 1px solid $table-border-color;
-  padding: .2rem;
+  padding: .4rem .4rem .3rem; // -1px on bottom border to maintain vertical rhythm.
   text-align: left;
   vertical-align: top;
 
   @include breakpoint($phab, $no-query: true) {
     @include adjust-font-size-to(16px, 4);
-    padding: .4rem;
+    padding: .8rem .8rem .7rem; // -1px on bottom border to maintain vertical rhythm.
+  }
+
+  @include breakpoint($tab, $no-query: true) {
+    @include adjust-font-size-to(16px, 4.5); // need 27px line height for vertical rhythm now.
+    padding: .9rem .9rem .8rem; // -1px on bottom border to maintain vertical rhythm.
   }
 
   & * {
-    @include adjust-font-size-to(16px, 4);
+    font-size: inherit;
+    line-height: inherit;
   }
 
   &:first-child {
