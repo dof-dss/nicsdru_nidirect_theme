@@ -25,7 +25,6 @@
   }
 
   a,
-  .a-nolink,
   .link__self {
     @include adjust-font-size-to(24px, 7.5);
     border: 1px solid $brand-primary-medium;
@@ -36,24 +35,19 @@
     text-align: center;
     text-decoration: none;
     width: 4.5rem;
+  }
 
+  a {
     &:hover {
       text-decoration: underline;
-      //text-decoration-thickness: 2px;
     }
 
     &:focus {
       background: transparent;
     }
-
-    &.active {
-      background: $grey-lightest;
-      color: $grey;
-    }
   }
 
-  .no-content,
-  .a-nolink,
+  .active,
   .link__self {
     background: $brand-primary-medium;
     color: white;
