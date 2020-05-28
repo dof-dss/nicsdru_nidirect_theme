@@ -24,22 +24,19 @@
   background: transparent;
   border-top: 1px solid #999;
   border-bottom: 1px solid #999;
-  margin: 1.5em 0;
+  margin: 1em 0 1.5em;
   padding: 0;
 
   .menu-title {
-    margin: 1em 0 .5em;
-    font-size: 1.8rem;
+    @include responsive-typo-map($normal-text);
     font-weight: bold;
-    line-height: 2.4rem;
   }
 
   ul {
-    margin: 1.2rem 0 2.1rem;
+    margin: 1em 0 2.1rem;
 
     li {
-      font-size: 16px;
-      line-height: 1.5;
+      @include responsive-typo-map($body-text);
       padding-bottom: .5em;
 
       &:last-child {
