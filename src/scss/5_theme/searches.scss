@@ -4,7 +4,61 @@
  */
 @import '../init';
 
-// GP Practice index page
+// GP Practice search form
+//
+// The GP Practice search form is a bit different to search on other search index pages because it has a "use my
+// location" feature.  This JS driven feature adds a label + button preceding the normal search input which users can
+// click if they want to allow using their location to find nearby GP practices.  The label and button are only output
+// if the user's browser supports navigator.geolocation.  This presence or absence of this label and button drastically
+// affect the layout of the form overall.  That is dealt with here.
+
+form#views-exposed-form-gp-practices-find-a-gp {
+
+  .js & {
+
+    max-width: 760px;
+
+    // Small screens - two rows;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    grid-gap: 1.5em 0;
+    grid-template-areas:
+      'by-location bylocation'
+      'search-input search-submit';
+
+    // Larger screens - everything on one row.
+    @include breakpoint($phab) {
+      grid-template-columns: auto auto auto;
+      grid-template-areas:
+        'by-location search-input search-submit';
+    }
+
+    > div {
+      margin: 0;
+    }
+
+    .find-by-location {
+      grid-area: by-location;
+      margin-right: 2em;
+
+      input[type='button'] {
+        height: 4.5rem;
+        padding: 0 1em;
+        width: 100%;
+      }
+    }
+
+    .form-type-textfield {
+      grid-area: search-input;
+    }
+
+    .form-actions {
+      grid-area: search-submit;
+    }
+  }
+}
+
+// GP Practice results
 //
 // GP Practice search page outputs each search result in `.card` wrapper. Inside the wrapper there are a number of
 // details provided for each practice, for example the list practitioners, the address and whether they offer any online
@@ -17,9 +71,6 @@
 // Weight: -2
 //
 // Style guide: theme.searches.gp-practices
-#views-exposed-form-gp-practices-find-a-gp label {
-  @include adjust-font-size-to(16px, 4);
-}
 
 .search-results--gp-practice {
   &.search-results .card {
