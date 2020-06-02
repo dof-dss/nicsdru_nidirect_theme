@@ -28,7 +28,8 @@
   padding: 0;
 
   .menu-title {
-    @include responsive-typo-map($normal-text);
+    @include responsive-typo-map($body-text);
+    margin: 1em 0 .5em;
     font-weight: bold;
   }
 
