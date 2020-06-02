@@ -4,6 +4,13 @@
  */
 @import '../init';
 
+.page-search {
+  h1 em.placeholder {
+    font-style: normal;
+    font-size: smaller;
+  }
+}
+
 // GP Practice search form
 //
 // The GP Practice search form is a bit different to search on other search index pages because it has a "use my
