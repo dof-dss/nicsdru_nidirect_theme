@@ -18,6 +18,21 @@ use Drupal\Component\Utility\Html;
 use Drupal\taxonomy\Entity\Term;
 
 /**
+ * Implements hook_preprocess_html().
+ */
+function nicsdru_nidirect_theme_preprocess_html(array &$variables) {
+
+  $route = \Drupal::routeMatch()->getRouteName();
+
+  switch ($route) {
+    case "nidirect_gp.gp_search":
+      // Set a body class on the GP practice search page.
+      $variables['attributes']['class'][] = 'page-search';
+      break;
+  }
+}
+
+/**
  * Implements hook_preprocess_page().
  */
 function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
