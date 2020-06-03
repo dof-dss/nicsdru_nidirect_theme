@@ -8,6 +8,7 @@ libraries:
   - nicsdru_nidirect_theme/nidirect-specific-styles
 
 ckeditor_stylesheets:
+  - //fonts.googleapis.com/css?family=Lato
   - css/1_base/root.css
   - css/1_base/html5.css
   - css/1_base/headings.css
@@ -19,6 +20,8 @@ ckeditor_stylesheets:
   - css/3_components/field/field-summary.css
   - css/3_components/content/icons-messages.css
   - css/3_components/content/lists.css
+  - css/3_components/content/responsive-images.css
+  - css/3_components/content/responsive-images-ckeditor.css
 
 libraries-override:
   origins_common/in-page-navigation:

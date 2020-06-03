@@ -34,7 +34,7 @@
 {% set attributes = attributes.removeClass('views-element-container').addClass(classes) %}
 {% set attributes = attributes.removeAttribute('id') %}
 {% set attributes = attributes.setAttribute('aria-labelledby', 'latest-news-block') %}
-<article{{ attributes }}>
+<nav{{ attributes }}>
   {{ title_prefix }}
   {% if label %}
     <h2{{ title_attributes.addClass('menu-title').setAttribute('id', 'latest-news-block') }}>{{ label }}</h2>
@@ -43,4 +43,4 @@
   {% block content %}
     {{ content }}
   {% endblock %}
-</article>
+</nav>

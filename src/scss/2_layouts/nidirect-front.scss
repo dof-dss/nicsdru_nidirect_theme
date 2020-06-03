@@ -16,19 +16,31 @@
 // Style guide: layouts.front
 
 .layout--front {
-  grid-template-columns: 66% 1fr;
-  grid-gap: 0 20px;
+
+  @include breakpoint($lap) {
+    // 620 + 20 + 300 = 940
+    grid-template-columns: 620fr 300fr;
+    grid-gap: 0 20px;
+  }
 }
 
 .section {
   &--info-services,
   &--popular {
-    padding-bottom: 2.7rem;
+    padding-bottom: 1.5em;
   }
 
   &--popular {
     background-color: $grey-light;
     padding: 0 15px;
+    @include breakpoint($phab) {
+      display: grid;
+      grid-gap: 0 1.5em;
+      grid-template-columns: 1fr 1fr;
+    }
+    @include breakpoint($lap) {
+      display: block;
+    }
   }
 
   &--featured {

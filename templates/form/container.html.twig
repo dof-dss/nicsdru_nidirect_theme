@@ -25,10 +25,5 @@
     has_parent ? 'form-wrapper',
   ]
 %}
-{% if has_parent %}
-  <div{{ attributes.addClass(classes) }}>
-{% endif %}
-    {{- children -}}
-{% if has_parent %}
-  </div>
-{% endif %}
+<div{{ attributes.addClass(classes) }}>{{- children -}}</div>
+

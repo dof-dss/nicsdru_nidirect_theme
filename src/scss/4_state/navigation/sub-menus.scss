@@ -20,21 +20,28 @@
   }
 }
 
-//
-.toc {
-  background-color: transparent;
+.toc-menu {
+  background: transparent;
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+  margin: 1em 0 1.5em;
+  padding: 0;
 
-  &-aside {
-    display: none;
-
-    @include breakpoint($tab) {
-      display: block;
-    }
+  .menu-title {
+    @include responsive-typo-map($normal-text);
+    font-weight: bold;
   }
 
-  &-main {
-    @include breakpoint($tab) {
-      @include visually-hidden;
+  ul {
+    margin: 1em 0 2.1rem;
+
+    li {
+      @include responsive-typo-map($body-text);
+      padding-bottom: .5em;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
     }
   }
 }
