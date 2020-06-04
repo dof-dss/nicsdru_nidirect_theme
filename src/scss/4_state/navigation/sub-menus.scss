@@ -18,6 +18,20 @@
   .nav-menu {
     margin-bottom: 2.7rem;
   }
+
+  &--latest-news {
+    .date-published {
+      display: block;
+      font-size: 1.4rem;
+      line-height: 2.4rem;
+      color: color(ash-grey);
+
+      @include breakpoint($tab) {
+        font-size: 1.6rem;
+        line-height: 2.7rem;
+      }
+    }
+  }
 }
 
 .toc-menu {
@@ -27,9 +41,14 @@
   margin: 1em 0 1.5em;
   padding: 0;
 
+  .skip-link {
+    margin: 1em 0;
+  }
+
   .menu-title {
-    @include responsive-typo-map($normal-text);
+    @include responsive-typo-map($body-text);
     font-weight: bold;
+    margin: 1em 0 .5em;
   }
 
   ul {
@@ -45,3 +64,5 @@
     }
   }
 }
+
+
