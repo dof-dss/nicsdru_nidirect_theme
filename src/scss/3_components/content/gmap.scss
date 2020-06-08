@@ -1,0 +1,11 @@
+/*
+ * @file
+ * Set defined height and width for the container on google map elements.
+ */
+@import '../../init';
+
+.gmap {
+  display: block;
+  height: 400px;
+  width: 100%;
+}
