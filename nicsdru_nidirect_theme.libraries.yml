@@ -55,6 +55,7 @@ nidirect-specific-styles:
     component:
       css/3_components/block/site-logo.css: { minified: true }
       css/3_components/block/az-facet-list.css: { minified: true }
+      css/3_components/content/gmap.css: { minified: true }
       css/3_components/content/utilities.css: { minified: true }
       css/3_components/field/field-photo.css: { minified: true }
       css/3_components/field/field-summary.css: { minified: true }
