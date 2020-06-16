@@ -79,21 +79,21 @@
   {% if  content_attributes is not empty %}
   <div{{ content_attributes }}>
   {% endif %}
-  {{- content -}}
+  {{- content|without('field_published_date', 'field_last_review_date', 'field_next_review_date') -}}
   {% if  content_attributes is not empty %}
   </div>>
   {% endif %}
   {% if node.field_last_review_date.value or node.field_next_review_date.value or node.field_published_date.value %}
   <footer>
     {% if node.field_last_review_date.value %}
-      <p class="review-info">{{- 'This page was reviewed '|t }}{{ content.field_last_review_date.value|date('U')|format_date('custom', 'F Y') -}}</p>
+      <p class="review-info">{{- 'This page was reviewed '|t }}{{ content.field_last_review_date -}}</p>
     {% else %}
       {% if node.field_published_date.value %}
-        <p class="review-info">{{- 'This page was published '|t }}{{ content.field_published_date.value|date('U')|format_date('custom', 'F Y') -}}</p>
+        <p class="review-info">{{- 'This page was published '|t }}{{ content.field_published_date -}}</p>
       {% endif %}
     {% endif %}
     {% if node.field_next_review_date.value %}
-      <p class="review-info">{{- 'This page is due for review '|t }}{{ content.field_next_review_date.value|date('U')|format_date('custom', 'F Y') -}}</p>
+      <p class="review-info">{{- 'This page is due for review '|t }}{{ content.field_next_review_date -}}</p>
     {% endif %}
   </footer>
   {% endif %}
