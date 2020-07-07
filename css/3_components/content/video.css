@@ -1,0 +1,23 @@
+/*
+ * @file
+ * Provides the styling for inline videos.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 8, src/scss/3_components/content/video.scss */
+.media-video {
+  width: 100%;
+  position: relative;
+  font-size: 0;
+  line-height: 0;
+}
+
+/* line 15, src/scss/3_components/content/video.scss */
+.media-video iframe {
+  width: 100%;
+  height: calc();
+}
+
+/*# sourceMappingURL=video.css.map */

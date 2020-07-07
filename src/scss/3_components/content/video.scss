@@ -1,0 +1,19 @@
+/*
+ * @file
+ * Provides the styling for inline videos.
+ */
+@import '../../init';
+
+// The media-video wrapper wraps all embedded videos.
+.media-video {
+
+  width: 100%;
+  position: relative;
+  font-size: 0;
+  line-height: 0;
+
+  iframe {
+    width: 100%;
+    height: calc();
+  }
+}
