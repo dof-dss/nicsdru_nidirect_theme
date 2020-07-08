@@ -42,7 +42,7 @@ textarea {
 
 [type='search'] {
   // Correct the odd appearance in Chrome and Safari.
-  -webkit-appearance: textfield;
+  -webkit-appearance: none;
   // Correct the outline style in Safari.
   outline-offset: -2px;
 
@@ -132,6 +132,8 @@ button,
 // sass-lint:disable no-empty-rulesets
 %text-form-element {
   // Add your styles.
+  // Correct the odd appearance in Chrome and Safari.
+  -webkit-appearance: none;
 }
 // sass-lint:enable no-empty-rulesets
 
