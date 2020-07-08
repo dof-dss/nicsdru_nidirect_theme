@@ -1,0 +1,25 @@
+/*
+ * @file
+ * Provides the styling for inline videos.
+ */
+@import '../../init';
+
+// The media-video wrapper wraps all videos embedded with an iframe.
+// To make iframed videos fluid width and maintain aspect ratio, we use the "intrinsic aspect ratios for video"
+// technique. See https://css-tricks.com/fluid-width-video/
+// and http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/.
+
+.media-video {
+  width: 100%;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

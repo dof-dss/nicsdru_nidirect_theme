@@ -40,6 +40,7 @@ nidirect-global-styles:
       css/3_components/content/icons-messages.css: { minified: true }
       css/3_components/content/lists.css: { minified: true }
       css/3_components/content/responsive-images.css: { minified: true }
+      css/3_components/content/video.css: { minified: true }
       css/3_components/field/file-link.css: { minified: true }
   js:
     js/thwoop-images.js: { minified: true }
