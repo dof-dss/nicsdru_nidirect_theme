@@ -69,6 +69,7 @@ nidirect-specific-styles:
       css/5_theme/entities.css: { minified: true }
       css/5_theme/searches.css: { minified: true }
       css/5_theme/views.css: { minified: true }
+      css/5_theme/landing.css: { minified: true }
       '//fonts.googleapis.com/css?family=Lato': { type: external }
 
 nidirect-table-of-contents:
