@@ -36,6 +36,10 @@ libraries-override:
     css:
       state:
         css/eu_cookie_compliance.bare.css: css/4_state/block/eu-cookie-compliance.css
+  layout_builder/drupal.layout_builder:
+    css:
+      theme:
+        css/layout-builder.css: css/3_components/form/layout-builder-form.css
 
 
 base theme: nicsdru_origins_theme

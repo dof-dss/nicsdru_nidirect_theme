@@ -37,6 +37,7 @@ nidirect-global-styles:
       css/3_components/form/form.css: { minified: true }
       css/3_components/form/webform.css: { minified: true }
       css/3_components/form/search-form.css: { minified: true }
+      css/3_components/form/layout-builder-form.css: { minified: true }
       css/3_components/content/icons-messages.css: { minified: true }
       css/3_components/content/lists.css: { minified: true }
       css/3_components/content/responsive-images.css: { minified: true }
