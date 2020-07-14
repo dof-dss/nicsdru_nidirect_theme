@@ -1,1 +1,110 @@
-table{margin:1em 0 1.5em;border-collapse:collapse;border-spacing:0;width:100%}table caption{padding:0 0 .5em}table p{margin:.9rem 0}table p:first-child{margin-top:0}table p:last-child{margin-bottom:0}td,th{font-size:1.4rem;line-height:2.4rem;box-sizing:border-box;border-right:1px solid #666;border-top:1px solid #666;padding:.4rem .4rem .3rem;text-align:left;vertical-align:top}@media (min-width: 600px){td,th{font-size:1.6rem;line-height:2.4rem;padding:.8rem .8rem .7rem}}@media (min-width: 768px){td,th{font-size:1.6rem;line-height:2.7rem;padding:.9rem .9rem .8rem}}td *,th *{font-size:inherit;line-height:inherit}td:first-child,th:first-child{border-left:1px solid #666}th{background-color:#cee4f6;border-bottom:1px solid #666}th:last-child{border-right:1px solid #666}td{background-color:#fff;border-bottom:1px solid #666}tr:nth-child(odd) td{background:#f0f0f0}tr:nth-child(even) td{background:#fff}
+/*
+ * @file
+ * Sets out the base behaviour of table elements.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 17, src/scss/1_base/tables.scss */
+table {
+  margin: 1em 0 1.5em;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+/* line 28, src/scss/1_base/tables.scss */
+table caption {
+  padding: 0 0 .5em;
+}
+
+/* line 32, src/scss/1_base/tables.scss */
+table p {
+  margin: .9rem 0;
+}
+
+/* line 35, src/scss/1_base/tables.scss */
+table p:first-child {
+  margin-top: 0;
+}
+
+/* line 39, src/scss/1_base/tables.scss */
+table p:last-child {
+  margin-bottom: 0;
+}
+
+/* line 45, src/scss/1_base/tables.scss */
+td,
+th {
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  box-sizing: border-box;
+  border-right: 1px solid #666;
+  border-top: 1px solid #666;
+  padding: .4rem .4rem .3rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+@media (min-width: 600px) {
+  /* line 45, src/scss/1_base/tables.scss */
+  td,
+  th {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    padding: .8rem .8rem .7rem;
+  }
+}
+
+@media (min-width: 768px) {
+  /* line 45, src/scss/1_base/tables.scss */
+  td,
+  th {
+    font-size: 1.6rem;
+    line-height: 2.7rem;
+    padding: .9rem .9rem .8rem;
+  }
+}
+
+/* line 66, src/scss/1_base/tables.scss */
+td *,
+th * {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* line 71, src/scss/1_base/tables.scss */
+td:first-child,
+th:first-child {
+  border-left: 1px solid #666;
+}
+
+/* line 76, src/scss/1_base/tables.scss */
+th {
+  background-color: #cee4f6;
+  border-bottom: 1px solid #666;
+}
+
+/* line 80, src/scss/1_base/tables.scss */
+th:last-child {
+  border-right: 1px solid #666;
+}
+
+/* line 85, src/scss/1_base/tables.scss */
+td {
+  background-color: #fff;
+  border-bottom: 1px solid #666;
+}
+
+/* line 91, src/scss/1_base/tables.scss */
+tr:nth-child(odd) td {
+  background: #f0f0f0;
+}
+
+/* line 95, src/scss/1_base/tables.scss */
+tr:nth-child(even) td {
+  background: #fff;
+}
+
+/*# sourceMappingURL=tables.css.map */

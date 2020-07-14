@@ -1,1 +1,35 @@
-article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}
+/*
+ * @file
+ * Resets and creates defaults for some html 5 elements.
+ */
+/* line 19, src/scss/1_base/html5.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/* line 35, src/scss/1_base/html5.scss */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+
+/* line 43, src/scss/1_base/html5.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/*# sourceMappingURL=html5.css.map */

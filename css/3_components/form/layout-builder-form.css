@@ -10,7 +10,7 @@
  * @file
  * Provides some base definitions that are common among button type elements.
  */
-/* line 50, src/scss/3_components/form/button/_button-defs.scss */
+/* line 45, src/scss/3_components/form/button/_button-defs.scss */
 .layout-builder-form input[type='submit'],
 .layout-builder-form input[type='button'],
 .layout-builder-form .webform-submit {
@@ -24,7 +24,7 @@
 }
 
 @media (min-width: 600px) {
-  /* line 50, src/scss/3_components/form/button/_button-defs.scss */
+  /* line 45, src/scss/3_components/form/button/_button-defs.scss */
   .layout-builder-form input[type='submit'],
   .layout-builder-form input[type='button'],
   .layout-builder-form .webform-submit {
@@ -33,7 +33,7 @@
   }
 }
 
-/* line 64, src/scss/3_components/form/button/_button-defs.scss */
+/* line 59, src/scss/3_components/form/button/_button-defs.scss */
 .layout-builder-form input:link[type='submit'],
 .layout-builder-form input:link[type='button'],
 .layout-builder-form .webform-submit:link, .layout-builder-form input:visited[type='submit'],
@@ -42,7 +42,7 @@
   color: #fff;
 }
 
-/* line 69, src/scss/3_components/form/button/_button-defs.scss */
+/* line 64, src/scss/3_components/form/button/_button-defs.scss */
 .layout-builder-form input:focus[type='submit'],
 .layout-builder-form input:focus[type='button'],
 .layout-builder-form .webform-submit:focus {
@@ -548,8 +548,6 @@
   color: #fff;
   font-size: 1.6rem;
   line-height: 2.4rem;
-  height: 44px;
-  padding: 0 .5em;
   margin-top: 0;
   font-weight: bold;
 }
@@ -577,15 +575,6 @@
   .layout-builder-form .webform-submit {
     font-size: 1.8rem;
     line-height: 2.7rem;
-  }
-}
-
-@media (min-width: 600px) {
-  /* line 326, src/scss/3_components/form/layout-builder-form.scss */
-  .layout-builder-form input[type='submit'],
-  .layout-builder-form input[type='button'],
-  .layout-builder-form .webform-submit {
-    height: 45px;
   }
 }
 

@@ -1,1 +1,134 @@
-.page-search h1 em.placeholder{font-style:normal;font-size:smaller}.js form#views-exposed-form-gp-practices-find-a-gp{max-width:760px;grid-template-columns:auto auto;grid-template-rows:auto;grid-gap:1.5em 0;grid-template-areas:'by-location bylocation' 'search-input search-submit'}@media (min-width: 600px){.js form#views-exposed-form-gp-practices-find-a-gp{grid-template-columns:auto auto auto;grid-template-areas:'by-location search-input search-submit'}}.js form#views-exposed-form-gp-practices-find-a-gp>div{margin:0}.js form#views-exposed-form-gp-practices-find-a-gp .find-by-location{grid-area:by-location;margin-right:2em}.js form#views-exposed-form-gp-practices-find-a-gp .find-by-location input[type='button']{height:4.5rem;padding:0 1em;width:100%}.js form#views-exposed-form-gp-practices-find-a-gp .form-type-textfield{grid-area:search-input}.js form#views-exposed-form-gp-practices-find-a-gp .form-actions{grid-area:search-submit}.search-results--gp-practice.search-results .card{padding-bottom:1.5rem}.search-results--gp-practice .card .adr{margin:0}.search-results--gp-practice .card .adr span{display:inline-block;padding-right:.3334em;white-space:nowrap}.search-results--gp-practice .card .adr span::after{content:','}.search-results--gp-practice .card .adr span:last-child::after{content:''}.search-results--gp-practice .card .list--gp-practice-members{margin:0}.search-results--gp-practice .card .list--gp-online-services{margin:.6rem 0 0}.search-results--gp-practice .card .list--gp-online-services .list-item{color:#666;background:transparent url('../../images/status.svg?170a14ecb27') no-repeat right/16px 16px;margin-bottom:0;margin-right:4px;padding-right:18px}@media (min-width: 480px){.search-results--gp-practice .card .list--gp-online-services .list-item{background-size:18px 18px;margin-right:7px;padding-right:22px}}@media (min-width: 600px){.search-results--gp-practice .card .list--gp-online-services .list-item{background-size:21px 21px;margin-right:9px;padding-right:25px}}#contacts-az--title{margin-bottom:.5em}.search-form--contacts{margin-bottom:0}
+/*
+ * @file
+ * Provides very specific styling for search index pages.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 8, src/scss/5_theme/searches.scss */
+.page-search h1 em.placeholder {
+  font-style: normal;
+  font-size: smaller;
+}
+
+/* line 24, src/scss/5_theme/searches.scss */
+.js form#views-exposed-form-gp-practices-find-a-gp {
+  max-width: 760px;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  grid-gap: 1.5em 0;
+  grid-template-areas: 'by-location bylocation' 'search-input search-submit';
+}
+
+@media (min-width: 600px) {
+  /* line 24, src/scss/5_theme/searches.scss */
+  .js form#views-exposed-form-gp-practices-find-a-gp {
+    grid-template-columns: auto auto auto;
+    grid-template-areas: 'by-location search-input search-submit';
+  }
+}
+
+/* line 43, src/scss/5_theme/searches.scss */
+.js form#views-exposed-form-gp-practices-find-a-gp > div {
+  margin: 0;
+}
+
+/* line 47, src/scss/5_theme/searches.scss */
+.js form#views-exposed-form-gp-practices-find-a-gp .find-by-location {
+  grid-area: by-location;
+  margin-right: 2em;
+}
+
+/* line 51, src/scss/5_theme/searches.scss */
+.js form#views-exposed-form-gp-practices-find-a-gp .find-by-location input[type='button'] {
+  height: 4.5rem;
+  padding: 0 1em;
+  width: 100%;
+}
+
+/* line 58, src/scss/5_theme/searches.scss */
+.js form#views-exposed-form-gp-practices-find-a-gp .form-type-textfield {
+  grid-area: search-input;
+}
+
+/* line 62, src/scss/5_theme/searches.scss */
+.js form#views-exposed-form-gp-practices-find-a-gp .form-actions {
+  grid-area: search-submit;
+}
+
+/* line 83, src/scss/5_theme/searches.scss */
+.search-results--gp-practice.search-results .card {
+  padding-bottom: 1.5rem;
+}
+
+/* line 88, src/scss/5_theme/searches.scss */
+.search-results--gp-practice .card .adr {
+  margin: 0;
+}
+
+/* line 91, src/scss/5_theme/searches.scss */
+.search-results--gp-practice .card .adr span {
+  display: inline-block;
+  padding-right: .3334em;
+  white-space: nowrap;
+}
+
+/* line 96, src/scss/5_theme/searches.scss */
+.search-results--gp-practice .card .adr span::after {
+  content: ',';
+}
+
+/* line 100, src/scss/5_theme/searches.scss */
+.search-results--gp-practice .card .adr span:last-child::after {
+  content: '';
+}
+
+/* line 106, src/scss/5_theme/searches.scss */
+.search-results--gp-practice .card .list--gp-practice-members {
+  margin: 0;
+}
+
+/* line 110, src/scss/5_theme/searches.scss */
+.search-results--gp-practice .card .list--gp-online-services {
+  margin: .6rem 0 0;
+}
+
+/* line 113, src/scss/5_theme/searches.scss */
+.search-results--gp-practice .card .list--gp-online-services .list-item {
+  color: #666;
+  background: transparent url('../../images/status.svg?170a14ecb27') no-repeat right/16px 16px;
+  margin-bottom: 0;
+  margin-right: 4px;
+  padding-right: 18px;
+}
+
+@media (min-width: 480px) {
+  /* line 113, src/scss/5_theme/searches.scss */
+  .search-results--gp-practice .card .list--gp-online-services .list-item {
+    background-size: 18px 18px;
+    margin-right: 7px;
+    padding-right: 22px;
+  }
+}
+
+@media (min-width: 600px) {
+  /* line 113, src/scss/5_theme/searches.scss */
+  .search-results--gp-practice .card .list--gp-online-services .list-item {
+    background-size: 21px 21px;
+    margin-right: 9px;
+    padding-right: 25px;
+  }
+}
+
+/* line 144, src/scss/5_theme/searches.scss */
+#contacts-az--title {
+  margin-bottom: .5em;
+}
+
+/* line 148, src/scss/5_theme/searches.scss */
+.search-form--contacts {
+  margin-bottom: 0;
+}
+
+/*# sourceMappingURL=searches.css.map */
