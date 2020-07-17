@@ -59,6 +59,7 @@
     "js-compile": "npm-run-all --parallel js-compile-*",
     "js-compile-modernizr": "modernizr -uc config/modernizr-config.json -d js/modernizr.min.js",
     "js-compile-thwoop-images": "mkdir -p js && uglifyjs src/js/thwoop-images.js -o js/thwoop-images.js",
+    "js-compile-accordions": "mkdir -p js && uglifyjs src/js/accordions.js -o js/accordions.js",
     "––––––– CSS SCRIPTS": "–––––––––––––",
     "css": "npm-run-all --sequential scss-dev css-post",
     "css-lint": "sass-lint -c config/.sass-lint.yml \"src/scss/**/*.scss\"  -v -q",

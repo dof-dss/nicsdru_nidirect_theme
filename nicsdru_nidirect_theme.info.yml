@@ -6,6 +6,7 @@ core: 8.x
 libraries:
   - nicsdru_nidirect_theme/nidirect-global-styles
   - nicsdru_nidirect_theme/nidirect-specific-styles
+  - nicsdru_nidirect_theme/nidirect-accordions
 
 ckeditor_stylesheets:
   - //fonts.googleapis.com/css?family=Lato
