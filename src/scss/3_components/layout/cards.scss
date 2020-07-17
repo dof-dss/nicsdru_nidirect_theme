@@ -16,7 +16,7 @@
     grid-template-columns: repeat(1, 1fr);
 
     $selector: ();
-    $suffixes: ('top', 'bottom');
+    $suffixes: ('top', 'bottom', 'left', 'right');
     // this declaration creates a number of modifier classes for a border on the `.card` children under `.card-deck`
     // one modifier for each item in the $suffixes list.
     @each $suffix in $suffixes {
@@ -103,6 +103,159 @@
           float: none;
         }
       }
+    }
+  }
+}
+
+
+.card-deck-flex {
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  @include breakpoint($tab, $no-query: true) {
+    margin: 0 0 3.6rem;
+  }
+
+  @include breakpoint($lap, $no-query: true) {
+    margin: 0 0 4.5rem;
+  }
+
+  .card {
+    margin-bottom: 1.5em;
+    box-shadow: 0 1px 2px $grey-medium; // Using box-shadow instead of a border
+
+    @include breakpoint($tab, $no-query: true) {
+
+      &:hover {
+        background-color: $offwhite;
+        border-color: $offwhite;
+      }
+    }
+
+    &__image {
+      picture {
+        width: 100%;
+        height: auto;
+        margin: 0;
+
+        img {
+          width: 100%;
+          height: auto;
+          margin: 0;
+        }
+      }
+    }
+
+    &__video {
+      border: 0 solid;
+      box-shadow: none;
+      vertical-align: middle;
+
+      &:hover {
+        background-color: transparent;
+        border-color: none;
+      }
+    }
+
+    &__content {
+      padding: 1em;
+
+      > * {
+        @include adjust-font-size-to(16px, 4);
+        margin: 0 0 1em 0;
+
+        @include breakpoint($tab, $no-query: true) {
+          @include adjust-font-size-to(18px, 4.5);
+        }
+      }
+
+      li {
+        position: relative;
+        list-style: none;
+        padding: 0 0 rhythm(1) 1rem;
+
+        &::before {
+          content: '-';
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }
+
+      iframe {
+        margin: 0;
+        border: 0;
+      }
+    }
+
+    &__title {
+      @include adjust-font-size-to(20px, 4);
+      margin: 0 0 1.6rem;
+
+      @include breakpoint($tab, $no-query: true) {
+        @include adjust-font-size-to(24px, 4.5);
+        margin: 0 0 1.8rem;
+      }
+
+      a {
+        display: block;
+        position: relative;
+        padding-right: 24px;
+        color: $brand-secondary;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        &::after {
+          content: '';
+          display: inline-block;
+          position: absolute;
+          top: .25em;
+          right: -8px;
+          width: 24px;
+          height: 20px;
+          background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2025%2015%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%20.st0%7Bfill%3A%230e6bb3%3Bfill-rule%3Aevenodd%3Bclip-rule%3Aevenodd%3B%7D%20%3C%2Fstyle%3E%3Cpath%20class%3D%22st0%22%20d%3D%22M12.5%200L0%2012l3%203%209.5-10L22%2015l3-3L12.5%200z%22%2F%3E%3C%2Fsvg%3E%0A');
+          background-position: center right;
+          background-size: 24px auto;
+          background-repeat: no-repeat;
+          transform: rotate(90deg);
+        }
+
+        &:hover::after {
+          outline: 3px solid #333;
+          background-color: #333;
+          background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2025%2015%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%20.st0%7Bfill%3A%23ffffff%3Bfill-rule%3Aevenodd%3Bclip-rule%3Aevenodd%3B%7D%20%3C%2Fstyle%3E%3Cpath%20class%3D%22st0%22%20d%3D%22M12.5%200L0%2012l3%203%209.5-10L22%2015l3-3L12.5%200z%22%2F%3E%3C%2Fsvg%3E%0A');
+        }
+      }
+    }
+
+  }
+
+  &--x3 .card {
+
+    @include breakpoint($tab, $no-query: true) {
+      // Three cards in row.
+      flex: 0 31.915%;
+      max-width: 300px;
+      margin-bottom: 2.1277%;
+    }
+
+    &:last-child {
+      margin-left: 2.1277%;
+      margin-right: auto;
+    }
+  }
+
+  &--x2 .card {
+
+    @include breakpoint($tab, $no-query: true) {
+      // Two cards in a row.
+      flex: 0 48.9%;
+      max-width: 460px;
     }
   }
 }

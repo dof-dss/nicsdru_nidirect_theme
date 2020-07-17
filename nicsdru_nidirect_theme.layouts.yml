@@ -1,0 +1,26 @@
+teasers_x3:
+  label: 'Card deck - small x3'
+  category: 'Landing page templates'
+  template: templates/layout_builder/card_deck_three
+  default_region: cards
+  icon_map:
+    - []
+    - [one, two, three]
+    - []
+  regions:
+    cards:
+      label: Cards (small x3)
+
+
+teasers_x2:
+  label: 'Card deck - large x2'
+  category: 'Landing page templates'
+  template: templates/layout_builder/card_deck_two
+  default_region: cards
+  icon_map:
+    - []
+    - [one, two]
+    - []
+  regions:
+    cards:
+      label: Cards (large x2)

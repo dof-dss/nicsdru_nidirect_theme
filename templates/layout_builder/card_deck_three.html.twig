@@ -1,0 +1,6 @@
+{% set classes = ['card-deck-flex', 'card-deck-flex--x3'] %}
+<div {{ attributes.addClass(classes) }}>
+  {% if content %}
+  {{ content }}
+  {% endif %}
+</div>
