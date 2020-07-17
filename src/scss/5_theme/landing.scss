@@ -554,40 +554,25 @@
 
   @extend %landing-featured;
 
-  .field--name-field-banner-image {
-    padding: 0;
-    margin-top: 1.2rem;
-
-    @include breakpoint($lap, $no-query: true) {
-      margin-top: 2.6rem;
-    }
-  }
-
-  .field-banner-image {
-    margin: 0 0 2.4rem;
+  .banner--deep {
+    margin: 1.4rem 0 2.4rem;
     position: relative;
 
     @include breakpoint($phab, $no-query: true) {
-      margin: 0 0 2.8rem;
+      margin: 2.4rem 0 2.8rem;
     }
 
     @include breakpoint($tab, $no-query: true) {
-      margin: 0 0 3.6rem;
+      margin-bottom: 3.6rem;
     }
 
     @include breakpoint($lap, $no-query: true) {
-      margin: 0 0 4.5rem;
+      margin-bottom: 4.5rem;
     }
 
-    & > img {
+    img {
+      margin: 0;
       padding: 0;
-      position: absolute;
-      left: 0;
-      top: 0;
-      z-index: 99;
-      @include breakpoint($tab, $no-query: true) {
-        padding: 0;
-      }
     }
   }
 
@@ -771,7 +756,7 @@
         display: inline-block;
       }
 
-      a[href^='tel:']  {
+      a[href^='tel:'] {
 
         &:link,
         &:visited,
@@ -830,5 +815,3 @@
     }
   }
 }
-
-
