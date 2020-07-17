@@ -82,3 +82,15 @@ nidirect-table-of-contents:
     - core/drupal
     - core/jquery
     - core/jquery.once
+
+nidirect-accordions:
+  version: VERSION
+  css:
+    component:
+      css/3_components/layout/accordions.css: { minified: true }
+  js:
+    js/accordions.js: { minified: true }
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
