@@ -10,7 +10,7 @@
  * @file
  * Provides some base definitions that are common among button type elements.
  */
-/* line 69, src/scss/3_components/form/button/_button-defs.scss */
+/* line 77, src/scss/3_components/form/button/_button-defs.scss */
 input.webform-button--next[type='submit'] {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAZCAQAAABEULxHAAAAr0lEQVR4AZ3SQ2KEQRBA4b5KbNvmNtzFt80p4rGNN+r50Riktt/bdHUJIXgkwLYwD29UgZQl4BOgGeyYeIZgr0GaXVMw3S2YcoKMLQg4wf6/gklPcGAO/pzgsFtwZAoeac+XjuvEJea4VHHZwShnKi4Sk/jLmIpzhCUGmbTvPciMihPOQsLMqzjGr8QYiyoO8yUxzoqKg845JdjQ1/DunNKWaYX3lJUjUIJrfjk0Ww3CJhcu9XztTQAAAABJRU5ErkJggg==");
   background-position: right 12px top 50%;
@@ -18,7 +18,7 @@ input.webform-button--next[type='submit'] {
   padding-right: 3.6rem;
 }
 
-/* line 76, src/scss/3_components/form/button/_button-defs.scss */
+/* line 84, src/scss/3_components/form/button/_button-defs.scss */
 input.webform-button--previous[type='submit'] {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAZCAMAAADZh4T+AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACTUExURQAAADMzMzU1NTMzMzAwMDExMTMzMzMzMzMzMzMzMzIyMjMzMzIyMjMzMzIyMjMzMzMzMzQ0NDIyMjQ0NDMzMzIyMjIyMjMzMzIyMjAwMDExMTIyMjMzMzMzMzU1NTIyMjQ0NDExMTMzMzIyMjExMTExMTIyMjMzMzExMTMzMzIyMjMzMzMzMzIyMjQ0NDQ0NDMzM0cJY8sAAAAwdFJOUwDwKy0qPvP16unnQOj07DLvLD0n5GBCPOMvQ/dBSjBHNTTuOCk58Tsk/mXMVPwiWCIjJKkAAACQSURBVBjTddDZEoIwDIXhIAilKqAg7ivua9//6UycKaed0dx9/1XmEOEm6ZhcxuZ6A0exMWbqU4WW3cEPDlsmwo5lT5j+4/LLyLIW9lvOfVLFNM7fqwU7aBA2ewk7hFJzKHKESHHIZgih8r4nWmfy0gEhLzjoEmEbcKguCMeTzPVCOMtgd2dfHuX5dgev9YM+uMsSiYKdC/MAAAAASUVORK5CYII=");
   background-position: 12px center;

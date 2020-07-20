@@ -21,6 +21,16 @@
   border-bottom: 1px solid;
 }
 
+/* line 25, src/scss/3_components/layout/cards.scss */
+.card-deck.border-left .card {
+  border-left: 1px solid;
+}
+
+/* line 25, src/scss/3_components/layout/cards.scss */
+.card-deck.border-right .card {
+  border-right: 1px solid;
+}
+
 /* line 31, src/scss/3_components/layout/cards.scss */
 .card__title {
   margin-top: 0;
@@ -123,6 +133,253 @@
   width: 100%;
   margin: 0;
   float: none;
+}
+
+/* line 111, src/scss/3_components/layout/cards.scss */
+.card-deck-flex {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 1.5em 0;
+}
+
+@media (min-width: 768px) {
+  /* line 111, src/scss/3_components/layout/cards.scss */
+  .card-deck-flex {
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin: 0 0 2.5em;
+  }
+}
+
+/* line 130, src/scss/3_components/layout/cards.scss */
+.card-deck-flex .card {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  padding-bottom: .75em;
+  margin-bottom: 1.5em;
+  border: 0;
+  box-shadow: 0 1px 2px #cdcdcd;
+}
+
+/* line 144, src/scss/3_components/layout/cards.scss */
+.card-deck-flex .card:hover {
+  background-color: #f3f8fc;
+  border-color: #f3f8fc;
+}
+
+/* line 149, src/scss/3_components/layout/cards.scss */
+.card-deck-flex .card__image, .card-deck-flex .card__content {
+  width: 100%;
+}
+
+/* line 154, src/scss/3_components/layout/cards.scss */
+.card-deck-flex .card__content {
+  padding: .75em;
+}
+
+@media (min-width: 480px) {
+  /* line 130, src/scss/3_components/layout/cards.scss */
+  .card-deck-flex .card {
+    flex-direction: row;
+    box-shadow: 1px 0 5px #cdcdcd;
+    padding: 0;
+    margin-bottom: .75em;
+  }
+  /* line 165, src/scss/3_components/layout/cards.scss */
+  .card-deck-flex .card__image {
+    width: 38%;
+    padding: .5em;
+  }
+  /* line 170, src/scss/3_components/layout/cards.scss */
+  .card-deck-flex .card__content {
+    width: 62%;
+    padding: .75em 1em .75em .5em;
+  }
+}
+
+@media (min-width: 768px) {
+  /* line 130, src/scss/3_components/layout/cards.scss */
+  .card-deck-flex .card {
+    flex-direction: column;
+    border: 0;
+    box-shadow: 0 1px 2px #cdcdcd;
+    margin-bottom: 2.5em;
+  }
+  /* line 183, src/scss/3_components/layout/cards.scss */
+  .card-deck-flex .card__image {
+    width: 100%;
+    padding: 0;
+  }
+  /* line 188, src/scss/3_components/layout/cards.scss */
+  .card-deck-flex .card__content {
+    width: 100%;
+    padding: .6667em;
+  }
+}
+
+@media (min-width: 768px) {
+  /* line 196, src/scss/3_components/layout/cards.scss */
+  .card-deck-flex .card__content {
+    padding: 1em;
+  }
+}
+
+/* line 201, src/scss/3_components/layout/cards.scss */
+.card-deck-flex .card picture {
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+/* line 206, src/scss/3_components/layout/cards.scss */
+.card-deck-flex .card picture img {
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+/* line 215, src/scss/3_components/layout/cards.scss */
+.card-deck-flex .card__content > * {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  margin: 0 0 1em 0;
+}
+
+@media (min-width: 768px) {
+  /* line 215, src/scss/3_components/layout/cards.scss */
+  .card-deck-flex .card__content > * {
+    font-size: 1.8rem;
+    line-height: 2.7rem;
+  }
+}
+
+/* line 224, src/scss/3_components/layout/cards.scss */
+.card-deck-flex .card__content > *:last-child {
+  margin-bottom: 0;
+}
+
+/* line 229, src/scss/3_components/layout/cards.scss */
+.card-deck-flex .card__content li {
+  position: relative;
+  list-style: none;
+  padding: 0 0 0.6rem 1rem;
+}
+
+/* line 234, src/scss/3_components/layout/cards.scss */
+.card-deck-flex .card__content li::before {
+  content: '-';
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* line 242, src/scss/3_components/layout/cards.scss */
+.card-deck-flex .card__content iframe {
+  margin: 0;
+  border: 0;
+}
+
+/* line 248, src/scss/3_components/layout/cards.scss */
+.card-deck-flex .card__title {
+  font-size: 2.2rem;
+  line-height: 2.80002rem;
+  margin: 0 0 .8rem;
+  position: relative;
+  padding-right: 25px;
+}
+
+@media (min-width: 600px) {
+  /* line 248, src/scss/3_components/layout/cards.scss */
+  .card-deck-flex .card__title {
+    font-size: 2.4rem;
+    line-height: 3rem;
+    margin: 0 0 .8rem;
+  }
+}
+
+@media (min-width: 768px) {
+  /* line 248, src/scss/3_components/layout/cards.scss */
+  .card-deck-flex .card__title {
+    margin: 0 0 .9rem;
+  }
+}
+
+/* line 264, src/scss/3_components/layout/cards.scss */
+.card-deck-flex .card__title::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 2px;
+  right: -8px;
+  width: 24px;
+  height: 20px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2025%2015%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%20.st0%7Bfill%3A%230e6bb3%3Bfill-rule%3Aevenodd%3Bclip-rule%3Aevenodd%3B%7D%20%3C%2Fstyle%3E%3Cpath%20class%3D%22st0%22%20d%3D%22M12.5%200L0%2012l3%203%209.5-10L22%2015l3-3L12.5%200z%22%2F%3E%3C%2Fsvg%3E%0A");
+  background-position: center right;
+  background-size: 21px auto;
+  background-repeat: no-repeat;
+  transform: rotate(90deg);
+}
+
+@media (min-width: 768px) {
+  /* line 264, src/scss/3_components/layout/cards.scss */
+  .card-deck-flex .card__title::after {
+    top: .25em;
+    right: -8px;
+    background-size: 24px auto;
+  }
+}
+
+/* line 286, src/scss/3_components/layout/cards.scss */
+.card-deck-flex .card__link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  text-decoration: none;
+}
+
+/* line 295, src/scss/3_components/layout/cards.scss */
+.card-deck-flex .card__link:focus {
+  outline: 3px solid #0e6bb3;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+/* line 302, src/scss/3_components/layout/cards.scss */
+.card-deck-flex .card__video {
+  border: 0 solid;
+  box-shadow: none;
+  vertical-align: middle;
+}
+
+/* line 307, src/scss/3_components/layout/cards.scss */
+.card-deck-flex .card__video:hover {
+  background-color: transparent;
+  border-color: none;
+}
+
+@media (min-width: 768px) {
+  /* line 314, src/scss/3_components/layout/cards.scss */
+  .card-deck-flex--x3 .card {
+    flex: 0 31.915%;
+    max-width: 300px;
+    margin-bottom: 2.1277%;
+    /*
+      &:nth-child(3n + 3) { // Every third card
+        margin-right: 0;
+      }
+      */
+  }
+}
+
+@media (min-width: 768px) {
+  /* line 331, src/scss/3_components/layout/cards.scss */
+  .card-deck-flex--x2 .card {
+    flex: 0 48.9%;
+    max-width: 460px;
+  }
 }
 
 /*# sourceMappingURL=cards.css.map */

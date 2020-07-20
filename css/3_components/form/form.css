@@ -10,7 +10,7 @@
  * @file
  * Provides some base definitions that are common among button type elements.
  */
-/* line 45, src/scss/3_components/form/button/_button-defs.scss */
+/* line 53, src/scss/3_components/form/button/_button-defs.scss */
 input[type='submit'],
 input[type='button'],
 .webform-submit {
@@ -24,7 +24,7 @@ input[type='button'],
 }
 
 @media (min-width: 600px) {
-  /* line 45, src/scss/3_components/form/button/_button-defs.scss */
+  /* line 53, src/scss/3_components/form/button/_button-defs.scss */
   input[type='submit'],
   input[type='button'],
   .webform-submit {
@@ -33,7 +33,7 @@ input[type='button'],
   }
 }
 
-/* line 59, src/scss/3_components/form/button/_button-defs.scss */
+/* line 67, src/scss/3_components/form/button/_button-defs.scss */
 input:link[type='submit'],
 input:link[type='button'],
 .webform-submit:link, input:visited[type='submit'],
@@ -42,7 +42,7 @@ input:visited[type='button'],
   color: #fff;
 }
 
-/* line 64, src/scss/3_components/form/button/_button-defs.scss */
+/* line 72, src/scss/3_components/form/button/_button-defs.scss */
 input:focus[type='submit'],
 input:focus[type='button'],
 .webform-submit:focus {

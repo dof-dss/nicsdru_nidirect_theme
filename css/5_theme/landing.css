@@ -762,62 +762,39 @@
 }
 
 /* line 557, src/scss/5_theme/landing.scss */
-.page-node-type-landing-page .field--name-field-banner-image {
-  padding: 0;
-  margin-top: 1.2rem;
-}
-
-@media (min-width: 980px) {
-  /* line 557, src/scss/5_theme/landing.scss */
-  .page-node-type-landing-page .field--name-field-banner-image {
-    margin-top: 2.6rem;
-  }
-}
-
-/* line 566, src/scss/5_theme/landing.scss */
-.page-node-type-landing-page .field-banner-image {
-  margin: 0 0 2.4rem;
+.page-node-type-landing-page .banner--deep {
+  margin: 1.4rem 0 2.4rem;
   position: relative;
 }
 
 @media (min-width: 600px) {
-  /* line 566, src/scss/5_theme/landing.scss */
-  .page-node-type-landing-page .field-banner-image {
-    margin: 0 0 2.8rem;
+  /* line 557, src/scss/5_theme/landing.scss */
+  .page-node-type-landing-page .banner--deep {
+    margin: 2.4rem 0 2.8rem;
   }
 }
 
 @media (min-width: 768px) {
-  /* line 566, src/scss/5_theme/landing.scss */
-  .page-node-type-landing-page .field-banner-image {
-    margin: 0 0 3.6rem;
+  /* line 557, src/scss/5_theme/landing.scss */
+  .page-node-type-landing-page .banner--deep {
+    margin-bottom: 3.6rem;
   }
 }
 
 @media (min-width: 980px) {
-  /* line 566, src/scss/5_theme/landing.scss */
-  .page-node-type-landing-page .field-banner-image {
-    margin: 0 0 4.5rem;
+  /* line 557, src/scss/5_theme/landing.scss */
+  .page-node-type-landing-page .banner--deep {
+    margin-bottom: 4.5rem;
   }
 }
 
-/* line 582, src/scss/5_theme/landing.scss */
-.page-node-type-landing-page .field-banner-image > img {
+/* line 573, src/scss/5_theme/landing.scss */
+.page-node-type-landing-page .banner--deep img {
+  margin: 0;
   padding: 0;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 99;
 }
 
-@media (min-width: 768px) {
-  /* line 582, src/scss/5_theme/landing.scss */
-  .page-node-type-landing-page .field-banner-image > img {
-    padding: 0;
-  }
-}
-
-/* line 594, src/scss/5_theme/landing.scss */
+/* line 579, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page div.nodeSummary,
 .page-node-type-landing-page .large-text {
   font-size: 1.8rem;
@@ -830,7 +807,7 @@
 }
 
 @media (min-width: 480px) {
-  /* line 594, src/scss/5_theme/landing.scss */
+  /* line 579, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page div.nodeSummary,
   .page-node-type-landing-page .large-text {
     font-size: 2.1rem;
@@ -839,7 +816,7 @@
 }
 
 @media (min-width: 600px) {
-  /* line 594, src/scss/5_theme/landing.scss */
+  /* line 579, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page div.nodeSummary,
   .page-node-type-landing-page .large-text {
     margin: 0 0 3.6rem;
@@ -847,7 +824,7 @@
 }
 
 @media (min-width: 768px) {
-  /* line 594, src/scss/5_theme/landing.scss */
+  /* line 579, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page div.nodeSummary,
   .page-node-type-landing-page .large-text {
     font-size: 2.6rem;
@@ -856,7 +833,7 @@
 }
 
 @media (min-width: 980px) {
-  /* line 594, src/scss/5_theme/landing.scss */
+  /* line 579, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page div.nodeSummary,
   .page-node-type-landing-page .large-text {
     font-size: 3rem;
@@ -865,14 +842,14 @@
   }
 }
 
-/* line 620, src/scss/5_theme/landing.scss */
+/* line 605, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page div.nodeSummary:last-child,
 .page-node-type-landing-page .large-text:last-child {
   margin-bottom: 0;
 }
 
 @media (min-width: 480px) {
-  /* line 624, src/scss/5_theme/landing.scss */
+  /* line 609, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page div.nodeSummary div,
   .page-node-type-landing-page .large-text div {
     font-size: 2.1rem;
@@ -881,7 +858,7 @@
 }
 
 @media (min-width: 768px) {
-  /* line 624, src/scss/5_theme/landing.scss */
+  /* line 609, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page div.nodeSummary div,
   .page-node-type-landing-page .large-text div {
     font-size: 2.6rem;
@@ -890,7 +867,7 @@
 }
 
 @media (min-width: 980px) {
-  /* line 624, src/scss/5_theme/landing.scss */
+  /* line 609, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page div.nodeSummary div,
   .page-node-type-landing-page .large-text div {
     font-size: 3rem;
@@ -898,7 +875,7 @@
   }
 }
 
-/* line 637, src/scss/5_theme/landing.scss */
+/* line 622, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page h1 {
   padding: 0 10px;
   padding: 0 1rem;
@@ -907,7 +884,7 @@
 }
 
 @media (min-width: 768px) {
-  /* line 637, src/scss/5_theme/landing.scss */
+  /* line 622, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page h1 {
     font-size: 3rem;
     line-height: 3.6rem;
@@ -917,7 +894,7 @@
   }
 }
 
-/* line 651, src/scss/5_theme/landing.scss */
+/* line 636, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page div.info-notice {
   border-width: .25em;
   background-image: none;
@@ -928,14 +905,14 @@
 }
 
 @media (min-width: 480px) {
-  /* line 651, src/scss/5_theme/landing.scss */
+  /* line 636, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page div.info-notice {
     padding: .5em 8rem 1.5em;
   }
 }
 
 @media (min-width: 768px) {
-  /* line 651, src/scss/5_theme/landing.scss */
+  /* line 636, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page div.info-notice {
     border-width: .3334em;
     margin-bottom: 3.6rem;
@@ -943,25 +920,25 @@
 }
 
 @media (min-width: 980px) {
-  /* line 651, src/scss/5_theme/landing.scss */
+  /* line 636, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page div.info-notice {
     margin-bottom: 4.5rem;
   }
 }
 
-/* line 672, src/scss/5_theme/landing.scss */
+/* line 657, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page div.info-notice > *:first-child {
   margin-top: .9rem;
 }
 
 @media (min-width: 768px) {
-  /* line 672, src/scss/5_theme/landing.scss */
+  /* line 657, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page div.info-notice > *:first-child {
     margin-top: 1.6rem;
   }
 }
 
-/* line 680, src/scss/5_theme/landing.scss */
+/* line 665, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page div.info-notice::before {
   content: '';
   display: block;
@@ -975,7 +952,7 @@
 }
 
 @media (min-width: 480px) {
-  /* line 680, src/scss/5_theme/landing.scss */
+  /* line 665, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page div.info-notice::before {
     width: 4rem;
     height: 4rem;
@@ -984,12 +961,12 @@
   }
 }
 
-/* line 698, src/scss/5_theme/landing.scss */
+/* line 683, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page div.info-notice ul:first-of-type {
   margin-top: 1.2rem;
 }
 
-/* line 702, src/scss/5_theme/landing.scss */
+/* line 687, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page div.info-notice p,
 .page-node-type-landing-page div.info-notice li {
   font-size: 1.7rem;
@@ -997,7 +974,7 @@
 }
 
 @media (min-width: 480px) {
-  /* line 702, src/scss/5_theme/landing.scss */
+  /* line 687, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page div.info-notice p,
   .page-node-type-landing-page div.info-notice li {
     font-size: 1.9rem;
@@ -1006,7 +983,7 @@
 }
 
 @media (min-width: 768px) {
-  /* line 702, src/scss/5_theme/landing.scss */
+  /* line 687, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page div.info-notice p,
   .page-node-type-landing-page div.info-notice li {
     font-size: 2rem;
@@ -1014,7 +991,7 @@
   }
 }
 
-/* line 718, src/scss/5_theme/landing.scss */
+/* line 703, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page .contact-callout {
   background: #da6039 url("../images/data-uri/phone.png") no-repeat;
   background-size: 5rem auto;
@@ -1024,7 +1001,7 @@
 }
 
 @media (min-width: 320px) {
-  /* line 718, src/scss/5_theme/landing.scss */
+  /* line 703, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page .contact-callout {
     background-position: 20px 16px;
     padding: 1rem 1rem 1rem 9rem;
@@ -1032,7 +1009,7 @@
 }
 
 @media (min-width: 768px) {
-  /* line 718, src/scss/5_theme/landing.scss */
+  /* line 703, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page .contact-callout {
     background-size: 5rem auto;
     background-position: 30px 20px;
@@ -1042,18 +1019,18 @@
 }
 
 @media (min-width: 980px) {
-  /* line 718, src/scss/5_theme/landing.scss */
+  /* line 703, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page .contact-callout {
     margin: 0 0 4.5rem;
   }
 }
 
-/* line 742, src/scss/5_theme/landing.scss */
+/* line 727, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page .contact-callout.blue {
   background-color: #0a78cd;
 }
 
-/* line 746, src/scss/5_theme/landing.scss */
+/* line 731, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page .contact-callout > p {
   font-size: 1.8rem;
   line-height: 2.00004rem;
@@ -1062,7 +1039,7 @@
 }
 
 @media (min-width: 768px) {
-  /* line 746, src/scss/5_theme/landing.scss */
+  /* line 731, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page .contact-callout > p {
     font-size: 2.4rem;
     line-height: 3rem;
@@ -1072,7 +1049,7 @@
   }
 }
 
-/* line 758, src/scss/5_theme/landing.scss */
+/* line 743, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page .contact-callout .tel-callout {
   font-size: 2.4rem;
   line-height: 3rem;
@@ -1082,7 +1059,7 @@
 }
 
 @media (min-width: 480px) {
-  /* line 758, src/scss/5_theme/landing.scss */
+  /* line 743, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page .contact-callout .tel-callout {
     font-size: 3rem;
     line-height: 3.6rem;
@@ -1091,7 +1068,7 @@
 }
 
 @media (min-width: 768px) {
-  /* line 758, src/scss/5_theme/landing.scss */
+  /* line 743, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page .contact-callout .tel-callout {
     margin: -3px 0 0 12px;
     margin: -.3rem 0 0 1.2rem;
@@ -1099,36 +1076,36 @@
   }
 }
 
-/* line 776, src/scss/5_theme/landing.scss */
+/* line 761, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page .contact-callout .tel-callout a[href^='tel:']:link, .page-node-type-landing-page .contact-callout .tel-callout a[href^='tel:']:visited, .page-node-type-landing-page .contact-callout .tel-callout a[href^='tel:']:hover {
   color: #fff;
   text-decoration: none;
 }
 
-/* line 784, src/scss/5_theme/landing.scss */
+/* line 769, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page .contact-callout .tel-callout .tel-strapline {
   font-size: 1.6rem;
   line-height: 2.4rem;
   display: block;
 }
 
-/* line 793, src/scss/5_theme/landing.scss */
+/* line 778, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page .two-cols .col.contact-callout {
   border: 0;
 }
 
-/* line 796, src/scss/5_theme/landing.scss */
+/* line 781, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page .two-cols .col.contact-callout:hover {
   background-color: #da6039;
 }
 
-/* line 800, src/scss/5_theme/landing.scss */
+/* line 785, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page .two-cols .col.contact-callout.blue:hover {
   background-color: #0a78cd;
 }
 
 @media (min-width: 768px) {
-  /* line 793, src/scss/5_theme/landing.scss */
+  /* line 778, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page .two-cols .col.contact-callout {
     background-size: 50px auto;
     background-position: 20px 16px;
@@ -1137,13 +1114,13 @@
   }
 }
 
-/* line 811, src/scss/5_theme/landing.scss */
+/* line 796, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page .two-cols .col.contact-callout > p {
   line-height: 2rem;
 }
 
 @media (min-width: 768px) {
-  /* line 811, src/scss/5_theme/landing.scss */
+  /* line 796, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page .two-cols .col.contact-callout > p {
     font-size: 1.8rem;
     line-height: 2.4rem;
@@ -1154,14 +1131,14 @@
 }
 
 @media (min-width: 768px) {
-  /* line 820, src/scss/5_theme/landing.scss */
+  /* line 805, src/scss/5_theme/landing.scss */
   .page-node-type-landing-page .two-cols .col.contact-callout .tel-callout {
     margin: 0;
     display: block;
   }
 }
 
-/* line 826, src/scss/5_theme/landing.scss */
+/* line 811, src/scss/5_theme/landing.scss */
 .page-node-type-landing-page .two-cols .col.contact-callout .tel-callout .tel-strapline {
   font-size: 1.6rem;
   line-height: 2.4rem;
