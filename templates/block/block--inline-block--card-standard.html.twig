@@ -28,15 +28,15 @@
 {% if not label %}
   {% set label = 'Title not displayed!' %}
 {% endif %}
-
-<section{{ attributes.addClass('card') }}>
+<div{{ attributes.addClass('card__innards') }}>
   <div class="card__image">{{ content.field_image }}</div>
   <div class="card__content">
     {{ title_prefix }}
     <h2{{ title_attributes.addClass('card__title') }}>
-      <a href="{{ content.field_link.url }}">{{ label }}</a>
+      {{ label }}
     </h2>
     {{ title_suffix }}
     {{ content.field_teaser }}
+    <a class="card__link" href="{{ content.field_link[0]['#url']|render }}"><span class="visually-hidden">read more - {{ label }}</span></a>
   </div>
-</section>
+</div>

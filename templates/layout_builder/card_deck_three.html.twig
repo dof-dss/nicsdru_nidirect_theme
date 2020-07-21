@@ -1,6 +1,20 @@
-{% set classes = ['card-deck-flex', 'card-deck-flex--x3'] %}
+{% set classes = ['card-deck-landing', 'card-deck-landing--x3'] %}
+{% if content %}
 <div {{ attributes.addClass(classes) }}>
-  {% if content %}
-  {{ content }}
+  {% if content.one %}
+    <section{{ region_attributes.one.addClass('card') }}>
+      {{ content.one }}
+    </section>
+  {% endif %}
+  {% if content.two %}
+    <section{{ region_attributes.two.addClass('card') }}>
+      {{ content.two }}
+    </section>
+  {% endif %}
+  {% if content.three %}
+    <section{{ region_attributes.three.addClass('card') }}>
+      {{ content.three }}
+    </section>
   {% endif %}
 </div>
+{% endif %}
