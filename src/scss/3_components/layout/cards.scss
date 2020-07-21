@@ -107,117 +107,119 @@
   }
 }
 
-
-.card-deck-flex {
-
-  // Deck of cards laid out using flex.
-  display: flex;
+// Card decks for landing pages.
+.card-deck-landing {
 
   // Small screens - cards are stacked in single column.
-  flex-flow: column nowrap;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1em 20px;
+  margin: 1em 0;
 
-  margin: 1.5em 0;
-
+  // Larger screens - cards in rows of 2 or 3.
   @include breakpoint($tab, $no-query: true) {
 
-    // Larger screens - tablet and up, cards go into rows.
-    flex-flow: row wrap;
-    justify-content: space-between;
+    grid-gap: 1.5em 20px;
+    margin: 1.5em 0 2.5em;
 
-    margin: 0 0 2.5em; // 36px @ 16px font size; 45px @ 18px font-size.
+    // 3 card decks.
+    &--x3 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    // 2 card decks.
+    &--x2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
   }
 
-  .card {
+  &--x3 .card {
 
-    position: relative; // For absolutely positioned child elements;
-
-    // Simple card - image, title, teaser text, link.
-    // On very small screens, everything in the card is stacked in a single column.
-    display: flex;
-    flex-flow: column nowrap;
-
-    padding-bottom: .75em;
-    margin-bottom: 1.5em;
-    border: 0;
-    box-shadow: 0 1px 2px $grey-medium;
-
-    &:hover {
-      background-color: $offwhite;
-      border-color: $offwhite;
+    @include breakpoint($tab, $no-query: true) {
+      // Three cards in row.
+      flex: 0 31.915%;
+      max-width: 300px;
     }
+  }
 
-    &__image,
-    &__content {
+  &--x2 .card {
+
+    @include breakpoint($tab, $no-query: true) {
+      // Two cards in a row.
+      flex: 0 48.9%;
+      max-width: 460px;
+    }
+  }
+
+  .card { // .card wrapper is a region in layout builder that blocks can be inserted into.
+
+    margin: 0;
+
+    &__innards { // .card__innards wrapper is a block wrapper and carries attributes targeted by layout builder.
+
+      // Flex to layout card innards.
+      display: flex;
+      flex-flow: column nowrap;
+
       width: 100%;
+      height: 100%;
+
+      // Some child elements will be absolutely positioned relative to the card.
+      position: relative;
+
+      // Middle screen sizes, child items (image and content) will be in a row.
+      @include breakpoint($mob $tab, $no-query: true) {
+        flex-direction: row;
+      }
     }
 
-    &__content {
-      padding: .75em;
-    }
+    &__image {
+      width: 100%;
 
-    // On medium screens, image to the left and other content to the right.
-    @include breakpoint($mob, $no-query: true) {
-      flex-direction: row;
-      box-shadow: 1px 0 5px $grey-medium;
-      padding: 0;
-      margin-bottom: .75em;
-
-      &__image {
+      @include breakpoint($mob, $no-query: true) {
         width: 38%;
         padding: .5em;
       }
 
-      &__content {
-        width: 62%;
-        padding: .75em 1em .75em .5em;
-      }
-    }
-
-    // On larger screens, card contents stacked single column again (cards themselves are in a multi-column layout).
-    @include breakpoint($tab, $no-query: true) {
-      flex-direction: column;
-      border: 0;
-      box-shadow: 0 1px 2px $grey-medium; // Using box-shadow instead of a border
-      margin-bottom: 2.5em;
-
-      &__image {
+      @include breakpoint($tab, $no-query: true) {
         width: 100%;
         padding: 0;
       }
-
-      &__content {
-        width: 100%;
-        padding: .6667em;
-      }
     }
 
-    @include breakpoint($tab, $no-query: true) {
+    &__content {
+      width: 100%;
+      padding: .75em;
 
-      &__content {
+      @include breakpoint($mob, $no-query: true) {
+        width: 62%;
+        padding: .75em 1em .75em .5em;
+      }
+
+      @include breakpoint($tab, $no-query: true) {
+        width: 100%;
         padding: 1em;
       }
     }
 
-    picture {
-      width: 100%;
-      height: auto;
-      margin: 0;
-
-      img {
+    &__image {
+      picture {
         width: 100%;
         height: auto;
         margin: 0;
+
+        img {
+          width: 100%;
+          height: auto;
+          margin: 0;
+        }
       }
     }
 
     &__content {
 
       > * {
-        @include adjust-font-size-to(16px, 4);
-
-        @include breakpoint($tab, $no-query: true) {
-          @include adjust-font-size-to(18px, 4.5);
-        }
 
         margin: 0 0 1em 0;
 
@@ -226,60 +228,21 @@
         }
       }
 
-      li {
-        position: relative;
-        list-style: none;
-        padding: 0 0 rhythm(1) 1rem;
-
-        &::before {
-          content: '-';
-          position: absolute;
-          left: 0;
-          top: 0;
-        }
-      }
-
       iframe {
         margin: 0;
-        border: 0;
       }
     }
 
     &__title {
-      @include adjust-font-size-to(22px, 4.6667);
+
       margin: 0 0 .8rem;
 
       @include breakpoint($phab, $no-query: true) {
-        @include adjust-font-size-to(24px, 5);
         margin: 0 0 .8rem;
       }
 
       @include breakpoint($tab, $no-query: true) {
         margin: 0 0 .9rem;
-      }
-
-      position: relative;
-      padding-right: 25px;
-
-      &::after {
-        content: '';
-        display: inline-block;
-        position: absolute;
-        top: 2px;
-        right: -8px;
-        width: 24px;
-        height: 20px;
-        background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2025%2015%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%20.st0%7Bfill%3A%230e6bb3%3Bfill-rule%3Aevenodd%3Bclip-rule%3Aevenodd%3B%7D%20%3C%2Fstyle%3E%3Cpath%20class%3D%22st0%22%20d%3D%22M12.5%200L0%2012l3%203%209.5-10L22%2015l3-3L12.5%200z%22%2F%3E%3C%2Fsvg%3E%0A');
-        background-position: center right;
-        background-size: 21px auto;
-        background-repeat: no-repeat;
-        transform: rotate(90deg);
-
-        @include breakpoint($tab, $no-query: true) {
-          top: .25em;
-          right: -8px;
-          background-size: 24px auto;
-        }
       }
     }
 
@@ -290,50 +253,10 @@
       height: 100%;
       left: 0;
       top: 0;
-      text-decoration: none;
-
-      &:focus {
-        outline: 3px solid $link;
-        background-color: transparent;
-        text-decoration: none;
-      }
     }
 
     &__video {
-      border: 0 solid;
-      box-shadow: none;
       vertical-align: middle;
-
-      &:hover {
-        background-color: transparent;
-        border-color: none;
-      }
-    }
-  }
-
-  &--x3 .card {
-
-    @include breakpoint($tab, $no-query: true) {
-      // Three cards in row.
-      flex: 0 31.915%;
-      max-width: 300px;
-      //margin-right: 2.1277%;
-      margin-bottom: 2.1277%;
-
-      /*
-      &:nth-child(3n + 3) { // Every third card
-        margin-right: 0;
-      }
-      */
-    }
-  }
-
-  &--x2 .card {
-
-    @include breakpoint($tab, $no-query: true) {
-      // Two cards in a row.
-      flex: 0 48.9%;
-      max-width: 460px;
     }
   }
 }
