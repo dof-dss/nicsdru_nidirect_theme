@@ -31,6 +31,14 @@
 }
 
 @mixin btn-size($size: 'standard') {
+  @if($size == 'small') {
+    @include responsive-typo-map($btn-small);
+    height: 44px;
+    padding: .1rem .5em;
+    @include breakpoint($phab, $no-query: true) {
+      height: 45px;
+    }
+  }
   @if($size == 'standard') {
     @include responsive-typo-map($btn-standard);
   }

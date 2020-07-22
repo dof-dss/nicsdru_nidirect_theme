@@ -1,0 +1,157 @@
+/*
+ * @file
+ * Provides the generic styling for layout builder form components.
+ */
+@import '../../init';
+@import 'button/button-defs';
+
+.layout-builder-form,
+.layout-builder-update-block,
+.layout-builder-configure-block {
+
+  max-width: unset;
+
+  .form-actions {
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    margin: 1.5em 0 0;
+    padding: 0;
+  }
+
+  .field--name-moderation-state {
+    padding: 0;
+
+    * {
+      font-size: 16px;
+    }
+
+    label {
+      &::after {
+        content: ':';
+      }
+    }
+
+    #edit-moderation-state-0 {
+      display: flex;
+      align-items: center;
+
+      .form-item {
+        margin: 0 1.5em 0 0;
+        line-height: 4.5rem;
+      }
+
+      label {
+        margin-right: .5em;
+        font-weight: bold;
+      }
+
+      select {
+        margin: 0;
+        display: unset;
+        height: 2em;
+        min-height: unset;
+        padding: 4px 30px 4px 10px;
+      }
+    }
+  }
+
+  > .form-item,
+  .form-wrapper > .form-item {
+    padding: 0;
+    margin: .5em 0;
+  }
+
+  input[type='submit'],
+  input[type='button'] {
+    @include btn-size('small');
+    margin: .5em .5em .5em 0;
+    font-weight: bold;
+  }
+
+  input[type='radio'],
+  .form-radio,
+  input[type='checkbox'],
+  .form-checkbox {
+
+    @include breakpoint($phab, $no-query: true) {
+      @include adjust-font-size-to(16px, 4);
+    }
+
+    @include adjust-font-size-to(14px, 4);
+
+    top: 1.3rem;
+    z-index: 1;
+    left: 1.2rem;
+    clear: both;
+    margin: 0;
+    padding: 0;
+    max-width: 2rem;
+    max-height: 2rem;
+    line-height: 2.4rem;
+    vertical-align: baseline;
+    box-shadow: none;
+    border: 0;
+    outline: none;
+    color: inherit;
+
+    // sibling labels
+    & ~ label {
+      @include adjust-font-size-to(14px, 4);
+      position: relative;
+      left: 0;
+      margin: 0;
+      padding: .55em 1.5rem .45em 3.6rem; // Right padding makes space for the input to sit in
+      display: inline-block;
+      vertical-align: baseline;
+      min-width: 7.5rem;
+      min-height: 4.4rem;
+      border: 1px solid $grey;
+
+      @include breakpoint($phab, $no-query: true) {
+        @include adjust-font-size-to(16px, 4);
+        min-height: 4.5rem;
+      }
+    }
+  }
+
+  input[type='radio'],
+  .form-radio {
+    appearance: none;
+    border: 2px solid $charcoal;
+    border-radius: 50% !important;
+    background-color: #fff;
+    width: 1.8rem;
+    height: 1.8rem;
+
+    &:checked {
+      background-color: #2daff7;
+    }
+  }
+
+  input[type='checkbox'],
+  .form-checkbox {
+    border: 2px solid $charcoal;
+    border-radius: 0;
+    background-color: #fff;
+    width: 1.8rem;
+    height: 1.8rem;
+
+    &:checked {
+      background-color: #2daff7;
+      border-style: inset;
+    }
+  }
+
+  .layout-builder__message {
+
+    .container {
+      padding: 0;
+    }
+
+    .messages {
+      margin: .5em 0;
+    }
+
+  }
+}
