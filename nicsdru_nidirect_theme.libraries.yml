@@ -37,6 +37,8 @@ nidirect-global-styles:
       css/3_components/form/form.css: { minified: true }
       css/3_components/form/webform.css: { minified: true }
       css/3_components/form/search-form.css: { minified: true }
+      css/3_components/form/layout-builder-form.css: { minified: true }
+      css/3_components/layout/layout-builder.css: { minified: true }
       css/3_components/content/icons-messages.css: { minified: true }
       css/3_components/content/lists.css: { minified: true }
       css/3_components/content/responsive-images.css: { minified: true }
@@ -69,12 +71,25 @@ nidirect-specific-styles:
       css/5_theme/entities.css: { minified: true }
       css/5_theme/searches.css: { minified: true }
       css/5_theme/views.css: { minified: true }
+      css/5_theme/landing.css: { minified: true }
       '//fonts.googleapis.com/css?family=Lato': { type: external }
 
 nidirect-table-of-contents:
   version: VERSION
   js:
     js/in_page_navigation.js: { minified: true }
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+
+nidirect-accordions:
+  version: VERSION
+  css:
+    component:
+      css/3_components/layout/accordions.css: { minified: true }
+  js:
+    js/accordions.js: { minified: true }
   dependencies:
     - core/drupal
     - core/jquery
