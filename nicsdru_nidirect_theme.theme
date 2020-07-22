@@ -254,7 +254,7 @@ function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
  */
 function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
 
-  // Preprocess node titles
+  // Preprocess node titles.
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
 
     // By default page titles are visible.
