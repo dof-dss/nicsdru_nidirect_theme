@@ -39,6 +39,7 @@ nidirect-global-styles:
       css/3_components/form/search-form.css: { minified: true }
       css/3_components/form/layout-builder-form.css: { minified: true }
       css/3_components/layout/layout-builder.css: { minified: true }
+      css/3_components/layout/banner.css: { minfied: true }
       css/3_components/content/icons-messages.css: { minified: true }
       css/3_components/content/lists.css: { minified: true }
       css/3_components/content/responsive-images.css: { minified: true }
@@ -87,7 +88,7 @@ nidirect-accordions:
   version: VERSION
   css:
     component:
-      css/3_components/layout/accordions.css: { minified: true }
+      css/3_components/content/accordions.css: { minified: true }
   js:
     js/accordions.js: { minified: true }
   dependencies:
