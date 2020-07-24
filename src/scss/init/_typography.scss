@@ -50,14 +50,16 @@ $normal-text: (
 
 $large-text: (
   null: (18px, 1.3334),
+  md: (20px, 1.4),
   lg: (21px, 1.4286),
-  //xxl: (24px, 1.3334)
+  //xl: (24px, 1.3334)
 );
 
 $xl-text: (
-  null: (21px, 1.1429),
-  lg: (24px, 1.125),
-  //xxl: (27px, 1.1111)
+  null: (20px, 1.4),
+  md: (22px, 1.4546),
+  lg: (26px, 1.3846),
+  xl: (30px, 1.2)
 );
 
 $xxl-text: (
