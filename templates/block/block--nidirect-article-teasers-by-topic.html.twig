@@ -25,15 +25,24 @@
  * @see template_preprocess_block()
  */
 #}
-<div{{ attributes }}>
+{% set classes = ['card-deck--landing', 'card-deck--landing--simple', 'card-deck--landing--x2'] %}
+<div{{ attributes.addClass(classes).setAttribute('role', 'presentation') }}>
   {% block content %}
     {% for article in content.nidirect_article_teasers_by_topic %}
-      <div>
-        <h2>{{ article.title_link }}</h2>
-        <div>{{ article.summary_text }}{{ article.more_link }}</div>
-      </div>
+      <article class="card card--plain">
+        <div class="card__innards">
+          <div class="card__content">
+            <h2 class="card__title">
+              {{ article.title_link['#title']|render }}
+            </h2>
+            <p>{{ article.summary_text }}</p>
+            <a class="card__link" href="{{ article.more_link['#url']|render }}"><span class="visually-hidden">read more - {{ article.title_link['#title']|render }}</span></a>
+          </div>
+        </div>
+      </article>
     {% endfor %}
     {# Bubble cache tags up #}
     {%  set catch_cache = content.nidirect_article_teasers_by_topic|render %}
   {% endblock %}
 </div>
+
