@@ -2,17 +2,17 @@
 {% if content %}
 <div {{ attributes.addClass(classes) }}>
   {% if content.one %}
-    <section{{ region_attributes.one.addClass('card') }}>
+    <section{{ region_attributes.one }}>
       {{ content.one }}
     </section>
   {% endif %}
   {% if content.two %}
-    <section{{ region_attributes.two.addClass('card') }}>
+    <section{{ region_attributes.two }}>
       {{ content.two }}
     </section>
   {% endif %}
   {% if content.three %}
-    <section{{ region_attributes.three.addClass('card') }}>
+    <section{{ region_attributes.three }}>
       {{ content.three }}
     </section>
   {% endif %}

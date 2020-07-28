@@ -134,10 +134,12 @@
     }
   }
 
-  .card { // .card wrapper is a region in layout builder that blocks can be inserted into.
+  .card {
+    width: 100%;
+    height: 100%;
     margin: 0;
 
-    &__innards { // .card__innards wrapper is a block wrapper and carries attributes targeted by layout builder.
+    &__link { // .card__link wraps everything in the card.
 
      // Flex to layout card innards.
      display: flex;
@@ -187,8 +189,6 @@
 
       > * {
 
-       margin: 0 0 1em;
-
        &:last-child {
          margin-bottom: 0;
        }
@@ -198,22 +198,13 @@
        margin: 0;
      }
    }
-
-    &__link {
-       // link covers the entire card
-       position: absolute;
-       width: 100%;
-       height: 100%;
-       left: 0;
-       top: 0;
-     }
   }
 
   &--x3 .card { // .card wrapper is a region in layout builder that blocks can be inserted into.
 
     @include breakpoint($mob $tab, $no-query: true) {
 
-      &__innards { // .card__innards wrapper is a block wrapper and carries attributes targeted by layout builder.
+      &__link {
         flex-direction: row;
       }
 
