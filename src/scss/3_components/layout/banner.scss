@@ -1,0 +1,19 @@
+/*
+ * @file
+ * Provides layout css for banners.
+ */
+@import '../../init';
+
+.banner {
+  position: relative;
+  width: 100%;
+
+  img {
+    margin: 0;
+    padding: 0;
+  }
+
+  &--thin {
+    margin-bottom: 0;
+  }
+}

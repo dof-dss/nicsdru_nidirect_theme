@@ -25,23 +25,17 @@
  * @see template_preprocess_block()
  */
 #}
-{% set classes = ['card-deck--landing', 'card-deck--landing--simple', 'card-deck--landing--x2'] %}
-<div{{ attributes.addClass(classes).setAttribute('role', 'presentation') }}>
+{% set card_layout = content.field_card_layout.0['#markup'] %}
+{% set classes = [
+  'card-deck--landing',
+  'card-deck--landing--simple',
+  'card-deck--landing' ~ card_layout
+] %}
+<div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {{ title_suffix }}
   {% block content %}
-    {% for article in content.nidirect_article_teasers_by_topic %}
-      <article class="card">
-        <a class="card__link card__content" href="{{ article.more_link['#url']|render }}">
-          <h2 class="card__title">
-            {{ article.title_link['#title']|render }}
-          </h2>
-          <p>{{ article.summary_text }}&nbsp;<span class="more">read more</span></p>
-        </a>
-      </article>
-    {% endfor %}
-    {# Bubble cache tags up #}
-    {%  set catch_cache = content.nidirect_article_teasers_by_topic|render %}
+    {{ content.field_plain_cards }}
   {% endblock %}
 </div>
 

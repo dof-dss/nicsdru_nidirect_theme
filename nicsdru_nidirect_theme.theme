@@ -250,6 +250,27 @@ function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
 }
 
 /**
+ * Implements hook_preprocess_page_title().
+ */
+function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
+
+  // By default page titles are visible.
+  $variables['title_visible'] = TRUE;
+
+  // Preprocess node titles.
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+
+    // Landing pages have a boolean field to enable title visibility.
+    if ($node->getType() == 'landing_page') {
+      // Is the title visible?
+      if ($node->field_enable_title->get(0)->value === '0') {
+        $variables['title_visible'] = FALSE;
+      }
+    }
+  }
+}
+
+/**
  * Implements hook_preprocess_field().
  */
 function nicsdru_nidirect_theme_preprocess_field(&$variables) {
