@@ -33,10 +33,12 @@
 @mixin btn-size($size: 'standard') {
   @if($size == 'small') {
     @include responsive-typo-map($btn-small);
-    height: 44px;
-    padding: .1rem .5em;
+    height: 32px;
+    padding: 4px .5em;
+    margin: 6px 0;
     @include breakpoint($phab, $no-query: true) {
-      height: 45px;
+      height: 35px;
+      margin: 5px 0;
     }
   }
   @if($size == 'standard') {

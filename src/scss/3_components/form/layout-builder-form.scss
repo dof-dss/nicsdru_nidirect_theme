@@ -7,7 +7,8 @@
 
 .layout-builder-form,
 .layout-builder-update-block,
-.layout-builder-configure-block {
+.layout-builder-configure-block,
+#media-library-wrapper form {
 
   max-width: unset;
 
@@ -56,17 +57,55 @@
     }
   }
 
-  > .form-item,
-  .form-wrapper > .form-item {
+  fieldset.form-item {
+    margin: 1em 0;
+
+    legend {
+      @include adjust-font-size-to(18px, 4);
+      margin: 0 0 .8rem;
+
+      @include breakpoint($phab, $no-query: true) {
+        @include adjust-font-size-to(20px, 4.5);
+        margin: 0 0 .9rem;
+      }
+    }
+
+    .fieldset-wrapper {
+      background-color: #eff6fc;
+      padding: .5em;
+    }
+  }
+
+  .form-item {
     padding: 0;
+    margin: .25em 0;
+
+    &.form-item-settings-admin-label {
+      @include responsive-typo-map($xl-text);
+      margin: .8rem 0 1.6rem;
+      color: $brand-primary-dark;;
+
+      @include breakpoint($phab, $no-query: true) {
+        margin: 0.9rem 0 1.8rem;
+      }
+
+      label {
+        display: none;
+      }
+    }
+
+    &.form-item-settings-label-display {
+      margin: 0;
+    }
+  }
+
+  .description {
     margin: .5em 0;
   }
 
   input[type='submit'],
   input[type='button'] {
     @include btn-size('small');
-    margin: .5em .5em .5em 0;
-    font-weight: bold;
   }
 
   input[type='radio'],
@@ -75,10 +114,10 @@
   .form-checkbox {
 
     @include breakpoint($phab, $no-query: true) {
-      @include adjust-font-size-to(16px, 4);
+      @include adjust-font-size-to(16px, 2.3334);
     }
 
-    @include adjust-font-size-to(14px, 4);
+    @include adjust-font-size-to(14px);
 
     top: 1.3rem;
     z-index: 1;
@@ -88,7 +127,7 @@
     padding: 0;
     max-width: 2rem;
     max-height: 2rem;
-    line-height: 2.4rem;
+    line-height: 1.2;
     vertical-align: baseline;
     box-shadow: none;
     border: 0;
@@ -97,20 +136,20 @@
 
     // sibling labels
     & ~ label {
-      @include adjust-font-size-to(14px, 4);
+      @include adjust-font-size-to(14px, 3);
       position: relative;
       left: 0;
-      margin: 0;
-      padding: .55em 1.5rem .45em 3.6rem; // Right padding makes space for the input to sit in
+      margin: 5px 5px 5px 0;
+      padding: .4rem 1.5rem .4rem 3.6rem; // Right padding makes space for the input to sit in
       display: inline-block;
       vertical-align: baseline;
       min-width: 7.5rem;
-      min-height: 4.4rem;
+      min-height: 3.4rem;
       border: 1px solid $grey;
 
       @include breakpoint($phab, $no-query: true) {
         @include adjust-font-size-to(16px, 4);
-        min-height: 4.5rem;
+        min-height: 3.5rem;
       }
     }
   }
@@ -153,5 +192,165 @@
       margin: .5em 0;
     }
 
+  }
+
+}
+
+.layout-builder-update-block,
+.layout-builder-configure-block {
+  .js-media-library-item {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+
+    > * {
+      order: 1;
+    }
+
+    .media-image {
+      @include responsive-typo-map($body-text);
+      width: auto;
+      order: 0;
+      margin: 0 .5em 0 0;
+    }
+  }
+}
+
+/* Media library widget view styles. */
+#media-library-wrapper .js-media-library-view {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#media-library-wrapper .js-media-library-view header {
+  margin: .5em 0;
+  text-align: right; /* LTR */
+}
+
+[dir="rtl"] #media-library-wrapper .js-media-library-view header {
+  text-align: left;
+}
+
+#media-library-wrapper .js-media-library-view form {
+  display: flex;
+  align-items: flex-end;
+
+  > * {
+    white-space: nowrap;
+    font-size: 1.6rem;
+    margin: .5em;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  label {
+    display: block;
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  input {
+    margin: 0;
+    padding: 4px;
+    font-size: 1.4rem;
+    max-width: 200px;
+    min-height: 35px;
+  }
+
+  select {
+    display: inline-block;
+    height: auto;
+    padding: 4px 31px 4px 4px;
+    line-height: 1em;
+    min-height: 35px;
+    margin: 0;
+    font-size: 1.4rem;
+  }
+}
+
+#media-library-wrapper .js-media-library-view .views-form {
+  flex: 0 0 100%;
+}
+
+#media-library-wrapper .views-display-link {
+  margin: 0;
+  padding-left: 22px; /* LTR */
+  color: #333;
+  font-size: 15px;
+  line-height: 16px;
+}
+[dir="rtl"] #media-library-wrapper .views-display-link {
+  padding-right: 22px;
+  padding-left: 0;
+}
+
+#media-library-wrapper .views-display-link.is-active {
+  font-weight: bold;
+}
+
+#media-library-wrapper .views-display-link-widget {
+  margin-right: 15px;
+  background: url('/core/misc/icons/333333/grid.svg') left 0 no-repeat; /* LTR */
+}
+[dir="rtl"] #media-library-wrapper .views-display-link-widget {
+  background-position: right 0;
+}
+
+#media-library-wrapper .views-display-link-widget_table {
+  background: url('/core/misc/icons/333333/table.svg') left 0 no-repeat; /* LTR */
+}
+
+[dir="rtl"] #media-library-wrapper .views-display-link-widget_table {
+  background-position: right 0;
+}
+
+#media-library-wrapper .js-media-library-views-form {
+  display: flex;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  justify-content: space-between;
+
+  .js-media-library-item {
+    width: 31.5%;
+    margin: 0 0 2.25% 0;
+
+    &.media-library-item--disabled {
+      opacity: .5;
+    }
+
+    .media-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 120px;
+      background-color: #000;
+      margin: 0;
+
+      .field--name-thumbnail {
+        text-align: center;
+      }
+
+      img {
+        width: auto;
+        height: 100%;
+        max-height: 120px;
+        margin: 0;
+      }
+    }
+
+    .views-field-media-library-select-form input {
+      min-height: auto;
+    }
+
+  }
+
+  .form-actions {
+    flex-basis: 100%;
   }
 }
