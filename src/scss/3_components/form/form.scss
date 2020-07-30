@@ -114,7 +114,8 @@ label,
 [type='password'],
 [type='date'],
 [type='time'],
-[type='number'] {
+[type='number'],
+[type='file'] {
   width: 100%;
   max-width: 56rem; // fallback for older browsers
   max-width: fit-content;
@@ -137,6 +138,7 @@ select,
 [type='date'],
 [type='time'],
 [type='number'],
+[type='file'],
 textarea {
   box-sizing: border-box;
   border: 1px solid #333;
@@ -164,6 +166,19 @@ textarea {
     background-color: $error-bg; // lightpink
     box-shadow: none;
     color: $charcoal;
+  }
+}
+
+[type='file'] {
+  padding: .4rem !important;
+  font-size: 1.6rem !important;
+
+  &::-webkit-file-upload-button {
+    @extend %btn;
+    @include btn-color($btn-primary, #fff);
+    @include btn-size('small');
+    margin: 0 !important;
+    font-weight: normal;
   }
 }
 
