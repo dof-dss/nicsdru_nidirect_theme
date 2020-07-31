@@ -8,7 +8,8 @@
 .layout-builder-form,
 .layout-builder-update-block,
 .layout-builder-configure-block,
-#media-library-wrapper form {
+.media-library-wrapper form,
+.js-media-library-add-form {
 
   max-width: unset;
 
@@ -198,159 +199,391 @@
 
 .layout-builder-update-block,
 .layout-builder-configure-block {
-  .js-media-library-item {
+
+  .media-library-widget {
+    p.media-library-widget-empty-text {
+      margin: 0 0 .5em 0;
+      padding: .5em;
+      background-color: $charcoal;
+      color: #fff;
+      font-size: 1.6rem;
+    }
+  }
+
+  .media-library-item {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
+    outline: 0;
 
     > * {
       order: 1;
     }
 
-    .media-image {
+    article {
+      position: relative;
       @include responsive-typo-map($body-text);
       width: auto;
       order: 0;
       margin: 0 .5em 0 0;
-    }
-  }
-}
-
-/* Media library widget view styles. */
-#media-library-wrapper .js-media-library-view {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-
-#media-library-wrapper .js-media-library-view header {
-  margin: .5em 0;
-  text-align: right; /* LTR */
-}
-
-[dir="rtl"] #media-library-wrapper .js-media-library-view header {
-  text-align: left;
-}
-
-#media-library-wrapper .js-media-library-view form {
-  display: flex;
-  align-items: flex-end;
-
-  > * {
-    white-space: nowrap;
-    font-size: 1.6rem;
-    margin: .5em;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-
-  label {
-    display: block;
-    margin: 0;
-    font-size: 1.4rem;
-  }
-
-  input {
-    margin: 0;
-    padding: 4px;
-    font-size: 1.4rem;
-    max-width: 200px;
-    min-height: 35px;
-  }
-
-  select {
-    display: inline-block;
-    height: auto;
-    padding: 4px 31px 4px 4px;
-    line-height: 1em;
-    min-height: 35px;
-    margin: 0;
-    font-size: 1.4rem;
-  }
-}
-
-#media-library-wrapper .js-media-library-view .views-form {
-  flex: 0 0 100%;
-}
-
-#media-library-wrapper .views-display-link {
-  margin: 0;
-  padding-left: 22px; /* LTR */
-  color: #333;
-  font-size: 15px;
-  line-height: 16px;
-}
-[dir="rtl"] #media-library-wrapper .views-display-link {
-  padding-right: 22px;
-  padding-left: 0;
-}
-
-#media-library-wrapper .views-display-link.is-active {
-  font-weight: bold;
-}
-
-#media-library-wrapper .views-display-link-widget {
-  margin-right: 15px;
-  background: url('/core/misc/icons/333333/grid.svg') left 0 no-repeat; /* LTR */
-}
-[dir="rtl"] #media-library-wrapper .views-display-link-widget {
-  background-position: right 0;
-}
-
-#media-library-wrapper .views-display-link-widget_table {
-  background: url('/core/misc/icons/333333/table.svg') left 0 no-repeat; /* LTR */
-}
-
-[dir="rtl"] #media-library-wrapper .views-display-link-widget_table {
-  background-position: right 0;
-}
-
-#media-library-wrapper .js-media-library-views-form {
-  display: flex;
-  flex-flow: row wrap;
-  flex-basis: 100%;
-  justify-content: space-between;
-
-  .js-media-library-item {
-    width: 31.5%;
-    margin: 0 0 2.25% 0;
-
-    &.media-library-item--disabled {
-      opacity: .5;
-    }
-
-    .media-image {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 120px;
-      background-color: #000;
-      margin: 0;
 
       .field--name-thumbnail {
+        font-size: 0;
+        min-width: 220px;
+        min-height: 120px;
         text-align: center;
+        background-color: #000;
       }
 
-      img {
-        width: auto;
-        height: 100%;
-        max-height: 120px;
-        margin: 0;
+      .media-library-item__attributes {
+        position: absolute;
+        bottom: 0;
+        display: block;
+        width: 100%;
+        padding: 5px;
+        background: rgba(0, 0, 0, .5);
+        color: #fff;
+        font-size: 12px;
+        .media-library-item__name {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-align: center;
+        }
       }
     }
-
-    .views-field-media-library-select-form input {
-      min-height: auto;
-    }
-
-  }
-
-  .form-actions {
-    flex-basis: 100%;
   }
 }
+
+.page-node-type-landing-page {
+  .ui-dialog {
+    z-index: 501;
+  }
+  .ui-dialog-buttonpane {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:before,
+    &:after {
+      content: none;
+    }
+
+    .ui-dialog-buttonset {
+      margin: 0 1em 0 0;
+    }
+  }
+}
+
+// Media library in a drupal-modal.
+
+#drupal-modal {
+
+  // Fix bug where content is scrolled up underneath the dialog's title bar when the dialog opens.
+  scroll-snap-type: y;
+  scroll-padding-block-start: 45px; // Approx the height of the dialog title bar.
+
+  .media-library-wrapper {
+
+    width: 100%;
+
+    // Ensure this element snaps to the scroll-padding-block in the parent.
+    scroll-snap-align: start;
+
+
+    .js-media-library-view {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      .view-header {
+        margin: .5em 0;
+        text-align: right; /* LTR */
+      }
+
+      .view-filters form {
+        display: flex;
+        align-items: flex-end;
+
+        > * {
+          white-space: nowrap;
+          font-size: 1.6rem;
+          margin: .5em .5em .5em 0;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+
+        label {
+          display: block;
+          margin: 0;
+          font-size: 1.4rem;
+        }
+
+        input {
+          margin: 0;
+          padding: 4px;
+          font-size: 1.4rem;
+          max-width: 200px;
+          min-height: 35px;
+        }
+
+        select {
+          display: inline-block;
+          height: auto;
+          padding: 4px 31px 4px 4px;
+          line-height: 1em;
+          min-height: 35px;
+          margin: 0;
+          font-size: 1.4rem;
+        }
+      }
+    }
+
+    .view-content {
+      flex: 0 0 100%;
+      margin-top: .25em;
+    }
+
+    .views-display-link {
+      margin: 0;
+      padding-left: 22px; /* LTR */
+      color: #333;
+      font-size: 15px;
+      line-height: 16px;
+
+      &.is-active {
+        font-weight: bold;
+
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+
+    .views-display-link-widget {
+      margin-right: 15px;
+      background: url('/core/misc/icons/333333/grid.svg') left 0 no-repeat; /* LTR */
+    }
+
+    .views-display-link-widget_table {
+      background: url('/core/misc/icons/333333/table.svg') left 0 no-repeat; /* LTR */
+    }
+
+    .js-media-library-views-form {
+      display: flex;
+      flex-flow: row wrap;
+      flex-basis: 100%;
+      justify-content: space-between;
+      width: calc(100% + 20px);
+      position: relative;
+      margin-left: -10px;
+
+      .media-library-item--grid {
+        position: relative;
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+        font-size: 0;
+
+        @include breakpoint($phab) {
+          width: 50%;
+        }
+
+        @include breakpoint($tab) {
+          width: 33.3%;
+        }
+
+        @include breakpoint($lap) {
+          width: 25%;
+        }
+
+        &.media-library-item--disabled {
+          opacity: .5;
+        }
+
+        .js-click-to-select-checkbox .form-checkbox {
+          top: 5px;
+          left: 5px;
+        }
+
+        article {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          box-shadow: 0px 5px 12px -3px rgba(0, 0, 0, .5);
+
+          .media-library-item__preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 150px;
+            background-color: #000;
+            margin: 0;
+
+            .field--name-thumbnail {
+              text-align: center;
+            }
+
+            img {
+              display: inline-block;
+              width: auto;
+              height: auto;
+              max-height: 150px;
+              margin: 0;
+            }
+          }
+
+          .media-library-item__attributes {
+            position: absolute;
+            bottom: 0;
+            display: block;
+            width: 100%;
+            padding: 5px;
+            background: rgba(0, 0, 0, .5);
+            color: #fff;
+            font-size: 12px;
+            .media-library-item__name {
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              text-align: center;
+            }
+          }
+        }
+
+        .views-field-media-library-select-form input {
+          min-height: auto;
+        }
+      }
+
+      table {
+        width: 100%;
+
+        .form-checkbox {
+          position: static;
+          min-height: unset;
+          margin: 0;
+        }
+
+        th, td {
+          font-size: 1.4rem;
+          vertical-align: middle;
+          padding: .6rem;
+          border-left: 0;
+          border-right: 0;
+          border-color: $grey-medium;
+          background-color: #fff;
+        }
+
+        td.views-field-thumbnail__target-id {
+            text-align: center;
+            width: 240px;
+            font-size: 0;
+            line-height: 0;
+        }
+
+        th {
+          background-color: $grey-light;
+
+          &.views-field-name {
+            width: 220px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+
+      .form-actions {
+        flex-basis: 100%;
+      }
+    }
+  }
+
+  #media-library-add-form-wrapper {
+    /**
+     * Style the added media item container.
+     *
+     * The added media container receives screen reader focus since it is has the
+     * role 'listitem'. Since it is not an interactive element, it does not need
+     * an outline.
+     */
+
+    .media-library-add-form__added-media {
+      margin: 0;
+      padding: 0;
+      outline: 0;
+      list-style: none;
+    }
+
+    .media-library-add-form__media {
+      position: relative;
+      display: flex;
+      padding: 1em 0;
+      border-bottom: 1px solid #c0c0c0;
+      outline: 0;
+
+      &:first-child {
+        padding-top: 0;
+
+        .cancel[type="submit"] {
+          top: 5px;
+        }
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      [data-drupal-selector='edit-preview'] {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 240px;
+        margin-right: 20px; /* LTR */
+        background: $brand-primary-light;
+      }
+
+      .cancel[type="submit"] {
+        position: absolute;
+        top: 25px;
+        right: 6px; /* LTR */
+        width: auto;
+        min-width: auto;
+        margin: 0;
+        padding: 2px 20px 2px 2px; /* LTR */
+        text-transform: lowercase;
+        color: transparent;
+        border: 0;
+        border-radius: 0;
+        background: transparent url('/core/misc/icons/787878/ex.svg') right center no-repeat; /* LTR */
+        font-weight: normal;
+        line-height: 16px;
+
+        &:focus,
+        &.button:disabled,
+        &.button:disabled:active,
+        &.button:focus {
+          color: #787878;
+          border: 0;
+          background: transparent url('/core/misc/icons/787878/ex.svg') right center no-repeat; /* LTR */
+        }
+
+        &:hover,
+        &.button:hover {
+          color: #e00;
+          border: 0;
+          background-image: url('/core/misc/icons/ee0000/ex.svg'); /* LTR */
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}
+
