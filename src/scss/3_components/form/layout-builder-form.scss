@@ -13,12 +13,20 @@
 
   max-width: unset;
 
+  .ajax-spinner__label {
+    display: none !important;
+  }
+
   .form-actions {
     display: flex;
     align-items: center;
     flex-flow: row wrap;
     margin: 1.5em 0 0;
     padding: 0;
+
+    input[type='submit'] {
+      margin-right: .5em;
+    }
   }
 
   .field--name-moderation-state {
@@ -47,14 +55,6 @@
         margin-right: .5em;
         font-weight: bold;
       }
-
-      select {
-        margin: 0;
-        display: unset;
-        height: 2em;
-        min-height: unset;
-        padding: 4px 30px 4px 10px;
-      }
     }
   }
 
@@ -65,8 +65,8 @@
       @include adjust-font-size-to(18px, 4);
       margin: 0 0 .8rem;
 
-      @include breakpoint($phab, $no-query: true) {
-        @include adjust-font-size-to(20px, 4.5);
+      @include breakpoint($tab, $no-query: true) {
+        @include adjust-font-size-to(22px, 4.5);
         margin: 0 0 .9rem;
       }
     }
@@ -83,11 +83,11 @@
 
     &.form-item-settings-admin-label {
       @include responsive-typo-map($xl-text);
-      margin: .8rem 0 1.6rem;
+      margin: .8rem 0 1.2rem;
       color: $brand-primary-dark;;
 
       @include breakpoint($phab, $no-query: true) {
-        margin: 0.9rem 0 1.8rem;
+        margin: 0.9rem 0 1.2rem;
       }
 
       label {
@@ -104,11 +104,6 @@
     margin: .5em 0;
   }
 
-  input[type='submit'],
-  input[type='button'] {
-    @include btn-size('small');
-  }
-
   input[type='radio'],
   .form-radio,
   input[type='checkbox'],
@@ -122,7 +117,7 @@
 
     top: 1.3rem;
     z-index: 1;
-    left: 1.2rem;
+    left: .9rem;
     clear: both;
     margin: 0;
     padding: 0;
@@ -141,7 +136,7 @@
       position: relative;
       left: 0;
       margin: 5px 5px 5px 0;
-      padding: .4rem 1.5rem .4rem 3.6rem; // Right padding makes space for the input to sit in
+      padding: .5rem 1.5rem .3rem 3.6rem; // Right padding makes space for the input to sit in
       display: inline-block;
       vertical-align: baseline;
       min-width: 7.5rem;
@@ -183,6 +178,52 @@
     }
   }
 
+  select {
+    margin: 0;
+    display: unset;
+    height: 2em;
+    min-height: unset;
+    padding: 4px 30px 4px 10px;
+  }
+
+  table {
+    width: 100%;
+
+    .form-checkbox {
+      position: static;
+      min-height: unset;
+      margin: 0;
+    }
+
+    th, td {
+      font-size: 1.4rem;
+      vertical-align: middle;
+      padding: .6rem;
+      border-left: 0;
+      border-right: 0;
+      border-color: $grey-medium;
+      background-color: #fff;
+    }
+
+    td.views-field-thumbnail__target-id {
+      text-align: center;
+      width: 240px;
+      font-size: 0;
+      line-height: 0;
+    }
+
+    th {
+      background-color: $grey-light;
+
+      &.views-field-name {
+        width: 220px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
   .layout-builder__message {
 
     .container {
@@ -199,6 +240,14 @@
 
 .layout-builder-update-block,
 .layout-builder-configure-block {
+
+  .button--primary {
+    @extend %btn--medium;
+  }
+
+  .field--widget-entity-reference-paragraphs {
+    margin-bottom: 1.5em;
+  }
 
   .media-library-widget {
     p.media-library-widget-empty-text {
@@ -273,10 +322,126 @@
       margin: 0 1em 0 0;
     }
   }
+
+  .ui-widget,
+  .ui-widget input {
+    font-size: initial;
+  }
+}
+
+table.field-multiple-table {
+
+  .draggable {
+
+    &.drag td {
+      border-top: 2px solid hotpink;
+      border-bottom: 2px solid hotpink;
+      opacity: .5;
+    }
+
+    td {
+      padding: 0;
+      border-color: #fff;
+
+      &.field-multiple-drag,
+      &.delta-order {
+        vertical-align: top;
+        text-align: center;
+
+        .form-select {
+          margin: .5rem;
+        }
+      }
+    }
+
+    a.tabledrag-handle {
+      display: inline-block;
+      float: none;
+      width: 45px;
+      height: 45px;
+      padding: 0;
+      margin: 0;
+      cursor: move;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      .handle {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: url('/core/misc/icons/787878/move.svg') no-repeat center center;
+        background-size: 20px;
+
+      }
+
+      &:hover .handle,
+      &:focus .handle {
+        background-image: url('/core/misc/icons/000000/move.svg');
+      }
+    }
+
+    .paragraph-type-top {
+      align-items: center;
+      padding: 0 4px 0 8px;
+      background-color: $brand-primary-light;
+    }
+
+    .paragraph-type-title {
+      font-size: 1.6rem;
+      line-height: 1.5;
+      min-width: 150px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .paragraphs-description {
+      font-size: 1.6rem;
+      line-height: 1.5;
+      color: $ash-grey;
+    }
+
+    .paragraphs-collapsed-description:after {
+      content: none;
+    }
+
+    .paragraphs-subform {
+
+      label, .full-text {
+        font-size: 1.6rem;
+        line-height: 2.1rem;
+      }
+
+      [type='text'],
+      [type='search'],
+      [type='tel'],
+      [type='url'],
+      [type='email'],
+      [type='password'],
+      [type='date'],
+      [type='time'],
+      [type='number'],
+      [type='file'] {
+        height: 4rem;
+        min-height: 4rem;
+      }
+
+      .filter-wrapper {
+        border: 0;
+      }
+
+      .form-item {
+        margin: .5em 0;
+      }
+    }
+  }
 }
 
 // Media library in a drupal-modal.
-
 #drupal-modal {
 
   // Fix bug where content is scrolled up underneath the dialog's title bar when the dialog opens.
@@ -458,44 +623,6 @@
 
         .views-field-media-library-select-form input {
           min-height: auto;
-        }
-      }
-
-      table {
-        width: 100%;
-
-        .form-checkbox {
-          position: static;
-          min-height: unset;
-          margin: 0;
-        }
-
-        th, td {
-          font-size: 1.4rem;
-          vertical-align: middle;
-          padding: .6rem;
-          border-left: 0;
-          border-right: 0;
-          border-color: $grey-medium;
-          background-color: #fff;
-        }
-
-        td.views-field-thumbnail__target-id {
-            text-align: center;
-            width: 240px;
-            font-size: 0;
-            line-height: 0;
-        }
-
-        th {
-          background-color: $grey-light;
-
-          &.views-field-name {
-            width: 220px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
         }
       }
 
