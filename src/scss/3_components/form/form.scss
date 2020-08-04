@@ -13,6 +13,9 @@ main form {
 
 .form-actions {
   margin: 2.5em 0;
+  .button {
+    vertical-align: bottom;
+  }
 }
 
 .form-item {
@@ -175,8 +178,8 @@ textarea {
 
   &::-webkit-file-upload-button {
     @extend %btn;
+    @extend %btn--small;
     @include btn-color($btn-primary, #fff);
-    @include btn-size('small');
     margin: 0 !important;
     font-weight: normal;
   }
@@ -332,12 +335,3 @@ input[type='checkbox'],
   }
 }
 
-input[type='submit'],
-input[type='button'],
-.webform-submit {
-  @extend %btn;
-  @include btn-color($btn-primary, #fff);
-  @include btn-size('large');
-  margin-top: 0;
-  font-weight: bold;
-}
