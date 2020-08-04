@@ -3,68 +3,53 @@
  * Provides some base definitions that are common among button type elements.
  */
 
-@mixin btn-color($bg-color: $charcoal, $txt-color: '', $hover: '', $active: '') {
-  $lighten: lighten($bg-color, 5%);
-  $darken: darken($bg-color, 5%);
-  @if($hover != '') {
-    $lighten: $hover;
+@mixin btn-color($bg-color: $dark-grey, $border-color: $bg-color, $txt-color: $white, $scheme: 'dark') {
+
+  $bg-color-hover: darken($bg-color, 5%);
+  $bg-color-active: darken($bg-color, 8%);
+  $bg-color-focus: $bg-color-active;
+  $border-color-hover: darken($border-color, 5%);
+  $border-color-active: darken($border-color, 10%);
+  $border-color-focus: darken($border-color, 5%);
+
+  @if($scheme == 'light') {
+    $bg-color-hover: lighten($bg-color, 5%);
+    $bg-color-active: darken($bg-color, 3%);
+    $bg-color-focus: $bg-color-active;
+    $border-color-hover: darken($border-color, 5%);
+    $border-color-active: darken($border-color, 5%);
+    $border-color-focus: darken($border-color, 5%);
   }
-  @if($active != '') {
-    $darken: $active;
-  }
+
   background-color: $bg-color;
-  border-color: $bg-color;
-  @if($txt-color != '') {
+  border-color: $border-color;
+  color: $txt-color;
+
+  &:hover {
+    background-color: $bg-color-hover;
+    border-color: $border-color-hover;
     color: $txt-color;
   }
 
-  &:hover {
-    background-color: $darken;
-    border-color: $darken;
-  }
-
   &:active {
-    background-color: $darken;
-    border-color: $darken;
+    background-color: $bg-color-active;
+    border-color: $border-color-active;
+    color: $txt-color;
   }
 
-}
-
-@mixin btn-size($size: 'standard') {
-  @if($size == 'small') {
-    @include responsive-typo-map($btn-small);
-    height: 32px;
-    padding: 4px .5em;
-    margin: 6px 0;
-    @include breakpoint($phab, $no-query: true) {
-      height: 35px;
-      margin: 5px 0;
-    }
-  }
-  @if($size == 'standard') {
-    @include responsive-typo-map($btn-standard);
-  }
-  @else if($size == 'medium') {
-    @include responsive-typo-map($btn-medium);
-  }
-  @else if($size == 'large') {
-    @include responsive-typo-map($btn-large);
+  &:focus {
+    background-color: $bg-color-focus;
+    border-color: $border-color-focus;
+    color: $txt-color;
   }
 }
 
 %btn {
-  border: 1px solid;
-  min-width: 100px;
-  padding: 1rem;
+  display: inline-block;
+  border: 1px solid transparent;
   text-align: center;
-  vertical-align: middle;
   background-repeat: no-repeat;
   background-position-y: center;
-
-  @include breakpoint($phab, $no-query: true) {
-    min-width: 120px;
-    padding: 1.2rem 2.4rem;
-  }
 
   &:link,
   &:visited {
@@ -74,20 +59,68 @@
   &:focus {
     outline: 3px solid $charcoal;
   }
+
+  &:active {
+    outline: 0;
+  }
 }
 
-%btn-right {
+%btn--small {
+  @include responsive-typo-map($btn-small);
+
+  @include breakpoint($tab) {
+    min-width: 100px;
+    min-height: 35px;
+    padding: .4rem .9rem;
+    margin: .5rem 0;
+  }
+
+  min-width: 44px;
+  min-height: 32px;
+  padding: .4rem .8rem;
+  margin: .6rem 0;
+}
+
+%btn--medium {
+  @include responsive-typo-map($btn-medium);
+
+  @include breakpoint($tab) {
+    min-height: 4rem;
+    padding: .8rem 1.5rem;
+    margin: 0;
+  }
+
+  min-width: 100px;
+  min-height: 3.6rem;
+  padding: .7rem 1.2rem;
+  margin: .6rem 0;
+}
+
+%btn--large {
+  @include responsive-typo-map($btn-large);
+
+  @include breakpoint($tab) {
+    min-height: 5.4rem;
+    padding: .8rem 1.8rem;
+    margin: 0;
+  }
+
+  min-width: 120px;
+  min-height: 4.8rem;
+  padding: .7rem 1.6rem;
+  margin: 0;
+}
+
+%btn--right {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAZCAQAAABEULxHAAAAr0lEQVR4AZ3SQ2KEQRBA4b5KbNvmNtzFt80p4rGNN+r50Riktt/bdHUJIXgkwLYwD29UgZQl4BOgGeyYeIZgr0GaXVMw3S2YcoKMLQg4wf6/gklPcGAO/pzgsFtwZAoeac+XjuvEJea4VHHZwShnKi4Sk/jLmIpzhCUGmbTvPciMihPOQsLMqzjGr8QYiyoO8yUxzoqKg845JdjQ1/DunNKWaYX3lJUjUIJrfjk0Ww3CJhcu9XztTQAAAABJRU5ErkJggg==');
   background-position: right 12px top 50%;
   background-size: 12px auto;
-  padding-right: 3.6rem;
 }
 
-%btn-left {
+%btn--left {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAZCAMAAADZh4T+AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACTUExURQAAADMzMzU1NTMzMzAwMDExMTMzMzMzMzMzMzMzMzIyMjMzMzIyMjMzMzIyMjMzMzMzMzQ0NDIyMjQ0NDMzMzIyMjIyMjMzMzIyMjAwMDExMTIyMjMzMzMzMzU1NTIyMjQ0NDExMTMzMzIyMjExMTExMTIyMjMzMzExMTMzMzIyMjMzMzMzMzIyMjQ0NDQ0NDMzM0cJY8sAAAAwdFJOUwDwKy0qPvP16unnQOj07DLvLD0n5GBCPOMvQ/dBSjBHNTTuOCk58Tsk/mXMVPwiWCIjJKkAAACQSURBVBjTddDZEoIwDIXhIAilKqAg7ivua9//6UycKaed0dx9/1XmEOEm6ZhcxuZ6A0exMWbqU4WW3cEPDlsmwo5lT5j+4/LLyLIW9lvOfVLFNM7fqwU7aBA2ewk7hFJzKHKESHHIZgih8r4nWmfy0gEhLzjoEmEbcKguCMeTzPVCOMtgd2dfHuX5dgev9YM+uMsSiYKdC/MAAAAASUVORK5CYII=');
   background-position: 12px center;
   background-size: 12px auto;
-  padding-left: 3.6rem;
 }
 
 // The disabled variation should always go last, so that it overrides any

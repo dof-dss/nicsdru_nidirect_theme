@@ -22,8 +22,8 @@
 // Style guide: components.buttons.call-to-action
 .call-to-action {
   @extend %btn;
+  @extend %btn--large;
   @include btn-color($btn-action);
-  @include btn-size('large');
   position: relative;
   padding-right: 3.9rem;
 
@@ -42,22 +42,57 @@
   }
 }
 
-.btn {
+button.link {
+    background: transparent;
+    border: 0;
+    color: $link;
+    text-decoration: underline !important;
+}
+
+.btn,
+.button {
   @extend %btn;
+  @extend %btn--small;
+  @include btn-color($btn, $btn, $white, 'dark');
 
-  &-standard {
-    @include btn-color();
-    @include btn-size();
+  &--small {
+    @extend %btn--small;
   }
 
-  &-primary {
-    @include btn-color($btn-primary, #fff);
-    @include btn-size();
+  &--large {
+    @extend %btn--large;
   }
 
-  &-action {
+  &--primary {
+    @include btn-color($btn-primary);
+  }
+
+  &--secondary {
+    @include btn-color($btn-secondary);
+  }
+
+  &--action {
+    @include btn-color($btn-action);
+  }
+
+  &--danger {
+    @include btn-color($btn-danger);
+  }
+
+  &--warning {
+    @include btn-color($btn-warning);
+  }
+
+  .dropbutton-widget & {
+    color: $charcoal;
+  }
+
+  // Deprecated call-to-action style - use "btn btn--large btn--action btn-right" instead.
+  &.call-to-action {
+    @extend %btn--large;
+    @extend %btn--right;
+    padding-right: 3.9rem;
     @include btn-color($btn-action);
   }
 }
-
 
