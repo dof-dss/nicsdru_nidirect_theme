@@ -109,9 +109,14 @@ $btn-small: (
   lg: (1.6rem, 2.4rem)
 );
 
-$btn-medium: (
+$btn-default: (
   null: (1.6rem, 2.4rem),
   lg: (1.8rem, 2.7rem)
+);
+
+$btn-medium: (
+  null: (1.8rem, 2.4rem),
+  lg: (2.1rem, 3rem)
 );
 
 $btn-large: (

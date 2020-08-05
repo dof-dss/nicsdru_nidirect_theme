@@ -121,24 +121,23 @@
 }
 
 input[type='submit'].webform-button--submit{
-  @extend %btn;
-  @extend %btn--large;
+  @include btn;
+  @include btn--large;
   @include btn-color($btn-primary, $btn-primary, #fff, 'dark');
 }
 
 input[type='submit'].webform-button--next {
-  @extend %btn;
-  @extend %btn--large;
-  @extend %btn--right;
-  padding-right: 3.6rem;
+  @include btn;
+  @include btn--large;
+  @include btn--right;
+  padding-right: 3.6rem !important;
   @include btn-color($btn-primary, $btn-primary, #fff, 'dark');
 }
 
 input[type='submit'].webform-button--previous {
-  @extend %btn;
-  @extend %btn--large;
-  @extend %btn--left;
-  padding-left: 3.6rem;
+  @include btn;
+  @include btn--large;
+  @include btn--left;
+  padding-left: 3.6rem !important;
   @include btn-color($btn, $grey, $charcoal, 'light');
 }
-

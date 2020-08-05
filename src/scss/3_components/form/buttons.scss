@@ -21,8 +21,8 @@
 //
 // Style guide: components.buttons.call-to-action
 .call-to-action {
-  @extend %btn;
-  @extend %btn--large;
+  @include btn;
+  @include btn--large;
   @include btn-color($btn-action);
   position: relative;
   padding-right: 3.9rem;
@@ -51,16 +51,23 @@ button.link {
 
 .btn,
 .button {
-  @extend %btn;
-  @extend %btn--small;
-  @include btn-color($btn, $btn, $white, 'dark');
+  @include btn;
+  @include btn-color($btn, $btn, $white, 'dark'); // bg-color, border-color, txt-color, scheme.
 
   &--small {
-    @extend %btn--small;
+    @include btn--small;
+  }
+
+  &--medium {
+    @include btn--medium;
   }
 
   &--large {
-    @extend %btn--large;
+    @include btn--large;
+  }
+
+  &--block {
+    @include btn--block;
   }
 
   &--primary {
@@ -89,10 +96,9 @@ button.link {
 
   // Deprecated call-to-action style - use "btn btn--large btn--action btn-right" instead.
   &.call-to-action {
-    @extend %btn--large;
-    @extend %btn--right;
+    @include btn--large;
+    @include btn--right;
     padding-right: 3.9rem;
     @include btn-color($btn-action);
   }
 }
-

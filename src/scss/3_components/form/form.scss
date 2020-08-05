@@ -81,6 +81,7 @@ fieldset h2,
 label,
 .label {
   @include responsive-typo-map($body-text);
+  display: block;
   margin: 0;
   padding: 0;
   font-weight: normal;
@@ -177,8 +178,8 @@ textarea {
   font-size: 1.6rem !important;
 
   &::-webkit-file-upload-button {
-    @extend %btn;
-    @extend %btn--small;
+    @include btn;
+    @include btn--small;
     @include btn-color($btn-primary, #fff);
     margin: 0 !important;
     font-weight: normal;
