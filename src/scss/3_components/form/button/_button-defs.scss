@@ -83,30 +83,26 @@
 
   @include breakpoint($tab) {
     min-width: 100px;
-    min-height: 35px;
+    min-height: 36px;
     padding: .4rem .9rem;
-    margin: .5rem 0;
   }
 
   min-width: 44px;
   min-height: 32px;
   padding: .4rem .8rem;
-  margin: .6rem 0;
 }
 
 @mixin btn--medium {
   @include responsive-typo-map($btn-medium);
 
   @include breakpoint($tab) {
-    min-height: 4.8rem;
-    padding: .8rem 1.8rem;
-    margin: .4rem 0;
+    min-height: 4.5rem;
+    padding: .6rem 1.8rem;
   }
 
-  min-width: 100px;
+  min-width: 125px;
   min-height: 4.4rem;
   padding: .7rem 1.2rem;
-  margin: .4rem 0;
 }
 
 @mixin btn--large {
@@ -115,13 +111,11 @@
   @include breakpoint($tab) {
     min-height: 5.4rem;
     padding: .9rem 1.8rem;
-    margin: 0;
   }
 
-  min-width: 120px;
+  min-width: 150px;
   min-height: 4.8rem;
   padding: .7rem 1.6rem;
-  margin: 0;
 }
 
 @mixin btn--block {

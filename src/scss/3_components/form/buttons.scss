@@ -98,7 +98,7 @@ button.link {
   &.call-to-action {
     @include btn--large;
     @include btn--right;
-    padding-right: 3.9rem;
     @include btn-color($btn-action);
+    padding-right: 3.9rem;
   }
 }
