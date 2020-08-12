@@ -10,6 +10,7 @@
 
   picture {
     display: block;
+
     + picture {
       position: absolute;
       top: 0;
