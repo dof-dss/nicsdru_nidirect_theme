@@ -82,7 +82,15 @@
 
 .webform-options-display-one-column {
   input ~ label {
-    width: calc(60% - .9rem);
+    width: 100%;
+
+    @include breakpoint($mob) {
+      width: calc(80% - .9rem);
+    }
+
+    @include breakpoint($phab) {
+      width: calc(60% - .9rem);
+    }
   }
 
   .form-item--error-message {
@@ -120,7 +128,7 @@
   }
 }
 
-input[type='submit'].webform-button--submit{
+input[type='submit'].webform-button--submit {
   @include btn;
   @include btn--large;
   @include btn-color($btn-primary, $btn-primary, #fff, 'dark');
@@ -130,14 +138,14 @@ input[type='submit'].webform-button--next {
   @include btn;
   @include btn--large;
   @include btn--right;
-  padding-right: 3.6rem !important;
   @include btn-color($btn-primary, $btn-primary, #fff, 'dark');
+  padding-right: 3.6rem !important;
 }
 
 input[type='submit'].webform-button--previous {
   @include btn;
   @include btn--large;
   @include btn--left;
-  padding-left: 3.6rem !important;
   @include btn-color($btn, $grey, $charcoal, 'light');
+  padding-left: 3.6rem !important;
 }
