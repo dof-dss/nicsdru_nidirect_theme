@@ -13,9 +13,11 @@ main form {
 
 .form-actions {
   margin: 2.5em 0;
+
   .button {
     vertical-align: bottom;
   }
+
 }
 
 .form-item {
@@ -80,10 +82,11 @@ fieldset h2,
 
 label,
 .label {
-  @include responsive-typo-map($body-text);
   display: block;
   margin: 0;
   padding: 0;
+  font-size: 1em;
+  line-height: 1.5;
   font-weight: normal;
   color: $charcoal;
 
@@ -150,7 +153,7 @@ textarea {
   color: $charcoal;
   margin: .5em 0;
   padding: .6rem;
-  min-height: 4.5rem;
+  min-height: 2.5em;
 
   &:hover {
     border-color: $brand-primary-medium;
@@ -189,7 +192,7 @@ textarea {
 // Based on https://css-tricks.com/styling-a-select-like-its-2019/
 .form-select {
   display: block;
-  font-size: 16px;
+  font-size: 1em;
   font-family: sans-serif;
   font-weight: normal;
   color: $charcoal;
@@ -209,7 +212,6 @@ textarea {
   background-size: .65em auto, 100%;
 
   @include breakpoint($phab, $no-query: true) {
-    font-size: 18px;
     line-height: 1.5;
     height: 2.5em;
     padding: .5em 1.3334em .5em .6667em;
@@ -230,72 +232,68 @@ textarea,
   line-height: 1.5;
 }
 
-.form-type-radio {
+.form-type-radio,
+.form-type-checkbox {
   position: relative;
-}
-
-input[type='checkbox'] {
-  border-radius: 0;
+  margin: .5em .5em 0 0;
 }
 
 input[type='radio'],
 .form-radio,
 input[type='checkbox'],
 .form-checkbox {
-
-  @include breakpoint($phab, $no-query: true) {
-    @include adjust-font-size-to(18px, 4);
-    top: 2.3rem;
-  }
-
-  @include adjust-font-size-to(16px, 4);
+  font-size: 1em;
+  line-height: 1.5;
 
   // Position to look like it's inside it's associated label
   position: absolute;
-  top: 2.1rem;
+  top: 0;
+  left: 0;
   z-index: 1;
-  left: 1.2rem;
-  clear: both;
-  margin: 0;
+  width: 1em;
+  height: 1em;
+  margin: .75em .5em;
   padding: 0;
-  max-width: 2rem;
-  max-height: 2rem;
-  line-height: 2.4rem;
   vertical-align: baseline;
   box-shadow: none;
-  border: 0;
   outline: none;
   color: inherit;
 
+  @include breakpoint($tab, $no-query: true) {
+    margin: .723em .5em;
+  }
+
   // sibling labels
   & ~ label {
-    @include adjust-font-size-to(16px, 4);
+    display: inline-block;
     position: relative;
     left: 0;
-    margin: .5em 0 0;
-    padding: .55em 1.5rem .45em 3.6rem; // Right padding makes space for the input to sit in
-    display: inline-block;
+    margin: 0;
+    padding: .625em 1em .625em 3.2rem; // Right padding makes space for the input to sit in.
+    min-width: 4.5em;
+    min-height: 2.75em;
+    box-shadow: inset 0 0 0 1px $charcoal; // Using box shadow to make thin border as it doesn't affect the overall size.
+    font-size: 1em;
+    line-height: 1.5;
     vertical-align: baseline;
-    min-width: 7.5rem;
-    min-height: 4.4rem;
-    border: 1px solid $grey;
+    color: $charcoal;
+    background-color: $white;
 
-    @include breakpoint($phab, $no-query: true) {
-      @include adjust-font-size-to(18px, 4);
-      min-height: 4.5rem;
+    @include breakpoint($tab, $no-query: true) {
+      min-height: 2.5em;
+      padding: .5em 1em .5em 3.6rem;
     }
   }
 
   &.error ~ label {
-    border-color: $error;
-    outline-color: $error !important;
+    box-shadow: inset 0 0 0 1px $error;
+    outline-color: $error;
     background-color: $error-bg;
-    box-shadow: none;
     color: $charcoal;
   }
 
   &:hover:not(.error) ~ label {
-    border-color: lighten($brand-primary-medium, 25%);
+    box-shadow: inset 0 0 0 1px lighten($brand-primary-medium, 25%);
   }
 
   &:checked ~ label {
@@ -335,4 +333,3 @@ input[type='checkbox'],
     border-style: inset;
   }
 }
-
