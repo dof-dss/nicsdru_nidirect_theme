@@ -223,4 +223,9 @@
     // Simple landing page card decks have no images - so content is always full width.
     width: 100%;
   }
+
+  // Prevent adding multiple cards (blocks) into a card-deck section (region) in layout builder
+  section .card.layout-builder-block + .layout-builder__add-block {
+    display: none;
+  }
 }

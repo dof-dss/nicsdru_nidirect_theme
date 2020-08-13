@@ -45,8 +45,10 @@
 }
 
 .layout-builder__link--add {
+  display: inline-block;
   font-size: 16px;
-  padding: .5em .5em .5em 1.8em; /* LTR */
+  line-height: 1.5;
+  padding: .375em .5em .375em 1.8em; /* LTR */
   color: #fff;
   border-bottom: 0;
   border-radius: 3px;

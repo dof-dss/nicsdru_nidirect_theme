@@ -123,12 +123,13 @@
   }
 
   .accordion-section {
-    margin: 0 1.6rem 1em;
-    padding: 0;
 
     @include breakpoint($tab, $no-query: true) {
       margin: 0 1.8rem 1em;
     }
+
+    margin: 0 1.6rem 1em;
+    padding: 0;
 
     .js & {
       visibility: collapse;
@@ -152,8 +153,16 @@
       }
     }
 
-    > :first-child {
+    > * {
       margin-top: 0;
+    }
+
+    // Ensure floated content inside the accordion section is cleared.
+    &::after {
+      content: ' ';
+      display: block;
+      width: 100%;
+      clear: both;
     }
   }
 

@@ -46,9 +46,7 @@ td,
 th {
   @include adjust-font-size-to(14px, 4);
   box-sizing: border-box;
-  // Remove most spacing between table cells.
-  border-right: 1px solid $table-border-color;
-  border-top: 1px solid $table-border-color;
+  border: 1px solid $table-border-color;
   padding: .4rem .4rem .3rem; // -1px on bottom border to maintain vertical rhythm.
   text-align: left;
   vertical-align: top;
@@ -67,24 +65,14 @@ th {
     font-size: inherit;
     line-height: inherit;
   }
-
-  &:first-child {
-    border-left: 1px solid $table-border-color;
-  }
 }
 
 th {
   background-color: $brand-primary-light;
-  border-bottom: 1px solid $table-border-color;
-
-  &:last-child {
-    border-right: 1px solid $table-border-color;
-  }
 }
 
 td {
   background-color: #fff;
-  border-bottom: 1px solid $table-border-color;
 }
 
 tr {

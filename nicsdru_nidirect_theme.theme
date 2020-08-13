@@ -18,6 +18,19 @@ use Drupal\Component\Utility\Html;
 use Drupal\taxonomy\Entity\Term;
 
 /**
+ * Implements hook_page_attachments_alter().
+ */
+function nicsdru_nidirect_theme_page_attachments_alter(array &$page) {
+
+  // Attach layout builder styles for authenticated users.
+  $userCurrent = \Drupal::currentUser();
+
+  if ($userCurrent->isAuthenticated()) {
+    $page['#attached']['library'][] = 'nicsdru_nidirect_theme/authenticated-styles';
+  }
+}
+
+/**
  * Implements hook_preprocess_html().
  */
 function nicsdru_nidirect_theme_preprocess_html(array &$variables) {

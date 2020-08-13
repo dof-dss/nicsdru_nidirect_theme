@@ -29,14 +29,13 @@
   {% set label = 'Title not displayed!' %}
 {% endif %}
 <div{{ attributes.addClass('card') }}>
+  {{ title_suffix.contextual_links }}
   <a class="card__link" href="{{ content.field_link[0]['#url']|render }}">
     <div class="card__image">{{ content.field_image }}</div>
     <div class="card__content">
-      {{ title_prefix }}
       <h2{{ title_attributes.addClass('card__title') }}>
         {{ label }}
       </h2>
-      {{ title_suffix }}
       {{ content.field_teaser }}
     </div>
   </a>
