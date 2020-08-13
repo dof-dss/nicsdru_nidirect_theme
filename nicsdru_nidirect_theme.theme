@@ -28,8 +28,6 @@ function nicsdru_nidirect_theme_page_attachments_alter(array &$page) {
   if ($userCurrent->isAuthenticated()) {
     $page['#attached']['library'][] = 'nicsdru_nidirect_theme/authenticated-styles';
   }
-
-  return $page;
 }
 
 /**
