@@ -32,7 +32,8 @@
   'card-deck--landing' ~ card_layout
 ] %}
 <div{{ attributes.addClass(classes) }}>
-  {{ title_suffix.contextual_links }}
+  {{ title_prefix }}
+  {{ title_suffix }}
   {% block content %}
     {{ content.field_plain_cards }}
   {% endblock %}

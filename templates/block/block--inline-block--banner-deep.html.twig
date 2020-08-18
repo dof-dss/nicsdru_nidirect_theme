@@ -27,7 +27,8 @@
 #}
 {% set classes = ['banner', 'banner--deep'] %}
 <div{{ attributes.addClass(classes) }}>
-  {{ title_suffix.contextual_links }}
+  {{ title_prefix }}
+  {{ title_suffix }}
   {% block content %}
     {{ content }}
   {% endblock %}
