@@ -139,7 +139,19 @@
     padding: 4px 30px 4px 10px;
   }
 
-  // All buttons smaller than usual except primary buttons.
+  // Reset Chosen select dropdown styles.
+  .chosen-container {
+    padding: 0;
+    border: none;
+    background-image: none;
+    height: auto;
+  }
+
+  .chosen-search-input {
+    min-height: auto;
+  }
+
+    // All buttons smaller than usual except primary buttons.
   .button:not(.button--primary) {
     @include btn--small;
   }
