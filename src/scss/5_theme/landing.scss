@@ -165,11 +165,6 @@
         border-color: none;
       }
     }
-
-    // Discourage adding more than one block to a card in layout builder
-    > .layout-builder-block + .layout-builder__add-block {
-      display: none;
-    }
   }
 
   .card-deck--landing--simple {

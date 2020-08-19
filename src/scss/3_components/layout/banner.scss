@@ -8,6 +8,15 @@
   position: relative;
   width: 100%;
 
+  picture {
+    display: block;
+
+    + picture {
+      position: absolute;
+      top: 0;
+    }
+  }
+
   img {
     margin: 0;
     padding: 0;

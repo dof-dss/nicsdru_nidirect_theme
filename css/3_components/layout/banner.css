@@ -1,1 +1,1 @@
-.banner{position:relative;width:100%}.banner img{margin:0;padding:0}.banner--thin{margin-bottom:0}
+.banner{position:relative;width:100%}.banner picture{display:block}.banner picture+picture{position:absolute;top:0}.banner img{margin:0;padding:0}.banner--thin{margin-bottom:0}
