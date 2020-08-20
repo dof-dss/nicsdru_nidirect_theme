@@ -222,6 +222,13 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('ga-main');
       break;
 
+    case "featured_content_list":
+      // Only show the title on the canonical node route.
+      if (\Drupal::routeMatch()->getRouteName() != 'entity.node.canonical') {
+        $variables['show_title'] = FALSE;
+      }
+      break;
+
     case "publication":
       // Change field label to 'Documents'.
       $variables['content']['field_attachment']['#title'] = t('Documents');
