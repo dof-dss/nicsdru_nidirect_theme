@@ -293,7 +293,7 @@ function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
         $this_teaser['summary_text'] = ['#markup' => $node->get('field_summary')->getValue()[0]['value']];
       } elseif ($type == 'term_teaser') {
         $t = $p->get('field_term');
-        $tid = $nid = $t->getValue()[0]['target_id'];
+        $tid = $t->getValue()[0]['target_id'];
         $term = Term::load($tid);
         $this_teaser['title_link'] = [
           '#type' => 'link',
