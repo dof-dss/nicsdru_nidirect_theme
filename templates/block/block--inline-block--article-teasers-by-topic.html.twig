@@ -28,15 +28,12 @@
 
 {% if is_admin %}
 <div{{ attributes }}>
-  {% endif %}
+{% endif %}
   {{ title_prefix }}
   {% if label %}
     <h2{{ title_attributes }}>{{ label }}</h2>
   {% endif %}
   {{ title_suffix }}
-  {% block content %}
-    {{ content }}
-  {% endblock %}
   {% block teasers %}
     {% for teaser in teasers %}
       <div>{{ teaser.title_link }}</div>
