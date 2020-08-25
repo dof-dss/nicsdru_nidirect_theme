@@ -13,6 +13,7 @@ use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
+use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\user\Entity\User;
 use Drupal\Component\Utility\Html;
 use Drupal\taxonomy\Entity\Term;
@@ -266,6 +267,50 @@ function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
       $letter = \Drupal::routeMatch()->getParameter('letter');
       $variables['content']['#title'] = t('Contacts - under :letter', [':letter' => strtoupper($letter)]);
     }
+  } elseif ($variables['plugin_id'] == 'inline_block:article_teasers_by_topic') {
+    $block_content = $variables['content']['#block_content'];
+    $teaser_list = $variables['content']['#block_content']->get('field_article_teasers');
+    $teasers = array();
+    foreach($teaser_list as $teaser) {
+      $a = $teaser->get('target_id')->getValue();
+      $p = Paragraph::load($a);
+      $this_teaser = [];
+      $type = $p->getType(); // 'article_teaser' or 'term_teaser'
+      if ($type == 'article_teaser') {
+        $t = $p->get('field_article');
+        $nid = $t->getValue()[0]['target_id'];
+        $node = Node::load($nid);
+        $this_teaser['title_link'] = [
+          '#type' => 'link',
+          '#title' => $node->getTitle(),
+          '#url' => Url::fromRoute('entity.node.canonical', ['node' => $nid]),
+        ];
+        $this_teaser['more_link'] = [
+          '#type' => 'link',
+          '#title' => '... ' . t('more'),
+          '#url' => Url::fromRoute('entity.node.canonical', ['node' => $nid]),
+        ];
+        $this_teaser['summary_text'] = ['#markup' => $node->get('field_summary')->getValue()[0]['value']];
+      } elseif ($type == 'term_teaser') {
+        $t = $p->get('field_term');
+        $tid = $nid = $t->getValue()[0]['target_id'];
+        $term = Term::load($tid);
+        $this_teaser['title_link'] = [
+          '#type' => 'link',
+          '#title' => $term->getName(),
+          '#url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $tid]),
+        ];
+        $this_teaser['more_link'] = [
+          '#type' => 'link',
+          '#title' => '... ' . t('more'),
+          '#url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $tid]),
+        ];
+        $x = $term->get('field_teaser');
+        $this_teaser['summary_text'] = ['#markup' => $term->get('field_teaser')->getValue()[0]['value']];
+      }
+      $teasers[] = $this_teaser;
+    }
+    $variables['teasers'] = $teasers;
   }
 }
 
