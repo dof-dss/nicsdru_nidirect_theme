@@ -29,7 +29,5 @@
   {% if information_services_output is defined %}
     {{ information_services_output }}
   {%  endif %}
-  {% if content['field_additional_info'] %}
-    {{ content['field_additional_info'] }}
-  {% endif %}
+  {{ content['field_additional_info'] }}
 </div>
