@@ -25,19 +25,27 @@
  * @see template_preprocess_block()
  */
 #}
-
 {% if is_admin %}
 <div{{ attributes }}>
 {% endif %}
+{% set classes = ['card-deck--landing', 'card-deck--landing--simple', 'card-deck--landing--x2'] %}
+<div{{ attributes.addClass(classes).setAttribute('role', 'presentation') }}>
+  {{ title_prefix }}
   {{ title_suffix }}
-  {% block teasers %}
+  {% block content %}
     {% for teaser in teasers %}
-      <div>{{ teaser.title_link }}</div>
-      <div>{{ teaser.summary_text }} {{ teaser.more_link }}</div>
-      <br/>
-    {%  endfor %}
+      <article class="card">
+        <a class="card__link card__content" href="{{ teaser.more_link['#url']|render }}">
+          <h2 class="card__title">
+            {{ teaser.title_link['#title']|render }}
+          </h2>
+          <p>{{ teaser.summary_text }}&nbsp;<span class="more">read more</span></p>
+        </a>
+      </article>
+    {% endfor %}
   {% endblock %}
-  {% if is_admin %}
+</div>
+{% if is_admin %}
 </div>
 {% endif %}
 
