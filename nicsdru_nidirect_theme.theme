@@ -303,9 +303,9 @@ function _render_article_teasers_block(&$variables) {
         }
       }
     }
-    elseif ($type == 'term_teaser') {
+    elseif ($paragraph_type == 'term_teaser') {
       // Load up the taxonomy term and extract display details.
-      $term_field = $p->get('field_term');
+      $term_field = $paragraph->get('field_term');
       $tid = $term_field->getValue()[0]['target_id'];
       $term = Term::load($tid);
       if (!empty($term)) {
