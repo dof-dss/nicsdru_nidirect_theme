@@ -43,6 +43,8 @@
         </a>
       </article>
     {% endfor %}
+    {# Bubble cache tags up #}
+    {%  set catch_cache = teasers|render %}
   {% endblock %}
 </div>
 {% if is_admin %}
