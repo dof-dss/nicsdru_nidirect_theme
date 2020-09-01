@@ -25,10 +25,9 @@
 #}
 <div{{ attributes.setAttribute('role', 'presentation') }}>
   {{ drupal_block('page_title_block', wrapper=false) }}
+  {{ content | without('field_additional_info') }}
   {% if information_services_output is defined %}
     {{ information_services_output }}
-  {%  else %}
-    {{ content }}
   {%  endif %}
   {{ content['field_additional_info'] }}
 </div>
