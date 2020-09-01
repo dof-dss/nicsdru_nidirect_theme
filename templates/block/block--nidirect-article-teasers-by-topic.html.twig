@@ -27,8 +27,6 @@
 #}
 {% set classes = ['card-deck--landing', 'card-deck--landing--simple', 'card-deck--landing--x2'] %}
 <div{{ attributes.addClass(classes).setAttribute('role', 'presentation') }}>
-  {{ title_prefix }}
-  {{ title_suffix }}
   {% block content %}
     {% for article in content.nidirect_article_teasers_by_topic %}
       <article class="card">
