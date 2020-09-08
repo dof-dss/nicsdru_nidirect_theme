@@ -65,6 +65,7 @@
 .grid {
   display: grid;
   grid-gap: $grid-gap;
+  grid-template-columns: 1fr;
   justify-content: space-between;
 
   &.no-gutter {
