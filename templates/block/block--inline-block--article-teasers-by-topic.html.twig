@@ -31,6 +31,7 @@
 {% set classes = ['card-deck--landing', 'card-deck--landing--simple', 'card-deck--landing--x2'] %}
 <div{{ attributes.addClass(classes).setAttribute('role', 'presentation') }}>
   {# Need to leave the suffix in here as Layout Builder uses it for the 'configure' link #}
+  {{ title_prefix }}
   {{ title_suffix }}
   {% block content %}
     {% for teaser in teasers %}
