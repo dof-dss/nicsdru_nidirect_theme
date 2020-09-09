@@ -32,6 +32,9 @@
 <div{{ attributes.addClass(classes).setAttribute('role', 'presentation') }}>
   {# Need to leave the suffix in here as Layout Builder uses it for the 'configure' link #}
   {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes }}>{{ label }}</h2>
+  {% endif %}
   {{ title_suffix }}
   {% block content %}
     {% for teaser in teasers %}
