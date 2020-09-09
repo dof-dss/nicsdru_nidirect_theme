@@ -25,23 +25,29 @@
  * @see template_preprocess_block()
  */
 #}
+{% if is_admin %}
+<div{{ attributes }}>
+{% endif %}
 {% set classes = ['card-deck--landing', 'card-deck--landing--simple', 'card-deck--landing--x2'] %}
 <div{{ attributes.addClass(classes).setAttribute('role', 'presentation') }}>
-  {{ title_prefix }}
+  {# Need to leave the suffix in here as Layout Builder uses it for the 'configure' link #}
   {{ title_suffix }}
   {% block content %}
-    {% for article in content.nidirect_article_teasers_by_topic %}
+    {% for teaser in teasers %}
       <article class="card">
-        <a class="card__link card__content" href="{{ article.more_link['#url']|render }}">
+        <a class="card__link card__content" href="{{ teaser.more_link['#url']|render }}">
           <h2 class="card__title">
-            {{ article.title_link['#title']|render }}
+            {{ teaser.title_link['#title']|render }}
           </h2>
-          <p>{{ article.summary_text }}&nbsp;<span class="more">read more</span></p>
+          <p>{{ teaser.summary_text }}&nbsp;<span class="more">read more</span></p>
         </a>
       </article>
     {% endfor %}
     {# Bubble cache tags up #}
-    {%  set catch_cache = content.nidirect_article_teasers_by_topic|render %}
+    {%  set catch_cache = teasers|render %}
   {% endblock %}
 </div>
+{% if is_admin %}
+</div>
+{% endif %}
 

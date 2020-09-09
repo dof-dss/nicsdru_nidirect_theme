@@ -12,13 +12,26 @@
   position: relative;
   padding-bottom: 56.25%; /* 16:9 is the expected ratio. */
   height: 0;
+  overflow: hidden;
 
-  iframe {
+  iframe,
+  video {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+  }
+
+  video {
+    background-color: $grey;
+    color: $white;
+
+    &:focus {
+      // HTML5 video element can receive focus
+      outline: 3px solid $black;
+      background-color: $black;
+    }
   }
 }
 
