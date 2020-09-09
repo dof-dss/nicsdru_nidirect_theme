@@ -35,7 +35,7 @@
  */
 #}
 {% set btn_attributes = create_attribute() %}
-{% set btn_classes = ['btn', 'btn-primary'] %}
+{% set btn_classes = ['btn', 'btn--primary'] %}
 {% set btn_attributes = btn_attributes.addClass(btn_classes).setAttribute('type', 'button') %}
 {% if privacy_settings_tab_label %}
   <button type="button" class="eu-cookie-withdraw-tab">{{ privacy_settings_tab_label }}</button>
