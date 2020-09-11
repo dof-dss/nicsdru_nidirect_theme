@@ -25,10 +25,11 @@
  * @see template_preprocess_block()
  */
 #}
-<div{{ attributes.setAttribute('role', 'presentation') }}>
+{% set label_id = attributes.id ~ '-label'|clean_id %}
+<div aria-labelledby="{{ heading_id }}"{{ attributes.setAttribute('role', 'presentation') }}>
   {{ title_prefix }}
   {% if label %}
-    <p{{ title_attributes.addClass('meta') }}>{{ label }}</p>
+    <p{{ title_attributes.addClass('label').setAttribute('id', label_id) }}>{{ label }}</p>
   {% endif %}
   {{ title_suffix }}
   {% block content %}
