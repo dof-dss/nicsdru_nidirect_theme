@@ -1,21 +1,19 @@
 {#
 /**
 * @file
-* Block template for exposed filter form attached to find a GP practice view.
+* Block template for exposed filter form attached to Health conditions search / A to Z.
 #}
 {%
 set classes = [
   'block',
   'block-' ~ configuration.provider|clean_class,
   'block-' ~ plugin_id|clean_class,
-  'rel-menu',
 ]
 %}
 <div{{ attributes.addClass(classes) }}>
 {% if label %}
 <h2{{ title_attributes.addClass('menu-title') }}>{{ label }}</h2>
 {% endif %}
-<p class="meta">{{ 'Search by health condition or symptoms.'|t }}</p>
 {% block content %}
   {% if content_attributes is not empty %}
     <div{{ content_attributes }}>
