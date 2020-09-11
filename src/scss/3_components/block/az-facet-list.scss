@@ -25,7 +25,8 @@
   }
 
   a,
-  .link__self {
+  .link__self,
+  .active {
     @include adjust-font-size-to(24px, 7.5);
     border: 1px solid $brand-primary-medium;
     color: $brand-primary-medium;
