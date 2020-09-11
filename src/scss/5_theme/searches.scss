@@ -148,3 +148,82 @@ form#views-exposed-form-gp-practices-find-a-gp {
 .search-form--contacts {
   margin-bottom: 0; // On contact search results page, no bottom margin under search box.
 }
+
+
+// Health conditions search / a to z
+.search-results--health-conditions {
+
+  &.card-deck {
+
+    .card {
+      padding-bottom: .5em;
+      margin-bottom: 0;
+    }
+  }
+
+  .symptoms {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    font-size: 1.4rem;
+    line-height: 1;
+
+    @include breakpoint($tab) {
+      font-size: 16px;
+    }
+
+    .values {
+      display: flex;
+
+      .meta {
+        padding: .3rem .6rem;
+        margin: .3rem;
+        white-space: nowrap;
+        background-color: $grey-light;
+        color: $charcoal;
+        font-size: inherit;
+        line-height: inherit;
+      }
+    }
+  }
+
+  .further-info {
+
+    h4 {
+      @include responsive-typo-map($body-text);
+      margin: 1em 0 0;
+    }
+
+    .extract {
+
+      display: block;
+      margin: .5em 0;
+
+      a.more {
+        display: block;
+        margin: .5em 0;
+        text-align: right;
+        white-space: nowrap;
+        text-decoration: underline;
+      }
+    }
+
+    ul.related-condition-list {
+      list-style: none;
+      display: flex;
+      flex-flow: row wrap;
+      margin: 0;
+      padding: 0;
+
+      li {
+        @include responsive-typo-map($small-text);
+        padding: 0;
+        margin: .3rem 1em .3rem 0;
+
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
