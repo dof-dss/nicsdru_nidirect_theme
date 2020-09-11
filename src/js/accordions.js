@@ -14,42 +14,49 @@
         // Need to know if this accordion has a visible title (H2)
         var acc_title_visible = ($(this).find('.accordion-heading').length)? true : false;
 
-        // If the accordion has no title (H2), section headings should be H2s.
+        // If the accordion has no title (H2), H3 section headings should be H2s.
         if (!acc_title_visible) {
-          $('.accordion-section-title').replaceWith(function(){
+          $('h3.accordion-section-title').replaceWith(function(){
             return $('<h2 class="accordion-section-title" />').append($(this).contents());
           });
         }
 
-        // Get the accordion section headings
+        // Get the accordion headings and sections
         var $acc_headings = $(this).find('.accordion-section-title');
+        var $acc_sections = $(this).find('.accordion-section');
 
         // Need a unique prefix for heading buttons and section attributes.
         var prefix = 'accordion-' + index;
 
         $acc_headings.each(function(index) {
-
-          // Turn section headings into buttons to toggle section collapse/expand.
+          // Construct the button for this heading.
           // Include appropriate aria attributes for accessibility.
+          var $btn = $('<button></button>');
+          $btn.attr('id', prefix + '-heading-' + index)
+            .attr('aria-controls', prefix + '-section-' + index)
+            .attr('aria-expanded', 'false')
+            .click(function() {
+              var $target = $('#' + prefix + '-section-' + index);
+              var expanded = $(this).attr('aria-expanded') === 'true' || false;
+              $(this).attr('aria-expanded', !expanded);
+              $target.toggleClass('expanded', !$target.hasClass('expanded'));
+            });
 
-          $(this)
-            .wrapInner(function() {
-              var $btn = $('<button></button>');
-              $btn.attr('id', prefix + '-heading-' + index)
-                .attr('aria-controls', prefix + '-section-' + index)
-                .attr('aria-expanded', 'false')
-                .click(function() {
-                  var $target = $('#' + prefix + '-section-' + index);
-                  var expanded = $(this).attr('aria-expanded') === 'true' || false;
-                  $(this).attr('aria-expanded', !expanded);
-                  $target.toggleClass('expanded', !$target.hasClass('expanded'));
-                });
-              return $btn;
-            })
-            .next('.accordion-section')
-              .attr('id', prefix + '-section-' + index)
-              .attr('aria-labelledby', prefix + '-heading-' + index);
+          // Append button to heading or wrap the heading with the button
+          if ($(this).children('a').length) {
+            $btn.text('show/hide details');
+            $(this).append($btn);
+          } else {
+            $(this).wrapInner($btn);
+          }
         });
+
+        $acc_sections.each(function(index) {
+          $(this)
+            .attr('id', prefix + '-section-' + index)
+            .attr('aria-labelledby', prefix + '-heading-' + index);
+        });
+
       });
     }
   };
