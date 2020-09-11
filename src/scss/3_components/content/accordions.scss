@@ -15,26 +15,17 @@
 
 .accordion {
 
-  border-bottom: 1px solid $brand-primary;
   margin: 1em 0 1.5em;
 
   @include breakpoint($lap, $no-query: true) {
     padding: 0;
   }
 
-  .accordion-heading {
-    padding-left: .8rem;
-
-    @include breakpoint($tab, $no-query: true) {
-      padding-left: 1.5rem;
-    }
-  }
-
   .accordion-section-title {
     @include adjust-font-size-to(20px, 4);
+    position: relative;
     padding: 1.6rem;
     margin: 0;
-    border-top: 1px solid $brand-primary;
 
     @include breakpoint($tab, $no-query: true) {
       @include adjust-font-size-to(24px, 4.5);
@@ -45,19 +36,13 @@
       padding: 0;
     }
 
-    /*
-    &:first-child {
-      margin-top: 0;
-      border-top: 0;
-    }
-    */
-
     a {
-      color: $brand-secondary;
-      text-decoration: none;
+      display: inline-block;
+      text-decoration: underline;
+      padding: 1.6rem 6rem 1.6rem 0;
 
-      &:hover {
-        text-decoration: none;
+      @include breakpoint($tab, $no-query: true) {
+        padding: 1.8rem 6rem 1.8rem 0;
       }
     }
 
@@ -111,25 +96,28 @@
       &[aria-expanded='true']::after {
         transform: rotate(0deg);
       }
+    }
 
-      .js & {
-        padding: 1.6rem 6rem 1.6rem .8rem;
-
-        @include breakpoint($tab, $no-query: true) {
-          padding: 1.8rem 6rem 1.8rem 1.8rem;
-        }
-      }
+    a + button {
+      font-size: .1rem;
+      line-height: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
     }
   }
 
   .accordion-section {
 
-    @include breakpoint($tab, $no-query: true) {
-      margin: 0 1.8rem 1em;
-    }
+    .no-js & {
 
-    margin: 0 1.6rem 1em;
-    padding: 0;
+      @include breakpoint($tab, $no-query: true) {
+        margin: 0 0 1em;
+      }
+
+      margin: 0 0 1em;
+      padding: 0;
+    }
 
     .js & {
       visibility: collapse;
@@ -145,10 +133,10 @@
         height: auto;
         overflow: visible;
         opacity: 1;
-        margin: 0 1.6rem 1em;
+        margin: 1em 0 0;
 
         @include breakpoint($tab, $no-query: true) {
-          margin: 0 1.8rem 1em;
+          margin: 1em 0 0;
         }
       }
     }

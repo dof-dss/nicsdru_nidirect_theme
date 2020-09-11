@@ -60,7 +60,7 @@
     font-weight: normal;
   }
 
-  // Theming of cards for landing pages. Card layout is defined in 3_components/layout/cards.scss
+  // Theming of cards for landing pages. Card layout is defined in 3_components/layout/cards
   .card-deck--landing .card {
 
     box-shadow: 0 1px 2px $grey-medium;
@@ -227,6 +227,60 @@
           margin-right: 4px;
           text-decoration: none;
           font-weight: normal;
+        }
+      }
+    }
+  }
+
+  // Theming of accordions for landing pages. Generic accordion component defined in 3_components/content/accordions
+  .accordion {
+
+    border-bottom: 1px solid $brand-primary;
+
+    .accordion-heading {
+      padding-left: .8rem;
+
+      @include breakpoint($tab, $no-query: true) {
+        padding-left: 1.5rem;
+      }
+    }
+
+    .accordion-section {
+
+      .no-js & {
+
+        @include breakpoint($tab, $no-query: true) {
+          margin: 0 1.8rem 1em;
+        }
+
+        margin: 0 1.6rem 1em;
+        padding: 0;
+      }
+
+      .js & {
+
+        &.expanded {
+          margin: 0 1.6rem 1em;
+
+          @include breakpoint($tab, $no-query: true) {
+            margin: 0 1.8rem 1em;
+          }
+        }
+      }
+    }
+
+    .accordion-section-title {
+
+      border-top: 1px solid $brand-primary;
+
+      button {
+
+        .js & {
+          padding: 1.6rem 6rem 1.6rem .8rem;
+
+          @include breakpoint($tab, $no-query: true) {
+            padding: 1.8rem 6rem 1.8rem 1.8rem;
+          }
         }
       }
     }
