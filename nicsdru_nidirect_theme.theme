@@ -203,7 +203,10 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
 function nicsdru_nidirect_theme_form_node_preview_form_select_alter(&$form, FormStateInterface $form_state, $form_id) {
   // Additional styles to the node preview form.
   unset($form['view_mode']);
-  $form['backlink']['#options']['attributes']['class'] += ['btn-standard', 'call-to-action'];
+  $form['backlink']['#options']['attributes']['class'] += [
+    'btn-standard',
+    'call-to-action',
+  ];
 }
 
 /**
