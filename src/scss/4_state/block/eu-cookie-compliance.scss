@@ -16,7 +16,7 @@
 
 .eu-cookie-compliance {
   &-banner {
-    background: #041f34;
+    background: #041e34;
     padding-bottom: 1.6rem;
 
     @include breakpoint($tab) {
@@ -36,28 +36,14 @@
       align-self: end;
     }
 
-    .btn:focus {
-      outline-color: #fff;
-    }
+    .btn {
 
-    .btn-primary {
-      @include adjust-font-size-to(16px, 3.6);
-      padding: 1.2rem;
-      margin: 0 .5em 0 0;
-
-      @include breakpoint($phab) {
-        padding: 1.2rem 2.4rem;
+      &:not(:last-child) {
+        margin-right: .5em;
       }
 
-      @include breakpoint($tab) {
-        @include adjust-font-size-to(18px, 4.5);
-        margin: 0 0 0 .5em;
-        padding: .8rem 2.1rem;
-      }
-
-      &:hover {
-        background-color: #096db9;
-        border-color: #096db9;
+      &:focus {
+        outline-color: #fff;
       }
     }
   }

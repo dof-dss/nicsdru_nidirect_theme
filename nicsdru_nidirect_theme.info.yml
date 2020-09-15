@@ -29,6 +29,10 @@ libraries-override:
   origins_common/in-page-navigation:
     js:
       js/in_page_navigation.js : js/in_page_navigation.js
+  nicsdru_origins_theme/global-styling:
+    css:
+      theme:
+        css/3_components/navigation/pager.css: false
   webform/webform.element.counter:
     css:
       component:
