@@ -42,9 +42,10 @@
               $target.toggleClass('expanded', !$target.hasClass('expanded'));
             });
 
-          // Append button to heading or wrap the heading with the button
+          // Append button to heading or wrap the heading with the button.
           if ($(this).children('a').length) {
-            $btn.text('show/hide details');
+            // Appended button needs its own button text.
+            $btn.html('<span class="visually-hidden">show/hide details</span>');
             $(this).append($btn);
           } else {
             $(this).wrapInner($btn);
@@ -60,4 +61,5 @@
       });
     }
   };
+
 })(jQuery, Drupal);
