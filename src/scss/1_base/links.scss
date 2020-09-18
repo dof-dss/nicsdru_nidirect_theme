@@ -27,7 +27,8 @@
 a,
 %link {
   color: color(link);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-position: under;
 }
 
 // Any element can receive focus, but only links can be visited, so we can
@@ -41,7 +42,6 @@ a,
 a:hover,
 a:focus {
   color: color(link-hover);
-  text-decoration: underline;
 }
 
 // address 'outline' inconsistency between Chrome and other browsers
@@ -50,8 +50,6 @@ a:focus {
   outline-offset: 0;
   background-color: $brand-primary-medium;
   color: $link-focus;
-  text-decoration: none;
-  border-bottom: 1px solid;
 }
 
 a:active {
