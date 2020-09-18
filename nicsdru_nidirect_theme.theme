@@ -50,7 +50,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
   $layout_classes = ['grid', 'layout--main-n-side'];
   $search_layout_classes = ['grid', 'layout--side-n-main', 'search-content'];
 
-  // Process node pages
+  // Process node pages.
   $node = Drupal::routeMatch()->getParameter('node');
   if (is_object($node) && !empty($node->bundle())) {
     switch ($node->bundle()) {
