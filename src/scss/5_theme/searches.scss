@@ -11,6 +11,58 @@
   }
 }
 
+.search-results {
+
+  header {
+    margin: 1.5em 0 0;
+
+    @include breakpoint($tab) {
+      margin: 0 0 .5em;
+    }
+
+    .view--count {
+      @include responsive-typo-map($xl-text);
+      margin: 0 0 .8rem;
+
+      @include breakpoint($tab) {
+        margin-bottom: .9rem;
+      }
+    }
+  }
+
+  &-list {
+    margin: 0;
+  }
+
+  &--title {
+    margin-top: 0;
+  }
+
+  .card {
+    margin-bottom: 2rem;
+    padding-bottom: .3rem;
+  }
+
+  h3,
+  .card__title {
+    @include responsive-typo-map($large-text);
+    margin: 0 0 .6rem;
+  }
+
+  .card__meta {
+    margin: 1.5rem 0;
+
+    .meta-list-item {
+      margin-left: 1rem;
+    }
+  }
+
+  .extract {
+    @include adjust-font-size-to(16px, 3.5);
+    margin: 1.5rem 0 1.2rem;
+  }
+}
+
 // GP Practice search form
 //
 // The GP Practice search form is a bit different to search on other search index pages because it has a "use my
@@ -151,78 +203,128 @@ form#views-exposed-form-gp-practices-find-a-gp {
 
 
 // Health conditions search / a to z
+
+.block-views-exposed-filter-blockhealth-conditions-search-page,
+#block-healthconditionsatoz {
+  p.label {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    margin: 0 0 8px;
+
+    @include breakpoint($tab) {
+      font-size: 1.6rem;
+      margin: 0 0 9px;
+    }
+  }
+}
+
+.form-item-query-health-az {
+  margin: 0;
+
+  label {
+    @include visually-hidden;
+  }
+}
+
 .search-results--health-conditions {
+
+  margin-top: 0;
 
   &.card-deck {
 
     .card {
-      padding-bottom: .5em;
-      margin-bottom: 0;
+      padding: .5em 0;
+      margin: 0;
+
+      &__title {
+        margin: 0;
+        padding: 1rem 0;
+      }
+
+      &__meta {
+        margin: 0 0 .5em;
+        padding: 0;
+      }
+
+      &__content {
+        margin: 0;
+        padding: 0;
+      }
     }
+  }
+
+  &.accordion .accordion-section-title button::after {
+    background-size: 20px auto;
   }
 
   .symptoms {
     display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    font-size: 1.4rem;
-    line-height: 1;
+    flex-flow: column nowrap;
 
-    @include breakpoint($tab) {
-      font-size: 16px;
+    @include breakpoint($phab) {
+      flex-flow: row nowrap;
+    }
+
+    > * {
+      font-size: 1.4rem;
+      line-height: 1;
+      color: $ash-grey;
+      background-color: #fff;
+
+      @include breakpoint($tab) {
+        font-size: 1.6rem;
+      }
+    }
+
+    .label-inline {
+      white-space: nowrap;
+      padding: .3rem 0;
+      margin: .3rem .5em .3rem 0;
     }
 
     .values {
       display: flex;
+      flex-flow: row wrap;
 
       .meta {
         padding: .3rem .6rem;
-        margin: .3rem;
+        margin: .3rem .2rem;
         white-space: nowrap;
-        background-color: $grey-light;
-        color: $charcoal;
+        background-color: $grey-lightest;
+        color: $ash-grey;
         font-size: inherit;
-        line-height: inherit;
+        line-height: 1;
       }
     }
   }
 
-  .further-info {
+  .page-summary {
+    @include responsive-typo-map($small-text);
+    font-weight: normal;
+    margin: .5em 0;
+    color: $ash-grey;
+    background-color: #fff;
+  }
 
-    h4 {
-      @include responsive-typo-map($body-text);
-      margin: 1em 0 0;
-    }
+  h4 {
+    @include responsive-typo-map($body-text);
+    margin: 1em 0 0 !important;
+  }
 
-    .extract {
+  ul.related-condition-list {
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0;
+    padding: 0;
 
-      display: block;
-      margin: .5em 0;
-
-      a.more {
-        display: block;
-        margin: .5em 0;
-        text-align: right;
-        white-space: nowrap;
-        text-decoration: underline;
-      }
-    }
-
-    ul.related-condition-list {
-      list-style: none;
-      display: flex;
-      flex-flow: row wrap;
-      margin: 0;
+    li {
+      @include responsive-typo-map($small-text);
       padding: 0;
+      margin: .3rem 1em .3rem 0;
 
-      li {
-        @include responsive-typo-map($small-text);
-        padding: 0;
-        margin: .3rem 1em .3rem 0;
-
-        a {
-          text-decoration: underline;
-        }
+      a {
+        text-decoration: underline;
       }
     }
   }
