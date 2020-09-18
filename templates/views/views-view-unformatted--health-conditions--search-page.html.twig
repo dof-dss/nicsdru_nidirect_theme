@@ -18,12 +18,12 @@
 {% if title %}
   <h3>{{ title }}</h3>
 {% endif %}
-<ol class="list--no-bullet">
+<ol class="search-results-list list--no-bullet">
   {% for row in rows %}
     {%
       set row_classes = [
       default_row_class ? 'views-row',
-      "card",
+      'card',
     ]
     %}
     <li{{ row.attributes.addClass(row_classes) }}>
