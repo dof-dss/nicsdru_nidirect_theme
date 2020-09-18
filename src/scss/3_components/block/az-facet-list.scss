@@ -27,30 +27,44 @@
   a,
   .link__self,
   .active {
-    @include adjust-font-size-to(24px, 7.5);
+    @include adjust-font-size-to(21px, 7.3334);
     border: 1px solid $brand-primary-medium;
     color: $brand-primary-medium;
-    display: block;
-    height: 4.5rem;
+    display: inline-block;
+    width: 4.4rem;
+    height: 4.4rem;
     margin: -1px 0 0 -1px;
     text-align: center;
     text-decoration: none;
-    width: 4.5rem;
+
+    @include breakpoint($tab) {
+      @include adjust-font-size-to(24px, 7.5);
+      width: 4.5rem;
+      height: 4.5rem;
+    }
   }
 
   a {
-    &:hover {
-      text-decoration: underline;
-    }
+    transition: background-color .25s;
 
     &:focus {
-      background: transparent;
+      position: relative;
+      z-index: 1;
+      outline: 3px solid $brand-primary-medium;
+      background: white;
+    }
+
+    &:hover {
+      background: $brand-primary-medium;
+      border-color: $brand-primary-medium;
+      color: #fff;
     }
   }
 
   .active,
   .link__self {
-    background: $brand-primary-medium;
-    color: white;
+    background: $brand-primary-light;
+    color: $charcoal;
   }
 }
+
