@@ -203,21 +203,6 @@ form#views-exposed-form-gp-practices-find-a-gp {
 
 
 // Health conditions search / a to z
-
-.block-views-exposed-filter-blockhealth-conditions-search-page,
-#block-healthconditionsatoz {
-  p.label {
-    font-size: 1.4rem;
-    line-height: 1.5;
-    margin: 0 0 8px;
-
-    @include breakpoint($tab) {
-      font-size: 1.6rem;
-      margin: 0 0 9px;
-    }
-  }
-}
-
 .form-item-query-health-az {
   margin: 0;
 
