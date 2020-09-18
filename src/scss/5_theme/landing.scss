@@ -250,7 +250,7 @@
       .no-js & {
 
         @include breakpoint($tab, $no-query: true) {
-          margin: 0 1.8rem 1em;
+          margin: 0 1.6rem 1em;
         }
 
         margin: 0 1.6rem 1em;
@@ -270,19 +270,7 @@
     }
 
     .accordion-section-title {
-
       border-top: 1px solid $brand-primary;
-
-      button {
-
-        .js & {
-          padding: 1.6rem 6rem 1.6rem .8rem;
-
-          @include breakpoint($tab, $no-query: true) {
-            padding: 1.8rem 6rem 1.8rem 1.8rem;
-          }
-        }
-      }
     }
   }
 }
