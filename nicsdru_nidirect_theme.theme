@@ -51,8 +51,8 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
   $search_layout_classes = ['grid', 'layout--side-n-main', 'search-content'];
 
   // Process node pages.
-  $node = Drupal::routeMatch()->getParameter('node');
-  if ($node instanceof Node) {
+  $node = $variables['node'];
+  if (isset($node) && method_exists($node, 'bundle')) {
     switch ($node->bundle()) {
       case "article":
       case "application":
@@ -70,6 +70,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         break;
     }
   }
+
 
   // Process search view pages.
   $viewpage = \Drupal::routeMatch()->getParameter('view_id');
