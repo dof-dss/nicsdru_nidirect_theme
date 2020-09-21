@@ -52,7 +52,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
 
   // Process node pages.
   $node = Drupal::routeMatch()->getParameter('node');
-  if ($node instanceof Drupal\node\Entity\Node) {
+  if ($node instanceof Node) {
     switch ($node->bundle()) {
       case "article":
       case "application":
