@@ -71,7 +71,6 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
     }
   }
 
-
   // Process search view pages.
   $viewpage = \Drupal::routeMatch()->getParameter('view_id');
   if (isset($viewpage)) {
