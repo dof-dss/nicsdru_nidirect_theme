@@ -31,7 +31,9 @@
 <div{{ attributes.addClass('card') }}>
   {{ title_prefix }}
   {{ title_suffix }}
+  {% if not content.is_multilink %}
   <a class="card__link" href="{{ content.field_link[0]['#url']|render }}">
+  {%  endif %}
     <div class="card__image">{{ content.field_image }}</div>
     <div class="card__content">
       <h2{{ title_attributes.addClass('card__title') }}>
@@ -39,5 +41,7 @@
       </h2>
       {{ content.field_teaser }}
     </div>
-  </a>
+   {% if not content.is_multilink %}
+    </a>
+   {%  endif %}
 </div>
