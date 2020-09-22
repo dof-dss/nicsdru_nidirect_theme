@@ -46,11 +46,11 @@
       <h2{{ title_attributes.addClass('card__title') }}>{{ label }}</h2>
       {{ content.field_teaser }}
       {% if content.is_multilink %}
-        <div class="card__links">
+        <ul class="card__links">
           {% for item in content.field_link['#items'] %}
-            <a href="{{ item.uri }}">{{ item.title }}</a><br>
+            <li><a href="{{ item.uri }}">{{ (item.title) ? item.title : item.uri }}</a></li>
           {% endfor %}
-        </div>
+        </ul>
       {%  endif %}
     </div>
    {% if not content.is_multilink %}
