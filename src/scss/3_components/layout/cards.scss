@@ -107,6 +107,11 @@
   }
 }
 
+// Cards with toggleable links display.
+.card--multilink:hover {
+  cursor: pointer;
+}
+
 // Card decks for landing pages.
 .card-deck--landing {
 
