@@ -298,6 +298,22 @@ function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
       $variables['content']['#title'] = t('Contacts - under :letter', [':letter' => strtoupper($letter)]);
     }
   }
+
+  // If a card has multiple links, toggle the display of those
+  // links when the card is clicked.
+  if (in_array($variables['plugin_id'], [
+    'inline_block:card_standard',
+    'inline_block:card_wide',
+  ])) {
+    if ($variables['content']['field_link']['#items']->count() > 1) {
+      $variables['content']['is_multilink'] = TRUE;
+      $variables['#attached']['library'][] = 'nicsdru_nidirect_theme/nidirect-ui';
+    }
+    else {
+      $variables['content']['is_multilink'] = FALSE;
+    }
+  }
+
 }
 
 /**
