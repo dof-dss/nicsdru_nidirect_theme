@@ -272,6 +272,7 @@ function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
   if ($variables['plugin_id'] == 'inline_block:card_standard') {
     if ($variables['content']['field_link']['#items']->count() > 1) {
       $variables['content']['is_multilink'] = TRUE;
+      $variables['#attached']['library'][] = 'nicsdru_nidirect_theme/nidirect-ui';
     } else {
       $variables['content']['is_multilink'] = FALSE;
     }
