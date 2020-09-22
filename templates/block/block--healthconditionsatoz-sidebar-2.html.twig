@@ -26,7 +26,7 @@
  */
 #}
 {% set label_id = attributes.id ~ '-label'|clean_id %}
-<div aria-labelledby="{{ label_id }}"{{ attributes.setAttribute('role', 'region') }}>
+<div aria-labelledby="{{ label_id }}"{{ attributes.addClass(['sub-menu', 'sub-menu--sibling']).setAttribute('role', 'region') }}>
   {{ title_prefix }}
   <p{{ title_attributes.addClass(['label', 'label--small']).setAttribute('id', label_id) }}>
     <span aria-hidden="true">Or</span> find conditions beginning with &hellip;

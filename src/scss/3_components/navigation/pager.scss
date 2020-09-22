@@ -50,6 +50,7 @@
       margin: 0;
       padding: 0 .6rem;
       text-align: center;
+      text-decoration: none;
 
       @include breakpoint($tab) {
         min-width: 4.5rem;

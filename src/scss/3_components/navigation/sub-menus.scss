@@ -13,9 +13,23 @@
 //
 // Style guide: components.navigation.sub-menus
 .sub-menu {
+  border-top: 5px solid color(brand-primary-medium);
+  padding: 1.5em 10px .5em;
+
+  &--sibling {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .menu-title {
+    @include adjust-font-size-to(24px, 5);
+    margin: 0 0 2.1rem;
+  }
+
   .nav {
     &-menu {
       margin-top: 0;
+      margin-bottom: 2.7rem;
     }
 
     // applied to the menu li
