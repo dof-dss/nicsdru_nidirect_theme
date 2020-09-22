@@ -335,6 +335,21 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
       }
     }
   }
+
+  // Proprocess titles on certain routes.
+  $route = \Drupal::routeMatch()->getRouteName();
+
+  switch ($route) {
+    case "nidirect_news.news_listing":
+      $page = \Drupal::request()->get('page');
+      if (isset($page) && $page > 0) {
+        $variables['title_subtitle'] = t('page ' . ++$page);
+      }
+      break;
+
+    default:
+      break;
+  }
 }
 
 /**
