@@ -48,7 +48,7 @@
       {% if content.is_multilink %}
         <div class="card__links">
           {% for item in content.field_link['#items'] %}
-            <a href="{{ item.uri }}">{{ item.uri }}</a><br>
+            <a href="{{ item.uri }}">{{ item.title }}</a><br>
           {% endfor %}
         </div>
       {%  endif %}
