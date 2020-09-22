@@ -16,49 +16,8 @@
   &.border-top,
   &.border-bottom {
     .card {
-      border-color: $grey-light;
+      border-color: $grey-medium;
     }
-  }
-
-  // Set some additional properties for search result cards
-  &.search-results {
-    a:focus {
-      .card__title {
-        background: inherit;
-      }
-    }
-
-    @at-root .search-results--title {
-      margin-top: 0;
-    }
-
-    .card {
-      margin-bottom: 2rem;
-      padding-bottom: .3rem;
-    }
-
-    h3,
-    .card__title {
-      @include adjust-font-size-to(21px, 4);
-      margin: 0 0 .6rem;
-    }
-
-    .card__meta {
-      margin: 1.5rem 0;
-
-      .meta-list-item {
-        margin-left: 1rem;
-      }
-    }
-
-    .extract {
-      @include adjust-font-size-to(16px, 3.5);
-      margin: 1.5rem 0 1.2rem;
-    }
-  }
-
-  .view--count {
-    margin-top: 0;
   }
 }
 

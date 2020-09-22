@@ -32,51 +32,46 @@
 #}
 {%
   set classes = [
-  'view',
-  'view-' ~ id|clean_class,
-  'view-id-' ~ id,
-  'view-display-id-' ~ display_id,
-  dom_id ? 'js-view-dom-id-' ~ dom_id,
-  'card-deck',
-  'search-results',
-  'border-bottom',
-]
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+    'search-results--health-conditions',
+    'card-deck',
+    'border-bottom',
+    'search-results',
+    'accordion',
+  ]
 %}
-<div {{attributes.addClass(classes)}}>
-  {% if title %}
-    {{ title }}
-  {% endif %}
-  {% if exposed %}
-    <div class="view-filters" role="search" aria-label="{{ "filter search results"|t }}">
-      {{ exposed }}
-    </div>
+{% set attributes = attributes.addClass(classes) %}
+{% set attributes = attributes.setAttribute('role', 'region') %}
+{% set attributes = attributes.setAttribute('aria-label', 'search results'|t) %}
+<div{{ attributes }}>
+  {{ title_prefix }}
+  {{ title }}
+  {{ title_suffix }}
+
+  {% if header %}
+    <h2 class="view--count accordion-heading">
+      {{ header }}
+    </h2>
   {% endif %}
 
-  {% if rows %}
-    <div class="view-content" role="region" aria-label="{{ "search results"|t }}">
-      {% if header %}
-        {{ header }}
-      {% endif %}
-      {{ rows }}
-    </div>
-  {% elseif empty %}
-    <div class="view-empty" role="region" aria-label="{{ "search results"|t }}">
-      {% if header %}
-        {{ header }}
-      {% endif %}
-      {{ empty }}
-    </div>
-  {% endif %}
+  {{ exposed }}
+  {{ attachment_before }}
 
-  {% if pager %}
-    {{ pager }}
+  {% if rows -%}
+    {{ rows }}
+  {% elseif empty -%}
+    {{ empty }}
   {% endif %}
-  {% if more %}
-    {{ more }}
-  {% endif %}
+  {{ pager }}
+
+  {{ attachment_after }}
+  {{ more }}
+
   {% if footer %}
-    <div class="view-footer">
+    <footer>
       {{ footer }}
-    </div>
+    </footer>
   {% endif %}
+
+  {{ feed_icons }}
 </div>

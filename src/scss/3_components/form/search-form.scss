@@ -28,6 +28,7 @@
 
   .ga-aside & {
     grid-template-columns: auto 5.4rem; // 1st column contains search box, 2nd contains the submit button.
+    margin-bottom: 1em;
   }
 
 
@@ -120,6 +121,10 @@
     & > .form-item,
     & > .form-actions {
       margin: .5em 0;
+
+      .ga-aside & {
+        margin: 0;
+      }
     }
 
     input {
@@ -144,6 +149,7 @@
         @include adjust-font-size-to(16px);
       }
     }
+
   }
 }
 
