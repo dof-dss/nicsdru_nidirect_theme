@@ -13,9 +13,15 @@
     attach: function attach (context) {
 
       $('.card--multilink', context).once('nicsdruAccordions').each(function(index) {
+        var links_wrapper = $(this).find('.card__links');
+
         $(this).on('click', function () {
-          $(this).find('.card__links').toggle();
+          $(links_wrapper).toggle();
         })
+
+        $(links_wrapper).find('a').click(function(e) {
+          e.stopPropagation();
+        });
       });
     }
   };
