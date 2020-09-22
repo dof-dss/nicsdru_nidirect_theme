@@ -21,6 +21,11 @@
 ] %}
 {{ title_prefix }}
 {% if title %}
-  <h1{{ title_attributes.addClass(title_classes) }}>{{ title }}</h1>
+  <h1{{ title_attributes.addClass(title_classes) }}>
+    {{ title }}
+    {%- if title_subtitle -%}
+      <span class="subtitle">{{ title_subtitle }}</span>
+    {%- endif -%}
+  </h1>
 {% endif %}
 {{ title_suffix }}
