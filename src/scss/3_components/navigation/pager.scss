@@ -40,6 +40,7 @@
     }
 
     a,
+    .pager__item-current,
     &--ellipsis {
       display: inline-block;
       box-sizing: border-box;
@@ -83,7 +84,8 @@
       text-decoration: none;
     }
 
-    &.is-active a {
+    &.is-active a,
+    &.is-active .pager__item-current {
       background-color: $brand-primary-medium;
       color: #fff;
     }
