@@ -25,10 +25,17 @@
  * @see template_preprocess_block()
  */
 #}
+
+{% set classes = [
+    'card',
+    content.is_multilink ? 'card--multilink'
+   ]
+%}
+
 {% if not label %}
   {% set label = 'Title not displayed!' %}
 {% endif %}
-<div{{ attributes.addClass('card') }}>
+<div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {{ title_suffix }}
   {% if not content.is_multilink %}
@@ -36,10 +43,15 @@
   {%  endif %}
     <div class="card__image">{{ content.field_image }}</div>
     <div class="card__content">
-      <h2{{ title_attributes.addClass('card__title') }}>
-        {{ label }}
-      </h2>
+      <h2{{ title_attributes.addClass('card__title') }}>{{ label }}</h2>
       {{ content.field_teaser }}
+      {% if content.is_multilink %}
+        <div class="card__links">
+          {% for item in content.field_link['#items'] %}
+            <a href="{{ item.uri }}">{{ item.uri }}</a><br>
+          {% endfor %}
+        </div>
+      {%  endif %}
     </div>
    {% if not content.is_multilink %}
     </a>
