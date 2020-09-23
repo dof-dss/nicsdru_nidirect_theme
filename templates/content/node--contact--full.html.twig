@@ -77,8 +77,8 @@
   {% if  content_attributes is not empty %}
   <div{{ content_attributes }}>
   {% endif %}
-  {{ drupal_block('views_block:contact_children-contact_children', wrapper=false) }}
   {{- content -}}
+  {{ drupal_block('views_block:contact_children-contact_children', wrapper=false) }}
   {% if  content_attributes is not empty %}
   </div>
   {% endif %}
