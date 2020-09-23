@@ -347,7 +347,8 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
     case "nidirect_news.news_listing":
       $page = \Drupal::request()->get('page');
       if (isset($page) && $page > 0) {
-        $variables['title_subtitle'] = t('page ' . ++$page);
+        $page = ++$page;
+        $variables['title_subtitle'] = t('page :page', [':page' => $page]);
       }
       break;
 
