@@ -263,7 +263,6 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
       $variables['content']['field_attachment']['#title'] = t('Documents');
       break;
 
-    case "landing_page":
     case "page":
       // Omit the title on these content types; causes trouble with search
       // indexing. Resolvable with either suitable block config or specific
@@ -339,8 +338,11 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
       // Landing pages have a boolean field to enable title visibility.
       if ($node->getType() === 'landing_page') {
         // Is the title visible?
-        if ($node->field_enable_title->get(0)->value === '0') {
-          $variables['title_visible'] = FALSE;
+        if (isset($node->field_enable_title) && isset($node->field_enable_title->get(0)->value)) {
+          $field_enable_title = $node->field_enable_title->get(0)->value;
+          if ($field_enable_title === '0') {
+            $variables['title_visible'] = FALSE;
+          }
         }
       }
       break;
@@ -353,9 +355,6 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
         $page = ++$page;
         $variables['title_subtitle'] = t('page :page', [':page' => $page]);
       }
-      break;
-
-    default:
       break;
 
   }
