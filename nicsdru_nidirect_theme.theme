@@ -10,10 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
-use Drupal\node\Entity\Node;
-use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\Component\Utility\Html;
-use Drupal\taxonomy\Entity\Term;
 
 /**
  * Implements hook_page_attachments_alter().
@@ -202,7 +199,8 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
 
       break;
 
-    // Health conditions A to Z letter page (see nidirect_health_conditions module).
+    // Health conditions A to Z letter page
+    // (see nidirect_health_conditions module).
     case 'nidirect_health_conditions.letter':
       $variables['main_content_attr']->addClass($search_layout_classes);
       if ($variables['content_wrapper_attr'] instanceof Attribute) {
@@ -316,9 +314,8 @@ function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
   }
 
   // Set the title for 'Most popular by term' block.
-  if ($variables['plugin_id'] === 'views_block:popular_content-pop_by_term') {
-    if ($route->getRouteName() === 'entity.taxonomy_term.canonical')
-      $variables['label'] = t('Popular in @term', ['@term' => $route->getParameter('taxonomy_term')->label()]) ;
+  if ($variables['plugin_id'] === 'views_block:popular_content-pop_by_term' && $route->getRouteName() === 'entity.taxonomy_term.canonical') {
+    $variables['label'] = t('Popular in @term', ['@term' => $route->getParameter('taxonomy_term')->label()]);
   }
 
 }
