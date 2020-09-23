@@ -328,23 +328,26 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
   // By default page titles are visible.
   $variables['title_visible'] = TRUE;
 
-  // Preprocess node titles.
-  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+  // Preprocess titles on certain routes.
+  $route = \Drupal::routeMatch();
 
-    // Landing pages have a boolean field to enable title visibility.
-    if ($node->getType() == 'landing_page') {
-      // Is the title visible?
-      if ($node->field_enable_title->get(0)->value === '0') {
-        $variables['title_visible'] = FALSE;
+  switch ($route->getRouteName()) {
+
+    // Preprocess node titles.
+    case "entity.node.canonical":
+      $node = $route->getParameter('node');
+      // Landing pages have a boolean field to enable title visibility.
+      if ($node->getType() === 'landing_page') {
+        // Is the title visible?
+        if ($node->field_enable_title->get(0)->value === '0') {
+          $variables['title_visible'] = FALSE;
+        }
       }
-    }
-  }
+      break;
 
-  // Proprocess titles on certain routes.
-  $route = \Drupal::routeMatch()->getRouteName();
-
-  switch ($route) {
+    // Preprocess news listing page title.
     case "nidirect_news.news_listing":
+      // Add a subtitle to indicate the current page selected from the pager.
       $page = \Drupal::request()->get('page');
       if (isset($page) && $page > 0) {
         $page = ++$page;
@@ -354,6 +357,7 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
 
     default:
       break;
+
   }
 }
 
