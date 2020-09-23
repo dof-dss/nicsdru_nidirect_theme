@@ -11,6 +11,14 @@
   }
 }
 
+.search-intro {
+
+  @include breakpoint($tab) {
+    width: 80%;
+    margin: 3rem auto;
+  }
+}
+
 .search-results {
 
   header {
