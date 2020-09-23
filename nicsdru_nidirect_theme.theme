@@ -10,10 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
-use Drupal\node\Entity\Node;
-use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\Component\Utility\Html;
-use Drupal\taxonomy\Entity\Term;
 
 /**
  * Implements hook_page_attachments_alter().
@@ -49,8 +46,10 @@ function nicsdru_nidirect_theme_preprocess_html(array &$variables) {
 function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
   $layout_classes = ['grid', 'layout--main-n-side'];
   $search_layout_classes = ['grid', 'layout--side-n-main', 'search-content'];
-  $node = Drupal::routeMatch()->getParameter('node');
-  if (is_object($node) && !empty($node->bundle())) {
+
+  // Process node pages.
+  $node = $variables['node'];
+  if (isset($node) && method_exists($node, 'bundle')) {
     switch ($node->bundle()) {
       case "article":
       case "application":
@@ -74,6 +73,18 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
   if (isset($viewpage)) {
     switch ($viewpage) {
       case "health_conditions":
+        $variables['main_content_attr']->addClass($search_layout_classes);
+        if ($variables['content_wrapper_attr'] instanceof Attribute) {
+          $variables['content_wrapper_attr']
+            ->addClass('ga-main')
+            ->setAttribute('role', 'presentation');
+        }
+        $variables['sidebar_first_attr']
+          ->addClass('ga-aside')
+          ->setAttribute('role', 'search')
+          ->setAttribute('aria-label', t('filter search results'));
+        break;
+
       case "publications":
         $variables['main_content_attr']->addClass($search_layout_classes);
         $variables['sidebar_first_attr']
@@ -89,7 +100,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
     }
   }
 
-  // Contacts page uses multiple routes defined in nidirect_contacts module.
+  // Process pages based on routes.
   $route = \Drupal::routeMatch()->getRouteName();
 
   switch ($route) {
@@ -106,6 +117,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       $variables['sidebar_second_attr']->addClass('ga-aside');
       break;
 
+    // Site theme term pages.
     case 'entity.taxonomy_term.canonical':
       // Set the section css classes for theme taxonomy terms.
       if ($variables['term']->bundle() == "site_themes") {
@@ -115,6 +127,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       }
       break;
 
+    // Node preview pages.
     // Ensure the side-bar in the node preview is visible to accurately
     // reflect how the published node will look.
     case 'entity.node.preview':
@@ -186,6 +199,21 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
 
       break;
 
+    // Health conditions A to Z letter page
+    // (see nidirect_health_conditions module).
+    case 'nidirect_health_conditions.letter':
+      $variables['main_content_attr']->addClass($search_layout_classes);
+      if ($variables['content_wrapper_attr'] instanceof Attribute) {
+        $variables['content_wrapper_attr']
+          ->addClass('ga-main')
+          ->setAttribute('role', 'presentation');
+      }
+      $variables['sidebar_first_attr']
+        ->addClass('ga-aside')
+        ->setAttribute('role', 'search')
+        ->setAttribute('aria-label', t('filter search results'));
+      break;
+
     default:
       break;
   }
@@ -249,10 +277,11 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
  * Implements hook_preprocess_block().
  */
 function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
+  $route = \Drupal::routeMatch();
+
   // Fine grained control over the title of the contacts page.
-  if ($variables['plugin_id'] == 'page_title_block') {
-    $this_route = \Drupal::routeMatch()->getRouteName();
-    if ($this_route == 'nidirect_contacts.default') {
+  if ($variables['plugin_id'] === 'page_title_block') {
+    if ($route->getRouteName() === 'nidirect_contacts.default') {
       // Is there a text search string?
       $search_string = \Drupal::request()->get('query_contacts_az');
       if (!empty($search_string)) {
@@ -262,12 +291,33 @@ function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
         $variables['content']['#title'] = t('Contacts');
       }
     }
-    elseif ($this_route == 'nidirect_contacts.letter') {
+    elseif ($route->getRouteName() === 'nidirect_contacts.letter') {
       // A letter has been selected from the A-Z.
-      $letter = \Drupal::routeMatch()->getParameter('letter');
+      $letter = $route->getParameter('letter');
       $variables['content']['#title'] = t('Contacts - under :letter', [':letter' => strtoupper($letter)]);
     }
   }
+
+  // If a card has multiple links, toggle the display of those
+  // links when the card is clicked.
+  if (in_array($variables['plugin_id'], [
+    'inline_block:card_standard',
+    'inline_block:card_wide',
+  ])) {
+    if ($variables['content']['field_link']['#items']->count() > 1) {
+      $variables['content']['is_multilink'] = TRUE;
+      $variables['#attached']['library'][] = 'nicsdru_nidirect_theme/nidirect-ui';
+    }
+    else {
+      $variables['content']['is_multilink'] = FALSE;
+    }
+  }
+
+  // Set the title for 'Most popular by term' block.
+  if ($variables['plugin_id'] === 'views_block:popular_content-pop_by_term' && $route->getRouteName() === 'entity.taxonomy_term.canonical') {
+    $variables['label'] = t('Popular in @term', ['@term' => $route->getParameter('taxonomy_term')->label()]);
+  }
+
 }
 
 /**

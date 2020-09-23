@@ -90,6 +90,17 @@ label,
   font-weight: normal;
   color: $charcoal;
 
+  &--small {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    margin: 0 0 8px;
+
+    @include breakpoint($tab) {
+      line-height: 2.7rem;
+      margin: 0 0 9px;
+    }
+  }
+
   & + .form-radios {
     margin-top: .3rem;
     @include breakpoint($phab, $no-query: true) {

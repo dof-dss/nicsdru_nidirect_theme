@@ -25,11 +25,12 @@
  * @see template_preprocess_block()
  */
 #}
-<div{{ attributes.setAttribute('role', 'presentation') }}>
+{% set label_id = attributes.id ~ '-label'|clean_id %}
+<div aria-labelledby="{{ label_id }}"{{ attributes.setAttribute('role', 'region') }}>
   {{ title_prefix }}
-  {% if label %}
-    <p{{ title_attributes.addClass('meta') }}>{{ label }}</p>
-  {% endif %}
+  <p{{ title_attributes.addClass(['label', 'label--small']).setAttribute('id', label_id) }}>
+    <span aria-hidden="true">Or</span> find conditions beginning with &hellip;
+  </p>
   {{ title_suffix }}
   {% block content %}
     {{ content }}

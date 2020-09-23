@@ -103,3 +103,11 @@ authenticated-styles:
     theme:
       css/3_components/form/layout-builder-form.css: { minified: true, weight: -6 }
       css/3_components/layout/layout-builder.css: { minified: true, weight: -5 }
+
+nidirect-ui:
+  js:
+    js/ui.js: { minified: false }
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
