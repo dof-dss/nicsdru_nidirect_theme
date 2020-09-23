@@ -279,10 +279,11 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
  * Implements hook_preprocess_block().
  */
 function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
+  $route = \Drupal::routeMatch();
+
   // Fine grained control over the title of the contacts page.
-  if ($variables['plugin_id'] == 'page_title_block') {
-    $this_route = \Drupal::routeMatch()->getRouteName();
-    if ($this_route == 'nidirect_contacts.default') {
+  if ($variables['plugin_id'] === 'page_title_block') {
+    if ($route->getRouteName() === 'nidirect_contacts.default') {
       // Is there a text search string?
       $search_string = \Drupal::request()->get('query_contacts_az');
       if (!empty($search_string)) {
@@ -292,9 +293,9 @@ function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
         $variables['content']['#title'] = t('Contacts');
       }
     }
-    elseif ($this_route == 'nidirect_contacts.letter') {
+    elseif ($route->getRouteName() === 'nidirect_contacts.letter') {
       // A letter has been selected from the A-Z.
-      $letter = \Drupal::routeMatch()->getParameter('letter');
+      $letter = $route->getParameter('letter');
       $variables['content']['#title'] = t('Contacts - under :letter', [':letter' => strtoupper($letter)]);
     }
   }
@@ -316,8 +317,6 @@ function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
 
   // Set the title for 'Most popular by term' block.
   if ($variables['plugin_id'] === 'views_block:popular_content-pop_by_term') {
-    $route = \Drupal::routeMatch();
-
     if ($route->getRouteName() === 'entity.taxonomy_term.canonical')
       $variables['label'] = t('Popular in @term', ['@term' => $route->getParameter('taxonomy_term')->label()]) ;
   }
