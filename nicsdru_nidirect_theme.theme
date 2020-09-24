@@ -357,6 +357,28 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
       }
       break;
 
+    // Preprocess health conditions search page title.
+    case "view.health_conditions.search_page":
+      // Add a subtitle to indicate showing results and the current page selected from the pager.
+      $page = \Drupal::request()->get('page');
+      $search_query = \Drupal::request()->get('query_health_az');
+      if (isset($search_query) && !isset($page)) {
+        $variables['title_subtitle'] = t('search results');
+      } elseif (isset($search_query) && isset($page)) {
+        $page = ++$page;
+        $variables['title_subtitle'] = t('search results page :page', [':page' => $page]);
+      }
+      break;
+
+    // Preprocess health conditions A to Z listing title.
+    case "nidirect_health_conditions.letter":
+      // Add a subtitle to indicate letter chosen from the A to Z.
+      $letter = $route->getParameter('letter');
+      if (isset($letter)) {
+        $variables['title_subtitle'] = t('conditions under :letter', [':letter' => strtoupper($letter)]);
+      }
+      break;
+
   }
 }
 
