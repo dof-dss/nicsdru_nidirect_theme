@@ -364,7 +364,8 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
       $search_query = \Drupal::request()->get('query_health_az');
       if (isset($search_query) && !isset($page)) {
         $variables['title_subtitle'] = t('search results');
-      } elseif (isset($search_query) && isset($page)) {
+      }
+      elseif (isset($search_query) && isset($page)) {
         $page = ++$page;
         $variables['title_subtitle'] = t('search results page :page', [':page' => $page]);
       }
