@@ -27,14 +27,21 @@
     @include breakpoint($tab) {
       margin: 0 0 .5em;
     }
+  }
 
-    .view--count {
-      @include responsive-typo-map($xl-text);
-      margin: 0 0 .8rem;
+  h2:first-of-type,
+  .view--count {
+    @include responsive-typo-map($xl-text);
+    margin: 2.4rem 0 0;
 
-      @include breakpoint($tab) {
-        margin-bottom: .9rem;
-      }
+    @include breakpoint($tab) {
+      margin: 4.2rem 0 0;
+    }
+
+    .subtitle {
+      @include responsive-typo-map($small-text);
+      color: $ash-grey;
+      display: block;
     }
   }
 
