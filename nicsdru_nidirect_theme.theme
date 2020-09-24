@@ -263,7 +263,6 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
       $variables['content']['field_attachment']['#title'] = t('Documents');
       break;
 
-    case "landing_page":
     case "page":
       // Omit the title on these content types; causes trouble with search
       // indexing. Resolvable with either suitable block config or specific
@@ -328,16 +327,36 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
   // By default page titles are visible.
   $variables['title_visible'] = TRUE;
 
-  // Preprocess node titles.
-  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+  // Preprocess titles on certain routes.
+  $route = \Drupal::routeMatch();
 
-    // Landing pages have a boolean field to enable title visibility.
-    if ($node->getType() == 'landing_page') {
-      // Is the title visible?
-      if ($node->field_enable_title->get(0)->value === '0') {
-        $variables['title_visible'] = FALSE;
+  switch ($route->getRouteName()) {
+
+    // Preprocess node titles.
+    case "entity.node.canonical":
+      $node = $route->getParameter('node');
+      // Landing pages have a boolean field to enable title visibility.
+      if ($node->getType() === 'landing_page') {
+        // Is the title visible?
+        if (isset($node->field_enable_title) && isset($node->field_enable_title->get(0)->value)) {
+          $field_enable_title = $node->field_enable_title->get(0)->value;
+          if ($field_enable_title === '0') {
+            $variables['title_visible'] = FALSE;
+          }
+        }
       }
-    }
+      break;
+
+    // Preprocess news listing page title.
+    case "nidirect_news.news_listing":
+      // Add a subtitle to indicate the current page selected from the pager.
+      $page = \Drupal::request()->get('page');
+      if (isset($page) && $page > 0) {
+        $page = ++$page;
+        $variables['title_subtitle'] = t('page :page', [':page' => $page]);
+      }
+      break;
+
   }
 }
 
