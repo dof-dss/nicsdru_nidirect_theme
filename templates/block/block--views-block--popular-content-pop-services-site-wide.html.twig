@@ -25,10 +25,10 @@
  * @see template_preprocess_block()
  */
 #}
-{% set attributes = attributes.removeClass('views-element-container') %}
+{% set attributes = attributes.addClass(['sub-menu', 'sub-menu--popular']).removeClass('views-element-container') %}
 {% set attributes = attributes.setAttribute('id', 'gtm-home-popular-serv') %}
 {% set attributes = attributes.setAttribute('role', 'presentation') %}
-{% set title_attributes = title_attributes.setAttribute('id', 'popular-services') %}
+{% set title_attributes = title_attributes.addClass(['menu-title', 'menu-title--large']).setAttribute('id', 'popular-services') %}
 <div{{ attributes }}>
   {{ title_prefix }}
   {% if label %}
