@@ -330,6 +330,9 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
   // Preprocess titles on certain routes.
   $route = \Drupal::routeMatch();
 
+  // Will need bits and pieces from the request for titles.
+  $request = \Drupal::request();
+
   switch ($route->getRouteName()) {
 
     // Preprocess node titles.
@@ -350,7 +353,7 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
     // Preprocess news listing page title.
     case "nidirect_news.news_listing":
       // Add a subtitle to indicate the current page selected from the pager.
-      $page = \Drupal::request()->get('page');
+      $page = $request->get('page');
       if (isset($page) && $page > 0) {
         $page = ++$page;
         $variables['title_subtitle'] = t('page :page', [':page' => $page]);
@@ -360,8 +363,8 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
     // Preprocess health conditions search page title.
     case "view.health_conditions.search_page":
       // Add a subtitle to indicate showing results and the current page selected from the pager.
-      $page = \Drupal::request()->get('page');
-      $search_query = \Drupal::request()->get('query_health_az');
+      $page = $request->get('page');
+      $search_query = $request->get('query_health_az');
       if (isset($search_query) && !isset($page)) {
         $variables['title_subtitle'] = t('search results');
       }
