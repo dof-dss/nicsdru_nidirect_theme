@@ -31,6 +31,16 @@ h1,
   @include breakpoint($tab, $no-query: true) {
     font-weight: 700;
   }
+
+  .subtitle {
+    @include responsive-typo-map($xl-text);
+    display: inline-block;
+    font-weight: normal;
+
+    &::before {
+      content: ' \2014  ';
+    }
+  }
 }
 
 h2,
