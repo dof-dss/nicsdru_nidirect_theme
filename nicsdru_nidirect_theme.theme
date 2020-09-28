@@ -263,6 +263,7 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
       $variables['content']['field_attachment']['#title'] = t('Documents');
       break;
 
+    case "landing_page":
     case "page":
       // Omit the title on these content types; causes trouble with search
       // indexing. Resolvable with either suitable block config or specific
