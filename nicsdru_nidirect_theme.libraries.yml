@@ -21,7 +21,7 @@ nidirect-global-styles:
       css/2_layouts/layouts-common.css: { weight: -100, minified: true }
       css/2_layouts/nics-2-col-layouts.css: { minified: true }
       css/2_layouts/nics-3-col-layouts.css: { minified: true }
-      css/2_layouts/nidirect-front.css: { minified: true }
+      css/2_layouts/nidirect-2-col-layouts.css: { minified: true }
     # The SMACSS category, "component", is loaded after "base and layout" styles.
     component:
       css/3_components/layout/header.css: { minified: true }
