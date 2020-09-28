@@ -1,21 +1,22 @@
 /*
  * @file
- * Provides the layout styles for nidirect front page.
+ * Provides the layout styles for nidirect front page and theme taxonomy term pages.
  */
 
 @import '../init';
 
-// Front page layout
+// Front page layout / theme page layout
 //
-// The front page is a bespoke page
+// The front page and theme taxonomy pages have similar layout.
 //
-// Markup: ../kss-templates/layouts-front.twig
+// Markup: ../kss-templates/layouts-nidirect-2-col.twig
 //
 // Weight: -6
 //
-// Style guide: layouts.front
+// Style guide: layouts.nidirect-two-column
 
-.layout--front {
+.layout--front,
+.layout--theme-term {
 
   @include breakpoint($lap) {
     // 620 + 20 + 300 = 940
@@ -32,7 +33,7 @@
 
   &--popular {
     background-color: $grey-light;
-    padding: 0 15px;
+    padding: 2em 15px 0;
     @include breakpoint($phab) {
       display: grid;
       grid-gap: 0 1.5em;
