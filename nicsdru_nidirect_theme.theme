@@ -362,7 +362,8 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
 
     // Preprocess health conditions search page title.
     case "view.health_conditions.search_page":
-      // Add a subtitle to indicate showing results and the current page selected from the pager.
+      // Add a subtitle to indicate showing results and the current page
+      // selected from the pager.
       $page = $request->get('page');
       $search_query = $request->get('query_health_az');
       if (isset($search_query) && !isset($page)) {
@@ -469,6 +470,10 @@ function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
     if ($route == "nidirect_contacts.letter") {
       $variables['exposed'] = NULL;
     }
+  }
+  if ($variables['id'] === 'popular_content' && $variables['display_id'] === 'pop_by_term') {
+    $variables['attributes']['class'][] = 'sub-menu';
+    $variables['attributes']['class'][] = 'sub-menu--popular';
   }
 }
 
