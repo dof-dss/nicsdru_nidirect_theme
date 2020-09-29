@@ -336,21 +336,6 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
 
   switch ($route->getRouteName()) {
 
-    // Preprocess node titles.
-    case "entity.node.canonical":
-      $node = $route->getParameter('node');
-      // Landing pages have a boolean field to enable title visibility.
-      if ($node->getType() === 'landing_page') {
-        // Is the title visible?
-        if (isset($node->field_enable_title) && isset($node->field_enable_title->get(0)->value)) {
-          $field_enable_title = $node->field_enable_title->get(0)->value;
-          if ($field_enable_title === '0') {
-            $variables['title_visible'] = FALSE;
-          }
-        }
-      }
-      break;
-
     // Preprocess news listing page title.
     case "nidirect_news.news_listing":
       // Add a subtitle to indicate the current page selected from the pager.
