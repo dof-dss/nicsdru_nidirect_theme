@@ -48,23 +48,25 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
   $search_layout_classes = ['grid', 'layout--side-n-main', 'search-content'];
 
   // Process node pages.
-  $node = $variables['node'];
-  if (isset($node) && method_exists($node, 'bundle')) {
-    switch ($node->bundle()) {
-      case "article":
-      case "application":
-      case "gp_practice":
-      case "health_condition":
-      case "news":
-      case "page":
-        $variables['main_content_attr']->addClass($layout_classes);
-        $variables['sidebar_second_attr']->addClass('ga-aside');
-        break;
+  if (!empty($variables['node'])) {
+    $node = $variables['node'];
+    if (isset($node) && method_exists($node, 'bundle')) {
+      switch ($node->bundle()) {
+        case "article":
+        case "application":
+        case "gp_practice":
+        case "health_condition":
+        case "news":
+        case "page":
+          $variables['main_content_attr']->addClass($layout_classes);
+          $variables['sidebar_second_attr']->addClass('ga-aside');
+          break;
 
-      case "contact":
-        $variables['main_content_attr']->addClass($layout_classes);
-        $variables['sidebar_second_attr']->addClass('ga-aside');
-        break;
+        case "contact":
+          $variables['main_content_attr']->addClass($layout_classes);
+          $variables['sidebar_second_attr']->addClass('ga-aside');
+          break;
+      }
     }
   }
 
@@ -335,21 +337,6 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
   $request = \Drupal::request();
 
   switch ($route->getRouteName()) {
-
-    // Preprocess node titles.
-    case "entity.node.canonical":
-      $node = $route->getParameter('node');
-      // Landing pages have a boolean field to enable title visibility.
-      if ($node->getType() === 'landing_page') {
-        // Is the title visible?
-        if (isset($node->field_enable_title) && isset($node->field_enable_title->get(0)->value)) {
-          $field_enable_title = $node->field_enable_title->get(0)->value;
-          if ($field_enable_title === '0') {
-            $variables['title_visible'] = FALSE;
-          }
-        }
-      }
-      break;
 
     // Preprocess news listing page title.
     case "nidirect_news.news_listing":
