@@ -15,10 +15,18 @@
 //
 // Style guide: layouts.nidirect-two-column
 
-.layout--front,
-.layout--theme-term {
+.layout--front {
 
   @include breakpoint($lap) {
+    // 620 + 20 + 300 = 940
+    grid-template-columns: 620fr 300fr;
+    grid-gap: 0 20px;
+  }
+}
+
+.layout--theme-term {
+
+  @include breakpoint($tab) {
     // 620 + 20 + 300 = 940
     grid-template-columns: 620fr 300fr;
     grid-gap: 0 20px;
@@ -34,11 +42,16 @@
   &--popular {
     background-color: $grey-light;
     padding: 2em 15px 0;
+  }
+
+  @at-root .layout--front &--popular {
+
     @include breakpoint($phab) {
       display: grid;
       grid-gap: 0 1.5em;
       grid-template-columns: 1fr 1fr;
     }
+
     @include breakpoint($lap) {
       display: block;
     }

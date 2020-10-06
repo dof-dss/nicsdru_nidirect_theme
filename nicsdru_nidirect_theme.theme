@@ -121,7 +121,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
     case 'entity.taxonomy_term.canonical':
       // Set the section css classes for theme taxonomy terms.
       if ($variables['term']->bundle() == "site_themes") {
-        $taxonomy_classes = ['grid', 'layout--front'];
+        $taxonomy_classes = ['grid', 'layout--theme-term'];
         $variables['main_content_attr']->addClass($taxonomy_classes);
         $variables['sidebar_second_attr']->addClass('section--popular');
       }
