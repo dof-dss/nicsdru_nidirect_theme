@@ -55,9 +55,6 @@ jobs:
             sudo apt-get install -y libpng-dev
             sudo docker-php-ext-install gd
       - checkout
-      - run:
-          name: Add hirak/prestissimo for faster composer downloads
-          command: composer global require hirak/prestissimo
       - attach_workspace:
           at: ./
       - restore_cache:
@@ -65,7 +62,7 @@ jobs:
       - run:
           name: Fetch phpcs and dependencies
           command: |
-            composer require drupal/coder --no-interaction --optimize-autoloader
+            composer require drupal/coder --prefer-stable --no-interaction --optimize-autoloader
       - save_cache:
           key: composer-{{ checksum "composer.lock" }}
           paths:
@@ -87,57 +84,6 @@ jobs:
       - run:
           name: PHPCS static analysis
           command: /home/circleci/phpcs.sh /home/circleci "/home/circleci/project"
-
-  #===== DEBUG ======
-  debug_frontend:
-    docker:
-      - image: circleci/node:lts
-    steps:
-      - checkout
-      - run:
-          name: Fetch dependencies
-          command: npm install
-      - run:
-          name: Lint all frontend code
-          command: |
-            npm run lint
-      - run:
-          name: Fetch dependencies
-          command: npm run build
-
-  debug_backend:
-    docker:
-      - image: circleci/php:7.3.14-apache-browsers
-    steps:
-        - checkout
-        - run:
-            name: Add OS and PHP extensions required by any PHP libraries
-            command: |
-              sudo apt-get update
-              sudo apt-get install -y libpng-dev
-              sudo docker-php-ext-install gd
-              composer global require hirak/prestissimo
-        - run:
-            name: Fetch phpcs and dependencies
-            command: |
-              composer require drupal/coder --no-interaction
-              # Move vendor directory up a level as we don't want to code-check all of that.
-              mv vendor ../
-        - run:
-            name: Fetch phpcs convenience script
-            command: |
-              cd /home/circleci
-              curl https://raw.githubusercontent.com/dof-dss/nidirect-drupal/master/phpcs.sh -o /home/circleci/phpcs.sh
-              # Enable ignore variable.
-              sed -i -e "s/\#IGNORE/IGNORE/" phpcs.sh
-              # Add unwanted paths to this ignore variable.
-              sed -i -e "s/web\/themes\/custom\/THEMENAME\/node_modules/project\/node_modules,\${DRUPAL_DEPLOY_PATH}\/vendor/" phpcs.sh
-              # Make the file executable.
-              chmod +x /home/circleci/phpcs.sh
-              cat /home/circleci/phpcs.sh
-        - run:
-            name: PHPCS static analysis
-            command: /home/circleci/phpcs.sh /home/circleci "/home/circleci/project/"
 
 workflows:
   version: 2
