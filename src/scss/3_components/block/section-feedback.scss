@@ -1,0 +1,50 @@
+@import '../../init';
+
+.section-feedback {
+
+  @at-root body:not(.path-taxonomy) & {
+    margin-top: 3em;
+  }
+
+  &__form {
+
+    form {
+      max-width: $max-content-width;
+    }
+
+    .js & {
+      display: none;
+    }
+
+    &.expanded {
+      display: block;
+    }
+  }
+
+  &__heading {
+    @include adjust-font-size-to(16px, 4);
+    margin: 0;
+  }
+
+  &__toggle {
+    display: block;
+    width: 100%;
+    border: 0;
+    padding: 1rem 15px;
+    margin: 0;
+    background-color: $steel-blue;
+    color: #fff;
+    font-size: inherit;
+    line-height: inherit;
+    text-align: left;
+    text-decoration: underline !important;
+
+    @include breakpoint($tab) {
+      padding: 1rem 20px 1.1rem;
+    }
+
+    &:focus {
+      outline: 3px solid #000;
+    }
+  }
+}
