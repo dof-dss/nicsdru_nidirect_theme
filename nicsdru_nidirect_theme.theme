@@ -419,6 +419,13 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
       $i++;
     }
   }
+
+  if (isset($variables['element'])
+    && $variables['element']['#field_name'] == 'body'
+    && $variables['element']['#bundle'] == 'webform'
+  ) {
+    $variables['body_summary'] = $variables['element']['#object']->body->summary;
+  }
 }
 
 /**
