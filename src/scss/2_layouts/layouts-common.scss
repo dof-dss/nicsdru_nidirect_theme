@@ -48,6 +48,10 @@
     max-width: $max-grid-width;
     padding: 0 20px;
   }
+
+  &--no-padding {
+    padding: 0;
+  }
 }
 
 // Grid
