@@ -32,6 +32,7 @@ $image-url-subdirectory: 'images' !default;
 
 /* Layout ============================================================ */
 $max-grid-width: 980px;
+$max-content-width: 720px; // Apply to content in a single column.
 $grid-gap: 24px;
 $grid-gap-lg: 28px;
 $total-columns: 940; // yep - 940
