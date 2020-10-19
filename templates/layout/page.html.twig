@@ -88,7 +88,9 @@
 {%- if not is_front and page.bottom_banner -%}
   {{- page.bottom_banner -}}
 {% endif %}
-
+{%- if page.feedback -%}
+  {{- page.feedback -}}
+{%- endif -%}
 {%- if page.footer -%}
   <footer id="footer" class="footer">
     {{- page.footer -}}
