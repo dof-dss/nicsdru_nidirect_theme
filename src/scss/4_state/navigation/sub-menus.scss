@@ -7,7 +7,8 @@
 .rel-menu {
   background-color: color(brand-primary-lightest);
 
-  &--latest-news {
+  &--latest-news,
+  &--featured-news {
     .date-published {
       display: block;
       font-size: 1.4rem;
@@ -52,5 +53,3 @@
     }
   }
 }
-
-
