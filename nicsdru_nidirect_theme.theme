@@ -394,7 +394,7 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
     foreach ($variables['items'] as $key => $item) {
       $icon = '<svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg>';
       $title = $item['content']['#title'];
-      $classes = ['btn', 'call-to-action'];
+      $classes = ['call-to-action'];
 
       $formattedTitle = Markup::create($title . $icon);
 

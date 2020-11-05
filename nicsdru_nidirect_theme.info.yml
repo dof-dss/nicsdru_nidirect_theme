@@ -62,5 +62,5 @@ regions:
   sidebar_first: 'First sidebar'
   sidebar_second: 'Sidebar second'
   bottom_banner: 'Page bottom'
-  footer: 'Footer'
   feedback: 'Feedback'
+  footer: 'Footer'
