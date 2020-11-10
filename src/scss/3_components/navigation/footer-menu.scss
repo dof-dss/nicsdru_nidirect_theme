@@ -4,13 +4,7 @@
 .footer {
 
   a {
-    color: $link;
-
-    &:focus {
-      outline-color: $link;
-      background-color: $link;
-      color: #fff;
-    }
+    @include link-state-style($link-footer);
   }
 
   h2 {
@@ -21,9 +15,9 @@
   }
 
   &-related {
+    @include responsive-typo-map($body-text);
+    font-weight: bold;
     padding-top: 3.6rem;
-    font-size: 1.6rem;
-    line-height: 2.4rem;
 
     .nav-item {
       font-size: inherit;
@@ -50,7 +44,7 @@
         margin: .5em .5em 0 0;
         padding: 0 .5em 0 0;
         border-right: 1px solid $link;
-        line-height: 1em;
+        line-height: 1.5em;
 
         &:last-child {
           border-right: 0;
@@ -96,11 +90,6 @@
         font-size: 0; /* Safari inline-block white space bug fix */
         text-indent: -9999px;
         text-decoration: none;
-
-        &:focus {
-          border: 0;
-          outline-offset: -2px;
-        }
 
         @include breakpoint($tab) {
           width: 4rem;

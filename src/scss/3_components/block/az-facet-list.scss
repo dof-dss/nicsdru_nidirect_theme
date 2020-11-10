@@ -28,8 +28,6 @@
   .link__self,
   .active {
     @include adjust-font-size-to(21px, 7.3334);
-    border: 1px solid $brand-primary-medium;
-    color: $brand-primary-medium;
     display: inline-block;
     width: 4.4rem;
     height: 4.4rem;
@@ -44,27 +42,8 @@
     }
   }
 
-  a {
-    transition: background-color .25s;
-
-    &:focus {
-      position: relative;
-      z-index: 1;
-      outline: 3px solid $brand-primary-medium;
-      background: white;
-    }
-
-    &:hover {
-      background: $brand-primary-medium;
-      border-color: $brand-primary-medium;
-      color: #fff;
-    }
-  }
-
-  .active,
-  .link__self {
-    background: $brand-primary-light;
-    color: $charcoal;
+  a,
+  span {
+    @include link-state-style($link-az-menu);
   }
 }
-

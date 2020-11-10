@@ -57,11 +57,7 @@
       }
 
       a {
-        text-decoration: underline;
-
-        &:focus {
-          text-decoration: none;
-        }
+        @include link-state-style($link-body-no-visited);
       }
     }
 
@@ -75,6 +71,7 @@
     }
 
     .more-link {
+      display: none; // temp.
       font-weight: 700;
       margin-top: .2rem;
 
@@ -84,12 +81,6 @@
 
       a {
         color: $brand-secondary;
-
-        &:focus {
-          background-color: $brand-secondary;
-          outline-color: $brand-secondary;
-          color: $link-focus;
-        }
       }
     }
   }
@@ -163,14 +154,6 @@
       @include breakpoint($tab) {
         @include adjust-font-size-to(18px, 4.5);
         margin: 2rem 0 .7rem;
-      }
-
-      a {
-        text-decoration: none;
-
-        &:hover {
-          border-bottom: 1px solid;
-        }
       }
     }
 
