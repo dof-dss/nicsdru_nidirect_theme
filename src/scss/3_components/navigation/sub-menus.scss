@@ -58,7 +58,7 @@
     &-item {
       position: relative;
       list-style: none;
-      padding: 0 0 .6rem 1rem;
+      padding: 0 1rem .5em 1.5rem;
 
       &::before {
         content: '-';
@@ -71,11 +71,9 @@
     // applied to menu links
     &-menu a,
     &-link {
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
+      @include link-state-style($link-sub-menu);
+      display: inline-block;
+      width: 100%;
     }
   }
 }

@@ -51,7 +51,6 @@
       margin: 0;
       padding: 0 .6rem;
       text-align: center;
-      text-decoration: none;
 
       @include breakpoint($tab) {
         min-width: 4.5rem;
@@ -65,29 +64,8 @@
     }
 
     a,
-    a:active,
-    a:focus,
-    a:visited {
-      color: $brand-primary-medium;
-      background-color: #fff;
-      border: 1px solid $brand-primary-medium;
-    }
-
-    a:focus {
-      outline: 3px solid $brand-primary-medium;
-    }
-
-    a:hover {
-      color: #fff;
-      background-color: $brand-secondary;
-      border-color: $brand-secondary;
-      text-decoration: none;
-    }
-
-    &.is-active a,
-    &.is-active .pager__item-current {
-      background-color: $brand-primary-medium;
-      color: #fff;
+    > span {
+      @include link-state-style($link-pager);
     }
 
     &--first a,
