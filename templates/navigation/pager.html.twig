@@ -60,7 +60,7 @@
       {% for key, item in items.pages %}
         <li class="pager__item {{ current == key ? 'is-active' : '' }}">
           {% if current == key %}
-            <span class="pager__item-current">
+            <span class="pager__item-current active">
               <span class="visually-hidden">
                 {{ 'current page '|t }}
               </span>

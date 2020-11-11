@@ -24,60 +24,26 @@
 //
 // Style guide: base.links
 
-a,
-%link {
-  color: color(link);
-  text-decoration: underline;
-}
+header,
+main,
+footer { // Specificity required for setting base link styles that don't affect Drupal toolbars.
+  a,
+  %link {
+    @include link-state-style($link-base);
 
-// Any element can receive focus, but only links can be visited, so we can
-// safely lower this selector's specificity. This also ensures visited links
-// with additional styles won't have their styles overridden.
-:visited {
-  color: color(link-visited);
-  text-decoration: none;
-}
-
-a:hover,
-a:focus {
-  color: color(link-hover);
-}
-
-// address 'outline' inconsistency between Chrome and other browsers
-a:focus {
-  outline: 3px solid $brand-primary-medium;
-  outline-offset: 0;
-  background-color: $brand-primary-medium;
-  color: $link-focus;
-}
-
-a:active {
-  color: color(link-active);
-
-  &:not(.button, .btn) {
-    // Remove the gray background on active links in IE 10.
-    background-color: transparent;
+    &:active:not(.button, .btn) {
+      // Remove the gray background on active links in IE 10.
+      background-color: transparent;
+    }
   }
-}
-
-// Remove the outline on focused links when they are also active or hovered
-// in all browsers (opinionated).
-a:active,
-a:hover {
-  outline-width: 0;
 }
 
 a[aria-hidden='true'] {
   @include visually-hidden;
 }
 
-.skip-link,
-.skip-link:visited {
-  opacity: .75;
-  transition: opacity .3s 0s;
-  color: #fff;
-  background-color: #000;
-  outline: none;
+.skip-link {
+  @include link-state-style($link-skip);
   text-align: center;
 
   &::after {
@@ -90,18 +56,14 @@ a[aria-hidden='true'] {
   }
 }
 
-.skip-link:focus {
+.skip-link:focus,
+.skip-link:hover {
   @include responsive-typo-map($body-text);
-  opacity: 1;
   display: block;
   line-height: 1.5;
   padding: .9rem 3.5rem;
-  color: #fff;
-  text-decoration: underline;
-  outline: none;
   overflow: hidden;
   white-space: nowrap;
-  background-color: $charcoal;
 }
 
 @media print {

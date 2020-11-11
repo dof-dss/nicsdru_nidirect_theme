@@ -17,13 +17,7 @@
   }
 
   a {
-    font-size: 0;
-    border: 0;
-  }
-
-  a:focus {
-    outline: .3rem dashed $grey;
-    outline-offset: 1.2rem;
+    @include link-state-style($link-site-logo);
   }
 }
 
