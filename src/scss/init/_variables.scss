@@ -87,7 +87,7 @@ $link-base: (
     visited: $link-visited,
     focus: #fff,
     hover: $link,
-    action: $link-active
+    active: $link-active
   ),
   background-color: (
     default: transparent,
@@ -139,7 +139,6 @@ $link-main-menu: (
     visited: 0,
     focus: '3px solid #fff',
     hover: '3px solid #fff',
-    active: 0
   ),
   outline-offset: -8px,
   transition: 'outline-color .3s'
