@@ -466,6 +466,10 @@ function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
       $variables['exposed'] = NULL;
     }
   }
+  if ($variables['id'] === 'popular_content' && $variables['display_id'] === 'pop_by_term') {
+    $variables['attributes']['class'][] = 'sub-menu';
+    $variables['attributes']['class'][] = 'sub-menu--popular';
+  }
 }
 
 /**
