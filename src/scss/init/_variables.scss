@@ -91,7 +91,10 @@ $link-base: (
   ),
   background-color: (
     default: transparent,
+    visited: null,
     focus: $link,
+    hover: transparent,
+    active: null
   ),
   text-decoration: none,
   border-bottom: (
