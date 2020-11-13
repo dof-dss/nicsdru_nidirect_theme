@@ -322,10 +322,6 @@ form#views-exposed-form-gp-practices-find-a-gp {
       @include responsive-typo-map($small-text);
       padding: 0;
       margin: .3rem 1em .3rem 0;
-
-      a {
-        text-decoration: underline;
-      }
     }
   }
 }
