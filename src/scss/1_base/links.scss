@@ -24,22 +24,32 @@
 //
 // Style guide: base.links
 
-header,
-main,
-footer { // Specificity required for setting base link styles that don't affect Drupal toolbars.
-  a,
-  %link {
-    @include link-state-style($link-base);
 
-    &:active:not(.button, .btn) {
-      // Remove the gray background on active links in IE 10.
-      background-color: transparent;
-    }
+a,
+%link {
+  @include link-state-style($link-base);
+
+  &:active:not(.button, .btn) {
+    // Remove the gray background on active links in IE 10.
+    background-color: transparent;
   }
 }
 
 a[aria-hidden='true'] {
   @include visually-hidden;
+}
+
+// Temp fix for admin toolbar which doesn't set :visited state for links!
+.toolbar-tray a:visited {
+  color: #565656;
+}
+
+article a,
+section a,
+.content a,
+.view-content a,
+.form-type-processed-text a { // TODO: need a better way to target the main content links. Doesn't seem to be reliable way ...
+  @include link-state-style($link-article-text);
 }
 
 .skip-link {
