@@ -23,7 +23,7 @@
  * @see template_preprocess_taxonomy_term()
  */
 #}
-<div{{ attributes.setAttribute('role', 'presentation') }}>
+<div{{ attributes.addClass('content').setAttribute('role', 'presentation') }}>
   {{ drupal_block('page_title_block', wrapper=false) }}
   {{ content | without('field_additional_info') }}
   {% if information_services_output is defined %}
