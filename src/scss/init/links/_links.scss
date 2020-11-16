@@ -106,7 +106,9 @@
     @if $state == 'default' {
       // Styles are output in the root a element.
       @each $property, $value in $styles {
-        #{$property}: #{$value};
+        @if $value != null {
+          #{$property}: #{$value};
+        }
       }
     }
     @else {
@@ -114,7 +116,9 @@
       &:#{$state},
       &.#{$state} {
         @each $property, $value in $styles {
-          #{$property}: #{$value};
+          @if $value != null {
+            #{$property}: #{$value};
+          }
         }
       }
     }

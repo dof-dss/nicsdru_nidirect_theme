@@ -102,3 +102,8 @@ button.link {
     color: $charcoal;
   }
 }
+
+.facet--btn {
+  // Overrides to facet button styles coming from nicsdru_origins_theme.
+  @include link-state-style($link-facet-btn);
+}

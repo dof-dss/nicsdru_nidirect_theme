@@ -25,6 +25,7 @@
  * @see template_preprocess_block()
  */
 #}
+{% set attributes = attributes.addClass(['sub-menu', 'sub-menu--popular']).removeClass('views-element-container') %}
 <div{{ attributes.removeClass('views-element-container').setAttribute('aria-labelledby', 'related-content').removeAttribute('id') }}>
   {{ title_prefix }}
   {% if label %}
