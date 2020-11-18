@@ -338,6 +338,21 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
 
   switch ($route->getRouteName()) {
 
+    // Preprocess search page title.
+    case "view.search.search_page":
+      // Modify title if a search query is present.
+      $query = $request->get('query');
+      if (isset($query)) {
+        $variables['title'] = t('Search results');
+      }
+      // Add a subtitle to indicate the current page selected from the pager.
+      $page = $request->get('page');
+      if (isset($page) && $page > 0) {
+        $page = ++$page;
+        $variables['title_subtitle'] = t('page :page', [':page' => $page]);
+      }
+      break;
+
     // Preprocess news listing page title.
     case "nidirect_news.news_listing":
       // Add a subtitle to indicate the current page selected from the pager.
