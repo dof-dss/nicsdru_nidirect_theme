@@ -389,8 +389,7 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
 
     // Preprocess GP practice search page title.
     case "nidirect_gp.gp_search":
-      // Add a subtitle to indicate showing results and the current page
-      // selected from the pager.
+      // Add a subtitle to indicate the current page selected from the pager.
       $page = $request->get('page');
       if (!empty($search_query) && !empty($page)) {
         $page = ++$page;
