@@ -338,11 +338,26 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
 
   switch ($route->getRouteName()) {
 
+    // Preprocess search page title.
+    case "view.search.search_page":
+      // Modify title if a search query is present.
+      $query = $request->get('query');
+      if (!empty($query)) {
+        $variables['title'] = t('Search results');
+      }
+      // Add a subtitle to indicate the current page selected from the pager.
+      $page = $request->get('page');
+      if (!empty($page) && $page > 0) {
+        $page = ++$page;
+        $variables['title_subtitle'] = t('page :page', [':page' => $page]);
+      }
+      break;
+
     // Preprocess news listing page title.
     case "nidirect_news.news_listing":
       // Add a subtitle to indicate the current page selected from the pager.
       $page = $request->get('page');
-      if (isset($page) && $page > 0) {
+      if (!empty($page) && $page > 0) {
         $page = ++$page;
         $variables['title_subtitle'] = t('page :page', [':page' => $page]);
       }
@@ -354,10 +369,10 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
       // selected from the pager.
       $page = $request->get('page');
       $search_query = $request->get('query_health_az');
-      if (isset($search_query) && !isset($page)) {
+      if (!empty($search_query) && empty($page)) {
         $variables['title_subtitle'] = t('search results');
       }
-      elseif (isset($search_query) && isset($page)) {
+      elseif (!empty($search_query) && !empty($page)) {
         $page = ++$page;
         $variables['title_subtitle'] = t('search results page :page', [':page' => $page]);
       }
@@ -367,7 +382,7 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
     case "nidirect_health_conditions.letter":
       // Add a subtitle to indicate letter chosen from the A to Z.
       $letter = $route->getParameter('letter');
-      if (isset($letter)) {
+      if (!empty($letter)) {
         $variables['title_subtitle'] = t('conditions under :letter', [':letter' => strtoupper($letter)]);
       }
       break;
