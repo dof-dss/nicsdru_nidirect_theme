@@ -391,7 +391,7 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
     case "nidirect_gp.gp_search":
       // Add a subtitle to indicate the current page selected from the pager.
       $page = $request->get('page');
-      if (!empty($search_query) && !empty($page)) {
+      if (!empty($page)) {
         $page = ++$page;
         $variables['title_subtitle'] = t('page :page', [':page' => $page]);
       }
