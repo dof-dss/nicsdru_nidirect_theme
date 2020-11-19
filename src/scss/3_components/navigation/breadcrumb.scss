@@ -48,17 +48,7 @@
   }
 
   a {
-    color: color(brand-primary-medium);
+    @include link-state-style($link-body-no-visited);
     margin-right: 5px;
-    text-decoration: underline;
-
-    &:hover {
-      text-decoration: none;
-    }
-
-    &:focus {
-      color: #fff;
-      text-decoration: none;
-    }
   }
 }

@@ -279,26 +279,6 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
  * Implements hook_preprocess_block().
  */
 function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
-  $route = \Drupal::routeMatch();
-
-  // Fine grained control over the title of the contacts page.
-  if ($variables['plugin_id'] === 'page_title_block') {
-    if ($route->getRouteName() === 'nidirect_contacts.default') {
-      // Is there a text search string?
-      $search_string = \Drupal::request()->get('query_contacts_az');
-      if (!empty($search_string)) {
-        $variables['content']['#title'] = t('Contacts search');
-      }
-      else {
-        $variables['content']['#title'] = t('Contacts');
-      }
-    }
-    elseif ($route->getRouteName() === 'nidirect_contacts.letter') {
-      // A letter has been selected from the A-Z.
-      $letter = $route->getParameter('letter');
-      $variables['content']['#title'] = t('Contacts - under :letter', [':letter' => strtoupper($letter)]);
-    }
-  }
 
   // If a card has multiple links, toggle the display of those
   // links when the card is clicked.
@@ -338,13 +318,48 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
 
   switch ($route->getRouteName()) {
 
+    // Preprocess search page title.
+    case "view.search.search_page":
+      // Modify title if a search query is present.
+      $query = $request->get('query');
+      if (!empty($query)) {
+        $variables['title'] = t('Search results');
+      }
+      // Add a subtitle to indicate the current page selected from the pager.
+      $page = $request->get('page');
+      if (!empty($page) && $page > 0) {
+        $page = ++$page;
+        $variables['title_subtitle'] = t('page :page', [':page' => $page]);
+      }
+      break;
+
     // Preprocess news listing page title.
     case "nidirect_news.news_listing":
       // Add a subtitle to indicate the current page selected from the pager.
       $page = $request->get('page');
-      if (isset($page) && $page > 0) {
+      if (!empty($page) && $page > 0) {
         $page = ++$page;
         $variables['title_subtitle'] = t('page :page', [':page' => $page]);
+      }
+      break;
+
+    // Preprocess contacts search page title.
+    case "nidirect_contacts.default":
+      // Add a subtitle to indicate the current page selected from the pager.
+      $page = $request->get('page');
+      if (!empty($page)) {
+        $page = ++$page;
+        $variables['title_subtitle'] = t('page :page', [':page' => $page]);
+      }
+      break;
+
+    // Preprocess contacts A to Z page title.
+    case "nidirect_contacts.letter":
+      // Add a subtitle to indicate letter chosen from the A to Z.
+      $letter = $route->getParameter('letter');
+      if (!empty($letter)) {
+        $variables['title'] = 'Contacts';
+        $variables['title_subtitle'] = t('under :letter', [':letter' => strtoupper($letter)]);
       }
       break;
 
@@ -354,10 +369,10 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
       // selected from the pager.
       $page = $request->get('page');
       $search_query = $request->get('query_health_az');
-      if (isset($search_query) && !isset($page)) {
+      if (!empty($search_query) && empty($page)) {
         $variables['title_subtitle'] = t('search results');
       }
-      elseif (isset($search_query) && isset($page)) {
+      if (!empty($search_query) && !empty($page)) {
         $page = ++$page;
         $variables['title_subtitle'] = t('search results page :page', [':page' => $page]);
       }
@@ -367,11 +382,37 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
     case "nidirect_health_conditions.letter":
       // Add a subtitle to indicate letter chosen from the A to Z.
       $letter = $route->getParameter('letter');
-      if (isset($letter)) {
+      if (!empty($letter)) {
         $variables['title_subtitle'] = t('conditions under :letter', [':letter' => strtoupper($letter)]);
       }
       break;
 
+    // Preprocess GP practice search page title.
+    case "nidirect_gp.gp_search":
+      // Add a subtitle to indicate the current page selected from the pager.
+      $page = $request->get('page');
+      if (!empty($page)) {
+        $page = ++$page;
+        $variables['title_subtitle'] = t('page :page', [':page' => $page]);
+      }
+      break;
+
+    // Preprocess driving instructor search page title.
+    case "view.driving_instructors.driving_instructor_results":
+      // Add a subtitle to indicate showing results and the current page
+      // selected from the pager.
+      $page = $request->get('page');
+      $search_query = $request->get('search_api_fulltext');
+      if (!empty($search_query) && empty($page)) {
+        $variables['title'] = t('Approved driving or motorcycle instructors');
+        $variables['title_subtitle'] = t('search results');
+      }
+      elseif (!empty($search_query) && !empty($page)) {
+        $page = ++$page;
+        $variables['title'] = t('Approved driving or motorcycle instructors');
+        $variables['title_subtitle'] = t('search results page :page', [':page' => $page]);
+      }
+      break;
   }
 }
 
@@ -465,6 +506,10 @@ function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
     if ($route == "nidirect_contacts.letter") {
       $variables['exposed'] = NULL;
     }
+  }
+  if ($variables['id'] === 'popular_content' && $variables['display_id'] === 'pop_by_term') {
+    $variables['attributes']['class'][] = 'sub-menu';
+    $variables['attributes']['class'][] = 'sub-menu--popular';
   }
 }
 

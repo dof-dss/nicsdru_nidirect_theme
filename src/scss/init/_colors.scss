@@ -16,6 +16,7 @@ $chroma: define-default-color-scheme('branding', 'The site\'s main colors. Can b
 
 $chroma: add-colors((
   black:                  #000,
+  offblack:               #1c1c1c,
   charcoal:               #333,
   ash-grey:               #666,
   'grey':                 #949494, // replaces #999 for 3:1 contrast with white
@@ -55,15 +56,15 @@ $chroma: add-colors((
 $chroma: define-color-scheme('functional', 'Colors used by functional parts of the design.');
 $chroma: add-colors('functional', (
   // Colors used in the main content area.
-  text:                   'charcoal',
+  text:                   'offblack',
   headings:               #19315a,
   meta:                   'grey-dark',
 
   link:                   #0e6bb3,
   link-visited:           #5e60b5,
   link-hover:             'link',
-  link-active:            'link',
-  link-focus:             #fff,
+  link-active:            'hc-red',
+  link-focus:             'link',
 
   border:                 'grey-light',
 
@@ -121,10 +122,11 @@ $headings: color(headings);
 $meta: color('grey-dark');
 
 $link: color(link);
-$link-hover: color(link-hover);
 $link-visited: color(link-visited);
-$link-active: color(link-active);
 $link-focus: color(link-focus);
+$link-hover: color(link-hover);
+$link-active: color(link-active);
+
 
 $border: color('border');
 
