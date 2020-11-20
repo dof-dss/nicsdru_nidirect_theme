@@ -296,6 +296,7 @@ function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
   }
 
   // Set the title for 'Most popular by term' block.
+  $route = \Drupal::routeMatch();
   if ($variables['plugin_id'] === 'views_block:popular_content-pop_by_term' && $route->getRouteName() === 'entity.taxonomy_term.canonical') {
     $variables['label'] = t('Popular in @term', ['@term' => strtolower($route->getParameter('taxonomy_term')->label())]);
   }
