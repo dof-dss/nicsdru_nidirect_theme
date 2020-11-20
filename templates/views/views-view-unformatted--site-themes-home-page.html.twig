@@ -21,9 +21,9 @@
 {% for row in rows %}
   {%
     set row_classes = [
-    'card',
-    default_row_class ? 'views-row',
-  ]
+      'card',
+      default_row_class ? 'views-row',
+    ]
   %}
   <article{{ row.attributes.addClass(row_classes) }}>
     <a class="card__link" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': row.content['#row'].tid}) }}" hreflang="en">
