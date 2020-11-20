@@ -78,6 +78,14 @@ button.link {
     @include btn--block;
   }
 
+  &--link {
+    @include btn--link;
+
+    &-inline {
+      @include btn--link-inline;
+    }
+  }
+
   &--primary {
     @include btn-color($btn-primary);
   }
