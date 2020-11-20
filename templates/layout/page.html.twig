@@ -76,7 +76,7 @@
   {% else %}
     {{- page.content -}}
   {% endif %}
-  {%- if page.sidebar_second -%}
+  {%- if page.sidebar_second|stripped_length -%}
     <aside{{ sidebar_second_attr }}>
       {{- page.sidebar_second -}}
     </aside>
