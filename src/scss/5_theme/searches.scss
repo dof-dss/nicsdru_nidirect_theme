@@ -32,10 +32,10 @@
   h2:first-of-type,
   .view--count {
     @include responsive-typo-map($xl-text);
-    margin: 2.4rem 0 0;
+    margin: 2.4rem 0 1.2rem;
 
     @include breakpoint($tab) {
-      margin: 4.2rem 0 0;
+      margin: 4.2rem 0 1.8rem;
     }
 
     .subtitle {
@@ -100,11 +100,10 @@ form#views-exposed-form-gp-practices-find-a-gp {
       'by-location bylocation'
       'search-input search-submit';
 
-    // Larger screens - everything on one row.
+    // Larger screens - everything on one flex row.
     @include breakpoint($phab) {
-      grid-template-columns: auto auto auto;
-      grid-template-areas:
-        'by-location search-input search-submit';
+      display: flex;
+      align-items: flex-end;
     }
 
     > div {
