@@ -61,7 +61,7 @@
   padding: .8rem 1.2rem;
   border: 1px solid transparent;
   text-align: center;
-  text-decoration: none !important; // When applied to links, no underlines ever.
+  text-decoration: none !important;
   background-repeat: no-repeat;
   background-position-y: center;
 
@@ -135,6 +135,21 @@
   background-position: 12px center;
   background-size: 12px auto;
 }
+
+@mixin btn--link {
+  background-color: transparent;
+  border: 0;
+  color: $link;
+}
+
+@mixin btn--link-inline {
+  @include link-state-style($link-body-no-visited);
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+
 
 // The disabled variation should always go last, so that it overrides any
 // other variations.
