@@ -26,6 +26,10 @@
     ]
   %}
   <article{{ row.attributes.addClass(row_classes) }}>
-    {{- row.content -}}
+    <a class="card__link" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': row.content['#row'].tid}) }}" hreflang="en">
+      <div class="card__content">
+        {{- row.content -}}
+      </div>
+    </a>
   </article>
 {% endfor %}
