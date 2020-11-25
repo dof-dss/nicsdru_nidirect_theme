@@ -55,7 +55,6 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
   $layout_classes_main_side = ['grid', 'layout--main-n-side'];
   $layout_classes_side_main = ['grid', 'layout--side-n-main'];
 
-
   // Process node pages.
   if (!empty($variables['node'])) {
     $node = $variables['node'];
@@ -137,7 +136,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       }
       break;
 
-    // nidirect_news.news_listing
+    // News landing page.
     case 'nidirect_news.news_listing':
       $variables['main_content_attr']->addClass($layout_classes_main);
       if ($variables['content_wrapper_attr'] instanceof Attribute) {
