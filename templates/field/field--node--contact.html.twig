@@ -47,24 +47,26 @@
 %}
 {%
   set attribute_classes = [
+  'vcard__item',
   field_type == 'telephone' ? 'tel',
+  field_type == 'telephone_plus_field' ? 'tel',
   field_type == 'email' ? 'email',
 ]
 %}
 {%
   set item_classes = [
-  field_type == 'telephone' ? 'value',
+  field_type == 'telephone' or field_type == 'telephone_plus_field' ? 'value',
   field_type == 'email' ? 'value',
   field_type == 'link' ? 'url fn',
 ]
 %}
 {% if label_hidden %}
   {% if multiple %}
-    <div{{ attributes }}>
-      {% for item in items %}
+    {% for item in items %}
+      <div{{ attributes.addClass(attribute_classes) }}>
         {{ item.content }}
-      {% endfor %}
-    </div>
+      </div>
+    {% endfor %}
   {% else %}
     {% for item in items %}
       {{ item.content }}
@@ -73,9 +75,15 @@
 {% else %}
   {% if label_display == 'inline' %}
     <div{{ attributes.addClass(attribute_classes) }}>
-      <span{{ title_attributes.addClass(title_classes) }}>{{ label }}: </span>
+      <span{{ title_attributes.addClass(title_classes) }}>{{ label }}</span>
       {% for item in items %}
-        <span{{ item.attributes.addClass(item_classes) }}>{{ item.content }}</span>
+        <span{{ item.attributes.addClass(item_classes) }}>
+        {% if field_type == 'email' %}
+          <a href="mailto:{{ item.content }}">{{ item.content }}</a>
+        {% else %}
+          {{ item.content }}
+        {% endif %}
+        </span>
       {% endfor %}
     </div>
   {% else %}
