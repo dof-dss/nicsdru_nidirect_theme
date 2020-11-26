@@ -12,6 +12,21 @@ use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
 use Drupal\Component\Utility\Html;
 
+
+public class LayoutClasses {
+  // Common CSS class groups for layouts.
+
+  // Layout classes for pages with a main and no aside.
+  const main = ['grid', 'layout--main'];
+
+  // Layout classes for pages with a main and no aside where main has a limited width.
+  const main_limited = ['grid', 'layout--main-limited'];
+
+  // Layout classes for pages with a main and an aside.
+  const main_side = ['grid', 'layout--main-n-side'];
+  const side_main = ['grid', 'layout--side-n-main'];
+}
+
 /**
  * Implements hook_page_attachments_alter().
  */
@@ -44,17 +59,6 @@ function nicsdru_nidirect_theme_preprocess_html(array &$variables) {
  * Implements hook_preprocess_page().
  */
 function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
-
-  // Layout classes for pages with a main and no aside.
-  $layout_classes_main = ['grid', 'layout--main'];
-
-  // Layout classes for pages with a main and no aside where main has a limited width.
-  $layout_classes_main_limited = ['grid', 'layout--main-limited'];
-
-  // Layout classes for pages with a main and an aside.
-  $layout_classes_main_side = ['grid', 'layout--main-n-side'];
-  $layout_classes_side_main = ['grid', 'layout--side-n-main'];
-
   // Process node pages.
   if (!empty($variables['node'])) {
     $node = $variables['node'];
@@ -66,7 +70,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         case "health_condition":
         case "news":
         case "page":
-          $variables['main_content_attr']->addClass($layout_classes_main_side);
+          $variables['main_content_attr']->addClass(LayoutClasses::main_side);
           $variables['sidebar_second_attr']->addClass('ga-aside');
           break;
 
@@ -74,12 +78,12 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         case "publication":
         case "embargoed_publication":
         case "landing_page":
-          $variables['main_content_attr']->addClass($layout_classes_main);
+          $variables['main_content_attr']->addClass(LayoutClasses::main);
           break;
 
         // All the rest have a main with a limited width (includes contact and gp_practice).
         default:
-          $variables['main_content_attr']->addClass($layout_classes_main_limited);
+          $variables['main_content_attr']->addClass(LayoutClasses::main_limited);
           break;
       }
     }
@@ -90,7 +94,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
   if (isset($viewpage)) {
     switch ($viewpage) {
       case "health_conditions":
-        $variables['main_content_attr']->addClass($layout_classes_side_main);
+        $variables['main_content_attr']->addClass(LayoutClasses::side_main);
         if ($variables['content_wrapper_attr'] instanceof Attribute) {
           $variables['content_wrapper_attr']
             ->addClass('ga-main')
@@ -103,7 +107,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         break;
 
       case "publications":
-        $variables['main_content_attr']->addClass($layout_classes_side_main);
+        $variables['main_content_attr']->addClass(LayoutClasses::side_main);
         $variables['sidebar_first_attr']
           ->addClass('ga-aside')
           ->setAttribute('role', 'search')
@@ -111,7 +115,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         break;
 
       case "search":
-        $variables['main_content_attr']->addClass($layout_classes_main_limited);
+        $variables['main_content_attr']->addClass(LayoutClasses::main_limited);
         if ($variables['content_wrapper_attr'] instanceof Attribute) {
           $variables['content_wrapper_attr']
             ->addClass(['ga-main', 'search-content'])
@@ -128,7 +132,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
     // Contacts page uses multiple routes defined in nidirect_contacts module.
     case 'nidirect_contacts.default':
     case 'nidirect_contacts.letter':
-      $variables['main_content_attr']->addClass($layout_classes_main_limited);
+      $variables['main_content_attr']->addClass(LayoutClasses::main_limited);
       if ($variables['content_wrapper_attr'] instanceof Attribute) {
         $variables['content_wrapper_attr']
           ->addClass(['ga-main', 'list-content'])
@@ -138,7 +142,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
 
     // News landing page.
     case 'nidirect_news.news_listing':
-      $variables['main_content_attr']->addClass($layout_classes_main);
+      $variables['main_content_attr']->addClass(LayoutClasses::main);
       if ($variables['content_wrapper_attr'] instanceof Attribute) {
         $variables['content_wrapper_attr']
           ->addClass(['ga-main', 'list-content'])
@@ -163,7 +167,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
 
     // Webforms.
     case 'entity.webform.canonical':
-      $variables['main_content_attr']->addClass($layout_classes_main_limited);
+      $variables['main_content_attr']->addClass(LayoutClasses::main_limited);
       if ($variables['content_wrapper_attr'] instanceof Attribute) {
         $variables['content_wrapper_attr']
           ->addClass(['ga-main', 'form-content'])
@@ -245,7 +249,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         case "health_condition":
         case "news":
         case "page":
-          $variables['main_content_attr']->addClass($layout_classes_main_side);
+          $variables['main_content_attr']->addClass(LayoutClasses::main_side);
           $variables['sidebar_second_attr']->addClass('ga-aside');
           break;
 
@@ -253,12 +257,12 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         case "publication":
         case "embargoed_publication":
         case "landing_page":
-          $variables['main_content_attr']->addClass($layout_classes_main);
+          $variables['main_content_attr']->addClass(LayoutClasses::main);
           break;
 
         // All the rest have a main with a limited width (includes contact and gp_practice).
         default:
-          $variables['main_content_attr']->addClass($layout_classes_main_limited);
+          $variables['main_content_attr']->addClass(LayoutClasses::main_limited);
           break;
       }
 
@@ -267,7 +271,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
     // Health conditions A to Z letter page
     // (see nidirect_health_conditions module).
     case 'nidirect_health_conditions.letter':
-      $variables['main_content_attr']->addClass($layout_classes_side_main);
+      $variables['main_content_attr']->addClass(LayoutClasses::side_main);
       if ($variables['content_wrapper_attr'] instanceof Attribute) {
         $variables['content_wrapper_attr']
           ->addClass(['ga-main', 'search-content'])
