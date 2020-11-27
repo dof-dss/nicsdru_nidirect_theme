@@ -10,22 +10,22 @@ use Drupal\block\Entity\Block;
  * @package Drupal\nicsdru_nidirect_theme
  */
 class Helpers {
+
   /**
    * Loads and returns block content.
    *
-   * @param $block_id
-   *  machine name of the block to load.
+   * @param string $block_id
+   *   Machine name of the block content to fetch.
    *
    * @return array|null
-   *  Block render array or null if block not found.
+   *   Block render array or null if block not found.
    */
-  public static function BlockContent($block_id) {
+  public static function blockContent($block_id) {
     $block = Block::load($block_id);
-    if ($block !== null) {
+    if ($block !== NULL) {
       return \Drupal::entityTypeManager()->getViewBuilder('block')->view($block);
     }
-    return null;
+    return NULL;
   }
-
 
 }

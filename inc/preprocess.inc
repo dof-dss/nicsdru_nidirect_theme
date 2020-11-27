@@ -164,23 +164,23 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         case 'landing_page':
         case 'page':
           // Render Related Content block.
-          $variables['page']['sidebar_second'][] = Helpers::BlockContent('views_block__related_content_content_by_theme');
+          $variables['page']['sidebar_second'][] = Helpers::blockContent('views_block__related_content_content_by_theme');
           break;
 
         case 'news':
           // Render Latest news block.
-          $variables['page']['sidebar_second'][] = Helpers::BlockContent('views_block__news_latest_news_block');
+          $variables['page']['sidebar_second'][] = Helpers::blockContent('views_block__news_latest_news_block');
           break;
 
         case 'health_condition':
           // Render Health Conditions search block.
-          $variables['page']['sidebar_second'][] = Helpers::BlockContent('exposedformhealth_conditionssearch_sidebar_2');
+          $variables['page']['sidebar_second'][] = Helpers::blockContent('exposedformhealth_conditionssearch_sidebar_2');
 
           // Render Health Conditions AtoZ block.
-          $variables['page']['sidebar_second'][] = Helpers::BlockContent('healthconditionsatoz_sidebar_2');
+          $variables['page']['sidebar_second'][] = Helpers::blockContent('healthconditionsatoz_sidebar_2');
 
           // Render Health Conditions Related block.
-          $variables['page']['sidebar_second'][] = Helpers::BlockContent('healthconditionsrelatedconditions');
+          $variables['page']['sidebar_second'][] = Helpers::blockContent('healthconditionsrelatedconditions');
           break;
 
         default:
@@ -202,7 +202,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         'gp_practice',
       ])) {
         // Render Social Links block.
-        $variables['page']['bottom_banner'][] = Helpers::BlockContent('originssocialsharing');
+        $variables['page']['bottom_banner'][] = Helpers::blockContent('originssocialsharing');
       }
 
       // Add classes to main and sidebar regions to listed node types.
