@@ -9,6 +9,7 @@ This repository contains code for nidirect Drupal 8 site theme.
 - [What's included](#whats-included)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Using the NPM scripts](#using-the-npm-scripts)
+- [Theme hooks](#theme-hooks)
 - [Sub-theming](#sub-theming)
 - [Documentation](#documentation)
 
@@ -36,6 +37,7 @@ nicsdru_origins_theme/
 └── config/
 └── css/
 └── docs/
+└── inc/
 └── js/
 └── src/
 │   ├── images/

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Theme hook_preprocess functions.
+ */
+
 use Drupal\block\Entity\Block;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Markup;
@@ -500,7 +505,6 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
     $variables['body_summary'] = $variables['element']['#object']->body->summary;
   }
 }
-
 
 /**
  * Implements hook_preprocess_views_view().

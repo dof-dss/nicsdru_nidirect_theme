@@ -1,9 +1,14 @@
 <?php
 
+/**
+ * @file
+ * Theme hook_alter functions.
+ */
+
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Implements hook_page_attachmentsldc_alter().
+ * Implements hook_page_attachments_alter().
  */
 function nicsdru_nidirect_theme_page_attachments_alter(array &$page) {
 
@@ -14,8 +19,6 @@ function nicsdru_nidirect_theme_page_attachments_alter(array &$page) {
     $page['#attached']['library'][] = 'nicsdru_nidirect_theme/authenticated-styles';
   }
 }
-
-
 
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
