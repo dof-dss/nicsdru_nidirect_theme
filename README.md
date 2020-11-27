@@ -81,7 +81,10 @@ There are currently hook files for:
 - process
 - theme
 
-## Helpers
+## Utility classes
+
+The src/LayoutClasses.php class provides static constants for commonly used
+CSS class groups.
 
 The src/Helpers.php class includes commonly reused or helpful functions.
 The 'blockContent' method will load a block and return the viewBuilder render
