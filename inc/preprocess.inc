@@ -1,11 +1,12 @@
 <?php
 
+namespace Drupal\nicsdru_nidirect_theme;
+
 /**
  * @file
  * Theme hook_preprocess functions.
  */
 
-use Drupal\block\Entity\Block;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Markup;
 use Drupal\Component\Utility\Html;
@@ -163,33 +164,23 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         case 'landing_page':
         case 'page':
           // Render Related Content block.
-          $related_block = Block::load('views_block__related_content_content_by_theme');
-          $related_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($related_block);
-          $variables['page']['sidebar_second'][] = $related_block_content;
+          $variables['page']['sidebar_second'][] = Helpers::BlockContent('views_block__related_content_content_by_theme');
           break;
 
         case 'news':
           // Render Latest news block.
-          $news_block = Block::load('views_block__news_latest_news_block');
-          $news_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($news_block);
-          $variables['page']['sidebar_second'][] = $news_block_content;
+          $variables['page']['sidebar_second'][] = Helpers::BlockContent('views_block__news_latest_news_block');
           break;
 
         case 'health_condition':
           // Render Health Conditions search block.
-          $health_condition_search_block = Block::load('exposedformhealth_conditionssearch_sidebar_2');
-          $health_condition_search_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($health_condition_search_block);
-          $variables['page']['sidebar_second'][] = $health_condition_search_block_content;
+          $variables['page']['sidebar_second'][] = Helpers::BlockContent('exposedformhealth_conditionssearch_sidebar_2');
 
           // Render Health Conditions AtoZ block.
-          $health_conditions_a2z_block = Block::load('healthconditionsatoz_sidebar_2');
-          $health_conditions_a2z_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($health_conditions_a2z_block);
-          $variables['page']['sidebar_second'][] = $health_conditions_a2z_block_content;
+          $variables['page']['sidebar_second'][] = Helpers::BlockContent('healthconditionsatoz_sidebar_2');
 
           // Render Health Conditions Related block.
-          $health_conditions_related_block = Block::load('healthconditionsrelatedconditions');
-          $health_conditions_related_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($health_conditions_related_block);
-          $variables['page']['sidebar_second'][] = $health_conditions_related_block_content;
+          $variables['page']['sidebar_second'][] = Helpers::BlockContent('healthconditionsrelatedconditions');
           break;
 
         default:
@@ -211,9 +202,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         'gp_practice',
       ])) {
         // Render Social Links block.
-        $social_block = Block::load('originssocialsharing');
-        $social_block_content = \Drupal::entityTypeManager()->getViewBuilder('block')->view($social_block);
-        $variables['page']['bottom_banner'][] = $social_block_content;
+        $variables['page']['bottom_banner'][] = Helpers::BlockContent('originssocialsharing');
       }
 
       // Add classes to main and sidebar regions to listed node types.
