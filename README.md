@@ -10,6 +10,7 @@ This repository contains code for nidirect Drupal 8 site theme.
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Using the NPM scripts](#using-the-npm-scripts)
 - [Theme hooks](#theme-hooks)
+- [Helpers](#helpers)
 - [Sub-theming](#sub-theming)
 - [Documentation](#documentation)
 
@@ -79,6 +80,13 @@ There are currently hook files for:
 - preprocess
 - process
 - theme
+
+## Helpers
+
+The src/Helpers.php class includes commonly reused or helpful functions.
+The 'blockContent' method will load a block and return the viewBuilder render
+array.
+
 
 ## Documentation
 

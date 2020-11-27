@@ -1,16 +1,15 @@
 <?php
 
-namespace Drupal\nicsdru_nidirect_theme;
-
 /**
  * @file
  * Theme hook_preprocess functions.
  */
 
+namespace Drupal\nicsdru_nidirect_theme;
+
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Markup;
 use Drupal\Component\Utility\Html;
-use Drupal\nicsdru_nidirect_theme\LayoutClasses;
 
 /**
  * Implements hook_preprocess_html().
