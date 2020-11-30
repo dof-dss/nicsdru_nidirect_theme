@@ -7,7 +7,7 @@ namespace Drupal\nicsdru_nidirect_theme;
  */
 class LayoutClasses {
   // Layout classes for pages with a main and no aside.
-  const GRID_MAIN = ['grid', 'layout--main'];
+  const MAIN = ['grid', 'layout--main'];
 
   // Layout classes for pages with a main and no aside where main has a
   // limited width.
