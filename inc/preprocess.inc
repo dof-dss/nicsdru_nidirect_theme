@@ -157,6 +157,10 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       $node_type = $node_preview->getType();
 
       switch ($node_type) {
+        case 'news':
+          // Render Latest news block.
+          $variables['page']['sidebar_second'][] = Helpers::blockContent('views_block__news_latest_news_block');
+
         case 'article':
         case 'news':
         case 'application':
@@ -164,11 +168,6 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         case 'page':
           // Render Related Content block.
           $variables['page']['sidebar_second'][] = Helpers::blockContent('views_block__related_content_content_by_theme');
-          break;
-
-        case 'news':
-          // Render Latest news block.
-          $variables['page']['sidebar_second'][] = Helpers::blockContent('views_block__news_latest_news_block');
           break;
 
         case 'health_condition':
