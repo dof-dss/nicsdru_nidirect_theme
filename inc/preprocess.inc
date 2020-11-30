@@ -269,7 +269,6 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
     case "gp_practice":
     case "health_condition":
     case "news":
-    case "page":
     case "publication":
     case "embargoed_publication":
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('ga-main');
