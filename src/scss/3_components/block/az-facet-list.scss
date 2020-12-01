@@ -13,9 +13,9 @@
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  margin: 0;
+  margin: .5em 0;
   padding: 1px 0 0 1px;
-  //overflow: hidden;
+  max-width: 60rem;
 
   li {
     font-size: 0; // Safari inline-block white space fix

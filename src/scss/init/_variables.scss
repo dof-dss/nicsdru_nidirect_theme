@@ -126,10 +126,10 @@ $link-article-text: (
   ),
   text-decoration: none,
   box-shadow: (
-    default: '0 .5556px 0 0 #{$link}',
+    default: '0 1px 0 0 #{$link}',
     focus: '0 0 0 3px #{$link}',
     hover: '0 2px 0 0 #{$charcoal}',
-    active: '0 .5556px 0 0 #{$link-active}',
+    active: '0 1px 0 0 #{$link-active}',
   ),
   outline: 0
 );
@@ -232,10 +232,10 @@ $link-body-no-visited: (
   ),
   text-decoration: none,
   box-shadow: (
-    default: '0 .5556px 0 0 #{$link}',
+    default: '0 1px 0 0 #{$link}',
     focus: '0 0 0 3px #{$link}',
     hover: '0 2px 0 0 #{$charcoal}',
-    active: '0 .5556px 0 0 #{$link-active}',
+    active: '0 1px 0 0 #{$link-active}',
   ),
   outline: 0
 );
