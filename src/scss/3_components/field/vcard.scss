@@ -8,7 +8,6 @@
 
   &__item {
     display: flex;
-    flex-flow: row wrap;
     align-items: baseline;
     margin: 0 0 .25em;
 
@@ -34,7 +33,7 @@
     .supplementary {
       @include adjust-font-size-to(14px);
       order: 3;
-      flex: 1 0 50%;
+      flex: 1 0 75%;
       color: $ash-grey;
 
       @include breakpoint($tab) {
