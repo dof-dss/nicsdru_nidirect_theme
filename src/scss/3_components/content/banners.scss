@@ -1,0 +1,26 @@
+/*
+ * @file
+ * Provides the layout styles for content output from field_photo for any entity.
+ */
+@import '../../init';
+
+.banner {
+
+  @include rhythm-margins(2, 4);
+
+  @include breakpoint($phab, $no-query: true) {
+    @include rhythm-margins(3.5, 4);
+  }
+
+  @include breakpoint($tab, $no-query: true) {
+    @include rhythm-margins(3.5, 6);
+  }
+
+  @include breakpoint($lap, $no-query: true) {
+    @include rhythm-margins(4.5, 7.5);
+  }
+
+  &--thin {
+    margin-bottom: 0;
+  }
+}
