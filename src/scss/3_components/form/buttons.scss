@@ -25,7 +25,7 @@
   @include btn--large;
   @include btn-color($btn-action);
   position: relative;
-  padding-right: 3.9rem;
+  padding-right: 3.9rem !important;
 
   @at-root a#{&} {
     text-align: left;
@@ -66,8 +66,24 @@ button.link {
     @include btn--large;
   }
 
+  &--right {
+    @include btn--right;
+  }
+
+  &--left {
+    @include btn--left;
+  }
+
   &--block {
     @include btn--block;
+  }
+
+  &--link {
+    @include btn--link;
+
+    &-inline {
+      @include btn--link-inline;
+    }
   }
 
   &--primary {
@@ -93,12 +109,9 @@ button.link {
   .dropbutton-widget & {
     color: $charcoal;
   }
+}
 
-  // Deprecated call-to-action style - use "btn btn--large btn--action btn-right" instead.
-  &.call-to-action {
-    @include btn--large;
-    @include btn--right;
-    @include btn-color($btn-action);
-    padding-right: 3.9rem;
-  }
+.facet--btn {
+  // Overrides to facet button styles coming from nicsdru_origins_theme.
+  @include link-state-style($link-facet-btn);
 }

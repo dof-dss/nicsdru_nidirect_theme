@@ -99,14 +99,10 @@
     }
 
     a {
+      @include link-state-style($link-accordion-heading);
       display: inline-block;
       max-width: calc(100% - 6rem);
-      text-decoration: underline;
-      padding: .3rem 0 .7rem;
-
-      &:focus {
-        border: 0;
-      }
+      margin: .3rem 0 .7rem;
 
       & + button {
         position: absolute;

@@ -62,7 +62,7 @@ jobs:
       - run:
           name: Fetch phpcs and dependencies
           command: |
-            composer require drupal/coder --prefer-stable --no-interaction --optimize-autoloader
+            composer require drupal/coder:^8.3 --prefer-stable --prefer-dist
       - save_cache:
           key: composer-{{ checksum "composer.lock" }}
           paths:

@@ -41,14 +41,18 @@
     font-size: inherit;
     line-height: inherit;
     text-align: left;
-    text-decoration: underline !important;
+    text-decoration: underline;
+    text-underline-position: under;
 
     @include breakpoint($tab) {
       padding: .5em 20px;
     }
 
-    &:focus {
-      outline: 3px solid #000;
+    &:focus,
+    &:hover {
+      outline: 3px solid color(brand-secondary);
+      outline-offset: -1px;
+      text-decoration: none;
     }
   }
 }

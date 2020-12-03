@@ -66,3 +66,306 @@ $indent-amount: 1.8rem;
 // The first child will typically be the site branding wrapper, additional items (typically just the main search form)
 // can be controlled with this variable which only becomes applicable @breakpoint $tab (768px).
 $header-template-columns: auto 400px !default;
+
+// Map out CSS properties for link states (:visited, :focus, :hover, :active) for different types of link.
+// Maps defined here are passed to the @mixin link-state-styles (see init/links/_links.scss) like so:
+//
+// a {
+//   @include link-state-style($link-base);
+// }
+//
+// The main reason for mapping out link state styles in this way is to gather together all the link state styles used
+// across the site in a single place. This hopefully makes it easier to configure links styles to comply with
+// design requirements and with WCAG colour contrast and state indicator requirements.
+//
+
+$link-base: (
+  // Base styling for all links.
+  // Maps for specific types of links may want/need to override styles configured here.
+  color: (
+    default: $link,
+    visited: null, // Let browser set this.
+    focus: #fff,
+    hover: $link,
+    active: null // Let browser set this.
+  ),
+  background-color: (
+    default: transparent,
+    visited: null,
+    focus: $link,
+    hover: transparent,
+    active: null
+  ),
+  text-decoration: underline,
+  text-decoration-color: (
+    default: $link,
+    visited: null,
+    focus: null,
+    hover: color(headings),
+    active: $link-active
+  ),
+  box-shadow: (
+    default: none,
+    focus: '0 0 0 3px #{$link}',
+  ),
+  outline: 0
+);
+
+$link-article-text: (
+  // Base styling for all main body content type links.
+  color: (
+    default: $link,
+    visited: $link-visited,
+    focus: #fff,
+    hover: $link,
+    active: $link-active
+  ),
+  background-color: (
+    default: transparent,
+    focus: $link,
+  ),
+  text-decoration: none,
+  box-shadow: (
+    default: '0 1px 0 0 #{$link}',
+    focus: '0 0 0 3px #{$link}',
+    hover: '0 2px 0 0 #{$charcoal}',
+    active: '0 1px 0 0 #{$link-active}',
+  ),
+  outline: 0
+);
+
+$link-site-logo: (
+  color: transparent,
+  background-color: none,
+  text-decoration: none,
+  border: 0,
+  box-shadow: none,
+  outline: (
+    default: 0,
+    focus: '.3rem dashed #{$grey}'
+  ),
+  outline-offset: 1.2rem,
+  font-size: 0
+);
+
+$link-main-menu: (
+  color: '#fff',
+  background-color: (
+    default: transparent,
+    active: color(brand-primary-dark),
+  ),
+  text-decoration: none,
+  border: 0,
+  box-shadow: (
+    default: none,
+    active: 'inset 8px 0 0 0 #{color(brand-secondary)}'
+  ),
+  outline: (
+    default: 0,
+    visited: 0,
+    focus: '3px solid #fff',
+    hover: '3px solid #fff',
+  ),
+  outline-offset: -8px,
+  transition: 'outline-color .3s'
+);
+
+$link-main-menu-horizontal: (
+  box-shadow: (
+    active: 'inset 0 -7px 0 0 #{color(brand-secondary)}'
+  )
+);
+
+$link-main-menu-social: (
+  border: 0,
+  box-shadow: none,
+  outline: (
+    default: '0 solid transparent',
+    focus: '3px solid #fff',
+    hover: '3px solid #fff',
+    active: 0
+  ),
+  transition: 'outline-color .3s',
+  text-decoration: none
+);
+
+$link-footer: (
+  color: (
+    default: $link,
+    focus: #fff,
+    active: $link-active
+  ),
+  background-color: (
+    default: transparent,
+    focus: $charcoal,
+  ),
+  text-decoration: none,
+  text-decoration-color: (
+    default: $link,
+    visited: $link-visited,
+    hover: $brand-secondary,
+    active: $link-active
+  ),
+  border: 0,
+  box-shadow: none,
+  outline: (
+    default: 0,
+    focus: '3px solid #{$charcoal}',
+    hover: '3px solid #{$charcoal}',
+  ),
+  outline-offset: (
+    default: null,
+    focus: 0,
+    hover: 2px
+  )
+);
+
+$link-body-no-visited: (
+  color: (
+    default: $link,
+    focus: #fff,
+    active: $link-active
+  ),
+  background-color: (
+    default: transparent,
+    focus: $link,
+  ),
+  text-decoration: none,
+  box-shadow: (
+    default: '0 1px 0 0 #{$link}',
+    focus: '0 0 0 3px #{$link}',
+    hover: '0 2px 0 0 #{$charcoal}',
+    active: '0 1px 0 0 #{$link-active}',
+  ),
+  outline: 0
+);
+
+$link-sub-menu: (
+  color: (
+    default: $link,
+    visited: $link,
+    focus: #fff,
+    hover: #fff,
+    active: #fff
+  ),
+  background-color: (
+    default: null,
+    visited: null,
+    focus: $grey-dark,
+    hover: $grey-dark,
+    active: #000
+  ),
+  text-decoration: none,
+  border-bottom: 0,
+  box-shadow: none,
+  outline: (
+    default: null,
+    visited: null,
+    focus: '5px solid #{color(grey-dark)}',
+    hover: '5px solid #{color(grey-dark)}',
+    active: '5px solid #000'
+  ),
+  outline-offset: 0
+);
+
+$link-az-menu: (
+  color: (
+    default: $link,
+    hover: #fff,
+    active: $charcoal
+  ),
+  background-color: (
+    default: transparent,
+    hover:  color(brand-primary-dark),
+    active: color(brand-primary-light)
+  ),
+  text-decoration: 'none !important',
+  border-bottom: 0,
+  border: '1px solid #{$brand-primary-medium}',
+  box-shadow: 'none !important',
+  outline: (
+    default: '0 solid transparent',
+    focus: '4px solid #{$link}',
+  ),
+  outline-offset: -1px,
+  transition: 'background-color .25s, outline-color .25s',
+  z-index: (
+    default: 0,
+    focus: 1
+  ),
+  position: relative
+);
+
+$link-pager: (
+  color: (
+    default: $link,
+    hover: #fff,
+    active: $charcoal
+  ),
+  background-color: (
+    default: transparent,
+    hover: color(brand-primary-dark),
+    active: color(brand-primary-light)
+  ),
+  text-decoration: 'none !important',
+  border-bottom: 0,
+  border: '1px solid #{$brand-primary-medium} !important',
+  box-shadow: 'none !important',
+  outline: (
+    default: '0 solid transparent',
+    focus: '4px solid #{$link}',
+  ),
+  outline-offset: -1px,
+  transition: 'background-color .25s, outline-color .25s',
+  z-index: (
+    default: 0,
+    focus: 1,
+  ),
+  position: relative
+);
+
+$link-accordion-heading: (
+  // Accordion link headings are display block or inline-block. Link states changing the border thickness affect the
+  // the layout and make the headings jump. So we fake a bottom border with box-shadow instead.
+  border-bottom: 0,
+  box-shadow: (
+    default: '0 1px 0 0 #{$link}',
+    visited: null,
+    focus: '0 0 0 3px #{$link}',
+    hover: '0 2px 0 0 #{$brand-secondary}',
+    active: '0 2px 0 0 #{$link-active}'
+  ),
+  outline: 0,
+  text-decoration: 'none !important',
+);
+
+$link-skip: (
+  color: (
+    default: #fff
+  ),
+  background-color: (
+    default: $charcoal
+  ),
+  text-decoration: underline,
+  text-underline-position: under,
+  border: 0,
+  box-shadow: 'none !important',
+  outline: 0,
+  opacity: (
+    default: 0,
+    hover: 1,
+    focus: 1
+  ),
+  transition: 'opacity .25s'
+);
+
+$link-facet-btn: (
+  border-top: (
+    default: '2px solid #fff'
+  ),
+  border-bottom: (
+    default: '2px solid #fff'
+  ),
+  box-shadow: none,
+  text-decoration: none,
+);

@@ -9,6 +9,8 @@ This repository contains code for nidirect Drupal 8 site theme.
 - [What's included](#whats-included)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Using the NPM scripts](#using-the-npm-scripts)
+- [Theme hooks](#theme-hooks)
+- [Helpers](#helpers)
 - [Sub-theming](#sub-theming)
 - [Documentation](#documentation)
 
@@ -36,6 +38,7 @@ nicsdru_origins_theme/
 └── config/
 └── css/
 └── docs/
+└── inc/
 └── js/
 └── src/
 │   ├── images/
@@ -67,6 +70,26 @@ The `package.json` includes the following commands and tasks:
 | `npm run lint-scss`  | Will run all `.scss` files through [sass-lint](https://github.com/sasstools/sass-lint). The command can also accept a parameter to lint an individual file. To do this `npm run lint-scss -- scssfile:name-of-file` where `name-of-file` is the file you want to lint relative to the package.json for the project. |
 
 Run `npm run` to see all the npm scripts.
+
+## Theme hooks
+
+Common theme hooks such as hook_preprocess, hook_alter should not be added to
+the .theme file but to their respective include file under the /inc directory
+There are currently hook files for:
+- alter
+- preprocess
+- process
+- theme
+
+## Utility classes
+
+The src/LayoutClasses.php class provides static constants for commonly used
+CSS class groups.
+
+The src/Helpers.php class includes commonly reused or helpful functions.
+The 'blockContent' method will load a block and return the viewBuilder render
+array.
+
 
 ## Documentation
 
