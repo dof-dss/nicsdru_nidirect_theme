@@ -23,7 +23,7 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^2.5.1",
     "gh-pages": "^2.2.0",
-    "highlight.js": "^10.0.3",
+    "highlight.js": "^10.4.1",
     "imagemin": "^7.0.1",
     "imagemin-cli": "^5.1.0",
     "imagemin-gifsicle": "^7.0.0",
