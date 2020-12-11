@@ -47,26 +47,28 @@
 %}
 {%
   set attribute_classes = [
+  'vcard__item',
   field_type == 'telephone' ? 'tel',
+  field_type == 'telephone_plus_field' ? 'tel',
   field_type == 'email' ? 'email',
 ]
 %}
 {%
   set item_classes = [
   field_type == 'telephone' ? 'value',
+  field_type == 'telephone_plus_field' ? 'value',
   field_type == 'email' ? 'value',
   field_type == 'link' ? 'url fn',
 ]
 %}
 {%
   set btn_classes = [
-  'btn',
   'call-to-action',
 ]
 %}
 {% if label_hidden %}
   {% if multiple %}
-    <div{{ attributes }}>
+    <div{{ attributes.addClass(attribute_classes) }}>
       {% for item in items %}
         {{ item.content }}
       {% endfor %}
@@ -79,7 +81,7 @@
 {% else %}
   {% if label_display == 'inline' %}
     <div{{ attributes.addClass(attribute_classes) }}>
-      <span{{ title_attributes.addClass(title_classes) }}>{{ label }}: </span>
+      <span{{ title_attributes.addClass(title_classes) }}>{{ label }}</span>
       {% for item in items %}
         <span{{ item.attributes.addClass(item_classes) }}>{{ item.content }}</span>
       {% endfor %}
