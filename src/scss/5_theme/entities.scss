@@ -22,11 +22,11 @@
 .page-node-type-gp-practice {
   .launch-service {
     display: inline-block;
-    margin: 2.7rem 1.2rem 0;
+    margin: 2.7rem 1.2rem 0 0;
   }
 
   .call-to-action {
-    @include adjust-font-size-to(18px, 4);
+    @include adjust-font-size-to(18px);
   }
 }
 
