@@ -31,4 +31,8 @@
     {# The controlling image, with the fallback image in srcset. #}
     {{ img_element }}
   </picture>
+{% if img_element['#attributes'].caption %}
+  {#  Markup duplicated from D7 template/output.#}
+  <div class="field-file-image-caption-text">{{ img_element['#attributes'].caption }}</div>
+{% endif %}
 {% endif %}

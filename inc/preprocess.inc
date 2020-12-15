@@ -8,6 +8,7 @@
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Markup;
 use Drupal\Component\Utility\Html;
+use Drupal\media\MediaInterface;
 use Drupal\nicsdru_nidirect_theme\Helpers;
 use Drupal\nicsdru_nidirect_theme\LayoutClasses;
 
@@ -571,4 +572,29 @@ function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
       'tags' => $cache_tags,
     ],
   ];
+}
+
+/**
+ * Implements hook_preprocess_responsive_image_formatter().
+ */
+function nicsdru_nidirect_theme_preprocess_responsive_image_formatter(array &$variables) {
+  // Load the parent media entity that the responsive image is
+  // or might be associated to.
+  $media_image = $variables['item']->getEntity();
+
+  if ($media_image instanceof MediaInterface === FALSE) {
+    return;
+  }
+
+  // If we've got a parent media entity and caption field value
+  // then inject the value into the responsive image attributes collection.
+  // We're relying on Drupal input sanitising from the media form as
+  // well as safe Twig rendering in responsive-image.html.twig to cover
+  // any content that is migrated in from the legacy db and could
+  // potentially contain dodgy html.
+  $caption = $media_image->field_caption->value;
+
+  if (!empty($caption)) {
+    $variables['responsive_image']['#attributes']['caption'] = $caption;
+  }
 }
