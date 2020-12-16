@@ -86,7 +86,9 @@
 {% if content.field_gp_practice_lead %}
   {% spaceless %}
     <ul class="list--no-bullet list--inline list--gp-practice-members">
-      <li class="list-item">{{- content.field_gp_practice_lead[0]['#plain_text'] -}}</li>
+      {% if content.field_gp_practice_lead[0] %}
+        <li class="list-item">{{- content.field_gp_practice_lead[0]['#plain_text'] -}}</li>
+      {% endif %}
       {% for key, item in content.field_gp_practice_member if key|first != '#' %}
         <li class="list-item">{{ item }}</li>
       {% endfor %}
