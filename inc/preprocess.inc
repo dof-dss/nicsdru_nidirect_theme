@@ -542,8 +542,6 @@ function nicsdru_nidirect_theme_preprocess_form(array &$variables) {
   }
 }
 
-
-
 /**
  * Implements hook_preprocess_responsive_image_formatter().
  */
