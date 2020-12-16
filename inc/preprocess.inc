@@ -543,38 +543,6 @@ function nicsdru_nidirect_theme_preprocess_form(array &$variables) {
 }
 
 /**
- * Implements hook_preprocess_taxonomy_term().
- */
-function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
-  if ($variables['term']->getVocabularyId() != 'site_themes') {
-    // We are only interested in the 'site themes' vocab.
-    return;
-  }
-  $cache_tags = [];
-  // Add a custom cache tag for this taxonomy term 'listing' page.
-  $cache_tags[] = 'taxonomy_term_list:' . $variables['term']->id();
-  // Add the standard taxonomy term cache tag as well.
-  $cache_tags[] = 'taxonomy_term:' . $variables['term']->id();
-  // Render the 'articles by term' view and process the results.
-  $results = _render_articles_by_term($cache_tags);
-  // Render the 'site subtopics' view and process the results.
-  $results += _render_site_subtopics($cache_tags);
-
-  // Sort entries alphabetically (regardless of type).
-  ksort($results);
-
-  // Return as an 'item_list' themed render array, with
-  // cache tags set appropriately.
-  $variables['information_services_output'] = [
-    '#theme' => 'item_list',
-    '#items' => $results,
-    '#cache' => [
-      'tags' => $cache_tags,
-    ],
-  ];
-}
-
-/**
  * Implements hook_preprocess_responsive_image_formatter().
  */
 function nicsdru_nidirect_theme_preprocess_responsive_image_formatter(array &$variables) {
