@@ -30,9 +30,12 @@ function nicsdru_nidirect_theme_preprocess_html(array &$variables) {
  * Implements hook_preprocess_page().
  */
 function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
+
   // Process node pages.
   if (!empty($variables['node'])) {
+
     $node = $variables['node'];
+
     if (isset($node) && method_exists($node, 'bundle')) {
       switch ($node->bundle()) {
         // Specific node types have a main and aside.
@@ -41,10 +44,17 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         case "health_condition":
         case "news":
         case "page":
-          $variables['main_content_attr']->addClass(LayoutClasses::MAIN_SIDE);
-          $variables['sidebar_second_attr']->addClass('ga-aside');
+          // If page is not in a book, it has a main and aside.
+          if (empty($node->book)) {
+            $variables['main_content_attr']->addClass(LayoutClasses::MAIN_SIDE);
+            $variables['sidebar_second_attr']->addClass('ga-aside');
+          }
+          else {
+            // Pages in a book have a main and the sidebar is removed.
+            $variables['main_content_attr']->addClass(LayoutClasses::MAIN_LIMITED);
+            unset($variables['page']['sidebar_second']);
+          }
           break;
-
         // Specific node types have a main only.
         case "publication":
         case "embargoed_publication":
@@ -296,6 +306,7 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
       $variables['show_title'] = FALSE;
       break;
   }
+
 }
 
 /**
