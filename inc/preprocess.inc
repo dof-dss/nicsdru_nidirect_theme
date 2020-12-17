@@ -8,6 +8,7 @@
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Markup;
 use Drupal\Component\Utility\Html;
+use Drupal\media\MediaInterface;
 use Drupal\nicsdru_nidirect_theme\Helpers;
 use Drupal\nicsdru_nidirect_theme\LayoutClasses;
 
@@ -553,33 +554,26 @@ function nicsdru_nidirect_theme_preprocess_form(array &$variables) {
 }
 
 /**
- * Implements hook_preprocess_taxonomy_term().
+ * Implements hook_preprocess_responsive_image_formatter().
  */
-function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
-  if ($variables['term']->getVocabularyId() != 'site_themes') {
-    // We are only interested in the 'site themes' vocab.
+function nicsdru_nidirect_theme_preprocess_responsive_image_formatter(array &$variables) {
+  // Load the parent media entity that the responsive image is
+  // or might be associated to.
+  $media_image = $variables['item']->getEntity();
+
+  if ($media_image instanceof MediaInterface === FALSE) {
     return;
   }
-  $cache_tags = [];
-  // Add a custom cache tag for this taxonomy term 'listing' page.
-  $cache_tags[] = 'taxonomy_term_list:' . $variables['term']->id();
-  // Add the standard taxonomy term cache tag as well.
-  $cache_tags[] = 'taxonomy_term:' . $variables['term']->id();
-  // Render the 'articles by term' view and process the results.
-  $results = _render_articles_by_term($cache_tags);
-  // Render the 'site subtopics' view and process the results.
-  $results += _render_site_subtopics($cache_tags);
 
-  // Sort entries alphabetically (regardless of type).
-  ksort($results);
+  // If we've got a parent media entity and caption field value
+  // then inject the value into the responsive image attributes collection.
+  // We're relying on Drupal input sanitising from the media form as
+  // well as safe Twig rendering in responsive-image.html.twig to cover
+  // any content that is migrated in from the legacy db and could
+  // potentially contain dodgy html.
+  $caption = $media_image->field_caption->value;
 
-  // Return as an 'item_list' themed render array, with
-  // cache tags set appropriately.
-  $variables['information_services_output'] = [
-    '#theme' => 'item_list',
-    '#items' => $results,
-    '#cache' => [
-      'tags' => $cache_tags,
-    ],
-  ];
+  if (!empty($caption)) {
+    $variables['responsive_image']['#attributes']['caption'] = $caption;
+  }
 }
