@@ -56,6 +56,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
             unset($variables['page']['sidebar_second']);
           }
           break;
+
         // Specific node types have a main only.
         case "publication":
         case "embargoed_publication":
@@ -68,6 +69,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         default:
           $variables['main_content_attr']->addClass(LayoutClasses::MAIN_LIMITED);
           break;
+          
       }
     }
   }
