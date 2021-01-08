@@ -46,6 +46,44 @@
       }
     }
 
+    &__link {
+
+      // Wraps everything in the card.
+      display: block;
+      background: none;
+      color: inherit;
+      border: 0;
+      box-shadow: none;
+      text-decoration: none;
+      outline: 0;
+
+      // Make card title behave like a link.
+      .card__title {
+        display: inline;
+        color: $link;
+        background-color: transparent;
+        box-shadow: 0 1px 0 0 $link;
+      }
+
+      &:focus .card__title {
+        color: #fff;
+        background-color: $link;
+        box-shadow: 0 0 0 3px $link;
+      }
+
+      &:hover .card__title {
+        color: $link;
+        background-color: transparent;
+        box-shadow: 0 2px 0 0 $charcoal;
+      }
+
+      &:active .card__title {
+        color: $link-active;
+        background-color: transparent;
+        box-shadow: 0 1px 0 0 $link-active;
+      }
+    }
+
     &__title {
       @include adjust-font-size-to(17px, 4);
       font-weight: 700;
@@ -55,32 +93,13 @@
         font-weight: 700;
         margin-bottom: .3rem;
       }
-
-      a {
-        @include link-state-style($link-body-no-visited);
-      }
     }
 
-    p,
-    .more-link {
+    p {
       @include adjust-font-size-to(15px, 3.5);
-      margin: 0;
+      margin: .5em 0;
       @include breakpoint($phab) {
         @include adjust-font-size-to(16px, 3.5);
-      }
-    }
-
-    .more-link {
-      display: none; // temp.
-      font-weight: 700;
-      margin-top: .2rem;
-
-      @include breakpoint($tab) {
-        margin-top: .3rem;
-      }
-
-      a {
-        color: $brand-secondary;
       }
     }
   }
