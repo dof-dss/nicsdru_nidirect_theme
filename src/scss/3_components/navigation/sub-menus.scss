@@ -14,28 +14,10 @@
 // Style guide: components.navigation.sub-menus
 .sub-menu {
 
-  border-top: 5px solid color(brand-primary-medium);
-  padding: 1.5em 10px .5em;
   margin: 1.5em 0;
 
   &:first-child {
     margin: 0;
-  }
-
-  &--popular {
-    border: 0;
-    padding: 0;
-    margin: 0;
-
-    .menu-title {
-      font-weight: bold;
-    }
-  }
-
-  &--sibling {
-    border-top: 0;
-    padding-top: 0;
-    margin-top: 0;
   }
 
   .menu-title {
