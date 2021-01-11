@@ -7,10 +7,11 @@
 // Sub menus
 //
 // The sub menus component provides some base styling for lists of navigational links that may or may not be contained
-// in a `<nav>` tag. They are commonly found in the sidebar, for example a list of related content or a list of book
-// contents. There are some modifiers commonly applied to these menus to meet specific design concepts.
+// in a `<nav>` tag. There are some modifiers commonly applied to these menus to meet specific design concepts, for
+// example a list of related content or a list of book contents.
 //
 // Style guide: components.navigation.sub-menus
+
 .sub-menu {
 
   margin: 1.5em 0;
@@ -76,34 +77,8 @@
     background-color: transparent;
   }
 
-  .sub-menu--toc {
-    background: transparent;
-    border-top: 1px solid #999;
-    border-bottom: 1px solid #999;
-    margin: 1em 0 1.5em;
-    padding: 0;
-
-    .skip-link {
-      margin: 1em 0;
-    }
-
-    .menu-title {
-      @include responsive-typo-map($body-text);
-      font-weight: bold;
-      margin: 1em 0 .5em;
-    }
-
-    ul {
-      margin: 1em 0 2.1rem;
-
-      li {
-        @include responsive-typo-map($body-text);
-        padding-bottom: .5em;
-
-        &:last-child {
-          padding-bottom: 0;
-        }
-      }
-    }
+  .sub-menu--book {
+    padding: 1.5em 0 0;
+    border-top: 5px solid color(brand-primary-medium);
   }
 }
