@@ -7,9 +7,8 @@
 // Sub menus
 //
 // The sub menus component provides some base styling for lists of navigational links that may or may not be contained
-// in a `<nav>` tag. They are commonly found on the side of pages, for example a list of related content or a table of
-// the current pages contents. There are some modifiers commonly applied (which are provided in the equivalent 4_states
-// scss file) to these menus to meet specific design concepts.
+// in a `<nav>` tag. They are commonly found in the sidebar, for example a list of related content or a list of book
+// contents. There are some modifiers commonly applied to these menus to meet specific design concepts.
 //
 // Style guide: components.navigation.sub-menus
 .sub-menu {
@@ -20,7 +19,7 @@
     margin: 0;
   }
 
-  .menu-title {
+  .menu-title { // TODO: should be .sub-menu__title?
     @include adjust-font-size-to(24px, 5);
     margin: 0 0 2.1rem;
 
@@ -30,7 +29,7 @@
     }
   }
 
-  .nav {
+  .nav { // TODO: should be .sub-menu__nav?
     &-menu {
       margin-top: 0;
       margin-bottom: 2.7rem;
@@ -58,66 +57,53 @@
       width: 100%;
     }
   }
-}
 
-// TODO: move toc-menu to own partial - it's a standalone component rather than a modifier of .sub-menu.
-.toc-menu {
-
-  background: transparent;
-  border-top: 1px solid #999;
-  border-bottom: 1px solid #999;
-  margin: 1em 0 1.5em;
-  padding: 0;
-
-  .skip-link {
-    margin: 1em 0;
+  .sub-menu--related {
+    border-top: 5px solid color(brand-primary-medium);
+    padding: 1.5em 10px .5em;
+    background-color: color(brand-primary-lightest);
   }
 
-  .menu-title {
-    @include responsive-typo-map($body-text);
-    font-weight: bold;
-    margin: 1em 0 .5em;
+  .sub-menu--widget {
+    border-top: 5px solid color(brand-primary-medium);
+    padding: 1.5em 10px .5em;
+    background-color: transparent;
   }
 
-  ul {
-    margin: 1em 0 2.1rem;
+  .sub-menu--sibling {
+    margin-top: 0;
+    padding: 0 10px .5em;
+    background-color: transparent;
+  }
 
-    li {
+  .sub-menu--toc {
+    background: transparent;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    margin: 1em 0 1.5em;
+    padding: 0;
+
+    .skip-link {
+      margin: 1em 0;
+    }
+
+    .menu-title {
       @include responsive-typo-map($body-text);
-      padding-bottom: .5em;
+      font-weight: bold;
+      margin: 1em 0 .5em;
+    }
 
-      &:last-child {
-        padding-bottom: 0;
+    ul {
+      margin: 1em 0 2.1rem;
+
+      li {
+        @include responsive-typo-map($body-text);
+        padding-bottom: .5em;
+
+        &:last-child {
+          padding-bottom: 0;
+        }
       }
-    }
-  }
-
-  .nav {
-    &-menu {
-      margin-top: 0;
-      margin-bottom: 2.7rem;
-    }
-
-    // applied to the menu li
-    &-item {
-      position: relative;
-      list-style: none;
-      padding: 0 1rem .5em 1.5rem;
-
-      &::before {
-        content: '-';
-        position: absolute;
-        left: 0;
-        top: 0;
-      }
-    }
-
-    // applied to menu links
-    &-menu a,
-    &-link {
-      @include link-state-style($link-sub-menu);
-      display: inline-block;
-      width: 100%;
     }
   }
 }
