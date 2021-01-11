@@ -22,35 +22,9 @@
   background-color: transparent;
 }
 
-.sub-menu--toc {
-  background: transparent;
-  border-top: 1px solid #999;
-  border-bottom: 1px solid #999;
-  margin: 1em 0 1.5em;
-  padding: 0;
-
-  .skip-link {
-    margin: 1em 0;
-  }
-
-  .menu-title {
-    @include responsive-typo-map($body-text);
-    font-weight: bold;
-    margin: 1em 0 .5em;
-  }
-
-  ul {
-    margin: 1em 0 2.1rem;
-
-    li {
-      @include responsive-typo-map($body-text);
-      padding-bottom: .5em;
-
-      &:last-child {
-        padding-bottom: 0;
-      }
-    }
-  }
+.sub-menu--book {
+  padding: 1.5em 0 0;
+  border-top: 5px solid color(brand-primary-medium);
 }
 
 

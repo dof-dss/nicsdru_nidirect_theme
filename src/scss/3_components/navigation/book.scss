@@ -5,66 +5,68 @@
 @import '../../init';
 
 .book-navigation {
-  width: 100%;
-  text-align: center;
-  background-color: #f2f2f2;
-  min-height: 33px;
-  padding: 0;
-  margin-top: 1.5rem;
-  border: 0 solid;
   display: table;
+  list-style: none;
+  width: 100%;
+  min-height: 3em;
+  padding: 1.5em 0;
+  margin: 0;
+  background-color: $grey-lightest;
+
+  @include breakpoint($tab) {
+    flex-direction: row;
+  }
 
   li {
-    display: table;
-    width: 100%;
-    line-height: 2.4rem;
-    padding: 1.5rem 2.1rem 1.5rem 1.4rem;
-    margin: 0;
-
-    &.page-previous {
-      text-align: left;
-      background-color: #dfdfdf;
-    }
-
-    &.page-next {
-      text-align: right;
-      background-color: #dfdfdf;
-      padding-right: .7rem;
-    }
-  }
-
-  a,
-  span {
     display: table-cell;
     vertical-align: middle;
-  }
-
-  @include breakpoint($mob, $no-query: true) {
-    li {
-      display: table-cell;
-      vertical-align: middle;
-      padding: 1.7rem;
-      margin: 0;
-    }
+    margin: 0;
+    padding: 0;
 
     a,
     span {
-      display: block;
-      width: 100%;
-      float: none;
+      @include link-state-style($link-body-no-visited);
+      display: inline-block;
+      position: relative;
+
+      .ico {
+        position: absolute;
+        top: calc(50% - .75em);
+        width: 1.5em;
+        height: 1.5em;
+      }
     }
 
-    .page-previous,
-    .page-next {
-      padding: .7rem 2.1rem .7rem .7rem;
-      background: #dfdfdf;
-      background-size: 6px auto;
-      border-left: 7px solid #dfdfdf;
-      width: 42%;
+    &.page-previous {
+      width: 35%;
+      text-align: left;
+
+      a {
+        margin-left: 2em;
+      }
+
+      .ico {
+        left: -2em;
+      }
     }
 
-    .page-up {
-      width: 16%;
+    &.page-next {
+      width: 35%;
+      text-align: right;
+
+      a {
+        margin-right: 2em;
+      }
+
+      .ico {
+        right: -2em;
+      }
+    }
+
+    &.page-up {
+      flex: 20% 1 0;
+      padding: 0 1em;
+      text-align: center;
     }
   }
 }
