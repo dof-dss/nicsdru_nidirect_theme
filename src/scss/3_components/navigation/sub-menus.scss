@@ -59,25 +59,25 @@
     }
   }
 
-  .sub-menu--related {
+  &--related {
     border-top: 5px solid color(brand-primary-medium);
     padding: 1.5em 10px .5em;
     background-color: color(brand-primary-lightest);
   }
 
-  .sub-menu--widget {
+  &--widget {
     border-top: 5px solid color(brand-primary-medium);
     padding: 1.5em 10px .5em;
     background-color: transparent;
   }
 
-  .sub-menu--sibling {
+  &--sibling {
     margin-top: 0;
     padding: 0 10px .5em;
     background-color: transparent;
   }
 
-  .sub-menu--book {
+  &--book {
     padding: 1.5em 0 0;
     border-top: 5px solid color(brand-primary-medium);
   }
