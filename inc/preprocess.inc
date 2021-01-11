@@ -337,6 +337,11 @@ function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
     $variables['label'] = t('Popular in @term', ['@term' => strtolower($route->getParameter('taxonomy_term')->label())]);
   }
 
+  // Add class to Related Content Block.
+  if ($variables['plugin_id'] === 'nidirect_related_content_block') {
+    $variables['content']['#attributes']['class'][] = 'nav-menu';
+  }
+
 }
 
 /**
