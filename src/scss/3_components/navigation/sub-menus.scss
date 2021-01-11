@@ -7,11 +7,11 @@
 // Sub menus
 //
 // The sub menus component provides some base styling for lists of navigational links that may or may not be contained
-// in a `<nav>` tag. They are commonly found on the side of pages, for example a list of related content or a table of
-// the current pages contents. There are some modifiers commonly applied (which are provided in the equivalent 4_states
-// scss file) to these menus to meet specific design concepts.
+// in a `<nav>` tag. There are some modifiers commonly applied to these menus to meet specific design concepts, for
+// example a list of related content or a list of book contents.
 //
 // Style guide: components.navigation.sub-menus
+
 .sub-menu {
 
   margin: 1.5em 0;
@@ -20,7 +20,7 @@
     margin: 0;
   }
 
-  .menu-title {
+  .menu-title { // TODO: should be .sub-menu__title?
     @include adjust-font-size-to(24px, 5);
     margin: 0 0 2.1rem;
 
@@ -30,7 +30,7 @@
     }
   }
 
-  .nav {
+  .nav { // TODO: should be .sub-menu__nav?
     &-menu {
       margin-top: 0;
       margin-bottom: 2.7rem;
@@ -57,5 +57,28 @@
       display: inline-block;
       width: 100%;
     }
+  }
+
+  &--related {
+    border-top: 5px solid color(brand-primary-medium);
+    padding: 1.5em 10px .5em;
+    background-color: color(brand-primary-lightest);
+  }
+
+  &--widget {
+    border-top: 5px solid color(brand-primary-medium);
+    padding: 1.5em 10px .5em;
+    background-color: transparent;
+  }
+
+  &--sibling {
+    margin-top: 0;
+    padding: 0 10px .5em;
+    background-color: transparent;
+  }
+
+  &--book {
+    padding: 1.5em 0 0;
+    border-top: 5px solid color(brand-primary-medium);
   }
 }
