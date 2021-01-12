@@ -337,9 +337,12 @@ function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
     $variables['label'] = t('Popular in @term', ['@term' => strtolower($route->getParameter('taxonomy_term')->label())]);
   }
 
-  // Add class to Related Content Block.
+  // Add nav-menu class Related Content and Conditions blocks.
   if ($variables['plugin_id'] === 'nidirect_related_content_block') {
-    $variables['content']['#attributes']['class'][] = 'nav-menu';
+    $variables['content']['related_content']['#attributes']['class'] = ['nav-menu'];
+  }
+  elseif ($variables['plugin_id'] === 'healthconditions_related_conditions') {
+    $variables['content']['related_conditions']['#attributes']['class'] = ['nav-menu'];
   }
 
 }
