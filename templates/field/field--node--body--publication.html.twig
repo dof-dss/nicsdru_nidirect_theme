@@ -42,20 +42,17 @@
     'content-field__label',
   ]
 %}
-
 {% if label_hidden %}
-  <ul class="list--no-bullet">
-    {% for item in items %}
-      <li{{ item.attributes.addClass('list-item') }}>{{ item.content }}</li>
-    {% endfor %}
-  </ul>
+  {% for item in items %}
+    {{ item.content }}
+  {% endfor %}
 {% else %}
   <div{{ attributes.addClass('content-field').setAttribute('role', 'presentation') }}>
     <h2{{ title_attributes.addClass(title_classes) }}>{{ label }}</h2>
-    <ul class="content-field__value list--no-bullet">
+    <div class="content-field__value">
       {% for item in items %}
-        <li{{ item.attributes.addClass('list-item') }}>{{ item.content }}</li>
+        {{ item.content }}
       {% endfor %}
-    </ul>
+    </div>
   </div>
 {% endif %}
