@@ -25,7 +25,7 @@
   {%- endif -%}
 
   {%- if items -%}
-    <{{ list_type }}{{ attributes.addClass('nav-menu') }}>
+    <{{ list_type }}{{ attributes }}>
       {%- for item in items -%}
         <li{{ item.attributes.addClass('nav-item') }}>{{ item.value }}</li>
       {%- endfor -%}
