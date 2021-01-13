@@ -42,3 +42,16 @@ function nicsdru_nidirect_theme_theme_suggestions_field_alter(array &$suggestion
     $suggestions = ['field__field_related_info'];
   }
 }
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function nicsdru_nidirect_theme_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  $plugin_id = $variables['elements']['#plugin_id'];
+
+  // Update Layout Builder Standard and Wide inline card blocks to use
+  // templates/block/block--inline-block--card.html.twig.
+  if ($plugin_id === 'inline_block:card_wide' || $plugin_id === 'inline_block:card_standard') {
+    $suggestions[] = 'block__inline_block__card';
+  }
+}
