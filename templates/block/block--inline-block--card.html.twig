@@ -47,7 +47,6 @@
     <div class="card__content">
       {{ title_prefix }}
       {% if content.field_link['#items'] and content.field_title_link[0]['#url']  %}
-        <h2{{ title_attributes.addClass('card__title') }}>{{ label }}</h2>
         <a href="{{ content.field_title_link[0]['#url']|render }}"><h2{{ title_attributes.addClass('card__title') }}>{{ label }}</h2></a>
       {% else %}
         <h2{{ title_attributes.addClass('card__title') }}>{{ label }}</h2>
