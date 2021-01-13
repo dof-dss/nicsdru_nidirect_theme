@@ -44,6 +44,7 @@ $chroma: add-colors((
   brand-primary-dark:     #076cba, // 5.43:1 with white
   brand-primary-medium:   #0a78cd, // 4.5:1 with white
   brand-primary-light:    #cee4f6,
+  brand-primary-lighter:  #e4f0fa,
   brand-primary-lightest: #f3f8fc,
 
   brand-secondary:        #0b1951, // 3:1 with brand-primary-dark
@@ -110,6 +111,7 @@ $brand-primary: color(brand-primary);
 $brand-primary-dark: color(brand-primary-dark);
 $brand-primary-medium: color(brand-primary-medium);
 $brand-primary-light: color(brand-primary-light);
+$brand-primary-lighter: color(brand-primary-lighter);
 $brand-primary-lightest: color(brand-primary-lightest);
 
 $brand-secondary: color(brand-secondary);
