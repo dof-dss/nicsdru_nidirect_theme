@@ -52,7 +52,7 @@ function nicsdru_nidirect_theme_theme_suggestions_item_list_alter(array &$sugges
   if (in_array('nav-menu', $variables['attributes']['class'])) {
     $suggestions = ['item_list__nav_menu'];
   }
-} 
+}
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
