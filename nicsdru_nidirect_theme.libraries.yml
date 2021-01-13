@@ -47,6 +47,7 @@ nidirect-global-styles:
       css/3_components/content/responsive-images.css: { minified: true }
       css/3_components/content/video.css: { minified: true }
       css/3_components/content/banners.css: { minified: true }
+      css/3_components/field/field-label.css: { minified: true }
       css/3_components/field/file-link.css: { minified: true }
       css/3_components/block/section-feedback.css: { minified: true }
   js:
