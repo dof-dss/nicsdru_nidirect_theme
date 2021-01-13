@@ -230,14 +230,17 @@ $link-body-no-visited: (
     default: transparent,
     focus: $link,
   ),
-  text-decoration: none,
-  box-shadow: (
-    default: '0 1px 0 0 #{$link}',
-    focus: '0 0 0 3px #{$link}',
-    hover: '0 2px 0 0 #{$charcoal}',
-    active: '0 1px 0 0 #{$link-active}',
+  text-decoration: (
+    default: '1px underline',
+    hover: '2px underline #{$charcoal}',
   ),
-  outline: 0
+  text-underline-offset: 3px,
+  box-shadow: none,
+  outline: (
+    default: 0,
+    focus: '3px solid #{$link}',
+  ),
+  outline-offset: 0
 );
 
 $link-sub-menu: (
