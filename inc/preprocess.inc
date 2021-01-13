@@ -315,22 +315,6 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
  * Implements hook_preprocess_block().
  */
 function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
-
-  // If a card has multiple links, toggle the display of those
-  // links when the card is clicked.
-  if (in_array($variables['plugin_id'], [
-    'inline_block:card_standard',
-    'inline_block:card_wide',
-  ])) {
-    if ($variables['content']['field_link']['#items']->count() > 1) {
-      $variables['content']['is_multilink'] = TRUE;
-      $variables['#attached']['library'][] = 'nicsdru_nidirect_theme/nidirect-ui';
-    }
-    else {
-      $variables['content']['is_multilink'] = FALSE;
-    }
-  }
-
   // Set the title for 'Most popular by term' block.
   $route = \Drupal::routeMatch();
   if ($variables['plugin_id'] === 'views_block:popular_content-pop_by_term' && $route->getRouteName() === 'entity.taxonomy_term.canonical') {
