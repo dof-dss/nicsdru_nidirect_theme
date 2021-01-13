@@ -33,6 +33,11 @@
   {% set label = 'Title not displayed!' %}
 {% endif %}
 
+{#
+ For the various rendering outcomes for this block please see the table in:
+ https://digitaldevelopment.atlassian.net/browse/D8NID-1034?focusedCommentId=44164
+#}
+
 <div{{ attributes.addClass(classes) }}>
   {% if not content.field_link['#items'] and content.field_title_link[0]['#url'] %}
   <a class="card__link" href="{{ content.field_title_link[0]['#url']|render }}">
@@ -68,4 +73,3 @@
   </a>
   {% endif %}
 </div>
-
