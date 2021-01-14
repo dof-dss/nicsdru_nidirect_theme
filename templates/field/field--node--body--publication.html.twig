@@ -47,7 +47,7 @@
     {{ item.content }}
   {% endfor %}
 {% else %}
-  <div{{ attributes.addClass('content-field').setAttribute('role', 'presentation') }}>
+  <div{{ attributes.addClass('content-field--label-inline').setAttribute('role', 'presentation') }}>
     <h2{{ title_attributes.addClass(title_classes) }}>{{ label }}</h2>
     <div class="content-field__value">
       {% for item in items %}

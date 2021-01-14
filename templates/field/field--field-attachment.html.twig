@@ -50,7 +50,7 @@
     {% endfor %}
   </ul>
 {% else %}
-  <div{{ attributes.addClass('content-field').setAttribute('role', 'presentation') }}>
+  <div{{ attributes.addClass('content-field--label-inline').setAttribute('role', 'presentation') }}>
     <h2{{ title_attributes.addClass(title_classes) }}>{{ label }}</h2>
     <ul class="content-field__value list--no-bullet">
       {% for item in items %}
