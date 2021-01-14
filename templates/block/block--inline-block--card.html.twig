@@ -23,37 +23,52 @@
  *   displayed after the main title tag that appears in the template.
  *
  * @see template_preprocess_block()
+ *
  */
 #}
 
-{% set classes = [
-  'card',
-  content.is_multilink ? 'card--multilink'
-]
-%}
+{% set classes = ['card'] %}
 
 {% if not label %}
   {% set label = 'Title not displayed!' %}
 {% endif %}
+
+{#
+ For the various rendering outcomes for this block please see the table in:
+ https://digitaldevelopment.atlassian.net/browse/D8NID-1034?focusedCommentId=44164
+#}
+
 <div{{ attributes.addClass(classes) }}>
-  {{ title_prefix }}
-  {{ title_suffix }}
-  {% if not content.is_multilink %}
-  <a class="card__link" href="{{ content.field_link[0]['#url']|render }}">
-    {%  endif %}
+  {% if not content.field_link['#items'] and content.field_title_link[0]['#url'] %}
+  <a class="card__link" href="{{ content.field_title_link[0]['#url']|render }}">
+  {%  endif %}
+
     <div class="card__image">{{ content.field_image }}</div>
     <div class="card__content">
-      <h2{{ title_attributes.addClass('card__title') }}>{{ label }}</h2>
+      {{ title_prefix }}
+      {% if content.field_link['#items'] and content.field_title_link[0]['#url']  %}
+        <a href="{{ content.field_title_link[0]['#url']|render }}"><h2{{ title_attributes.addClass('card__title') }}>{{ label }}</h2></a>
+      {% else %}
+        <h2{{ title_attributes.addClass('card__title') }}>{{ label }}</h2>
+      {% endif %}
+      {{ title_suffix }}
+
       {{ content.field_teaser }}
-      {% if content.is_multilink %}
+
+      {% if content.field_link['#items'] %}
         <ul class="card__links">
           {% for item in content.field_link['#items'] %}
             <li><a href="{{ item.uri }}">{{ (item.title) ? item.title : item.uri }}</a></li>
           {% endfor %}
         </ul>
       {%  endif %}
+
+      {% if content.field_link['#items'] and content.field_title_link[0]['#url']  %}
+        <a href="{{ content.field_title_link[0]['#url']|render }}">more...</a>
+      {% endif %}
+
     </div>
-    {% if not content.is_multilink %}
+  {% if not content.field_link['#items'] and content.field_title_link[0]['#url'] %}
   </a>
-  {%  endif %}
+  {% endif %}
 </div>
