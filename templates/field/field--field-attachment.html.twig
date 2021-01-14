@@ -52,10 +52,15 @@
 {% else %}
   <div{{ attributes.addClass('content-field--label-inline').setAttribute('role', 'presentation') }}>
     <h2{{ title_attributes.addClass(title_classes) }}>{{ label }}</h2>
-    <ul class="content-field__value list--no-bullet">
-      {% for item in items %}
-        <li{{ item.attributes.addClass('list-item') }}>{{ item.content }}</li>
-      {% endfor %}
-    </ul>
+    <div class="content-field__value">
+      <ul class="list--no-bullet">
+        {% for item in items %}
+          <li{{ item.attributes.addClass('list-item') }}>{{ item.content }}</li>
+        {% endfor %}
+      </ul>
+      <p class="help-viewing-documents">
+        {{ link('Help viewing documents', '/articles/help-viewing-documents') }}
+      </p>
+    </div>
   </div>
 {% endif %}
