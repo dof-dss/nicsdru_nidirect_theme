@@ -25,35 +25,21 @@
  * @see template_preprocess_block()
  */
 #}
-
-{% set classes = [
-    'card',
-    content.is_multilink ? 'card--multilink'
-   ]
+{%
+  set classes = [
+  'sub-menu',
+  'rel-menu',
+  'toggle-list',
+]
 %}
-
-{% if not label %}
-  {% set label = 'Title not displayed!' %}
-{% endif %}
-<div{{ attributes.addClass(classes) }}>
+{{ attach_library('nicsdru_origins_theme/toggle-list') }}
+<div{{ attributes.removeClass('views-element-container').addClass(classes).setAttribute('aria-labelledby', 'related-content').removeAttribute('id') }}>
   {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes.addClass('menu-title').setAttribute('id', 'related-content') }}>{{ label }}</h2>
+  {% endif %}
   {{ title_suffix }}
-  {% if not content.is_multilink %}
-  <a class="card__link" href="{{ content.field_link[0]['#url']|render }}">
-  {%  endif %}
-    <div class="card__image">{{ content.field_image }}</div>
-    <div class="card__content">
-      <h2{{ title_attributes.addClass('card__title') }}>{{ label }}</h2>
-      {{ content.field_teaser }}
-      {% if content.is_multilink %}
-        <ul class="card__links">
-          {% for item in content.field_link['#items'] %}
-            <li><a href="{{ item.uri }}">{{ (item.title) ? item.title : item.uri }}</a></li>
-          {% endfor %}
-        </ul>
-      {%  endif %}
-    </div>
-   {% if not content.is_multilink %}
-    </a>
-   {%  endif %}
+  {% block content %}
+    {{ content }}
+  {% endblock %}
 </div>
