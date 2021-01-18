@@ -20,6 +20,12 @@
     margin: 2.1rem auto 0;
   }
 
+  @at-root .path-taxonomy & {
+    @include breakpoint($tab) {
+      margin-bottom: 2.1rem;
+    }
+  }
+
   @media print {
     display: none;
   }
