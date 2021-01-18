@@ -16,3 +16,17 @@
   }
 }
 
+.page-summary {
+  margin: 0 0 2.4rem;
+
+  @include breakpoint($tab) {
+    margin: 0 0 2.7rem;
+  }
+
+  // Page summary may or may not contain a P.
+  // Remove margin from child P elements (although there shouldn't be more than one).
+  p {
+    margin: 0;
+  }
+}
+
