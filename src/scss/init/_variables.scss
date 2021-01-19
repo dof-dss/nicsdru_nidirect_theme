@@ -327,3 +327,26 @@ $link-facet-btn: (
     default: '2px solid #fff'
   ),
 );
+
+$link-site-wide-alert: (
+  color: (
+    default: #fff,
+    focus: $link,
+    active: $link-active
+  ),
+  background-color: (
+    default: transparent,
+    focus: #fff,
+  ),
+  text-decoration: (
+    default: '1px underline',
+    focus: '2px underline #{$link}',
+    hover: '2px underline #fff',
+  ),
+  text-underline-offset: 3px,
+  outline: (
+    default: 0,
+    focus: '2px solid #fff',
+  ),
+  outline-offset: 0
+);
