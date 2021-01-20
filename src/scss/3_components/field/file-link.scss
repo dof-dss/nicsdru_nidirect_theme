@@ -49,43 +49,43 @@
        width: 5rem;
      }
 
-     &-word::before {
+     &__word::before {
        background-position-x: 0;
      }
 
-     &-pdf::before {
+     &__pdf::before {
        background-position-x: -75px;
      }
 
-     &-excel::before {
+     &__excel::before {
        background-position-x: -150px;
      }
 
-     &-powerpoint::before {
+     &__powerpoint::before {
        background-position-x: -225px;
      }
 
-     &-opendocument-text::before {
+     &__opendocument-text::before {
        background-position-x: -300px;
      }
 
-     &-opendocument-spreadsheet::before {
+     &__opendocument-spreadsheet::before {
        background-position-x: -375px;
      }
 
-     &-opendocument-presentation::before {
+     &__opendocument-presentation::before {
        background-position-x: -450px;
      }
 
-     &-csv::before {
+     &__csv::before {
        background-position-x: -525px;
      }
 
-     &-zip::before {
+     &__zip::before {
        background-position-x: -600px;
      }
 
-     &-html::before {
+     &__html::before {
        background-position-x: -675px;
      }
 

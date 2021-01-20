@@ -44,13 +44,6 @@ a[aria-hidden='true'] {
   color: #565656;
 }
 
-article a,
-.content a,
-.view-content a,
-.form-type-processed-text a { // TODO: need a better way to target the main content links. Doesn't seem to be reliable way ...
-  @include link-state-style($link-article-text);
-}
-
 .skip-link {
   @include link-state-style($link-skip);
   text-align: center;

@@ -45,6 +45,10 @@ libraries-override:
     css:
       theme:
         css/layout-builder.css: css/3_components/form/layout-builder-form.css
+  sitewide_alert/init:
+    css:
+      theme:
+        css/sitewide_alert.css: css/3_components/content/site-wide-alerts.css
 
 
 base theme: nicsdru_origins_theme

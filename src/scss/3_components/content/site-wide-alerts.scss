@@ -1,0 +1,147 @@
+/*
+ * @file
+ * Provides the styling for site wide alert notices.
+ */
+@import '../../init';
+
+// Site wide alerts.
+//
+// Style guide: components.icons
+
+#sitewide-alert {
+  width: 100%;
+
+  @include breakpoint($lap) {
+    background-color: $charcoal;
+
+    > div:not(:empty) {
+      padding: .1px 12px; // .1px to trigger containment of margins on child alerts.
+    }
+  }
+}
+
+.sitewide-alert {
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  min-height: 50px;
+  margin: 0 auto 3px;
+  padding: 0 3px 0 12px;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  @include breakpoint($tab) {
+    padding: 0 3px 0 20px;
+  }
+
+  @include breakpoint($lap) {
+    margin: 6px auto;
+  }
+
+  &.alert-standard {
+    background-color: $charcoal;
+  }
+
+  &.alert-call-to-action {
+    background-color: $hc-green;
+  }
+
+  &.alert-warning {
+    background-color: $hc-orange;
+  }
+
+  .field--name-message {
+    position: relative;
+    display: block;
+    width: 100%;
+
+    padding: 0 .5em 0 2.3334em;
+
+    &::before {
+      content: '!';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1.5em;
+      height: 1.5em;
+      line-height: 1.5em;
+      color: black;
+      text-align: center;
+      background-color: #fff;
+      font-weight: 900;
+      font-size: 1;
+      border-radius: 50%;
+    }
+
+    a {
+      @include link-state-style($link-site-wide-alert);
+    }
+
+    h2 {
+     @include adjust-font-size-to(21px);
+      line-height: 1;
+      margin: .6667em 0;
+
+      @include breakpoint($tab) {
+        @include adjust-font-size-to(24px);
+      }
+    }
+
+    > * {
+      color: #fff;
+    }
+
+    > p {
+      margin: .5em 0;
+    }
+  }
+
+  .close {
+    position: relative;
+    display: block;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: 3px solid transparent;
+    margin: 3px 0;
+  }
+
+  .close span[aria-hidden='true'] {
+    display: none;
+  }
+
+  .close::before {
+    position: absolute;
+    left: calc(50% - 8px);
+    top: calc(50% - 2px);
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 3px;
+    background-color: #fff;
+    transform: rotate(45deg);
+  }
+
+  .close::after {
+    position: absolute;
+    left: calc(50% - 8px);
+    top: calc(50% - 2px);
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 3px;
+    background-color: #fff;
+    transform: rotate(135deg);
+  }
+
+  .close:hover,
+  .close:focus {
+    border-color: #fff;
+    outline: 0;
+  }
+
+}

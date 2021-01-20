@@ -84,10 +84,10 @@ $link-base: (
   // Maps for specific types of links may want/need to override styles configured here.
   color: (
     default: $link,
-    visited: null, // Let browser set this.
+    visited: $link-visited,
     focus: #fff,
     hover: $link,
-    active: null // Let browser set this.
+    active: $link-active
   ),
   background-color: (
     default: transparent,
@@ -96,50 +96,22 @@ $link-base: (
     hover: transparent,
     active: null
   ),
-  text-decoration: underline,
-  text-decoration-color: (
-    default: $link,
-    visited: null,
-    focus: null,
-    hover: color(headings),
-    active: $link-active
+  text-decoration: (
+    default: '1px underline',
+    hover: '2px underline #{$charcoal}',
   ),
-  box-shadow: (
-    default: none,
-    focus: '0 0 0 3px #{$link}',
+  text-underline-offset: 3px,
+  outline: (
+    default: 0,
+    focus: '2px solid #{$link}',
   ),
-  outline: 0
-);
-
-$link-article-text: (
-  // Base styling for all main body content type links.
-  color: (
-    default: $link,
-    visited: $link-visited,
-    focus: #fff,
-    hover: $link,
-    active: $link-active
-  ),
-  background-color: (
-    default: transparent,
-    focus: $link,
-  ),
-  text-decoration: none,
-  box-shadow: (
-    default: '0 1px 0 0 #{$link}',
-    focus: '0 0 0 3px #{$link}',
-    hover: '0 2px 0 0 #{$charcoal}',
-    active: '0 1px 0 0 #{$link-active}',
-  ),
-  outline: 0
+  outline-offset: 0
 );
 
 $link-site-logo: (
   color: transparent,
   background-color: none,
   text-decoration: none,
-  border: 0,
-  box-shadow: none,
   outline: (
     default: 0,
     focus: '.3rem dashed #{$grey}'
@@ -155,7 +127,6 @@ $link-main-menu: (
     active: color(brand-primary-dark),
   ),
   text-decoration: none,
-  border: 0,
   box-shadow: (
     default: none,
     active: 'inset 8px 0 0 0 #{color(brand-secondary)}'
@@ -177,8 +148,6 @@ $link-main-menu-horizontal: (
 );
 
 $link-main-menu-social: (
-  border: 0,
-  box-shadow: none,
   outline: (
     default: '0 solid transparent',
     focus: '3px solid #fff',
@@ -206,12 +175,10 @@ $link-footer: (
     hover: $brand-secondary,
     active: $link-active
   ),
-  border: 0,
-  box-shadow: none,
   outline: (
     default: 0,
-    focus: '3px solid #{$charcoal}',
-    hover: '3px solid #{$charcoal}',
+    focus: '2px solid #{$charcoal}',
+    hover: '2px solid #{$charcoal}',
   ),
   outline-offset: (
     default: null,
@@ -235,10 +202,9 @@ $link-body-no-visited: (
     hover: '2px underline #{$charcoal}',
   ),
   text-underline-offset: 3px,
-  box-shadow: none,
   outline: (
     default: 0,
-    focus: '3px solid #{$link}',
+    focus: '2px solid #{$link}',
   ),
   outline-offset: 0
 );
@@ -259,8 +225,6 @@ $link-sub-menu: (
     active: #000
   ),
   text-decoration: none,
-  border-bottom: 0,
-  box-shadow: none,
   outline: (
     default: null,
     visited: null,
@@ -282,10 +246,8 @@ $link-az-menu: (
     hover:  color(brand-primary-dark),
     active: color(brand-primary-light)
   ),
-  text-decoration: 'none !important',
-  border-bottom: 0,
+  text-decoration: 'none',
   border: '1px solid #{$brand-primary-medium}',
-  box-shadow: 'none !important',
   outline: (
     default: '0 solid transparent',
     focus: '4px solid #{$link}',
@@ -310,10 +272,8 @@ $link-pager: (
     hover: color(brand-primary-dark),
     active: color(brand-primary-light)
   ),
-  text-decoration: 'none !important',
-  border-bottom: 0,
+  text-decoration: 'none',
   border: '1px solid #{$brand-primary-medium} !important',
-  box-shadow: 'none !important',
   outline: (
     default: '0 solid transparent',
     focus: '4px solid #{$link}',
@@ -330,7 +290,6 @@ $link-pager: (
 $link-accordion-heading: (
   // Accordion link headings are display block or inline-block. Link states changing the border thickness affect the
   // the layout and make the headings jump. So we fake a bottom border with box-shadow instead.
-  border-bottom: 0,
   box-shadow: (
     default: '0 1px 0 0 #{$link}',
     visited: null,
@@ -339,7 +298,7 @@ $link-accordion-heading: (
     active: '0 2px 0 0 #{$link-active}'
   ),
   outline: 0,
-  text-decoration: 'none !important',
+  text-decoration: 'none',
 );
 
 $link-skip: (
@@ -350,9 +309,7 @@ $link-skip: (
     default: $charcoal
   ),
   text-decoration: underline,
-  text-underline-position: under,
-  border: 0,
-  box-shadow: 'none !important',
+  text-underline-offset: 3px,
   outline: 0,
   opacity: (
     default: 0,
@@ -369,6 +326,27 @@ $link-facet-btn: (
   border-bottom: (
     default: '2px solid #fff'
   ),
-  box-shadow: none,
-  text-decoration: none,
+);
+
+$link-site-wide-alert: (
+  color: (
+    default: #fff,
+    focus: $link,
+    active: $link-active
+  ),
+  background-color: (
+    default: transparent,
+    focus: #fff,
+  ),
+  text-decoration: (
+    default: '1px underline',
+    focus: '2px underline #{$link}',
+    hover: '2px underline #fff',
+  ),
+  text-underline-offset: 3px,
+  outline: (
+    default: 0,
+    focus: '2px solid #fff',
+  ),
+  outline-offset: 0
 );

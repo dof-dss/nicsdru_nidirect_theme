@@ -42,25 +42,17 @@
     'content-field__label',
   ]
 %}
-
 {% if label_hidden %}
-  <ul class="list--no-bullet">
-    {% for item in items %}
-      <li{{ item.attributes.addClass('list-item') }}>{{ item.content }}</li>
-    {% endfor %}
-  </ul>
+  {% for item in items %}
+    {{ item.content }}
+  {% endfor %}
 {% else %}
   <div{{ attributes.addClass('content-field--label-inline').setAttribute('role', 'presentation') }}>
     <h2{{ title_attributes.addClass(title_classes) }}>{{ label }}</h2>
     <div class="content-field__value">
-      <ul class="list--no-bullet">
-        {% for item in items %}
-          <li{{ item.attributes.addClass('list-item') }}>{{ item.content }}</li>
-        {% endfor %}
-      </ul>
-      <p class="help-viewing-documents">
-        <a href="/articles/help-viewing-documents">{{ 'Help viewing documents'|t }}</a>
-      </p>
+      {% for item in items %}
+        {{ item.content }}
+      {% endfor %}
     </div>
   </div>
 {% endif %}
