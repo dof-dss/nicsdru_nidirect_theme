@@ -72,9 +72,15 @@
   {% if content_wrapper_attr is not empty %}
     <div{{ content_wrapper_attr }}>
       {{- page.content -}}
+      {%- if not is_front -%}
+        {{ drupal_block('origins_social_sharing', wrapper=false) }}
+      {%- endif -%}
     </div>
   {% else %}
     {{- page.content -}}
+    {%- if not is_front -%}
+      {{ drupal_block('origins_social_sharing', wrapper=false) }}
+    {%- endif -%}
   {% endif %}
   {%- if page.sidebar_second|stripped_length -%}
     <aside{{ sidebar_second_attr }}>
