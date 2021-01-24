@@ -8,7 +8,6 @@
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Markup;
 use Drupal\Component\Utility\Html;
-use Drupal\Component\Utility\Crypt;
 use Drupal\media\MediaInterface;
 use Drupal\nicsdru_nidirect_theme\Helpers;
 use Drupal\nicsdru_nidirect_theme\LayoutClasses;
@@ -576,17 +575,12 @@ function nicsdru_nidirect_theme_preprocess_responsive_image_formatter(array &$va
  * Implements template_preprocess_container().
  */
 function nicsdru_nidirect_theme_preprocess_container(&$variables) {
-  /**
-   * Fix for HTML validation error caused by duplicate "edit-actions" ID that is present in the header search form and
-   * in the page feedback form. The container for submit buttons in both forms has the id "edit-actions". The duplicate
-   * IDs may be caused by an issue in core.
-   * 
-   * @see https://www.drupal.org/project/drupal/issues/1852090
-   */
+  // Fix for HTML validation error caused by duplicate "edit-actions" ID present in header search form and
+  // in the page feedback form. @see https://www.drupal.org/project/drupal/issues/1852090.
   if (isset($variables['element']['#id'])) {
     $id = $variables['element']['#id'];
     if (in_array($id, ['edit-actions'])) {
-      $id .= '--' . Crypt::randomBytesBase64(8);
+      $id = Html::getUniqueId($id);
     }
     $variables['element']['#id'] = $id;
     $variables['attributes']['id'] = $id;
