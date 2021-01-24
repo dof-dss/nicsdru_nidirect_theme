@@ -586,4 +586,3 @@ function nicsdru_nidirect_theme_preprocess_container(&$variables) {
     $variables['attributes']['id'] = $id;
   }
 }
-
