@@ -10,7 +10,7 @@
   Drupal.behaviors.nicsdruOriginsThwoopImages = {
     attach: function attach (context) {
       // Make responsive image styles thwoopable.
-      var thwoopImageSelector = 'picture[data-picture-mapping*="_expandable"] img';
+      var thwoopImageSelector = '[data-picture-mapping*="_expandable"] img';
       var $thwoopImages = $(thwoopImageSelector, context);
 
       // Add a clickable/focusable wrapper and icon to indicate image is thwoopable.
@@ -23,7 +23,7 @@
         event.preventDefault();
         var $thwoopimage = $(this).prev('img');
         var $thwoop_wrap = $(this).closest('.media-image');
-        var thwoop_picture_mapping = $thwoopimage.parent('picture').attr('data-picture-mapping');
+        var thwoop_picture_mapping = $thwoopimage.parent().attr('data-picture-mapping');
         var modal = false;
 
         if (thwoop_picture_mapping == 'inline_xl_expandable' || thwoop_picture_mapping == 'portrait_full_expandable') {
