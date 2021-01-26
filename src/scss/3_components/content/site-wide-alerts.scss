@@ -10,36 +10,27 @@
 
 #sitewide-alert {
   width: 100%;
-
-  @include breakpoint($lap) {
-    background-color: $charcoal;
-
-    > div:not(:empty) {
-      padding: .1px 12px; // .1px to trigger containment of margins on child alerts.
-    }
-  }
 }
 
 .sitewide-alert {
   position: relative;
   width: 100%;
-  max-width: 980px;
-  min-height: 50px;
-  margin: 0 auto 3px;
-  padding: 0 3px 0 12px;
+  min-height: 60px;
+  margin: 0;
+  padding: 0 8px 0 12px;
 
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-
-  @include breakpoint($tab) {
-    padding: 0 3px 0 20px;
+  @include breakpoint($phab) {
+    padding: 3px 8px 0 16px;
   }
 
   @include breakpoint($lap) {
-    margin: 6px auto;
+    padding: 6px 20px;
   }
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
 
   &.alert-standard {
     background-color: $charcoal;
@@ -53,11 +44,68 @@
     background-color: $hc-orange;
   }
 
+  // Alert layout.
+
+  > span {
+    // 1st flex item wraps around the alert message.
+    flex: 100% 0 1;
+    max-width: 900px;
+
+    &:last-child {
+      // When this flex-item is all alone...
+      max-width: 944px;
+    }
+  }
+
+  .close {
+    // 2nd flex item - sits beside the alert message.
+    flex: 44px 0 0; // Fixed with, no growth or shrinkage.
+    width: 44px;
+    height: 44px;
+    margin: 3px 0;
+    position: relative; // Contains absolutely positioned pseudo elements.
+    right: 10px;
+    display: block;
+    background: none;
+    border: 3px solid transparent;
+
+    &:hover,
+    &:focus {
+      border-color: #fff;
+      outline: 0;
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 3px;
+      background-color: #fff;
+    }
+
+    &::before {
+      left: calc(50% - 8px);
+      top: calc(50% - 2px);
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      left: calc(50% - 8px);
+      top: calc(50% - 2px);
+      transform: rotate(135deg);
+    }
+
+    span[aria-hidden='true'] {
+      display: none;
+    }
+  }
+
   .field--name-message {
     position: relative;
     display: block;
     width: 100%;
-
     padding: 0 .5em 0 2.3334em;
 
     &::before {
@@ -99,49 +147,4 @@
       margin: .5em 0;
     }
   }
-
-  .close {
-    position: relative;
-    display: block;
-    width: 44px;
-    height: 44px;
-    background: none;
-    border: 3px solid transparent;
-    margin: 3px 0;
-  }
-
-  .close span[aria-hidden='true'] {
-    display: none;
-  }
-
-  .close::before {
-    position: absolute;
-    left: calc(50% - 8px);
-    top: calc(50% - 2px);
-    content: '';
-    display: inline-block;
-    width: 16px;
-    height: 3px;
-    background-color: #fff;
-    transform: rotate(45deg);
-  }
-
-  .close::after {
-    position: absolute;
-    left: calc(50% - 8px);
-    top: calc(50% - 2px);
-    content: '';
-    display: inline-block;
-    width: 16px;
-    height: 3px;
-    background-color: #fff;
-    transform: rotate(135deg);
-  }
-
-  .close:hover,
-  .close:focus {
-    border-color: #fff;
-    outline: 0;
-  }
-
 }
