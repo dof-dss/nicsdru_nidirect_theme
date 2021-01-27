@@ -163,7 +163,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       break;
 
     // Node preview pages.
-    // Ensure the side-bar in the non node canonical views is visible to
+    // Ensure the side-bar in the non node canonical views are visible to
     // accurately reflect how the published node will look.
     case 'entity.node.preview':
     case 'entity.node.revision':
@@ -189,6 +189,9 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         case 'landing_page':
         case 'page':
 
+          // Render the Related Content block.
+          // We can't use Helpers::blockContent() here as we are loading a
+          // plugin block instead of a content block.
           $block_manager = \Drupal::service('plugin.manager.block');
           $plugin_block = $block_manager->createInstance('nidirect_related_content_block', []);
           $block_label = 'Related content';
@@ -199,6 +202,8 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
             $block_label = $node->get('field_subtheme')->entity->getName();
           }
 
+          // We have to create a block render array as $plugin_block->build()
+          // will only create the inner block content.
           $variables['page']['sidebar_second'][] = [
             '#theme' => 'block',
             '#weight' => 0,
@@ -209,7 +214,6 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
             '#plugin_id' => $plugin_block->getPluginId(),
             '#derivative_plugin_id' => NULL,
             'content' => $plugin_block->build(),
-            'title' => 'hello',
           ];
           break;
 
