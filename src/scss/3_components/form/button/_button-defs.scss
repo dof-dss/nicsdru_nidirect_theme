@@ -75,6 +75,10 @@
     outline: 3px solid #000;
   }
 
+  &:hover {
+    text-decoration: none;
+  }
+
   &:active {
     outline: 0;
   }

@@ -99,6 +99,7 @@ $link-base: (
   text-decoration: (
     default: '1px underline',
     hover: '2px underline #{$charcoal}',
+    focus: none,
   ),
   text-underline-offset: 3px,
   outline: (

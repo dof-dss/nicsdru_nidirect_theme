@@ -231,10 +231,18 @@ form#views-exposed-form-gp-practices-find-a-gp {
 
 // Health conditions search / a to z
 .form-item-query-health-az {
+  position: relative;
   margin: 0;
 
   label {
-    @include visually-hidden;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    margin: 0 0 8px;
+
+    @include breakpoint($tab) {
+      line-height: 2.7rem;
+      margin: 0 0 9px;
+    }
   }
 }
 

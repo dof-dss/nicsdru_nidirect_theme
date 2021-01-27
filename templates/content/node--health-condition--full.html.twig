@@ -83,7 +83,6 @@
   {% if  content_attributes is not empty %}
   </div>>
   {% endif %}
-  {% if node.field_last_review_date.value or node.field_next_review_date.value or node.field_published_date.value %}
   <footer>
     {% if node.field_last_review_date.value %}
       <p class="review-info">{{- 'This page was reviewed '|t }}{{ content.field_last_review_date -}}</p>
@@ -95,6 +94,6 @@
     {% if node.field_next_review_date.value %}
       <p class="review-info">{{- 'This page is due for review '|t }}{{ content.field_next_review_date -}}</p>
     {% endif %}
+    {{ drupal_block('origins_social_sharing', wrapper=false) }}
   </footer>
-  {% endif %}
 </article>
