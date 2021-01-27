@@ -20,9 +20,9 @@
     margin: 2.1rem auto 0;
   }
 
-  @at-root .path-taxonomy & {
+  @at-root .path-taxonomy &--list {
     @include breakpoint($tab) {
-      margin-bottom: 2.1rem;
+      max-width: $article-max-width;
     }
   }
 
