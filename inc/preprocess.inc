@@ -189,6 +189,9 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         case 'landing_page':
         case 'page':
 
+          // Render the Related Content block.
+          // We can't use Helpers::blockContent() here as we are loading a
+          // plugin block instead of a content block.
           $block_manager = \Drupal::service('plugin.manager.block');
           $plugin_block = $block_manager->createInstance('nidirect_related_content_block', []);
           $block_label = 'Related content';
@@ -199,6 +202,8 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
             $block_label = $node->get('field_subtheme')->entity->getName();
           }
 
+          // We have to create a block render array as $plugin_block->build()
+          // will only create the inner block content.
           $variables['page']['sidebar_second'][] = [
             '#theme' => 'block',
             '#weight' => 0,
