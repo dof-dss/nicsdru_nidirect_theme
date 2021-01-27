@@ -570,3 +570,19 @@ function nicsdru_nidirect_theme_preprocess_responsive_image_formatter(array &$va
     $variables['responsive_image']['#attributes']['caption'] = $caption;
   }
 }
+
+/**
+ * Implements template_preprocess_container().
+ */
+function nicsdru_nidirect_theme_preprocess_container(&$variables) {
+  // Fix for HTML validation error caused by duplicate "edit-actions" ID present in header search form and
+  // in the page feedback form. @see https://www.drupal.org/project/drupal/issues/1852090.
+  if (isset($variables['element']['#id'])) {
+    $id = $variables['element']['#id'];
+    if (in_array($id, ['edit-actions'])) {
+      $id = Html::getUniqueId($id);
+    }
+    $variables['element']['#id'] = $id;
+    $variables['attributes']['id'] = $id;
+  }
+}

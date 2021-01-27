@@ -7,7 +7,8 @@
 
 // In ckeditor, responsive images are wrapped in drupal-media.
 drupal-media {
-  picture img {
+  img,
+  figure {
     width: 100% !important;
     float: none !important;
     margin: 0 !important;

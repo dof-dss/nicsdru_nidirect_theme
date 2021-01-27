@@ -43,7 +43,7 @@
 {% set classes = [
   'eu-cookie-compliance-banner',
 ] %}
-<div{{ attributes.addClass(classes).setAttribute('role', 'region').setAttribute('aria-label', 'cookie banner'|t) }}>
+<div{{ attributes.addClass(classes).setAttribute('role', 'alertdialog').setAttribute('aria-label', 'n i direct cookie preferences'|t) }}>
   <div class="container grid popup-content" role="presentation">
     <div id="popup-text" class="eu-cookie-compliance-message" role="presentation">
       {{ message }}

@@ -99,6 +99,7 @@ $link-base: (
   text-decoration: (
     default: '1px underline',
     hover: '2px underline #{$charcoal}',
+    focus: none,
   ),
   text-underline-offset: 3px,
   outline: (
@@ -109,14 +110,39 @@ $link-base: (
 );
 
 $link-site-logo: (
+  display: inline-block,
   color: transparent,
-  background-color: none,
+  background-color: transparent,
   text-decoration: none,
   outline: (
     default: 0,
-    focus: '.3rem dashed #{$grey}'
+    focus: '.3rem dashed #{$grey}',
+    hover: '.3rem dashed #{$grey}',
+    active: '.3rem dashed #{$grey-dark}',
   ),
   outline-offset: 1.2rem,
+  font-size: 0
+);
+
+$link-site-logo-alt: (
+  display: inline-block,
+  color: transparent,
+  background-color: transparent,
+  text-decoration: none,
+  outline: (
+    default: 0,
+    focus: '.3rem dashed #{$grey}',
+    hover: '.9rem solid #fff',
+    active: '.9rem solid #fff',
+  ),
+  outline-offset: (
+    focus: 1.2rem,
+    hover: 0
+  ),
+  box-shadow: (
+    hover: '0 11px 0 0 #{$grey-dark}',
+    active: '0 12px 0 0 #{$charcoal}',
+  ),
   font-size: 0
 );
 
@@ -350,3 +376,28 @@ $link-site-wide-alert: (
   ),
   outline-offset: 0
 );
+
+$link-cookie-notice: (
+  color: (
+    default: $brand-primary,
+    focus: $link,
+    active: $link-active
+  ),
+  background-color: (
+    default: transparent,
+    focus: #fff,
+  ),
+  text-decoration: (
+    default: '1px underline',
+    focus: '2px underline #{$link}',
+    hover: '2px underline #{$brand-primary}',
+  ),
+  text-underline-offset: 3px,
+  outline: (
+    default: 0,
+    focus: '2px solid #fff',
+  ),
+  outline-offset: 0
+);
+
+

@@ -2,6 +2,7 @@
 
 .sliding-popup-bottom,
 .sliding-popup-top {
+  width: 100%;
   z-index: 99999;
   //text-align: center;
 }
@@ -16,7 +17,8 @@
 
 .eu-cookie-compliance {
   &-banner {
-    background: #041e34;
+    width: 100%;
+    background: $tangaroa;
     padding-bottom: 1.6rem;
 
     @include breakpoint($tab) {
@@ -49,6 +51,15 @@
   }
 
   &-message {
+
+    h2 {
+      color: white;
+    }
+
+    a {
+      @include link-state-style($link-cookie-notice);
+    }
+
     p {
       @include adjust-font-size-to(16px, 4);
       color: white;
