@@ -11,6 +11,7 @@ use Drupal\Component\Utility\Html;
 use Drupal\media\MediaInterface;
 use Drupal\nicsdru_nidirect_theme\Helpers;
 use Drupal\nicsdru_nidirect_theme\LayoutClasses;
+use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_preprocess_html().
@@ -162,11 +163,19 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       break;
 
     // Node preview pages.
-    // Ensure the side-bar in the node preview is visible to accurately
-    // reflect how the published node will look.
+    // Ensure the side-bar in the non node canonical views is visible to
+    // accurately reflect how the published node will look.
     case 'entity.node.preview':
-      $node_preview = \Drupal::routeMatch()->getParameter('node_preview');
-      $node_type = $node_preview->getType();
+    case 'entity.node.revision':
+    case 'entity.node.latest':
+      $node_id = \Drupal::routeMatch()->getRawParameter('node');
+      $node = Node::load($node_id);
+
+      if ($node === null) {
+        $node = \Drupal::routeMatch()->getParameter('node_preview');
+      }
+
+      $node_type = $node->getType();
 
       switch ($node_type) {
         case 'news':
