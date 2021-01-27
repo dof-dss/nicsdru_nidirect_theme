@@ -34,8 +34,6 @@
 .media-image {
   width: 100%;
   position: relative;
-  font-size: 0;
-  line-height: 0;
 
   // It can act as a modal wrapper for full size expandable images.
   &.thwooped-modal {
@@ -83,7 +81,8 @@
   &[data-picture-mapping='portrait_float'],
   &[data-picture-mapping='portrait_float_expandable'] {
 
-    img {
+    > figure,
+    > img {
       @include media-image-float;
 
       &.thwooped {
@@ -104,6 +103,24 @@
       max-width: 960px;
       max-height: 640px;
       transition: max-width 1s, max-height 1s;
+    }
+  }
+
+  figure {
+
+    img {
+      display: block;
+      margin-bottom: 0;
+    }
+
+    figcaption {
+      display: block;
+      font-style: italic;
+      text-align: center;
+      margin: 0 0 2.5em;
+      padding: .5em;
+      background-color: $grey-lightest;
+      color: $text;
     }
   }
 }

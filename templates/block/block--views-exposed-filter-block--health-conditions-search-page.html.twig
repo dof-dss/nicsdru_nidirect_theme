@@ -14,7 +14,6 @@ set classes = [
 {% if label %}
 <h2{{ title_attributes.addClass('menu-title') }}>{{ label }}</h2>
 {% endif %}
-<p class="label label--small" aria-hidden="true">{{ 'Search health conditions or symptoms'|t }}</p>
 {% block content %}
   {% if content_attributes is not empty %}
     <div{{ content_attributes }}>
