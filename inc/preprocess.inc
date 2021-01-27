@@ -188,8 +188,25 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         case 'application':
         case 'landing_page':
         case 'page':
-          // Render Related Content block.
-          $variables['page']['sidebar_second'][] = Helpers::blockContent('views_block__related_content_content_by_theme');
+
+          $block_manager = \Drupal::service('plugin.manager.block');
+          $plugin_block = $block_manager->createInstance('nidirect_related_content_block', []);
+
+          // Applying title as hook_block_view_alter() which applies the title
+          // for canonical routes doesn't get called here.
+          if ($node->hasField('field_subtheme') && !$node->get('field_subtheme')->isEmpty()) {
+            $block_label = $node->get('field_subtheme')->entity->getName();
+          }
+
+          $variables['page']['sidebar_second'][] = [
+            '#theme' => 'block',
+            '#weight' => 0,
+            '#configuration' => ['label' => $block_label, 'label_display' => '1'],
+            '#plugin_id' => $plugin_block->getPluginId(),
+            '#derivative_plugin_id' => NULL,
+            'content' => $plugin_block->build(),
+            'title' => 'hello',
+          ];
           break;
 
         case 'health_condition':
