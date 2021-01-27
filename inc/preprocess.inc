@@ -171,7 +171,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       $node_id = \Drupal::routeMatch()->getRawParameter('node');
       $node = Node::load($node_id);
 
-      if ($node === null) {
+      if ($node === NULL) {
         $node = \Drupal::routeMatch()->getParameter('node_preview');
       }
 
@@ -191,6 +191,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
 
           $block_manager = \Drupal::service('plugin.manager.block');
           $plugin_block = $block_manager->createInstance('nidirect_related_content_block', []);
+          $block_label = 'Related content';
 
           // Applying title as hook_block_view_alter() which applies the title
           // for canonical routes doesn't get called here.
@@ -201,7 +202,10 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
           $variables['page']['sidebar_second'][] = [
             '#theme' => 'block',
             '#weight' => 0,
-            '#configuration' => ['label' => $block_label, 'label_display' => '1'],
+            '#configuration' => [
+              'label' => $block_label,
+              'label_display' => '1',
+            ],
             '#plugin_id' => $plugin_block->getPluginId(),
             '#derivative_plugin_id' => NULL,
             'content' => $plugin_block->build(),
@@ -601,8 +605,9 @@ function nicsdru_nidirect_theme_preprocess_responsive_image_formatter(array &$va
  * Implements template_preprocess_container().
  */
 function nicsdru_nidirect_theme_preprocess_container(&$variables) {
-  // Fix for HTML validation error caused by duplicate "edit-actions" ID present in header search form and
-  // in the page feedback form. @see https://www.drupal.org/project/drupal/issues/1852090.
+  // Fix for HTML validation error caused by duplicate "edit-actions" ID present
+  // in header search form and in the page feedback form.
+  // @see https://www.drupal.org/project/drupal/issues/1852090.
   if (isset($variables['element']['#id'])) {
     $id = $variables['element']['#id'];
     if (in_array($id, ['edit-actions'])) {
