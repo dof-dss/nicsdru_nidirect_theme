@@ -28,6 +28,12 @@
     }
   }
 
+  &__image {
+    .media-image img {
+      margin: 0;
+    }
+  }
+
   &__title {
     margin-top: 0;
   }
