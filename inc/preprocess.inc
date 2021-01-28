@@ -11,6 +11,7 @@ use Drupal\Component\Utility\Html;
 use Drupal\media\MediaInterface;
 use Drupal\nicsdru_nidirect_theme\Helpers;
 use Drupal\nicsdru_nidirect_theme\LayoutClasses;
+use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_preprocess_html().
@@ -162,11 +163,19 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       break;
 
     // Node preview pages.
-    // Ensure the side-bar in the node preview is visible to accurately
-    // reflect how the published node will look.
+    // Ensure the side-bar in the non node canonical views are visible to
+    // accurately reflect how the published node will look.
     case 'entity.node.preview':
-      $node_preview = \Drupal::routeMatch()->getParameter('node_preview');
-      $node_type = $node_preview->getType();
+    case 'entity.node.revision':
+    case 'entity.node.latest':
+      $node_id = \Drupal::routeMatch()->getRawParameter('node');
+      $node = Node::load($node_id);
+
+      if ($node === NULL) {
+        $node = \Drupal::routeMatch()->getParameter('node_preview');
+      }
+
+      $node_type = $node->getType();
 
       switch ($node_type) {
         case 'news':
@@ -179,8 +188,33 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         case 'application':
         case 'landing_page':
         case 'page':
-          // Render Related Content block.
-          $variables['page']['sidebar_second'][] = Helpers::blockContent('views_block__related_content_content_by_theme');
+
+          // Render the Related Content block.
+          // We can't use Helpers::blockContent() here as we are loading a
+          // plugin block instead of a content block.
+          $block_manager = \Drupal::service('plugin.manager.block');
+          $plugin_block = $block_manager->createInstance('nidirect_related_content_block', []);
+          $block_label = 'Related content';
+
+          // Applying title as hook_block_view_alter() which applies the title
+          // for canonical routes doesn't get called here.
+          if ($node->hasField('field_subtheme') && !$node->get('field_subtheme')->isEmpty()) {
+            $block_label = $node->get('field_subtheme')->entity->getName();
+          }
+
+          // We have to create a block render array as $plugin_block->build()
+          // will only create the inner block content.
+          $variables['page']['sidebar_second'][] = [
+            '#theme' => 'block',
+            '#weight' => 0,
+            '#configuration' => [
+              'label' => $block_label,
+              'label_display' => '1',
+            ],
+            '#plugin_id' => $plugin_block->getPluginId(),
+            '#derivative_plugin_id' => NULL,
+            'content' => $plugin_block->build(),
+          ];
           break;
 
         case 'health_condition':
@@ -575,8 +609,9 @@ function nicsdru_nidirect_theme_preprocess_responsive_image_formatter(array &$va
  * Implements template_preprocess_container().
  */
 function nicsdru_nidirect_theme_preprocess_container(&$variables) {
-  // Fix for HTML validation error caused by duplicate "edit-actions" ID present in header search form and
-  // in the page feedback form. @see https://www.drupal.org/project/drupal/issues/1852090.
+  // Fix for HTML validation error caused by duplicate "edit-actions" ID present
+  // in header search form and in the page feedback form.
+  // @see https://www.drupal.org/project/drupal/issues/1852090.
   if (isset($variables['element']['#id'])) {
     $id = $variables['element']['#id'];
     if (in_array($id, ['edit-actions'])) {
