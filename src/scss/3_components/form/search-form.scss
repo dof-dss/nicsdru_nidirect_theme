@@ -44,7 +44,6 @@
 
   input {
     @include responsive-typo-map($body-text);
-    margin: 0;
 
     .ga-aside & {
       @include adjust-font-size-to(16px);
@@ -128,7 +127,6 @@
     }
 
     input {
-      margin: 0;
 
       &[type='submit'] {
         background-color: $brand-primary-medium;
