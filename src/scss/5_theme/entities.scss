@@ -81,7 +81,8 @@
  * Publication content type
  */
 
-.page-node-type-publication {
+.page-node-type-publication,
+.page-node-type-embargoed-publication {
   .published-date {
     @include responsive-typo-map($small-text);
     margin: -.8rem 0 2rem; // Tightens up to the h1.
