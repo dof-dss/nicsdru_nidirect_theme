@@ -33,15 +33,19 @@
   align-items: center;
 
   &.alert-standard {
-    background-color: $charcoal;
+    background-color: $prussian-blue;
+  }
+
+  &.alert-warning {
+    background-color: $hc-orange;
   }
 
   &.alert-call-to-action {
     background-color: $hc-green;
   }
 
-  &.alert-warning {
-    background-color: $hc-orange;
+  &.alert-operation-shamrock {
+    background-color: $charcoal;
   }
 
   // Alert layout.
@@ -121,7 +125,7 @@
       text-align: center;
       background-color: #fff;
       font-weight: 900;
-      font-size: 1;
+      font-size: 1em;
       border-radius: 50%;
     }
 
