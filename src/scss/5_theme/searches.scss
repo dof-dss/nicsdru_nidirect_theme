@@ -347,13 +347,22 @@ form#views-exposed-form-gp-practices-find-a-gp {
 }
 
 // Driving Instructors search form.
-.search-form--driving-instructors {
+form.search-form--driving-instructors {
 
   // TODO: possibly use flex layout technique here on all search forms?
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
   max-width: $max-content-width;
+
+  .form-item-help {
+    flex: 100% 2 1;
+    margin: 0;
+
+    > ul {
+      margin-top: 0;
+    }
+  }
 
   .form-item-search-api-fulltext {
     flex: calc(100% - 6rem) 0 0;
@@ -365,7 +374,7 @@ form#views-exposed-form-gp-practices-find-a-gp {
     align-self: flex-end;
   }
 
-  #edit-categories--wrapper {
+  .search-options {
     flex: 100% 2 1;
 
     legend {
