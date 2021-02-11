@@ -18,22 +18,21 @@
 
   &--checklist {
     li {
-      color: #666;
-      background: transparent resolve('status.svg') no-repeat right / 16px 16px;
+      color: $grey-dark;
+      background: transparent resolve('status.svg') no-repeat left / 16px 16px;
       margin-bottom: 0;
       margin-right: 4px;
-      padding-right: 18px;
+      padding-left: 21px;
 
       @include breakpoint($mob, $no-query: true) {
         background-size: 18px 18px;
         margin-right: 7px;
-        padding-right: 22px;
+        padding-left: 24px;
       }
 
       @include breakpoint($phab, $no-query: true) {
-        background-size: 21px 21px;
+        background-size: 19px 19px;
         margin-right: 9px;
-        padding-right: 25px;
       }
     }
   }

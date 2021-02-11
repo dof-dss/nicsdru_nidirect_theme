@@ -387,50 +387,86 @@ form#views-exposed-form-gp-practices-find-a-gp {
       display: inline-flex;
     }
   }
+}
 
+// Driving Instructors search results.
+.search-results--driving-instructors {
   .card {
-    .adr {
-      margin: 0;
 
-      span {
-        display: inline-block;
-        padding-right: .3334em;
-        white-space: nowrap;
+    margin: 1em 0;
+    padding-bottom: 1em;
 
-        &::after {
-          content: ',';
-        }
+    &__title {
 
-        &:last-child::after {
-          content: '';
+      .subtitle {
+        font-size: smaller;
+        color: $grey-dark;
+
+        &::before {
+          content: '\2014';
+          display: inline-block;
+          margin: 0 .3334em;
         }
       }
     }
 
-    .list--gp-practice-members {
-      margin: 0;
-    }
+    &__content {
 
-    .list--gp-online-services {
-      margin: .6rem 0 0;
+      .list--checklist {
+        margin: .5em 0;
+        font-size: 1.6rem;
+        line-height: 1.5;
+      }
 
-      .list-item {
-        color: #666;
-        background: transparent resolve('status.svg') no-repeat right / 16px 16px;
-        margin-bottom: 0;
-        margin-right: 4px;
-        padding-right: 18px;
+      .field {
 
-        @include breakpoint($mob, $no-query: true) {
-          background-size: 18px 18px;
-          margin-right: 7px;
-          padding-right: 22px;
+        display: inline-flex;
+        align-items: baseline;
+        margin: .3rem 0;
+
+        &__label {
+          margin-right: 6px;
+
+          &::after {
+            content: ':';
+          }
         }
 
-        @include breakpoint($phab, $no-query: true) {
-          background-size: 21px 21px;
-          margin-right: 9px;
-          padding-right: 25px;
+        &__items {
+          display: inline-flex;
+          align-items: baseline;
+        }
+
+        &__item {
+          display: inline-flex;
+          align-items: baseline;
+          margin-right: .5em;
+
+          .title::after {
+            display: inline-block;
+            content: ':';
+            margin-right: 6px;
+          }
+
+          &.tel {
+
+            &:first-child .title {
+              @include visually-hidden;
+            }
+
+            .title {
+              white-space: nowrap;
+            }
+
+            .value {
+              word-break: break-all;
+            }
+          }
+        }
+
+        &--name-field-email-address a,
+        &--name-field-link-url a {
+          word-break: break-all;
         }
       }
     }
