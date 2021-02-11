@@ -347,7 +347,7 @@ form#views-exposed-form-gp-practices-find-a-gp {
 }
 
 // Driving Instructors search form.
-form.search-form--driving-instructors {
+.search-form--driving-instructors {
 
   // TODO: possibly use flex layout technique here on all search forms?
   display: flex;
@@ -385,6 +385,54 @@ form.search-form--driving-instructors {
 
     #edit-categories {
       display: inline-flex;
+    }
+  }
+
+  .card {
+    .adr {
+      margin: 0;
+
+      span {
+        display: inline-block;
+        padding-right: .3334em;
+        white-space: nowrap;
+
+        &::after {
+          content: ',';
+        }
+
+        &:last-child::after {
+          content: '';
+        }
+      }
+    }
+
+    .list--gp-practice-members {
+      margin: 0;
+    }
+
+    .list--gp-online-services {
+      margin: .6rem 0 0;
+
+      .list-item {
+        color: #666;
+        background: transparent resolve('status.svg') no-repeat right / 16px 16px;
+        margin-bottom: 0;
+        margin-right: 4px;
+        padding-right: 18px;
+
+        @include breakpoint($mob, $no-query: true) {
+          background-size: 18px 18px;
+          margin-right: 7px;
+          padding-right: 22px;
+        }
+
+        @include breakpoint($phab, $no-query: true) {
+          background-size: 21px 21px;
+          margin-right: 9px;
+          padding-right: 25px;
+        }
+      }
     }
   }
 }

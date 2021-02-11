@@ -10,12 +10,31 @@
     padding: 0;
   }
 
-  li,
-  &-item {
-    .list--inline & {
-      display: inline-block;
-      padding-right: .334em;
-      white-space: nowrap;
+  &--inline li {
+    display: inline-block;
+    padding-right: .334em;
+    white-space: nowrap;
+  }
+
+  &--checklist {
+    li {
+      color: #666;
+      background: transparent resolve('status.svg') no-repeat right / 16px 16px;
+      margin-bottom: 0;
+      margin-right: 4px;
+      padding-right: 18px;
+
+      @include breakpoint($mob, $no-query: true) {
+        background-size: 18px 18px;
+        margin-right: 7px;
+        padding-right: 22px;
+      }
+
+      @include breakpoint($phab, $no-query: true) {
+        background-size: 21px 21px;
+        margin-right: 9px;
+        padding-right: 25px;
+      }
     }
   }
 }
