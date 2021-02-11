@@ -372,6 +372,11 @@ form#views-exposed-form-gp-practices-find-a-gp {
   .form-actions {
     flex: 6rem 0 0;
     align-self: flex-end;
+
+    input[type='submit'] {
+      width: 100%;
+      background-position-x: 3px;
+    }
   }
 
   .search-options {
@@ -433,8 +438,7 @@ form#views-exposed-form-gp-practices-find-a-gp {
         }
 
         &__items {
-          display: inline-flex;
-          align-items: baseline;
+          display: inline;
         }
 
         &__item {
@@ -450,10 +454,6 @@ form#views-exposed-form-gp-practices-find-a-gp {
 
           &.tel {
 
-            &:first-child .title {
-              @include visually-hidden;
-            }
-
             .title {
               white-space: nowrap;
             }
@@ -462,6 +462,10 @@ form#views-exposed-form-gp-practices-find-a-gp {
               word-break: break-all;
             }
           }
+        }
+
+        &--name-field-telephone .field__label {
+          @include visually-hidden;
         }
 
         &--name-field-email-address a,
