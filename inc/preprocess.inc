@@ -76,6 +76,10 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
 
   // Process search view pages.
   $viewpage = \Drupal::routeMatch()->getParameter('view_id');
+
+  // Will need bits and pieces from the request.
+  $request = \Drupal::request();
+
   if (isset($viewpage)) {
     switch ($viewpage) {
       case "health_conditions":
@@ -105,6 +109,21 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
           $variables['content_wrapper_attr']
             ->addClass(['ga-main', 'search-content'])
             ->setAttribute('role', 'presentation');
+        }
+        break;
+
+      case "driving_instructors":
+        if (!empty($request->get('search_api_fulltext'))) {
+          $variables['main_content_attr']->addClass(LayoutClasses::SIDE_MAIN);
+          if ($variables['content_wrapper_attr'] instanceof Attribute) {
+            $variables['content_wrapper_attr']
+              ->addClass('ga-main')
+              ->setAttribute('role', 'presentation');
+          }
+          $variables['sidebar_first_attr']
+            ->addClass('ga-aside')
+            ->setAttribute('role', 'search')
+            ->setAttribute('aria-label', t('filter search results'));
         }
         break;
     }
@@ -570,12 +589,18 @@ function nicsdru_nidirect_theme_preprocess_form(array &$variables) {
   switch ($variables['element']['#id']) {
     case "views-exposed-form-contacts-a-z-contacts-by-letter":
     case "views-exposed-form-contacts-contact-search":
-    case "views-exposed-form-driving-instructors-driving-instructor-results":
     case "views-exposed-form-gp-practices-find-a-gp":
     case "views-exposed-form-health-conditions-search-page":
     case "views-exposed-form-publications-search-page":
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form');
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form--page');
+      break;
+
+    case "views-exposed-form-driving-instructors-driving-instructor-results":
+      // Add additional form classes.
+      $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form');
+      $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form--page');
+      $variables['attributes']['class'][] = Html::cleanCssIdentifier('search-form--driving-instructors');
       break;
   }
 }

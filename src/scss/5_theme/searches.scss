@@ -355,6 +355,15 @@ form#views-exposed-form-gp-practices-find-a-gp {
   justify-content: flex-start;
   max-width: $max-content-width;
 
+  .form-item-help {
+    flex: 100% 2 1;
+    margin: 0;
+
+    > ul {
+      margin-top: 0;
+    }
+  }
+
   .form-item-search-api-fulltext {
     flex: calc(100% - 6rem) 0 0;
     max-width: 300px;
@@ -363,9 +372,14 @@ form#views-exposed-form-gp-practices-find-a-gp {
   .form-actions {
     flex: 6rem 0 0;
     align-self: flex-end;
+
+    input[type='submit'] {
+      width: 100%;
+      background-position-x: 3px;
+    }
   }
 
-  #edit-categories--wrapper {
+  .search-options {
     flex: 100% 2 1;
 
     legend {
@@ -376,6 +390,89 @@ form#views-exposed-form-gp-practices-find-a-gp {
 
     #edit-categories {
       display: inline-flex;
+    }
+  }
+}
+
+// Driving Instructors search results.
+.search-results--driving-instructors {
+  .card {
+
+    margin: 1em 0;
+    padding-bottom: 1em;
+
+    &__title {
+
+      .subtitle {
+        font-size: smaller;
+        color: $grey-dark;
+
+        &::before {
+          content: '\2014';
+          display: inline-block;
+          margin: 0 .3334em;
+        }
+      }
+    }
+
+    &__content {
+
+      .list--checklist {
+        margin: .5em 0;
+        font-size: 1.6rem;
+        line-height: 1.5;
+      }
+
+      .field {
+
+        display: inline-flex;
+        align-items: baseline;
+        margin: .3rem 0;
+
+        &__label {
+          margin-right: 6px;
+
+          &::after {
+            content: ':';
+          }
+        }
+
+        &__items {
+          display: inline;
+        }
+
+        &__item {
+          display: inline-flex;
+          align-items: baseline;
+          margin-right: .5em;
+
+          .title::after {
+            display: inline-block;
+            content: ':';
+            margin-right: 6px;
+          }
+
+          &.tel {
+
+            .title {
+              white-space: nowrap;
+            }
+
+            .value {
+              word-break: break-all;
+            }
+          }
+        }
+
+        &--name-field-telephone .field__label {
+          @include visually-hidden;
+        }
+
+        &--name-field-email-address a,
+        &--name-field-link-url a {
+          word-break: break-all;
+        }
+      }
     }
   }
 }
