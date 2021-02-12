@@ -419,8 +419,13 @@ form#views-exposed-form-gp-practices-find-a-gp {
 
       .list--checklist {
         margin: .5em 0;
-        font-size: 1.6rem;
-        line-height: 1.5;
+
+        li {
+          @include breakpoint($tab) {
+            font-size: 1.7rem;
+            line-height: 2.7rem;
+          }
+        }
       }
 
       .field {
