@@ -31,7 +31,7 @@
 
   h2:first-of-type,
   .view--count {
-    margin: 0 0 1.2rem;
+    margin: 3.2rem 0 1.2rem;
 
     @include breakpoint($tab) {
       margin: 3.6rem 0 1.8rem;
@@ -222,7 +222,7 @@ form#views-exposed-form-gp-practices-find-a-gp {
 //
 // Style guide: theme.searches.contacts
 #contacts-az--title {
-  margin-bottom: .5em;
+  margin: .5em 0;
 }
 
 .search-form--contacts {
@@ -230,7 +230,15 @@ form#views-exposed-form-gp-practices-find-a-gp {
 }
 
 
-// Health conditions search / a to z
+// Health conditions search / a to z.
+
+// On a health condition node, the search label and input container needs a little more width.
+.page-node-type-health-condition {
+  .form-item-query-health-az {
+    flex: calc(100% - 5.2rem) 0 0;
+  }
+}
+
 .form-item-query-health-az {
   position: relative;
   margin: 0;

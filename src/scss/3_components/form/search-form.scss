@@ -28,6 +28,7 @@
   .form-item-search-api-views-fulltext,
   .form-type-search-api-autocomplete {
     flex: calc(100% - 6rem) 0 0;
+    max-width: 375px;
   }
 
   > .form-wrapper {
@@ -98,10 +99,6 @@
         position: relative;
         z-index: 101;
       }
-
-      .ga-aside & {
-        background-position: 0 0;
-      }
     }
   }
 
@@ -114,12 +111,6 @@
   //
   // Style guide: components.search-form.page-search
   &--page {
-
-    .form-item-search-api-fulltext,
-    .form-type-search-api-autocomplete {
-      justify-content: center;
-      max-width: 352px;
-    }
 
     input {
 
@@ -147,6 +138,7 @@ header .search-form {
   background-color: $brand-primary-medium;
   padding: 1rem 1.5rem 1rem 5.8rem;
   margin-bottom: 0;
+  max-width: 100%;
 
   @include breakpoint($tab) {
     background-color: inherit;
@@ -155,6 +147,10 @@ header .search-form {
 
   @include breakpoint($lap) {
     margin-top: .3rem; // slight adjustment to align with the logo
+  }
+
+  .form-type-search-api-autocomplete {
+    max-width: 100%;
   }
 
   & > .form-item,
