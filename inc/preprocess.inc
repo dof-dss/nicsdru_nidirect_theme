@@ -319,6 +319,10 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
     if (!empty($variables['node']) && in_array($variables['node']->bundle(), $social_bundles)) {
       $variables['page']['bottom_banner'][] = Helpers::blockContent('originssocialsharing');
     }
+
+    if ($variables['term']->bundle() === 'site_themes') {
+      $variables['page']['bottom_banner'][] = Helpers::blockContent('originssocialsharing');
+    }
   }
 
   if (isset($variables['is_front']) && $variables['is_front'] == TRUE) {
