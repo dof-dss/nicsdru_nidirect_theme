@@ -251,23 +251,6 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
           break;
       }
 
-      // Display Social links block on the listed entity types.
-      if (in_array($node_type, [
-        'application',
-        'article',
-        'contact',
-        'embargoed_publication',
-        'health_condition',
-        'news',
-        'application',
-        'landing_page',
-        'page',
-        'publication',
-        'gp_practice',
-      ])) {
-        // Render Social Links block.
-        $variables['page']['bottom_banner'][] = Helpers::blockContent('originssocialsharing');
-      }
 
       // Add classes to main and sidebar regions to listed node types.
       switch ($node_type) {
@@ -313,6 +296,29 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
 
     default:
       break;
+  }
+
+
+  // Display Social links block on the listed entity types.
+  if (strpos($route, 'entity.node.') === 0 || strpos($route, 'entity.taxonomy_term.') === 0) {
+
+    $social_bundles = [
+      'application',
+      'article',
+      'contact',
+      'embargoed_publication',
+      'health_condition',
+      'news',
+      'application',
+      'landing_page',
+      'page',
+      'publication',
+      'gp_practice',
+    ];
+
+    if (!empty($variables['node']) && in_array($variables['node']->bundle(), $social_bundles)) {
+      $variables['page']['bottom_banner'][] = Helpers::blockContent('originssocialsharing');
+    }
   }
 
   if (isset($variables['is_front']) && $variables['is_front'] == TRUE) {
