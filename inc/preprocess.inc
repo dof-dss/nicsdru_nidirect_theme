@@ -320,12 +320,12 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
 
     // Add to the required node bundles.
     if (!empty($variables['node']) && in_array($variables['node']->bundle(), $social_bundles)) {
-      $variables['page']['bottom_banner'][] = Helpers::blockContent('originssocialsharing');
+      $variables['page']['content'][] = Helpers::blockContent('originssocialsharing');
     }
 
     // Add to site theme term pages.
     if (!empty($variables['term']) && $variables['term']->bundle() === 'site_themes') {
-      $variables['page']['bottom_banner'][] = Helpers::blockContent('originssocialsharing');
+      $variables['page']['content'][] = Helpers::blockContent('originssocialsharing');
     }
   }
 
