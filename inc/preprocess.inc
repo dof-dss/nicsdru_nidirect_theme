@@ -320,7 +320,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       $variables['page']['bottom_banner'][] = Helpers::blockContent('originssocialsharing');
     }
 
-    if ($variables['term']->bundle() === 'site_themes') {
+    if (!empty($variables['term']) && $variables['term']->bundle() === 'site_themes') {
       $variables['page']['bottom_banner'][] = Helpers::blockContent('originssocialsharing');
     }
   }
