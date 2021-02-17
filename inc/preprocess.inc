@@ -251,7 +251,6 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
           break;
       }
 
-
       // Add classes to main and sidebar regions to listed node types.
       switch ($node_type) {
         case "article":
@@ -298,8 +297,11 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       break;
   }
 
-
   // Display Social links block on the listed entity types.
+  //
+  // NOTE: This code uses the 'Origins social sharing (disabled)' block placed
+  // in the content section of the block manager. If that block is deleted this
+  // code will no longer produce the desired results.
   if (strpos($route, 'entity.node.') === 0 || strpos($route, 'entity.taxonomy_term.') === 0) {
 
     $social_bundles = [
@@ -316,10 +318,12 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       'gp_practice',
     ];
 
+    // Add to the required node bundles.
     if (!empty($variables['node']) && in_array($variables['node']->bundle(), $social_bundles)) {
       $variables['page']['bottom_banner'][] = Helpers::blockContent('originssocialsharing');
     }
 
+    // Add to site theme term pages.
     if (!empty($variables['term']) && $variables['term']->bundle() === 'site_themes') {
       $variables['page']['bottom_banner'][] = Helpers::blockContent('originssocialsharing');
     }
