@@ -297,14 +297,20 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       break;
   }
 
-  // Display Social links block on the listed entity types.
-  //
-  // NOTE: This code uses the 'Origins social sharing (disabled)' block placed
-  // in the content section of the block manager. If that block is deleted this
-  // code will no longer produce the desired results.
-  if (strpos($route, 'entity.node.') === 0 || strpos($route, 'entity.taxonomy_term.') === 0) {
+  if (isset($variables['is_front']) && $variables['is_front'] == TRUE) {
+    $front_classes = ['grid', 'layout--front'];
+    $variables['main_content_attr']->addClass($front_classes);
+    $variables['sidebar_second_attr']->addClass('section--popular');
+  }
+}
 
-    $social_bundles = [
+/**
+ * Implements hook_preprocess_node().
+ */
+function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
+
+  // Array of bundles for which the social sharing block should be displayed.
+  $social_bundles = [
       'application',
       'article',
       'contact',
@@ -318,28 +324,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       'gp_practice',
     ];
 
-    // Add to the required node bundles.
-    if (!empty($variables['node']) && in_array($variables['node']->bundle(), $social_bundles)) {
-      $variables['page']['content'][] = Helpers::blockContent('originssocialsharing');
-    }
-
-    // Add to site theme term pages.
-    if (!empty($variables['term']) && $variables['term']->bundle() === 'site_themes') {
-      $variables['page']['content'][] = Helpers::blockContent('originssocialsharing');
-    }
-  }
-
-  if (isset($variables['is_front']) && $variables['is_front'] == TRUE) {
-    $front_classes = ['grid', 'layout--front'];
-    $variables['main_content_attr']->addClass($front_classes);
-    $variables['sidebar_second_attr']->addClass('section--popular');
-  }
-}
-
-/**
- * Implements hook_preprocess_node().
- */
-function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
+  $variables['display_social_links'] = in_array($variables['node']->bundle(), $social_bundles);
   $variables['show_title'] = TRUE;
 
   switch ($variables['node']->getType()) {
