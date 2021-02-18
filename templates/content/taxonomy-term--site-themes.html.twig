@@ -30,4 +30,7 @@
     {{ information_services_output }}
   {%  endif %}
   {{ content['field_additional_info'] }}
+  {% if display_social_links %}
+    {{ drupal_block('origins_social_sharing', wrapper=false) }}
+  {% endif %}
 </div>
