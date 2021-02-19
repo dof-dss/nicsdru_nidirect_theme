@@ -94,6 +94,5 @@
     {% if node.field_next_review_date.value %}
       <p class="review-info">{{- 'This page is due for review '|t }}{{ content.field_next_review_date -}}</p>
     {% endif %}
-    {{ drupal_block('origins_social_sharing', wrapper=false) }}
   </footer>
 </article>
