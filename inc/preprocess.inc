@@ -251,24 +251,6 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
           break;
       }
 
-      // Display Social links block on the listed entity types.
-      if (in_array($node_type, [
-        'application',
-        'article',
-        'contact',
-        'embargoed_publication',
-        'health_condition',
-        'news',
-        'application',
-        'landing_page',
-        'page',
-        'publication',
-        'gp_practice',
-      ])) {
-        // Render Social Links block.
-        $variables['page']['bottom_banner'][] = Helpers::blockContent('originssocialsharing');
-      }
-
       // Add classes to main and sidebar regions to listed node types.
       switch ($node_type) {
         case "article":
@@ -326,6 +308,24 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
  * Implements hook_preprocess_node().
  */
 function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
+
+  // Array of bundles for which the social sharing block should be displayed.
+  $social_bundles = [
+    'application',
+    'article',
+    'contact',
+    'embargoed_publication',
+    'health_condition',
+    'news',
+    'application',
+    'landing_page',
+    'page',
+    'publication',
+    'gp_practice',
+  ];
+
+  $variables['display_social_links'] = in_array($variables['node']->bundle(), $social_bundles);
+
   $variables['show_title'] = TRUE;
 
   switch ($variables['node']->getType()) {
