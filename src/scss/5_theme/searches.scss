@@ -471,3 +471,36 @@ form#views-exposed-form-gp-practices-find-a-gp {
     }
   }
 }
+
+// Cold Weather Payments search form.
+.search-form--cwp {
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin: 1em 0 1.5em;
+
+  .form-item-postcode {
+    flex: auto 0 0;
+    margin: 0 0 .5em;
+
+    label {
+      display: block;
+      max-width: 200px;
+      margin: 0 0 .5em;
+    }
+
+    input {
+      // Must be same or greater width than label - otherwise the form submit will not sit at the end of the input.
+      width: 200px;
+      max-width: 200px;
+    }
+  }
+
+  input.form-submit {
+    flex: 6rem 0 0;
+    margin-bottom: .5em;
+  }
+
+  .ajax-spinner {
+    flex: 100% 0 0;
+  }
+}
