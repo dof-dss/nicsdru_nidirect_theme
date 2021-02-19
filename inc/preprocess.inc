@@ -364,14 +364,6 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
 }
 
 /**
- * Implements hook_preprocess_taxonomy_term().
- */
-function nicsdru_nidirect_theme_preprocess_taxonomy_term(array &$variables) {
-  // Display social sharing block for site theme pages.
-  $variables['display_social_links'] = ($variables['term']->bundle() === 'site_themes');
-}
-
-/**
  * Implements hook_preprocess_block().
  */
 function nicsdru_nidirect_theme_preprocess_block(array &$variables) {
