@@ -311,20 +311,21 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
 
   // Array of bundles for which the social sharing block should be displayed.
   $social_bundles = [
-      'application',
-      'article',
-      'contact',
-      'embargoed_publication',
-      'health_condition',
-      'news',
-      'application',
-      'landing_page',
-      'page',
-      'publication',
-      'gp_practice',
-    ];
+    'application',
+    'article',
+    'contact',
+    'embargoed_publication',
+    'health_condition',
+    'news',
+    'application',
+    'landing_page',
+    'page',
+    'publication',
+    'gp_practice',
+  ];
 
   $variables['display_social_links'] = in_array($variables['node']->bundle(), $social_bundles);
+
   $variables['show_title'] = TRUE;
 
   switch ($variables['node']->getType()) {
