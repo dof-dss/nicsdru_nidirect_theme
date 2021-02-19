@@ -68,12 +68,12 @@
 // Style guide: layouts.common.grid
 .grid {
   display: grid;
-  grid-gap: $grid-gap;
+  grid-column-gap: $grid-gap;
   grid-template-columns: 1fr;
   justify-content: space-between;
 
   &.no-gutter {
-    grid-gap: 0;
+    grid-column-gap: 0;
   }
 }
 
