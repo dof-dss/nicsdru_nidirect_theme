@@ -252,12 +252,18 @@ textarea,
 .form-type-checkbox {
   position: relative;
   margin: .5em .5em 0 0;
+
+  .container-inline & {
+    display: inline-block;
+  }
 }
 
 input[type='radio'],
 .form-radio,
+.container-inline.form-radio,
 input[type='checkbox'],
-.form-checkbox {
+.form-checkbox,
+.container-inline.form-checkbox {
   font-size: 1em;
   line-height: 1.5;
 
@@ -266,8 +272,12 @@ input[type='checkbox'],
   top: 0;
   left: 0;
   z-index: 1;
-  width: 1em;
-  height: 1em;
+  appearance: none;
+  border: 2px solid $charcoal;
+  border-radius: 50% !important;
+  background-color: #fff;
+  width: 1.8rem;
+  height: 1.8rem;
   margin: .75em .5em;
   padding: 0;
   vertical-align: baseline;
@@ -277,6 +287,10 @@ input[type='checkbox'],
 
   @include breakpoint($tab, $no-query: true) {
     margin: .723em .5em;
+  }
+
+  &:checked {
+    background-color: #2daff7;
   }
 
   // sibling labels
@@ -322,30 +336,11 @@ input[type='checkbox'],
   }
 }
 
-input[type='radio'],
-.form-radio {
-  appearance: none;
-  border: 2px solid $charcoal;
-  border-radius: 50% !important;
-  background-color: #fff;
-  width: 1.8rem;
-  height: 1.8rem;
-
-  &:checked {
-    background-color: #2daff7;
-  }
-}
-
 input[type='checkbox'],
 .form-checkbox {
-  border: 2px solid $charcoal;
   border-radius: 0;
-  background-color: #fff;
-  width: 1.8rem;
-  height: 1.8rem;
 
   &:checked {
-    background-color: #2daff7;
     border-style: inset;
   }
 }

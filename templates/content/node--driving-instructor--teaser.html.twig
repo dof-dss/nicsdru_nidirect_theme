@@ -66,12 +66,18 @@
  * @see template_preprocess_node()
  */
 #}
-  {% if  content_attributes is not empty %}
-  <div{{ content_attributes }}>
-    {% endif %}
-    <h3>{{ content.group_teaser_title.field_di_lastname | field_value }},{{ content.group_teaser_title.field_di_firstname | field_value }}</h3>
-    <span>ADI / AMI number:</span> {{ content.field_di_adi_no | field_value }}
+{% if  content_attributes is not empty %}
+<div{{ content_attributes }}>
+{% endif %}
+  <h3 class="card__title">
+    {{ content.group_teaser_title.field_di_lastname | field_value }}, {{ content.group_teaser_title.field_di_firstname | field_value }}
+    <span class="subtitle">
+      ADI / AMI number: {{ content.field_di_adi_no | field_value }}
+    </span>
+  </h3>
+  <div class="card__content">
     {{ content | without('group_teaser_title', 'field_di_adi_no') }}
-    {% if  content_attributes is not empty %}
   </div>
-  {% endif %}
+{% if  content_attributes is not empty %}
+</div>
+{% endif %}

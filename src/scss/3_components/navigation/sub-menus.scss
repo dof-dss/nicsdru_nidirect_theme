@@ -80,5 +80,13 @@
   &--book {
     padding: 1.5em 0 0;
     border-top: 5px solid color(brand-primary-medium);
+
+    // Force book nav to be full width of the page layout.
+    width: calc(100vw - 30px);
+    max-width: 940px;
+
+    @include breakpoint($tab) {
+      width: calc(100vw - 40px);
+    }
   }
 }
