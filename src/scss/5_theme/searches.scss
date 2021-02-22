@@ -444,17 +444,25 @@ form#views-exposed-form-gp-practices-find-a-gp {
           .title::after {
             display: inline-block;
             content: ':';
-            margin-right: 6px;
           }
 
           &.tel {
 
             .title {
               white-space: nowrap;
+              order: 0;
+            }
+
+            .supplementary {
+              @include responsive-typo-map($small-text);
+              order: 2;
+              color: $grey-dark;
             }
 
             .value {
+              order: 1;
               word-break: break-all;
+              margin: 0 .5em;
             }
           }
         }
