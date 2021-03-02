@@ -46,7 +46,7 @@ jobs:
   # Static analysis of any PHP/Drupal code.
   phpcs:
     docker:
-      - image: circleci/php:7.3.14-apache-browsers
+      - image: circleci/php:7.4.15-apache-browsers
     steps:
       - run:
           name: Add OS extensions
@@ -74,7 +74,7 @@ jobs:
           name: Fetch phpcs convenience script
           command: |
             cd /home/circleci
-            curl https://raw.githubusercontent.com/dof-dss/nidirect-drupal/master/phpcs.sh -o /home/circleci/phpcs.sh
+            curl https://raw.githubusercontent.com/dof-dss/nidirect-drupal/main/phpcs.sh -o /home/circleci/phpcs.sh
             # Enable ignore variable.
             sed -i -e "s/\#IGNORE/IGNORE/" phpcs.sh
             # Add unwanted paths to this ignore variable.
