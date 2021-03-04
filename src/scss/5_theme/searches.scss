@@ -509,6 +509,7 @@ form#views-exposed-form-gp-practices-find-a-gp {
   }
 
   .ajax-spinner {
-    flex: 100% 0 0;
+    min-height: 44px;
+    margin: 0 .5em;
   }
 }
