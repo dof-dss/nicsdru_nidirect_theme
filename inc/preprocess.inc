@@ -341,6 +341,10 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('article-content');
       break;
 
+    case "webform":
+      $variables['attributes']['class'][] = Html::cleanCssIdentifier('ga-main');
+      break;
+
     case "featured_content_list":
       // Only show the title on the canonical node route.
       if (\Drupal::routeMatch()->getRouteName() != 'entity.node.canonical') {
