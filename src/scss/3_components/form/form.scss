@@ -52,9 +52,11 @@ fieldset,
     border: 0;
   }
 
+  /* Remove?
   & + div.form-item {
     margin-top: -.5em !important;
   }
+  */
 
   & > .form-item,
   & > .fieldset-wrapper > .form-item,
@@ -342,5 +344,34 @@ input[type='checkbox'],
 
   &:checked {
     border-style: inset;
+  }
+}
+
+/* Error Tool Tip Styles*/
+.form-item--error-message {
+  @include responsive-typo-map($body-text);
+
+  display: block;
+  position: relative;
+  left: -.6rem;
+  z-index: 101;
+  width: fit-content;
+  max-width: 56rem;
+  font-weight: bold;
+  padding: .9rem;
+  color: $white;
+  background-color: $hc-red;
+  border: 1px solid $hc-red;
+  border-radius: 3px;
+  box-shadow: 0 8px 12px -4px rgba(0, 0, 0, .3);
+  opacity: 1;
+
+  &::before {
+    content: '';
+    border: .9rem solid transparent;
+    border-bottom-color: $hc-red;
+    position: absolute;
+    top: -1.7rem;
+    left: 1.4rem;
   }
 }
