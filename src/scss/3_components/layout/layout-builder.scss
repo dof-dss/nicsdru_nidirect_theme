@@ -4,6 +4,8 @@
  */
 @import '../../init';
 
+/*
+// This no longer appears to wrap the layout builder - just seems to be an empty div ...
 #edit-layout-builder-layout-wrapper {
   position: relative;
   width: calc(100% + 40px);
@@ -12,12 +14,16 @@
   outline: 5px dashed #ddd;
   outline-offset: 10px;
 }
+ */
 
 .layout-builder {
-  width: 100%;
-  padding: 20px 20px 5px;
+  position: relative;
+  width: calc(100% + 40px);
+  margin: 3em 0;
+  padding: 0;
   border: 0;
-  background-color: #fff;
+  outline: 5px dashed #ddd;
+  outline-offset: 20px;
 
   .container {
     padding: 0;
@@ -39,6 +45,10 @@
   outline-offset: 10px;
   background-color: #f7f7f7;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   &:hover {
     outline-color: rgba(151, 151, 151, .25);
   }
@@ -47,6 +57,7 @@
 .layout-builder__link--add {
   display: inline-block;
   font-size: 16px;
+  text-decoration: none;
   line-height: 1.5;
   padding: .375em .5em .375em 1.8em; /* LTR */
   color: #fff;
@@ -67,6 +78,7 @@
   background-color: #333;
   border-bottom-style: none;
   text-decoration: none;
+  outline: none;
 }
 
 .layout-builder__section {
