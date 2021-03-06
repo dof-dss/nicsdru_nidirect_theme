@@ -42,7 +42,7 @@
       {% if label %}
         {{ title_prefix }}
         {% if content.field_link['#items'] and content.field_title_link[0]['#url']  %}
-          <a href="{{ content.field_title_link[0]['#url']|render }}"><h2{{ title_attributes.addClass('card__title') }}>{{ label }}</h2></a>
+          <a class="card__title-link" href="{{ content.field_title_link[0]['#url']|render }}"><h2{{ title_attributes.addClass('card__title') }}>{{ label }}</h2></a>
         {% else %}
           <h2{{ title_attributes.addClass('card__title') }}>{{ label }}</h2>
         {% endif %}
@@ -60,7 +60,7 @@
       {%  endif %}
 
       {% if content.field_link['#items'] and content.field_title_link[0]['#url']  %}
-        <a href="{{ content.field_title_link[0]['#url']|render }}">more...</a>
+        <a href="{{ content.field_title_link[0]['#url']|render }}">more<span class="visually-hidden"> {{ label }}</span> &hellip;</a>
       {% endif %}
 
     </div>
