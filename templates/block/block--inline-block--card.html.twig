@@ -46,6 +46,11 @@
         {% else %}
           <h2{{ title_attributes.addClass('card__title') }}>{{ label }}</h2>
         {% endif %}
+      {% else %}
+        <div class="info-notice info-notice--error">
+          <h2>{{ 'Title is missing'|t }}</h2>
+          <p>Select 'display title' in the block configuration.</p>
+        </div>
       {% endif %}
 
       {{ content.field_teaser }}
