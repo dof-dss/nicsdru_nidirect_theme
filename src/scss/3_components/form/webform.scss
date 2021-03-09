@@ -11,6 +11,11 @@
 
 .webform-counter {
   margin-bottom: 0;
+
+  + .form-item--error-message {
+    position: absolute;
+    margin-top: .9rem;
+  }
 }
 
 .text-count-wrapper {
@@ -30,93 +35,9 @@
   }
 }
 
-/* Error Tool Tip Styles*/
-.form-item input + .error.form-item--error-message {
-  @include responsive-typo-map($body-text);
-
-  position: absolute;
-  top: .5em;
-  left: 60%;
-  margin-top: -1px;
-  z-index: 101;
-  width: fit-content;
-  max-width: 56rem;
-  font-weight: bold;
-  display: block;
-  padding: .9rem;
-  color: $white;
-  background-color: $hc-red;
-  border: 1px solid $hc-red;
-  border-radius: 3px;
-  box-shadow: 4px 4px 9px 0 rgba(0, 0, 0, .3);
-  opacity: 1;
-
-  &::after {
-    content: '';
-    border: .9rem solid transparent;
-    border-right-color: $hc-red;
-    position: absolute;
-    top: .75rem;
-    left: -1.8rem;
-  }
-}
-
-.form-item--error-message {
-  position: relative;
-  top: 100%;
-  left: -1px;
-  margin-top: -1px;
-  z-index: 101;
-  width: fit-content;
-  max-width: 56rem;
-
-  .webform-counter + & {
-    margin-top: calc(.5em - 1px);
-  }
-
-  .webform-counter + &,
-  [type='radio'] + &,
-  [type='checkbox'] + & {
-    position: absolute;
-  }
-
-  & > * {
-    opacity: 0;
-    transition: opacity 1s ease-in;
-  }
-
-  .error {
-    @include responsive-typo-map($body-text);
-    font-weight: bold;
-    display: block;
-    position: absolute;
-    position: relative;
-    padding: .9rem;
-    color: $white;
-    background-color: $hc-red;
-    border: 1px solid $hc-red;
-    border-radius: 3px;
-    box-shadow: 4px 4px 9px 0 rgba(0, 0, 0, .3);
-    opacity: 1;
-
-    &::after {
-      content: '';
-      border: .9rem solid transparent;
-      border-bottom-color: $hc-red;
-      position: absolute;
-      top: -1.8rem;
-      left: .9rem;
-    }
-  }
-}
-
 .webform-options-display-one-column {
   input ~ label {
-    width: 100%;
-
-    @include breakpoint($mob) {
-      width: calc(80% - .9rem);
-    }
+    width: calc(75% - .9rem);
 
     @include breakpoint($phab) {
       width: calc(60% - .9rem);
@@ -124,11 +45,19 @@
   }
 
   .form-item--error-message {
-    width: calc(40% - .9rem);
-    top: .5em;
-    left: 60%;
+    @include responsive-typo-map($small-text);
+    position: absolute;
+    width: 25%;
+    min-width: fit-content;
+    top: 0;
+    left: 75%;
 
-    > .error::after {
+    @include breakpoint($phab) {
+      width: 40%;
+      left: 60%;
+    }
+
+    &::before {
       border-bottom-color: transparent;
       border-right-color: $hc-red;
       top: .75em;
@@ -138,6 +67,7 @@
 }
 
 .webform-options-display-side-by-side .form-item--error-message {
+  position: absolute;
   top: calc(100% + .9rem);
   width: max-content;
   min-width: 16rem;
