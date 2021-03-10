@@ -37,29 +37,11 @@
  */
 #}
 {%
-  set title_classes = [
-    label_display == 'visually_hidden' ? 'visually-hidden',
-  ]
-%}
-{%
   set field_classes = [
   'page-summary',
 ]
 %}
+{% for item in items %}
+  <div{{ item.attributes.addClass(field_classes).setAttribute('role', 'presentation') }}>{{- item.content -}}</div>
+{% endfor %}
 
-{% if label_hidden %}
-  {% if multiple %}
-      {% for item in items %}
-        <div{{ item.attributes.addClass(field_classes).setAttribute('role', 'presentation') }}>{{- item.content -}}</div>
-      {% endfor %}
-  {% else %}
-    {% for item in items %}
-      <div{{ attributes.addClass(field_classes).setAttribute('role', 'presentation') }}>{{- item.content -}}</div>
-    {% endfor %}
-  {% endif %}
-{% else %}
-  <div{{ title_attributes.addClass(title_classes) }}>{{- label -}}</div>
-  {% for item in items %}
-    <div{{ item.attributes.addClass(field_classes).setAttribute('role', 'presentation') }}>{{- item.content -}}</div>
-  {% endfor %}
-{% endif %}
