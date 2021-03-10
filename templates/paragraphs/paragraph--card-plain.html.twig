@@ -40,7 +40,7 @@
 #}
 {% set classes = ['card__link', 'card__content'] %}
 {% block paragraph %}
-<a{{ attributes.addClass(classes) }} href="{{ content.field_link['#url']|render }}">
+<a{{ attributes.addClass(classes) }} href="{{ content.field_link.0['#url']|render }}">
   <h2 class="card__title">
     {{ content.field_title }}
   </h2>

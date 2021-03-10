@@ -66,3 +66,11 @@ function nicsdru_nidirect_theme_theme_suggestions_block_alter(array &$suggestion
     $suggestions[] = 'block__inline_block__card';
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function nicsdru_nidirect_theme_form_node_landing_page_layout_builder_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Hide revision information section.
+  $form['revision_information']['#access'] = FALSE;
+}

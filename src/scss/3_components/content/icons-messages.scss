@@ -83,9 +83,12 @@
   border: 2px solid;
   margin: 1.5em 0;
   padding: 1rem 1rem 1rem 4rem;
+  background: #fff resolve('i.svg') no-repeat .9rem .9rem / 24px 24px;
 
   @include breakpoint($phab, $no-query: true) {
     padding: 1.4rem 1.4rem 1.4rem 6rem;
+    background-position: 1.4rem 1.4rem;
+    background-size: 30px 30px;
   }
 
   & >  *:first-child {
@@ -100,11 +103,6 @@
 .info-notice {
   @extend %notice-builder;
   border-color: $brand-primary-light;
-  background: #fff resolve('i.svg') no-repeat .9rem .9rem / 24px 24px;
-
-  @include breakpoint($phab, $no-query: true) {
-    background: #fff resolve('i.svg') no-repeat 1.4rem 1.4rem / 30px 30px;
-  }
 
   .no-svg & {
     background-image: resolve('i.png');
@@ -112,11 +110,7 @@
 
   &--success {
     border-color: $btn-action;
-    background: #fff resolve('status.svg') no-repeat .9rem .9rem / 24px 24px;
-
-    @include breakpoint($phab, $no-query: true) {
-      background: #fff resolve('status.svg') no-repeat 1.4rem 1.4rem / 30px 30px;
-    }
+    background-image: resolve('status.svg');
 
     .no-svg & {
       background-image: resolve('status.png');
@@ -125,11 +119,7 @@
 
   &--error {
     border-color: #e34f4f;
-    background: #fff resolve('wrong.svg') no-repeat .9rem .9rem / 24px 24px;
-
-    @include breakpoint($phab, $no-query: true) {
-      background: #fff resolve('wrong.svg') no-repeat 1.4rem 1.4rem / 30px 30px;
-    }
+    background-image: resolve('wrong.svg');
 
     .no-svg & {
       background-image: resolve('wrong.png');
@@ -138,11 +128,7 @@
 
   &--warning {
     border-color: #db6304;
-    background: #fff resolve('warning.svg') no-repeat .9rem .9rem / 24px 24px;
-
-    @include breakpoint($phab, $no-query: true) {
-      background: #fff resolve('warning.svg') no-repeat 1.4rem 1.4rem / 30px 30px;
-    }
+    background-image: resolve('warning.svg');
 
     .no-svg & {
       background-image: resolve('warning.png');
