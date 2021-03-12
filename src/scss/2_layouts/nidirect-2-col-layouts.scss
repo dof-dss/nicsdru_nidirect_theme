@@ -53,6 +53,15 @@
     }
   }
 
+  &--top-featured {
+    margin: 2.5em 0 2em;
+    border: 0;
+
+    & + .section--info-services h2 {
+      margin-top: 0;
+    }
+  }
+
   &--featured {
     border-top: 10px solid color(brand-primary-medium);
   }
