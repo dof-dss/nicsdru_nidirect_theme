@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Default theme implementation to display a block.
+ * Theme override to display a block.
  *
  * Available variables:
  * - plugin_id: The ID of the block implementation.
@@ -23,14 +23,9 @@
  *   displayed after the main title tag that appears in the template.
  *
  * @see template_preprocess_block()
- *
- * @ingroup themeable
  */
 #}
-{% set classes = ['section--featured', 'container'] %}
-{% set attributes = attributes.addClass(classes) %}
-{% set attributes = attributes.removeAttribute('id') %}
-<section{{ attributes }}>
+<section{{ attributes.addClass(['section--translation-help', 'container', 'container--no-padding']) }}>
   {{ title_prefix }}
   {% if label %}
     <h2{{ title_attributes }}>{{ label }}</h2>

@@ -1,0 +1,34 @@
+@import '../../init';
+
+.section-translation-help {
+
+  position: relative;
+
+  @at-root body:not(.path-taxonomy) & {
+    margin-top: 3em;
+  }
+
+  &__link {
+    @include link-state-style($link-page-bottom);
+    display: block;
+    width: 100%;
+    padding: 1rem 15px;
+    margin: 0;
+    font-size: inherit;
+    line-height: inherit;
+    text-align: left;
+    // sass-lint:disable no-misspelled-properties
+    text-underline-offset: 3px;
+    // sass-lint:enable no-misspelled-properties
+
+
+    @include breakpoint($tab) {
+      width: 50%;
+      position: absolute;
+      right: 0;
+      z-index: 1;
+      padding: .5em 20px;
+      text-align: right;
+    }
+  }
+}

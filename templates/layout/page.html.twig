@@ -81,11 +81,8 @@
       {{- page.sidebar_second -}}
     </aside>
   {%- endif -%}
-  {%- if is_front and page.bottom_banner -%}
-    {{- page.bottom_banner -}}
-  {% endif %}
 </main>
-{%- if not is_front and page.bottom_banner -%}
+{%- if page.bottom_banner -%}
   {{- page.bottom_banner -}}
 {% endif %}
 {%- if page.feedback -%}
