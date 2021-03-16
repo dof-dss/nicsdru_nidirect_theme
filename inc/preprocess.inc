@@ -355,6 +355,12 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
           unset($variables['content'][$field_id]);
         }
       }
+
+      if ($variables['elements']['#photo_image_style']) {
+        // Some features use a different image style, eg: top set
+        // of featured content on the homepage.
+        $variables['content']['field_photo'][0]['#view_mode'] = $variables['elements']['#photo_image_style'];
+      }
       break;
 
     case "featured_content_list":
@@ -537,6 +543,8 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
     if ($parent instanceof NodeInterface && $parent->id() == $covid_fcl_nid) {
       foreach ($variables['items'] as $key => &$feature_node) {
         $feature_node['content']['#exclude_fields'] = ['field_teaser'];
+        // Set custom field_photo image style.
+        $feature_node['content']['#photo_image_style'] = 'news_thumbnail';
       }
     }
   }
