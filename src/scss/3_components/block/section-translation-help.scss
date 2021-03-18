@@ -11,6 +11,7 @@
   &__link {
     @include link-state-style($link-page-bottom);
     display: block;
+    position: relative;
     width: 100%;
     padding: 1rem 15px;
     margin: 0;
@@ -21,14 +22,23 @@
     text-underline-offset: 3px;
     // sass-lint:enable no-misspelled-properties
 
-
     @include breakpoint($tab) {
       width: 50%;
       position: absolute;
       right: 0;
-      z-index: 1;
       padding: .5em 20px;
       text-align: right;
+    }
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-left: .6rem;
+      vertical-align: middle;
+      background: transparent resolve('translate_48px.svg') center center no-repeat;
+      background-size: 2.4rem;
     }
   }
 }

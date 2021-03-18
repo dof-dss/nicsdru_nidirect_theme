@@ -406,6 +406,7 @@ $link-page-bottom: (
   ),
   background-color: (
     default: $steel-blue,
+    hover: darken($steel-blue, 5%),
   ),
   text-decoration: (
     default: '1px underline #fff',
@@ -414,7 +415,11 @@ $link-page-bottom: (
   text-underline-offset: 3px,
   outline: (
     default: 0,
-    focus: '2px solid #{$charcoal}',
+    focus: '3px solid #{$charcoal}',
+  ),
+  z-index: (
+    default: 1,
+    focus: 2,
   ),
 );
 
