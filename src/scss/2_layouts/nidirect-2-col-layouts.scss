@@ -56,8 +56,8 @@
   &--featured-highlights {
     border-top: 0 !important;
     border-bottom: 1px solid $grey-light;
-    margin-top: 2.3rem;
-    margin-bottom: 2.3rem;
+    margin-top: 3.3rem;
+    margin-bottom: 4em;
 
     @include breakpoint($mob) {
       padding-bottom: 2rem;
