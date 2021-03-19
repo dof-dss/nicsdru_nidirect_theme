@@ -26,6 +26,11 @@
 }
 
 .section {
+  
+  &--info-services h2 {
+    margin-top: 0;
+  }
+
   &--info-services,
   &--popular {
     padding-bottom: 1.5em;
@@ -53,17 +58,6 @@
     }
   }
 
-  &--featured-highlights {
-    border-top: 0 !important;
-    border-bottom: 1px solid $grey-light;
-    margin-top: 2.3rem;
-    margin-bottom: 2.3rem;
-
-    @include breakpoint($mob) {
-      padding-bottom: 2rem;
-    }
-  }
-
   &--featured {
 
     h2 {
@@ -71,6 +65,10 @@
       margin: 0;
       border-top: 10px solid color(brand-primary-medium);
     }
-  }
 
+    &-highlights {
+      margin-top: 2em;
+      margin-bottom: 2em;
+    }
+  }
 }
