@@ -61,9 +61,6 @@
 {{- page.top_banner -}}
 {{ banner_display }}
 <main{{ main_content_attr }}>{# @see skiplink in html.html.twig  which targets the ID for this element #}
-  {%- if is_front -%}
-    <h1 class="visually-hidden page-title ga-full">{{ 'Welcome to NI Direct'|t }}</h1>
-  {%- endif -%}
   {%- if page.sidebar_first -%}
     <div{{ sidebar_first_attr }}>
       {{- page.sidebar_first -}}

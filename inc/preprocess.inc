@@ -415,6 +415,12 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
   // By default page titles are visible.
   $variables['title_visible'] = TRUE;
 
+  // Set the home page title and visually hide it.
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
+    $variables['title'] = t('Welcome to N I Direct');
+    $variables['title_visible'] = FALSE;
+  }
+
   // Preprocess titles on certain routes.
   $route = \Drupal::routeMatch();
 
