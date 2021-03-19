@@ -400,4 +400,27 @@ $link-cookie-notice: (
   outline-offset: 0
 );
 
+$link-page-bottom: (
+  color: (
+    default: #fff,
+  ),
+  background-color: (
+    default: $steel-blue,
+    hover: darken($steel-blue, 5%),
+  ),
+  text-decoration: (
+    default: '1px underline #fff',
+    hover: '2px underline #fff',
+  ),
+  text-underline-offset: 3px,
+  outline: (
+    default: 0,
+    focus: '3px solid #{$charcoal}',
+  ),
+  z-index: (
+    default: 1,
+    focus: 2,
+  ),
+);
+
 
