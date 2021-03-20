@@ -550,7 +550,7 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
       foreach ($variables['items'] as $key => &$feature_node) {
         $feature_node['content']['#exclude_fields'] = ['field_teaser'];
         // Set custom field_photo image style.
-        $feature_node['content']['#photo_image_style'] = 'news_thumbnail';
+        $feature_node['content']['#photo_image_style'] = 'article_full';
       }
     }
   }
