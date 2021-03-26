@@ -5,6 +5,7 @@
  * Theme hook_preprocess functions.
  */
 
+use Drupal\block\Entity\Block;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Markup;
 use Drupal\Component\Utility\Html;
@@ -12,6 +13,7 @@ use Drupal\media\MediaInterface;
 use Drupal\nicsdru_nidirect_theme\Helpers;
 use Drupal\nicsdru_nidirect_theme\LayoutClasses;
 use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
 
 /**
  * Implements hook_preprocess_html().
@@ -345,11 +347,28 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('ga-main');
       break;
 
+    case "feature":
+      // Unset any fields which have a specific preprocess variable.
+      // See nicsdru_nidirect_theme_preprocess_field() for an example.
+      if (!empty($variables['elements']['#exclude_fields'])) {
+        foreach ($variables['elements']['#exclude_fields'] as $field_id) {
+          unset($variables['content'][$field_id]);
+        }
+      }
+
+      if ($variables['elements']['#photo_image_style']) {
+        // Some features use a different image style, eg: top set
+        // of featured content on the homepage.
+        $variables['content']['field_photo'][0]['#view_mode'] = $variables['elements']['#photo_image_style'];
+      }
+      break;
+
     case "featured_content_list":
       // Only show the title on the canonical node route.
       if (\Drupal::routeMatch()->getRouteName() != 'entity.node.canonical') {
         $variables['show_title'] = FALSE;
       }
+
       break;
 
     case "publication":
@@ -395,6 +414,12 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
 
   // By default page titles are visible.
   $variables['title_visible'] = TRUE;
+
+  // Set the home page title and visually hide it.
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
+    $variables['title'] = t('Welcome to N I Direct');
+    $variables['title_visible'] = FALSE;
+  }
 
   // Preprocess titles on certain routes.
   $route = \Drupal::routeMatch();
@@ -510,6 +535,23 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
     // Only show 3 items on the homepage.
     if (count($variables['items']) > 3) {
       $variables['items'] = array_slice($variables['items'], 0, 3);
+    }
+
+    // If we're rendering this field on the front page, see if the parent object id
+    // matches the node id defined for the feature COVID-19 FCL node. If it does
+    // then we want to add a preprocess variable to let us hide the teaser field
+    // which saves having to define a whole new set of view modes + config for
+    // a really small trivial change to the way the feature nodes render.
+    $block = Block::load('featuredcontent_covid19');
+    $covid_fcl_nid = $block->get('settings')['featured_items'];
+    $parent = &$variables['element']['#object'];
+
+    if ($parent instanceof NodeInterface && $parent->id() == $covid_fcl_nid) {
+      foreach ($variables['items'] as $key => &$feature_node) {
+        $feature_node['content']['#exclude_fields'] = ['field_teaser'];
+        // Set custom field_photo image style.
+        $feature_node['content']['#photo_image_style'] = 'article_full';
+      }
     }
   }
 

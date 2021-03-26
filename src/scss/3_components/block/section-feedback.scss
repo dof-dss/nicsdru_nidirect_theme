@@ -2,10 +2,6 @@
 
 .section-feedback {
 
-  @at-root body:not(.path-taxonomy) & {
-    margin-top: 3em;
-  }
-
   &__form {
 
     form {
@@ -28,31 +24,26 @@
     margin: 0;
     font-size: 1em;
     line-height: 1.5;
+
+    @include breakpoint($tab) {
+      width: 50%;
+    }
   }
 
   &__toggle {
+    @include link-state-style($link-page-bottom);
     display: block;
+    position: relative;
     width: 100%;
     border: 0;
     padding: 1rem 15px;
     margin: 0;
-    background-color: $steel-blue;
-    color: #fff;
     font-size: inherit;
     line-height: inherit;
     text-align: left;
-    text-decoration: underline;
-    text-underline-position: under;
 
     @include breakpoint($tab) {
       padding: .5em 20px;
-    }
-
-    &:focus,
-    &:hover {
-      outline: 3px solid color(brand-secondary);
-      outline-offset: -1px;
-      text-decoration: none;
     }
   }
 }

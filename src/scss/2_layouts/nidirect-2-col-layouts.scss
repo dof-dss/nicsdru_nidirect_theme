@@ -26,6 +26,11 @@
 }
 
 .section {
+  
+  &--info-services h2 {
+    margin-top: 0;
+  }
+
   &--info-services,
   &--popular {
     padding-bottom: 1.5em;
@@ -54,6 +59,16 @@
   }
 
   &--featured {
-    border-top: 10px solid color(brand-primary-medium);
+
+    h2 {
+      padding: 3.6rem 0 2.8rem;
+      margin: 0;
+      border-top: 10px solid color(brand-primary-medium);
+    }
+
+    &-highlights {
+      margin-top: 2em;
+      margin-bottom: 2em;
+    }
   }
 }

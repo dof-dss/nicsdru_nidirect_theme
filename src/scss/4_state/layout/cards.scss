@@ -166,7 +166,7 @@
     &__image {
 
       @include breakpoint($mob $tab) {
-        flex: 38% 1 0;
+        flex: 38% 0 0;
       }
 
       picture {

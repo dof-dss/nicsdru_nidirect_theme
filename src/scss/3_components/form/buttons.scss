@@ -50,7 +50,8 @@ button.link {
 }
 
 .btn,
-.button {
+.button,
+#drupal-off-canvas .button {
   @include btn;
   @include btn-color($btn, $btn, $white, 'dark'); // bg-color, border-color, txt-color, scheme.
 
@@ -109,6 +110,10 @@ button.link {
   .dropbutton-widget & {
     color: $charcoal;
   }
+}
+
+#drupal-off-canvas .button {
+  @include btn--small;
 }
 
 .facet--btn {
