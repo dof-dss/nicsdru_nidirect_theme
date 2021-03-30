@@ -9,7 +9,8 @@
   .info-notice,
   .card-deck--landing,
   .accordion,
-  .video-and-caption {
+  .video-and-caption,
+  .card-contact {
 
     @include rhythm-margins(3.5, 7);
 
@@ -291,5 +292,7 @@
       border-top: 1px solid $brand-primary;
     }
   }
+
+  // Theme of contact cards for landing pages.
 }
 

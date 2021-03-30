@@ -149,6 +149,7 @@
     width: 100%;
     height: 100%;
     margin: 0;
+    padding: 0;
 
     &__link { // .card__link wraps everything in the card.
 
@@ -236,7 +237,7 @@
   }
 
   // Prevent adding multiple cards (blocks) into a card-deck section (region) in layout builder
-  section .card.layout-builder-block + .layout-builder__add-block {
+  section .layout-builder-block + .layout-builder__add-block {
     display: none;
   }
 }
