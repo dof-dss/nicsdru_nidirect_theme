@@ -291,5 +291,63 @@
       border-top: 1px solid $brand-primary;
     }
   }
+
+  // Theming of contact cards for landing pages.
+  .card-deck--landing--x2 .card--contact,
+  .card-deck--landing--x3 .card--contact {
+    margin: 0;
+  }
+
+  .card-deck--landing--x2 .card--contact {
+
+    @include breakpoint($phab) {
+      .tel .title {
+        @include responsive-typo-map($body-text);
+      }
+
+      .tel .value {
+        @include responsive-typo-map($xxl-text);
+      }
+
+      .tel .supplementary {
+        @include responsive-typo-map($small-text);
+      }
+    }
+
+    @include breakpoint($phab) {
+      padding-left: 27.5%;
+
+      &::before {
+        width: 15%;
+        margin: 1em 6.25%;
+      }
+    }
+  }
+
+  .card-deck--landing--x3 .card--contact {
+
+    @include breakpoint($tab) {
+      .tel .title {
+        @include adjust-font-size-to(17px, 4);
+      }
+
+      .tel .value {
+        @include responsive-typo-map($xl-text);
+      }
+
+      .tel .supplementary {
+        @include adjust-font-size-to(15px, 4)
+      }
+    }
+
+    @include breakpoint($tab) {
+      padding-left: 27.5%;
+
+      &::before {
+        width: 15%;
+        margin: 1em 6.25%;
+      }
+    }
+  }
 }
 
