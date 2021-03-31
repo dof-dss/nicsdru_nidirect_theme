@@ -23,8 +23,16 @@
     background-color: $charcoal;
   }
 
+  &-green {
+    background-color: $hc-green;
+  }
+
   &-orange {
     background-color: $hc-orange;
+  }
+
+  &-red {
+    background-color: $hc-red;
   }
 
   &::before {
