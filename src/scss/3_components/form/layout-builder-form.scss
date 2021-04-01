@@ -88,6 +88,10 @@
     }
   }
 
+  .form-item .container-inline {
+    margin: 1em 0;
+  }
+
   label {
     font-weight: bold;
     color: #444;
@@ -98,6 +102,19 @@
     font-weight: normal;
     color: inherit;
     margin: 0;
+  }
+
+  [type='text'],
+  [type='search'],
+  [type='tel'],
+  [type='url'],
+  [type='email'],
+  [type='password'],
+  [type='date'],
+  [type='time'],
+  [type='number'],
+  [type='file'] {
+    width: auto;
   }
 
   .form-text,
@@ -601,9 +618,24 @@
     padding: .75em 1em;
   }
 
+  .ui-button.ui-dialog-titlebar-close {
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 16px;
+
+    &:focus,
+    &:hover {
+      outline: 2px solid #f6f6f6;
+      outline-offset: 3px;
+    }
+  }
+
   .ui-icon.ui-icon-closethick {
-    margin-top: -8px;
-    background: url('/core/misc/icons/ffffff/ex.svg') 0 0 no-repeat;
+    background: transparent url('/core/misc/icons/ffffff/ex.svg') 0 0 no-repeat;
   }
 
   .ui-dialog-content {
