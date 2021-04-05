@@ -73,6 +73,7 @@
 
     @include breakpoint($lap) {
       grid-template-columns: $article-grid-max-width $aside-grid-max-width;
+      grid-template-rows: auto;
     }
 
     .ga-aside {
@@ -97,12 +98,14 @@
     }
     @include breakpoint($lap) {
       grid-template-columns: $aside-grid-max-width $article-grid-max-width;
+      grid-template-rows: auto;
     }
   }
 
   &--diptych {
     @include breakpoint($tab) {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
       grid-gap: $grid-gap;
 
       > * {

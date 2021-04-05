@@ -7,10 +7,13 @@
 
 // Layouts
 //
-// The layout styling for major parts of the page  are created 'mobile-first' using the benefits of flexbox and cssgrid,
+// The layout styling for major parts of the page are created 'mobile-first' using flexbox and rid. Limited fallbacks
 // declaring appropriate fallback's where the technology is not widely enough implemented in currently used web
 // browsers. We utilise auto-prefixer to help in this regard to ensure that when prefixing for a declaration is required
 // for a particular vendor that the developer need not be concerned with making sure this is done.
+//
+// NOTE: if you want to use CSS grid in an IE-friendly way, you should only ever use it if there are a known number of
+// cells for a known number of rows and columns.
 //
 // As NICS has comparatively few variations in layouts, therefore layouts can be covered with relatively little code.
 // This section of the styleguide is essentially broken into 2 main areas - common classes and utilities that are
@@ -70,7 +73,7 @@
   display: grid;
   grid-column-gap: $grid-gap;
   grid-template-columns: 1fr;
-  justify-content: space-between;
+  grid-template-rows: auto;
 
   &.no-gutter {
     grid-column-gap: 0;

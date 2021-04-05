@@ -28,8 +28,8 @@ nidirect-global-styles:
       css/3_components/layout/header.css: { minified: true }
       css/3_components/layout/footer.css: { minified: true }
       css/3_components/layout/cards.css: { minified: true }
+      css/3_components/layout/main-menu.css: { minified: true }
       css/3_components/navigation/nav-menu.css: { minified: true }
-      css/3_components/navigation/main-menu.css: { minified: true }
       css/3_components/navigation/footer-menu.css: { minified: true }
       css/3_components/navigation/breadcrumb.css: { minified: true }
       css/3_components/navigation/contextual.css: { minified: true }

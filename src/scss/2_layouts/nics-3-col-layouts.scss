@@ -12,13 +12,8 @@
 .layout--triptych {
 
   @include breakpoint($tab) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
     grid-gap: $grid-gap;
-
-    > * {
-      /* no grid support? */
-      float: left;
-      width: 33%;
-    }
   }
 }

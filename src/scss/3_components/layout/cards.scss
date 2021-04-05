@@ -13,7 +13,8 @@
 // Style guide: components.layouts.cards
 .card {
   &-deck {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
 
     $selector: ();
     $suffixes: ('top', 'bottom', 'left', 'right');
@@ -53,12 +54,14 @@
   &--featured-news {
     display: grid;
     grid-template-columns: 100px auto;
+    grid-template-rows: auto;
     grid-gap: 0 1.2rem;
     max-width: 720px;
     margin-bottom: 2.4rem;
 
     @include breakpoint($mob) {
       grid-template-columns: 150px auto;
+      grid-template-rows: auto;
     }
 
     @include breakpoint($tab) {
@@ -124,6 +127,7 @@
   // Small screens - cards are stacked in single column.
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: auto;
   grid-gap: 1.5em 20px;
   margin: 1em 0;
 
@@ -131,6 +135,7 @@
   &--x3 {
     @include breakpoint($tab, $no-query: true) {
       grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto;
       grid-gap: 1.5em 20px;
       margin: 1.5em 0 2.5em;
     }
@@ -140,6 +145,7 @@
   &--x2 {
     @include breakpoint($phab, $no-query: true) {
       grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
       grid-gap: 1.5em 20px;
       margin: 1.5em 0 2.5em;
     }
@@ -153,10 +159,7 @@
 
     &__link { // .card__link wraps everything in the card.
 
-     // Flex to layout card innards.
-     display: flex;
-     flex-flow: column nowrap;
-
+     display: block;
      width: 100%;
      height: 100%;
 
@@ -217,6 +220,7 @@
     @include breakpoint($mob $tab, $no-query: true) {
 
       &__link {
+        display: flex;
         flex-direction: row;
       }
 
