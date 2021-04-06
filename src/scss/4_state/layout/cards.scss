@@ -43,7 +43,7 @@
       @include breakpoint($phab) {
         grid-gap: 1.5rem 20px;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
+        grid-template-rows: repeat(8, min-content); // IE fix.
       }
     }
 

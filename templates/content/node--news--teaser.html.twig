@@ -66,25 +66,24 @@
  * @see template_preprocess_node()
  */
 #}
-{{ title_prefix }}
-{% if label and not page %}
-  <h3{{ title_attributes.addClass('card__title') }}>
-    <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-  </h3>
+{% if content.field_photo %}
+  <div class="card__image">
+    {{ content.field_photo }}
+  </div>
 {% endif %}
-{{ title_suffix }}
-{% if content.field_published_date %}
-  {% spaceless %}
-    <p class="card__meta">
-      <span class="visually-hidden">{{ 'Published:'|t }}</span>
-      {{ content.field_published_date | field_value }}
-    </p>
-  {% endspaceless %}
-{% endif %}
-{% if content_attributes is not empty %}
-<div{{ content_attributes }}>
+<div class="card__content">
+  {{ title_prefix }}
+  {% if label and not page %}
+    <h3{{ title_attributes.addClass('card__title') }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h3>
   {% endif %}
-  {{- content|without('field_published_date') -}}
-  {% if  content_attributes is not empty %}
+  {{ title_suffix }}
+  <p class="card__meta">
+    <span class="visually-hidden">{{ 'Published:'|t }}</span>
+    {{ content.field_published_date | field_value }}
+  </p>
+  <p class="card__description">
+    {{ content.field_teaser }}
+  </p>
 </div>
-{% endif %}

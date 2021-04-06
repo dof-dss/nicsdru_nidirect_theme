@@ -108,10 +108,18 @@
   width: 100%;
 }
 
-/* We need to set the widths used on floated items back to auto, and remove the bottom margin as when we have grid we have gaps. */
+// Disable fallback widths on grid items for browsers that can support css grid.
 // sass-lint:disable no-important
 @supports (display: grid) {
   .grid > * {
     width: auto !important;
+  }
+}
+
+// Disable fallback widths set on grid items for IE11 which has partial support for grid.
+// sass-lint:disable no-important
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .grid > * {
+    width: 100% !important;
   }
 }

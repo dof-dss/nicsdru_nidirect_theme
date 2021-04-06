@@ -27,7 +27,7 @@
   .form-item-search-api-fulltext,
   .form-item-search-api-views-fulltext,
   .form-type-search-api-autocomplete {
-    flex: auto 1 0;
+    flex: auto 1 1;
     max-width: 375px;
   }
 
@@ -152,6 +152,7 @@ header .search-form {
 
   .form-type-search-api-autocomplete {
     max-width: 100%;
+    flex: auto 1 1;
   }
 
   & > .form-item,

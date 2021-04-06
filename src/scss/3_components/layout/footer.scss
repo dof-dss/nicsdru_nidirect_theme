@@ -11,16 +11,23 @@
   margin-top: 0;
 
   &-main.container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    align-items: center;
-    justify-items: start;
     width: 100%;
 
     @include breakpoint($tab) {
-      grid-template-columns: 70% 30%;
-      grid-template-rows: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-areas: 'menu social';
+      align-items: center;
+    }
+  }
+
+  .nav {
+    &-menu {
+      grid-area: menu;
+    }
+
+    &-social {
+      grid-area: social;
     }
   }
 }
