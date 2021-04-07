@@ -26,7 +26,7 @@
 }
 
 .section {
-  
+
   &--info-services h2 {
     margin-top: 0;
   }
@@ -66,9 +66,18 @@
       border-top: 10px solid color(brand-primary-medium);
     }
 
+    > .contextual {
+      top: auto;
+      right: -32px;
+    }
+
     &-highlights {
       margin-top: 2em;
       margin-bottom: 2em;
+
+      > .contextual {
+        right: -52px;
+      }
     }
   }
 }

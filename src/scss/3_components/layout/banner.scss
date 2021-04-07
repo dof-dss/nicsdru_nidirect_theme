@@ -8,21 +8,23 @@
   position: relative;
   width: 100%;
 
-  picture {
+  img {
     display: block;
+    margin: 0;
+    padding: 0;
 
-    + picture {
+    + img {
       position: absolute;
       top: 0;
     }
   }
 
-  img {
-    margin: 0;
-    padding: 0;
-  }
-
   &--thin {
     margin-bottom: 0;
+  }
+
+  &__strapline {
+    @include responsive-typo-map($landing-page-summary);
+    font-weight: normal;
   }
 }
