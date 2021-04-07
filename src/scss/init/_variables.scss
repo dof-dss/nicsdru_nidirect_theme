@@ -423,4 +423,28 @@ $link-page-bottom: (
   ),
 );
 
-
+$link-card--contact: (
+  color: (
+    default: #fff,
+    focus: $link,
+    hover: #fff,
+    active: #fff,
+  ),
+  background-color: (
+    default: transparent,
+    focus: #fff,
+    hover: transparent,
+    active: transparent,
+  ),
+  text-decoration: (
+    default: '1px underline',
+    focus: none,
+    hover: '2px underline #fff',
+  ),
+  text-underline-offset: 3px,
+  outline: (
+    default: 0,
+    focus: '2px solid #fff',
+  ),
+  outline-offset: 0
+);
