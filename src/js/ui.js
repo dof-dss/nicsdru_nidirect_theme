@@ -30,6 +30,12 @@
           e.stopPropagation();
         });
       });
+
+      // Hide duplicated status messages from layout builder.
+      const lbMessages = '#layout-builder div[data-drupal-messages=""]';
+      if ($(lbMessages)) {
+        $(lbMessages).hide();
+      }
     }
   };
 })(jQuery, Drupal);

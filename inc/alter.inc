@@ -18,6 +18,11 @@ function nicsdru_nidirect_theme_page_attachments_alter(array &$page) {
   if ($userCurrent->isAuthenticated()) {
     $page['#attached']['library'][] = 'nicsdru_nidirect_theme/authenticated-styles';
   }
+
+  // Attach JS for layout builder tweaks.
+  if (\Drupal::routeMatch()->getRouteName() === 'layout_builder.overrides.node.view') {
+    $page['#attached']['library'][] = 'nicsdru_nidirect_theme/nidirect-ui';
+  }
 }
 
 /**
