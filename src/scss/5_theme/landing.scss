@@ -24,7 +24,8 @@
   }
 
   .card-deck--landing--x3 + .card-deck--landing--x2:not(.card-deck--landing--simple),
-  .card-deck--landing--x2:not(.card-deck--landing--simple) + .card-deck--landing--x3 {
+  .card-deck--landing--x2:not(.card-deck--landing--simple) + .card-deck--landing--x3,
+  .card-deck--landing--x2:not(.card-deck--landing--simple) + .card-deck--landing--x2:not(.card-deck--landing--simple) {
 
     margin-top: rhythm(-3.5);
 
