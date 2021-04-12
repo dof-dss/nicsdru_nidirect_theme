@@ -12,30 +12,26 @@
 //
 // Style guide: components.layouts.cards
 .card {
-  &-deck {
-    grid-template-columns: repeat(1, 1fr);
 
-    $selector: ();
-    $suffixes: ('top', 'bottom', 'left', 'right');
-    // this declaration creates a number of modifier classes for a border on the `.card` children under `.card-deck`
-    // one modifier for each item in the $suffixes list.
-    @each $suffix in $suffixes {
-      $selector: unquote('border-#{$suffix}');
-
-      &.#{$selector} .card {
-        #{$selector}: 1px solid;
-      }
-    }
-  }
+  display: flex;
+  flex-flow: column nowrap;
 
   &__image {
+    flex: auto 1 1;
+    display: flex;
+    flex-flow: column nowrap;
+
     .media-image img {
       margin: 0;
     }
   }
 
+  &__body {
+    flex: 100% 1 1;
+  }
+
   &__title {
-    margin-top: 0;
+    margin: 0 0 .9rem;
   }
 
   &__meta {
@@ -43,70 +39,89 @@
     @include breakpoint($tab) {
       @include adjust-font-size-to(16px, 4);
     }
+
+    margin: .9rem 0;
+    color: $meta;
   }
 
-  // Featured news card
-  //
-  // A specific card layout that takes .
-  //
-  // Style guide: components.layouts.cards.featured-news
-  &--featured-news {
+  &__meta + p,
+  &__content {
+    margin: 0;
+  }
+
+  &-deck {
+    // A deck of cards.
+    // By default, use grid to layout the cards in a single column.
     display: grid;
-    grid-template-columns: 100px auto;
-    grid-gap: 0 1.2rem;
-    max-width: 720px;
-    margin-bottom: 2.4rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content;
+    grid-gap: 1.5em 2rem;
+    margin-bottom: 1.5em;
 
-    @include breakpoint($mob) {
-      grid-template-columns: 150px auto;
+    // .card-deck--x2 allows up to two columns of cards as screen size increases.
+    &--x2 {
+      @include breakpoint($phab) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: min-content;
+      }
     }
 
-    @include breakpoint($tab) {
-      grid-gap: 0 1.5rem;
-      margin-bottom: 2.7rem;
+    // .card-deck--x3 allows up to three columns of cards as screen size increases.
+    &--x3 {
+
+      @include breakpoint($phab) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: min-content;
+      }
+
+      @include breakpoint($tab) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: min-content;
+      }
     }
 
-    & > * {
-      grid-column: 2;
-      margin: 0;
+    // .card-deck--x4 allows up to four columns of cards as screen size increases.
+    &--x4 {
+
+      @include breakpoint($phab) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: min-content;
+      }
+
+      @include breakpoint($tab) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: min-content;
+      }
+
+      @include breakpoint($lap) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: min-content;
+      }
     }
 
-    .card {
-      &__title {
-        @include adjust-font-size-to(18px, 4);
+    // Card deck list.
+    //
+    // Cards in a single column at all screen sizes - but the layout of the card itself switches from
+    // column (card image on top of card content) to row (card image left of card content) when the screen size
+    // increases.
+    &--list {
+      max-width: 720px;
+      margin-bottom: 2.5em;
+
+      .card {
+        display: flex;
+        flex-flow: column nowrap;
 
         @include breakpoint($mob) {
-          @include adjust-font-size-to(21px, 4.5);
-        }
-      }
+          flex-flow: row nowrap;
 
-      &__meta {
-        color: $meta;
-      }
+          .card__image {
+            flex: 150px 0 0;
+          }
 
-      &__content {
-        @include adjust-font-size-to(16px, 3.5);
-        margin: .4rem 0;
-        grid-column-start: 1;
-        grid-column-end: 3;
-
-        @include breakpoint($mob) {
-          grid-column: 2;
-        }
-
-        @include breakpoint($mob) {
-          margin: .6rem 0;
-        }
-      }
-
-      &__image {
-        grid-column: 1;
-        grid-row: 1/10;
-
-        img {
-          width: 100%;
-          margin: 0;
-          float: none;
+          .card__body {
+            padding: 0 0 0 1em;
+          }
         }
       }
     }
