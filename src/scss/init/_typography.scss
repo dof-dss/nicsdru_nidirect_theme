@@ -28,8 +28,8 @@ $body-text: (
 );
 
 $small-text: (
-  null: (1.4rem, 1.4286),
-  xl: (1.6rem, 1.5),
+  null: (1.5rem, 1.4),
+  lg: (1.6rem, 1.5),
   //xxl: (1.7rem, 1.7647),
 );
 
@@ -101,6 +101,10 @@ $h6-text: (
   null: (16px, 2.4rem, 3.2rem 0 1.2rem),
   lg: (18px, 2.7rem, 3.6rem 0 1.8rem),
   //xxl: (20px, 3rem, 4rem 0 2rem)
+);
+
+$card-title: (
+  null: (22px, 1.364),
 );
 
 $btn-small: (

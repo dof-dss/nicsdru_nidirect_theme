@@ -15,19 +15,15 @@
  * @see template_preprocess_views_view_unformatted()
  */
 #}
-{% if title %}
-  <h3>{{ title }}</h3>
-{% endif %}
 {% for row in rows %}
   {%
     set row_classes = [
-      'card',
       default_row_class ? 'views-row',
     ]
   %}
   <article{{ row.attributes.addClass(row_classes) }}>
-    <a class="card__link" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': row.content['#row'].tid}) }}" hreflang="en">
-      <div class="card__content">
+    <a class="card card--no-border card--no-shadow card--no-body-padding" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': row.content['#row'].tid}) }}" hreflang="en">
+      <div class="card__body">
         {{- row.content -}}
       </div>
     </a>

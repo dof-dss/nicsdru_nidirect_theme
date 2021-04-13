@@ -5,32 +5,68 @@
 
 @import '../../init';
 
-// Card component
+// Card component.
 //
-// A fairly simple component to group a number of related elements. It is envisaged that this component will frequently
-// change state. These are dealt with in the states section of the theme.
+// Cards organise information into meaningful and distinct blocks of content. They are called "cards" because they are
+// often designed to look like real-world tangible cards in user interfaces (think of trump cards, business cards, or
+// even post-it notes). A card gathers snippets of information about a "thing" to serve as an entry point to more
+// detailed information about that "thing".  Cards often contain an image, a heading, a short description or "teaser
+// text" and the entire card can act as a link or contain a link (or links) to view more detailed information.
+//
+// Cards are themselves simple components, but there can be many (many) variations in card styles and in
+// how they are arranged on the page. They are often arranged in a "card deck" component which has some influence on
+// the card styles (see the card-deck component).
 //
 // Style guide: components.layouts.cards
-.card {
 
+.card {
   display: flex;
   flex-flow: column nowrap;
+  box-shadow: 0 1px 3px $grey-medium;
+
+  &--no-shadow {
+    box-shadow: none;
+  }
+
+  &--no-border {
+    border: 0;
+  }
 
   &__image {
     flex: auto 1 1;
-    display: flex;
-    flex-flow: column nowrap;
 
-    .media-image img {
-      margin: 0;
+    .media-image {
+      display: flex; // Resolves font-size and line-height causing empty white-space.
+      flex-direction: column;
+
+      img {
+        margin: 0;
+      }
     }
   }
 
   &__body {
     flex: 100% 1 1;
+    padding: 1.2rem;
+
+    @at-root .card--no-body-padding & {
+      padding: 0;
+    }
+
+    > p,
+    > ul,
+    > ol {
+      margin: .9rem 0;
+    }
+
+    > p,
+    > li {
+      @include responsive-typo-map($small-text);
+    }
   }
 
   &__title {
+    @include responsive-typo-map($card-title);
     margin: 0 0 .9rem;
   }
 
@@ -46,83 +82,246 @@
 
   &__meta + p,
   &__content {
-    margin: 0;
+    margin-top: 0;
+  }
+}
+
+// When a card is a link...
+a.card {
+  text-decoration: none;
+  background-color: transparent;
+  outline-color: transparent;
+  transition: background-color .3s, outline-color .3s;
+
+  &:hover,
+  &:focus {
+    background-color: $brand-primary-lighter;
+    outline: .6rem solid $brand-primary-lighter;
+    outline-offset: 0;
+
+    .card__title::after {
+      outline: .3rem solid $charcoal;
+      background-color: $charcoal;
+      background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2025%2015%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%20.st0%7Bfill%3A%23ffffff%3Bfill-rule%3Aevenodd%3Bclip-rule%3Aevenodd%3B%7D%20%3C%2Fstyle%3E%3Cpath%20class%3D%22st0%22%20d%3D%22M12.5%200L0%2012l3%203%209.5-10L22%2015l3-3L12.5%200z%22%2F%3E%3C%2Fsvg%3E%0A');
+    }
   }
 
-  &-deck {
-    // A deck of cards.
-    // By default, use grid to layout the cards in a single column.
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: min-content;
-    grid-gap: 1.5em 2rem;
-    margin-bottom: 1.5em;
+  .card__title {
+    position: relative;
+    padding-right: 36px;
+    color: color(brand-secondary);
 
-    // .card-deck--x2 allows up to two columns of cards as screen size increases.
-    &--x2 {
-      @include breakpoint($phab) {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: min-content;
+    &::after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: .3rem;
+      right: 0;
+      width: 3rem;
+      height: 2.4rem;
+      background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2025%2015%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%20.st0%7Bfill%3A%230e6bb3%3Bfill-rule%3Aevenodd%3Bclip-rule%3Aevenodd%3B%7D%20%3C%2Fstyle%3E%3Cpath%20class%3D%22st0%22%20d%3D%22M12.5%200L0%2012l3%203%209.5-10L22%2015l3-3L12.5%200z%22%2F%3E%3C%2Fsvg%3E%0A');
+      background-position: center center;
+      background-size: 2.2rem auto;
+      background-repeat: no-repeat;
+      transform: rotate(90deg);
+    }
+  }
+
+
+  @at-root .card-deck--plain & {
+
+    // Need to reset some styles from the classic card link style.
+    color: $link;
+    text-decoration: none;
+    text-underline-position: under;
+    // sass-lint:disable no-misspelled-properties
+    text-underline-offset: 3px;
+    // sass-lint:enable no-misspelled-properties
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      outline: none;
+    }
+
+    // The card title looks and behaves like a standard link.
+    .card__title {
+      padding: 0;
+      color: $link;
+      text-decoration: 1px underline $link;
+
+      &::after {
+        content: none;
       }
     }
 
-    // .card-deck--x3 allows up to three columns of cards as screen size increases.
-    &--x3 {
+    &:focus .card__title {
+      color: #fff;
+      background-color: $link;
+      box-shadow: 0 0 0 3px $link;
+    }
 
-      @include breakpoint($phab) {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: min-content;
+    &:hover .card__title {
+      color: $link;
+      background-color: transparent;
+      box-shadow: none;
+      text-decoration: 2px underline $brand-secondary;
+    }
+
+    &:active .card__title {
+      color: $link-active;
+      background-color: transparent;
+      text-underline-color: $link-active;
+    }
+  }
+
+}
+
+// Cards are often arranged in "card deck" and the deck needs to be responsive moving from single column on small
+// screens to multiple columns on larger screens. Card decks can change the internal layout of cards from column (card
+// image on top of card body) to row (card image to the left of the card content) depending on the screen size.
+//
+// Style guide: components.layouts.card-decks
+
+.card-deck {
+
+  // By default, use grid to layout the cards in a single column.
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content;
+  grid-gap: 1.5em 2rem;
+  margin-bottom: 1.5em;
+
+  // Ensure cards in a deck take the full width and height of their grid container.
+  .card {
+    width: 100%;
+    height: 100%;
+  }
+
+  // .card-deck--x2 allows up to two columns of cards as screen size increases.
+  &--x2 {
+    @include breakpoint($phab) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: min-content;
+    }
+  }
+
+  // .card-deck--x3 allows up to three columns of cards as screen size increases.
+  &--x3 {
+
+    @include breakpoint($phab) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: min-content;
+    }
+
+    @include breakpoint($tab) {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: min-content;
+    }
+  }
+
+  // .card-deck--x4 allows up to four columns of cards as screen size increases.
+  &--x4 {
+
+    @include breakpoint($phab) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: min-content;
+    }
+
+    @include breakpoint($tab) {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: min-content;
+    }
+
+    @include breakpoint($lap) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: min-content;
+    }
+  }
+
+  // Card deck lists (single column) and single column list to multi-column hybrids.
+  //
+  // A card-deck--list is a deck with single column of cards. The cards in the list adjust their internal layout at
+  // different screen sizes. On small screens, the classic card layout is used (card image on top of card body). On
+  // larger screens, the cards switch to a row layout (card image to the left of the card body).
+  //
+  // card-deck--list-to-xN decks also start with a single column of cards.  As screen sizes increase, the cards in the
+  // list adjust their internal layout from column to row.  But at the largest screen sizes, the deck becomes multi-
+  // column and the card's internal layout reverts to the classic column layout.
+
+  &--list {
+
+    .card {
+
+      // Column layout for card (small screen sizes).
+      flex-flow: column nowrap;
+
+      @include breakpoint(0 $mob) {
+        .card__body {
+          padding-top: 1.2rem;
+        }
       }
 
-      @include breakpoint($tab) {
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: min-content;
+      // Row layout for all other screen sizes.
+      @include breakpoint($mob) {
+        flex-flow: row nowrap;
+
+        .card__image {
+          flex: 150px 0 0;
+        }
+
+        .card__body {
+          padding-left: 1em;
+          align-self: center;
+        }
       }
     }
 
-    // .card-deck--x4 allows up to four columns of cards as screen size increases.
-    &--x4 {
-
-      @include breakpoint($phab) {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: min-content;
-      }
-
-      @include breakpoint($tab) {
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: min-content;
-      }
-
-      @include breakpoint($lap) {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: min-content;
-      }
-    }
-
-    // Card deck list.
-    //
-    // Cards in a single column at all screen sizes - but the layout of the card itself switches from
-    // column (card image on top of card content) to row (card image left of card content) when the screen size
-    // increases.
-    &--list {
-      max-width: 720px;
-      margin-bottom: 2.5em;
-
+    // Card deck list / column hybrids.
+    &-to-x2,
+    &-to-x3,
+    &-to-x4 {
       .card {
-        display: flex;
+
+        // Column layout for card (small and larger screen sizes).
         flex-flow: column nowrap;
 
-        @include breakpoint($mob) {
+        // Row layout at mid screen sizes.
+        @include breakpoint($mob $tab) {
           flex-flow: row nowrap;
 
           .card__image {
-            flex: 150px 0 0;
+            flex: 33% 0 0;
           }
 
           .card__body {
-            padding: 0 0 0 1em;
+            padding-left: 1em;
+            align-self: center;
           }
         }
+      }
+    }
+
+    // Card deck list / column hybrids finally arrange cards in multi-column layout at large screens sizes.
+    &-to-x2,
+    &-to-x4 {
+      @include breakpoint($tab) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: min-content;
+      }
+    }
+
+    &-to-x3 {
+      @include breakpoint($tab) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: min-content;
+      }
+    }
+
+    &-to-x4 {
+      @include breakpoint($lap) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: min-content;
       }
     }
   }
