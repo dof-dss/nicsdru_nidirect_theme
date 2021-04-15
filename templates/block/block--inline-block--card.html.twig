@@ -24,22 +24,20 @@
  *
  * @see template_preprocess_block()
  *
+ * @see https://digitaldevelopment.atlassian.net/browse/D8NID-1034?focusedCommentId=44164
+ * for the various rendering outcomes for this block.
  */
 #}
 
-{% set classes = ['card'] %}
-{#
- For the various rendering outcomes for this block please see the table in:
- https://digitaldevelopment.atlassian.net/browse/D8NID-1034?focusedCommentId=44164
-#}
-
-<div{{ attributes.addClass(classes) }}>
+{% if attributes is not empty -%}
+<div{{ attributes }}>
+{% endif %}
   {{ title_prefix }}{{ title_suffix }}
   {% if not content.field_link['#items'] and content.field_title_link[0]['#url'] %}
-  <a class="card__link" href="{{ content.field_title_link[0]['#url']|render }}">
+  <a class="card" href="{{ content.field_title_link[0]['#url']|render }}">
   {%  endif %}
     <div class="card__image">{{ content.field_image }}</div>
-    <div class="card__content">
+    <div class="card__body">
       {% if label %}
         {% if content.field_link['#items'] and content.field_title_link[0]['#url']  %}
           <a class="card__title-link" href="{{ content.field_title_link[0]['#url']|render }}"><h2{{ title_attributes.addClass('card__title') }}>{{ label }}</h2></a>
@@ -66,4 +64,6 @@
   {% if not content.field_link['#items'] and content.field_title_link[0]['#url'] %}
   </a>
   {% endif %}
+{% if attributes is not empty -%}
 </div>
+{% endif %}

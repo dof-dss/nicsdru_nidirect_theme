@@ -60,5 +60,15 @@
     &__title::after {
       right: -1.6rem;
     }
+
+    &__body {
+      @include breakpoint($mob $tab) {
+        padding: 0 0 0 1em;
+      }
+    }
   }
+}
+
+.latest-news .card_content {
+  max-width: $max-content-width;
 }
