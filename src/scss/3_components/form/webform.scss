@@ -106,7 +106,7 @@ input[type='submit'].webform-button--previous {
   @include btn;
   @include btn--large;
   @include btn--left;
-  @include btn-color($btn, $grey, $charcoal, 'light');
+  @include btn-color($btn, $btn, #fff, 'dark');
   padding-left: 3.6rem !important;
 }
 

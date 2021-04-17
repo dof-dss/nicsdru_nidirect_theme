@@ -129,6 +129,11 @@ $form-legend: (
   //xxl: (28px, 3rem, 0 0 2rem)
 );
 
+$form-legend-plain: (
+  null: (18px, 1.5, 0 0 .6rem),
+  md: (20px, 1.5, 0 0 .9rem),
+);
+
 $landing-page-summary: (
   null: (20px, 1.4, 1.2rem 0 2.4rem),
   md: (22px, 1.4546, 2rem 0 2.4rem),
