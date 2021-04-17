@@ -326,6 +326,12 @@ a.card {
   }
 
   // Card decks in Layout Builder.
+
+  .layout-builder__region {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
   .layout-builder-block {
     padding: 0;
     width: 100%;
