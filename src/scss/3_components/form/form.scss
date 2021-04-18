@@ -52,6 +52,10 @@ form > .form-item,
 .form-wrapper > .form-item {
   padding: 0;
   margin: 2em 0;
+
+  &.form-type-processed-text {
+    margin: 0;
+  }
 }
 
 .description {

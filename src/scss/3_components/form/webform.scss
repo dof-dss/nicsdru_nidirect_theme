@@ -49,11 +49,13 @@
     display: inline-block;
     width: auto;
     padding: 0;
+
+    &--error-message {
+      @extend %error-bubble--floating-below;
+    }
   }
 
-  .form-item--error-message {
-    @extend %error-bubble--floating-below;
-  }
+
 }
 
 .webform-submission-form {
