@@ -4,6 +4,7 @@
  */
 @import '../../init';
 @import 'button/button-defs';
+@import 'error-messages/error-messages';
 
 main form {
   margin: 0;
@@ -33,6 +34,18 @@ main form {
 
 .form-item {
   position: relative;
+
+  .container-inline {
+    margin: 0;
+  }
+
+  &--error-message {
+    @extend %error-bubble;
+
+    @at-root .container-inline & {
+      @extend %error-bubble--floating-below;
+    }
+  }
 }
 
 form > .form-item,
@@ -290,19 +303,30 @@ textarea,
 .form-type-radio,
 .form-type-checkbox {
   position: relative;
+  width: 100%;
   margin: .5em .5em 0 0;
+  padding: 0 33% 0 0; // Right padding makes room for error bubbles.
 
   .container-inline & {
     display: inline-block;
+    width: auto;
+    padding: 0;
+
+    .form-item--error-message {
+      @extend %error-bubble--floating-below;
+    }
+  }
+
+  // Error bubbles sit to the right of radio/checkbox options.
+  .form-item--error-message {
+    @extend %error-bubble--floating-right;
   }
 }
 
 input[type='radio'],
 .form-radio,
-.container-inline.form-radio,
 input[type='checkbox'],
-.form-checkbox,
-.container-inline.form-checkbox {
+.form-checkbox {
   font-size: 1em;
   line-height: 1.5;
 
@@ -339,6 +363,7 @@ input[type='checkbox'],
     left: 0;
     margin: 0;
     padding: .625em 1em .625em 3.2rem; // Right padding makes space for the input to sit in.
+    width: 100%;
     min-width: 4.5em;
     min-height: 2.75em;
     box-shadow: inset 0 0 0 1px $charcoal; // Using box shadow to make thin border as it doesn't affect the overall size.
@@ -384,31 +409,4 @@ input[type='checkbox'],
   }
 }
 
-/* Error Tool Tip Styles*/
-.form-item--error-message {
-  @include responsive-typo-map($body-text);
 
-  display: block;
-  position: relative;
-  left: -.6rem;
-  z-index: 101;
-  width: fit-content;
-  max-width: 56rem;
-  font-weight: bold;
-  padding: .9rem;
-  color: $white;
-  background-color: $hc-red;
-  border: 1px solid $hc-red;
-  border-radius: 3px;
-  box-shadow: 0 8px 12px -4px rgba(0, 0, 0, .3);
-  opacity: 1;
-
-  &::before {
-    content: '';
-    border: .9rem solid transparent;
-    border-bottom-color: $hc-red;
-    position: absolute;
-    top: -1.7rem;
-    left: 1.4rem;
-  }
-}
