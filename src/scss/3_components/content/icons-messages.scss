@@ -108,6 +108,40 @@
     background-image: resolve('i.png');
   }
 
+  &--large {
+
+    border-width: .25em;
+    padding: .5em 5rem 1em;
+    margin: 1em 0 1.5em;
+    background-size: 3rem 3rem;
+    background-position: 1rem 1rem;
+
+    @include breakpoint($phab) {
+      background-size: 4rem 4rem;
+      background-position: 2rem 2rem;
+      border-width: .3334em;
+      padding: .5em 8rem 1.5em;
+    }
+
+    > *:first-child {
+      margin-top: .9rem;
+
+      @include breakpoint($tab) {
+        margin-top: 1.5rem;
+      }
+    }
+
+    ul:first-of-type,
+    ol:first-of-type {
+      margin-top: 1.2rem;
+    }
+
+    p,
+    li {
+      @include responsive-typo-map($large-text);
+    }
+  }
+
   &--success {
     border-color: $btn-action;
     background-image: resolve('status.svg');
