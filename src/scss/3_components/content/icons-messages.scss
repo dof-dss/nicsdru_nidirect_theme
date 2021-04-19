@@ -193,7 +193,8 @@ ul.info-notice,
   }
 }
 
-.messages {
+.messages,
+.form-item.messages {
   @extend %notice-builder;
 
   &--error {
