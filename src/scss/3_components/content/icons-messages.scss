@@ -82,25 +82,39 @@
 %notice-builder {
   border: 2px solid;
   margin: 1.5em 0;
-  padding: 1rem 1rem 1rem 4rem;
-  background: #fff resolve('i.svg') no-repeat .9rem .9rem / 24px 24px;
+  padding: 1.2rem 1em 1em 5rem;
+  background: #fff resolve('i.svg') no-repeat 1.1rem 1.1rem / 28px 28px;
 
   @include breakpoint($phab, $no-query: true) {
-    padding: 1.4rem 1.4rem 1.4rem 6rem;
+    padding: 1.4rem 1em 1em 6rem;
     background-position: 1.4rem 1.4rem;
     background-size: 30px 30px;
   }
 
-  & >  *:first-child {
+  & > *:first-child {
     margin-top: 0;
+  }
+
+  & > p:first-child {
+    margin-top: .3rem;
   }
 
   & > *:last-child {
     margin-bottom: 0;
   }
+
+  & > h2:first-child,
+  & > h3:first-child {
+    @include adjust-font-size-to(21px, 4.5);
+
+    @include breakpoint($phab) {
+      @include adjust-font-size-to(24px, 5);
+    }
+  }
 }
 
-.info-notice {
+.info-notice,
+.form-item.info-notice {
   @extend %notice-builder;
   border-color: $brand-primary-light;
 
@@ -129,11 +143,6 @@
       @include breakpoint($tab) {
         margin-top: 1.5rem;
       }
-    }
-
-    ul:first-of-type,
-    ol:first-of-type {
-      margin-top: 1.2rem;
     }
 
     p,
@@ -170,14 +179,6 @@
   }
 }
 
-ul.info-notice,
-.form-item.info-notice {
-  padding: 1rem 1rem 1rem 4rem;
-  @include breakpoint($phab) {
-    padding: 1.4rem 1.4rem 1.4rem 7rem;
-  }
-}
-
 // Messages.
 //
 // Messages are part of Drupal core.
@@ -193,7 +194,8 @@ ul.info-notice,
   }
 }
 
-.messages {
+.messages,
+.form-item.messages {
   @extend %notice-builder;
 
   &--error {
