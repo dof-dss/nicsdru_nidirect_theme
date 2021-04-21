@@ -171,11 +171,11 @@
 
     // All buttons smaller than usual except primary buttons.
   .button:not(.button--primary) {
-    @include btn--small;
+    @include btn(small);
   }
 
   .button--primary {
-    @include btn--medium;
+    @include btn(medium);
   }
 
   table {
@@ -411,7 +411,7 @@
 
     // Small buttons.
     .button {
-      @include btn--small;
+      @include btn(small);
       margin: .6rem !important;
 
       &:not(.button--primary) {

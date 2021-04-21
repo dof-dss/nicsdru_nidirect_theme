@@ -65,25 +65,17 @@
 }
 
 input[type='submit'].webform-button--submit {
-  @include btn;
-  @include btn--large;
+  @include btn(large);
   @include btn-color($btn-primary, $btn-primary, #fff, 'dark');
 }
 
 input[type='submit'].webform-button--next {
-  @include btn;
-  @include btn--large;
-  @include btn--right;
-  @include btn-color($btn-primary, $btn-primary, #fff, 'dark');
-  padding-right: 3.6rem !important;
+  @include btn(large, right, white);
+  @include btn-color($btn-primary);
 }
 
 input[type='submit'].webform-button--previous {
-  @include btn;
-  @include btn--large;
-  @include btn--left;
-  @include btn-color($btn, $btn, #fff, 'dark');
-  padding-left: 3.6rem !important;
+  @include btn(large, left);
 }
 
 .js-webform-states-hidden[style*='display: none'] {
