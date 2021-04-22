@@ -4,6 +4,7 @@
  */
 @import '../../init';
 @import 'button/button-defs';
+@import 'error-messages/error-messages';
 
 .form-textarea-wrapper {
   line-height: 0;
@@ -35,51 +36,26 @@
   }
 }
 
-.webform-options-display-one-column {
-  input ~ label {
-    width: calc(75% - .9rem);
-
-    @include breakpoint($phab) {
-      width: calc(60% - .9rem);
-    }
-  }
-
-  .form-item--error-message {
-    @include responsive-typo-map($small-text);
-    position: absolute;
-    width: 25%;
-    min-width: fit-content;
-    top: 0;
-    left: 75%;
-
-    @include breakpoint($phab) {
-      width: 40%;
-      left: 60%;
-    }
-
-    &::before {
-      border-bottom-color: transparent;
-      border-right-color: $hc-red;
-      top: .75em;
-      left: -1.8rem;
-    }
-  }
-}
-
-.webform-options-display-side-by-side .form-item--error-message {
-  position: absolute;
-  top: calc(100% + .9rem);
-  width: max-content;
-  min-width: 16rem;
-}
-
 
 /* webform radios and checkboxes displayed inline are wrapped with this class */
 .webform-options-display-side-by-side {
-  // webform css adds margin - no need for margins on child labels
+
+  // webform css adds unwanted margin on child labels
   label {
     margin: 0;
   }
+
+  .form-item {
+    display: inline-block;
+    width: auto;
+    padding: 0;
+
+    &--error-message {
+      @extend %error-bubble--floating-below;
+    }
+  }
+
+
 }
 
 .webform-submission-form {
@@ -106,7 +82,7 @@ input[type='submit'].webform-button--previous {
   @include btn;
   @include btn--large;
   @include btn--left;
-  @include btn-color($btn, $grey, $charcoal, 'light');
+  @include btn-color($btn, $btn, #fff, 'dark');
   padding-left: 3.6rem !important;
 }
 
