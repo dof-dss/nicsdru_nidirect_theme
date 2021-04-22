@@ -14,7 +14,7 @@
   border: 1px solid transparent;
   border-radius: 0;
   text-align: center;
-  text-decoration: none !important;
+  text-decoration: none;
   background-repeat: no-repeat;
   background-position-y: center;
   appearance: none;
@@ -185,21 +185,21 @@
 }
 
 @mixin btn--link {
+
+  @include link-state-style($link-body-no-visited);
+
   // Remove button background and border.
   // Since this is a modifier mixin, it needs to be aggressive and so some properties
   // will use the !important rule.
   background: none !important;
   border: 0 !important;
-  color: $link !important;
-  text-decoration: underline;
-  text-underline-position: under;
-  // sass-lint:disable no-misspelled-properties
-  text-underline-offset: 3px;
-  // sass-lint:enable no-misspelled-properties
+  box-shadow: none !important;
 }
 
 @mixin btn--link-inline {
-  // Remove or reset button background, border and sizing/layout properties.
+  @include btn--link;
+
+  // Remove or reset sizing and spacing properties.
   // Since this is a modifier mixin, it needs to be aggressive and so some properties
   // will use the !important rule.
   display: inline !important;
@@ -207,16 +207,8 @@
   height: auto !important;
   min-width: auto !important;
   min-height: auto !important;
-  background: none !important;
-  border: 0 !important;
   padding: 0 !important;
   margin: 0 !important;
-  color: $link !important;
-  text-decoration: underline;
-  text-underline-position: under;
-  // sass-lint:disable no-misspelled-properties
-  text-underline-offset: 3px;
-  // sass-lint:enable no-misspelled-properties
 }
 
 // The disabled variation should always go last, so that it overrides any

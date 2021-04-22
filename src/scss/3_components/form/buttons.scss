@@ -115,7 +115,7 @@
     @include btn--block;
   }
 
-  &--link
+  &--link,
   &.link {
     @include btn--link;
 
