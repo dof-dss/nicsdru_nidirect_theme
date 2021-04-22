@@ -253,8 +253,7 @@ textarea {
   font-size: 1.6rem !important;
 
   &::-webkit-file-upload-button {
-    @include btn;
-    @include btn--small;
+    @include btn(small);
     @include btn-color($btn-primary, #fff);
     margin: 0 !important;
     font-weight: normal;
