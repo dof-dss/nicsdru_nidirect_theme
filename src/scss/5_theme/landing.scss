@@ -7,7 +7,7 @@
 .page-node-type-landing-page {
 
   .info-notice,
-  .card-deck--landing,
+  .card-deck,
   .accordion,
   .video-and-caption {
 
@@ -23,8 +23,12 @@
 
   }
 
-  .card-deck--landing--x3 + .card-deck--landing--x2:not(.card-deck--landing--simple),
-  .card-deck--landing--x2:not(.card-deck--landing--simple) + .card-deck--landing--x3 {
+  .card-deck:not(.card-deck--plain) .card {
+    border-top: .9rem solid $brand-primary-medium;
+    outline-width: 0;
+  }
+
+  .card-deck + .card-deck:not(.card-deck--plain) {
 
     margin-top: rhythm(-3.5);
 
@@ -43,168 +47,22 @@
     font-weight: normal;
   }
 
-  // Theming of cards for landing pages. Card layout is defined in 3_components/layout/cards
-  .card-deck--landing .card {
-
-    box-shadow: 0 1px 2px $grey-medium;
-    border-top: 0 solid $brand-primary-medium;
-
-    @include breakpoint($mob $tab, $no-query: true) {
-      box-shadow: 1px 0 5px $grey-medium;
-    }
-
-    @include breakpoint($tab, $no-query: true) {
-      border-top-width: 10px;
-    }
-
-    &:hover {
-      background-color: $offwhite;
-    }
-
-    &__image {
-
-      .media-image {
-        font-size: .1px;
-        line-height: 0;
-      }
-    }
-
-    &__content {
-
-      > * {
-        @include adjust-font-size-to(16px, 4);
-
-        @include breakpoint($tab, $no-query: true) {
-          @include adjust-font-size-to(18px, 4.5);
-        }
-      }
-
-      p,
-      ul,
-      ol {
-        max-width: calc(100% - 25px);
-      }
-
-      ul:not(.contextual-links) li {
-        position: relative;
-        list-style: none;
-        padding: 0 0 rhythm(1) 1rem;
-
-        &::before {
-          content: '-';
-          position: absolute;
-          left: 0;
-          top: 0;
-        }
-      }
-
-      iframe {
-        border: 0;
-      }
-    }
-
-    &__title {
-
-      @include adjust-font-size-to(22px, 4.6667);
-
-      @include breakpoint($phab, $no-query: true) {
-        @include adjust-font-size-to(22px, 5);
-      }
-
-      position: relative;
-      padding-right: 25px;
-    }
-
-    &__title-link {
-
-      text-decoration: none;
-      outline: none;
-
-      &:focus .card__title,
-      &:hover .card__title {
-
-        &::after {
-          outline: 3px solid $charcoal;
-          outline-offset: 0;
-          background-color: $charcoal;
-          background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2025%2015%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%20.st0%7Bfill%3A%23ffffff%3Bfill-rule%3Aevenodd%3Bclip-rule%3Aevenodd%3B%7D%20%3C%2Fstyle%3E%3Cpath%20class%3D%22st0%22%20d%3D%22M12.5%200L0%2012l3%203%209.5-10L22%2015l3-3L12.5%200z%22%2F%3E%3C%2Fsvg%3E%0A');
-        }
-      }
-    }
-
-    &__link .card__title::after,
-    &__title-link .card__title::after {
-      content: '';
-      display: inline-block;
-      position: absolute;
-      top: 2px;
-      right: 0;
-      width: 24px;
-      height: 20px;
-      background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2025%2015%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%20.st0%7Bfill%3A%230e6bb3%3Bfill-rule%3Aevenodd%3Bclip-rule%3Aevenodd%3B%7D%20%3C%2Fstyle%3E%3Cpath%20class%3D%22st0%22%20d%3D%22M12.5%200L0%2012l3%203%209.5-10L22%2015l3-3L12.5%200z%22%2F%3E%3C%2Fsvg%3E%0A');
-      background-position: center 3px;
-      background-size: 21px auto;
-      background-repeat: no-repeat;
-      transform: rotate(90deg);
-
-      @include breakpoint($tab, $no-query: true) {
-        top: .25em;
-      }
-    }
-
-    &__link {
-      text-decoration: none;
-      background: none;
-      border: 0;
-
-      &:focus,
-      &:hover {
-        outline: none;
-
-        .card__title::after {
-          outline: 3px solid $charcoal;
-          outline-offset: 0;
-          background-color: $charcoal;
-          background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2025%2015%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%20.st0%7Bfill%3A%23ffffff%3Bfill-rule%3Aevenodd%3Bclip-rule%3Aevenodd%3B%7D%20%3C%2Fstyle%3E%3Cpath%20class%3D%22st0%22%20d%3D%22M12.5%200L0%2012l3%203%209.5-10L22%2015l3-3L12.5%200z%22%2F%3E%3C%2Fsvg%3E%0A');
-        }
-      }
-    }
-
-    &__links {
-      padding: 0;
-    }
-
-    &__video {
-      border: 0 solid;
-      box-shadow: none;
-
-      &:hover {
-        background-color: transparent;
-        border-color: none;
-      }
-    }
-  }
-
-  .card-deck--landing--simple {
-
-    grid-row-gap: 0;
+  .card-deck--plain {
 
     .card {
-
-      box-shadow: none !important;
-      border-top: 0;
 
       &__link {
         position: unset;
         display: block;
         width: 100%;
         height: 100%;
+        text-decoration: none;
       }
 
       &__title {
         @include adjust-font-size-to(18px, 4);
         border-bottom: 2px solid $brand-primary;
-        padding-bottom: .9rem;
+        padding: 0 0 .9rem;
         margin-top: 0;
 
         @include breakpoint($phab, $no-query: true) {
@@ -217,34 +75,32 @@
       }
 
       &__content {
+        @include adjust-font-size-to(15px, 3.3334);
+        max-width: 720px;
+        padding: 0 .9rem 0 0;
+        margin: .8rem 0 .4rem;
 
-        p {
-          @include adjust-font-size-to(15px, 3.3334);
-          max-width: 720px;
-          margin: .8rem 0 .4rem;
-
-          @include breakpoint($tab, $no-query: true) {
-            @include adjust-font-size-to(16px, 4);
-          }
-
-          @include breakpoint($tab, $no-query: true) {
-            margin: .9rem 0 .6rem;
-          }
+        @include breakpoint($tab, $no-query: true) {
+          @include adjust-font-size-to(16px, 4);
         }
-      }
 
-      .more {
-        white-space: nowrap;
-        color: $link;
-        text-decoration: underline;
-        font-weight: bold;
+        @include breakpoint($tab, $no-query: true) {
+          margin: .9rem 0 .6rem;
+        }
 
-        &::before {
-          display: inline-block;
-          content: '  \2026  ';
-          margin-right: 4px;
-          text-decoration: none;
-          font-weight: normal;
+        .more {
+          white-space: nowrap;
+          color: $link;
+          text-decoration: underline;
+          font-weight: bold;
+
+          &::before {
+            display: inline-block;
+            content: '  \2026  ';
+            margin-right: 4px;
+            text-decoration: none;
+            font-weight: normal;
+          }
         }
       }
     }
@@ -293,12 +149,8 @@
   }
 
   // Theming of contact cards for landing pages.
-  .card-deck--landing--x2 .card--contact,
-  .card-deck--landing--x3 .card--contact {
+  .card-deck--x2 .card--contact {
     margin: 0;
-  }
-
-  .card-deck--landing--x2 .card--contact {
 
     @include breakpoint($phab) {
       .tel .title {
@@ -324,7 +176,7 @@
     }
   }
 
-  .card-deck--landing--x3 .card--contact {
+  .card-deck--x3 .card--contact {
 
     @include breakpoint($tab) {
       .tel .title {

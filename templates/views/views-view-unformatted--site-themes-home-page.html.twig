@@ -15,17 +15,30 @@
  * @see template_preprocess_views_view_unformatted()
  */
 #}
-{% for row in rows %}
-  {%
-    set row_classes = [
+{%
+  set classes = [
+  'card-deck',
+  'card-deck--x2',
+  'card-deck--plain',
+]
+%}
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+<div{{ attributes.addClass(classes) }}>
+  {% for row in rows %}
+    {%
+      set row_classes = [
       default_row_class ? 'views-row',
     ]
-  %}
-  <article{{ row.attributes.addClass(row_classes) }}>
-    <a class="card card--no-border card--no-shadow card--no-body-padding" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': row.content['#row'].tid}) }}" hreflang="en">
-      <div class="card__body">
+    %}
+    <article{{ row.attributes.addClass(row_classes) }}>
+      <a class="card" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': row.content['#row'].tid}) }}" hreflang="en">
         {{- row.content -}}
-      </div>
-    </a>
-  </article>
-{% endfor %}
+      </a>
+    </article>
+  {% endfor %}
+</div>
+
+
+
