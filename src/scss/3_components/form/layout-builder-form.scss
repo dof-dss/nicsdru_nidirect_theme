@@ -176,6 +176,7 @@
 
   .button--primary {
     @include btn(medium);
+    @include btn-color($btn-primary);
   }
 
   table {
@@ -413,6 +414,10 @@
     .button {
       @include btn(small);
       margin: .6rem !important;
+
+      &--primary {
+        @include btn-color($btn-primary);
+      }
 
       &:not(.button--primary) {
         border-color: #ddd;

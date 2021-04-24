@@ -158,4 +158,8 @@
     }
   }
 
+  // This class is added to all blocks in layout builder and adds unwanted padding.
+  &.layout-builder-block {
+    padding: 0;
+  }
 }
