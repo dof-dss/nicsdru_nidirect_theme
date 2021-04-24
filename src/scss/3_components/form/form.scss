@@ -198,6 +198,11 @@ label,
   width: 100%;
   max-width: 56rem; // fallback for older browsers
   max-width: fit-content;
+
+  &::placeholder {
+    color: #777;
+    opacity: 1;
+  }
 }
 
 [size='30'],
