@@ -65,6 +65,9 @@
       @include breakpoint($mob $tab) {
         padding: 0 0 0 1em;
       }
+      @include breakpoint($tab) {
+        padding: 1em .5em;
+      }
     }
   }
 }
