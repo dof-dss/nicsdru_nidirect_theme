@@ -58,10 +58,11 @@
         {% endfor %}
       </ul>
     {%  endif %}
-
+    {#
     {% if content.field_link['#items'] and content.field_title_link[0]['#url']  %}
       <a href="{{ content.field_title_link[0]['#url']|render }}">more<span class="visually-hidden"> {{ label }}</span> &hellip;</a>
     {% endif %}
+    #}
 
   </div>
 {% if content.field_link['#items'] or not content.field_title_link[0]['#url'] %}
