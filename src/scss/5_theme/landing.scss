@@ -29,14 +29,14 @@
 
   .card-deck + .card-deck:not(.card-deck--plain) {
 
-    margin-top: rhythm(-3.5);
+    margin-top: rhythm(-3);
 
     @include breakpoint($phab, $no-query: true) {
-      margin-top: rhythm(-4);
+      margin-top: rhythm(-3.5);
     }
 
     @include breakpoint($tab, $no-query: true) {
-      margin-top: rhythm(-5);
+      margin-top: rhythm(-4.5);
     }
   }
 
@@ -61,7 +61,7 @@
       &__title {
         @include adjust-font-size-to(18px, 4);
         border-bottom: 2px solid $brand-primary;
-        padding: 0 0 .9rem;
+        padding: 0 .9rem .9rem;
         margin-top: 0;
 
         @include breakpoint($phab, $no-query: true) {
@@ -76,7 +76,7 @@
       &__content {
         @include adjust-font-size-to(15px, 3.3334);
         max-width: 720px;
-        padding: 0 .9rem 0 0;
+        padding: 0 .9rem;
         margin: .8rem 0 .4rem;
 
         @include breakpoint($tab, $no-query: true) {
