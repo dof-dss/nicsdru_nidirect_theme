@@ -37,8 +37,9 @@
     flex: auto 1 1;
 
     .media-image {
-      display: flex; // Resolves font-size and line-height causing empty white-space.
-      flex-direction: column;
+      // Resolve font-size and line-height causing empty white-space.
+      font-size: .1px;
+      line-height: 0;
 
       img {
         margin: 0;
