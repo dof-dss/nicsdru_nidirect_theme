@@ -27,9 +27,9 @@
 #}
 {% set card_layout = content.field_card_layout.0['#markup'] %}
 {% set classes = [
-  'card-deck--landing',
-  'card-deck--landing--simple',
-  'card-deck--landing' ~ card_layout
+  'card-deck',
+  'card-deck' ~ card_layout,
+  'card-deck--plain',
 ] %}
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
