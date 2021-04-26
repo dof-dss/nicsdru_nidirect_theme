@@ -28,8 +28,8 @@ $body-text: (
 );
 
 $small-text: (
-  null: (1.4rem, 1.4286),
-  xl: (1.6rem, 1.5),
+  null: (1.5rem, 1.4),
+  lg: (1.6rem, 1.5),
   //xxl: (1.7rem, 1.7647),
 );
 
@@ -69,7 +69,9 @@ $xxl-text: (
 
 $h1-text: (
   null: (28px, 3.2rem, 1.6rem 0 2.1rem),
-  lg: (32px, 3.6rem, 2.7rem 0 2.7rem),
+  md: (30px, 3.6rem, 2.4rem 0 2.1rem),
+  lg: (32px, 3.9rem, 2.7rem 0 2.7rem),
+  xl: (32px, 3.9rem, 3rem 0 2.7rem),
   //xxl: (36px, 4.5rem, 4rem 0 3rem)
 );
 
@@ -81,7 +83,7 @@ $h2-text: (
 
 $h3-text: (
   null: (21px, 2.4rem, 3.2rem 0 1.2rem),
-  lg: (24px, 2.7rem, 3.6rem 0 1.8rem),
+  lg: (24px, 3rem, 3.6rem 0 1.8rem),
   //xxl: (25px, 3rem, 4rem 0 2rem)
 );
 
@@ -101,6 +103,10 @@ $h6-text: (
   null: (16px, 2.4rem, 3.2rem 0 1.2rem),
   lg: (18px, 2.7rem, 3.6rem 0 1.8rem),
   //xxl: (20px, 3rem, 4rem 0 2rem)
+);
+
+$card-title: (
+  null: (21px, 1.429),
 );
 
 $btn-small: (
@@ -125,13 +131,18 @@ $btn-large: (
 
 $form-legend: (
   null: (21px, 2.4rem, 0 0 1.2rem),
-  lg: (24px, 2.7rem, 0 0 1.8rem),
+  lg: (24px, 3rem, 0 0 1.8rem),
   //xxl: (28px, 3rem, 0 0 2rem)
 );
 
+$form-legend-plain: (
+  null: (18px, 1.5, 0 0 .6rem),
+  md: (20px, 1.5, 0 0 .9rem),
+);
+
 $landing-page-summary: (
-  null: (20px, 1.4, 1.2rem 0 2.4rem),
-  md: (22px, 1.4546, 2rem 0 2.4rem),
-  lg: (26px, 1.3846, 2.1rem 0 3.6rem),
+  null: (20px, 1.4, 2.4rem 0 3.2rem),
+  md: (22px, 1.4546),
+  lg: (26px, 1.3846, 3rem 0 3.6rem),
   xl: (30px, 1.3, 4.5rem 0 4.5rem)
 );

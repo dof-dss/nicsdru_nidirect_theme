@@ -26,5 +26,6 @@
   &__strapline {
     @include responsive-typo-map($landing-page-summary);
     font-weight: normal;
+    padding: 0 .9rem;
   }
 }

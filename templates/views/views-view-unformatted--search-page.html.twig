@@ -18,13 +18,16 @@
 {% if title %}
   <h3>{{ title }}</h3>
 {% endif %}
+<ol class="card-deck card-deck--search-results list--no-bullet">
 {% for row in rows %}
   {%
     set row_classes = [
       default_row_class ? 'views-row',
+      'card',
     ]
   %}
-  <article{{ row.attributes.addClass(row_classes) }}>
+  <li{{ row.attributes.addClass(row_classes) }}>
     {{- row.content -}}
-  </article>
+  </li>
 {% endfor %}
+</ol>
