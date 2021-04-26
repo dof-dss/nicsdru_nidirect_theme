@@ -27,9 +27,8 @@ nidirect-global-styles:
     component:
       css/3_components/layout/header.css: { minified: true }
       css/3_components/layout/footer.css: { minified: true }
-      css/3_components/layout/cards.css: { minified: true }
-      css/3_components/layout/main-menu.css: { minified: true }
       css/3_components/navigation/nav-menu.css: { minified: true }
+      css/3_components/navigation/main-menu.css: { minified: true }
       css/3_components/navigation/footer-menu.css: { minified: true }
       css/3_components/navigation/breadcrumb.css: { minified: true }
       css/3_components/navigation/contextual.css: { minified: true }
@@ -47,7 +46,9 @@ nidirect-global-styles:
       css/3_components/content/responsive-images.css: { minified: true }
       css/3_components/content/video.css: { minified: true }
       css/3_components/content/banners.css: { minified: true }
+      css/3_components/content/cards.css: { minified: true }
       css/3_components/content/card-contact.css: { minified: true }
+      css/3_components/content/quizzes.css: { minified: true }
       css/3_components/field/field-label.css: { minified: true }
       css/3_components/field/file-link.css: { minified: true }
       css/3_components/block/section-feedback.css: { minified: true }
@@ -74,8 +75,8 @@ nidirect-specific-styles:
       css/3_components/field/vcard.css: { minified: true }
       css/3_components/drupal-diff.css: { minified: true }
     state:
-        css/4_state/navigation/sub-menus.css: { minified: true }
-        css/4_state/layout/cards.css: { minified: true }
+      css/4_state/navigation/sub-menus.css: { minified: true }
+      css/4_state/content/cards.css: { minified: true }
     theme:
       css/5_theme/entities.css: { minified: true }
       css/5_theme/searches.css: { minified: true }
