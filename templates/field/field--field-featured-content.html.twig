@@ -10,9 +10,8 @@
  * @ingroup themeable
  */
 #}
-{% set classes = ['grid', 'card-deck', 'card-deck--features'] %}
-{% set attributes = attributes.addClass(classes) %}
-<div{{ attributes }}>
+{% set classes = ['card-deck', 'card-deck--list-to-x3'] %}
+<div{{ attributes.addClass(classes) }}>
 {% for item in items %}
   {{ item.content }}
 {% endfor %}

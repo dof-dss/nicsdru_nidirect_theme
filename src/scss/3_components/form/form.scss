@@ -4,6 +4,7 @@
  */
 @import '../../init';
 @import 'button/button-defs';
+@import 'error-messages/error-messages';
 
 main form {
   margin: 0;
@@ -12,34 +13,86 @@ main form {
 }
 
 .form-actions {
+
+  position: relative;
   margin: 2.5em 0;
 
   .button {
     vertical-align: bottom;
   }
 
+  .ajax-spinner {
+    position: absolute;
+    line-height: 54px;
+    margin-left: 2px;
+
+    .ajax-spinner__label {
+      @include visually-hidden;
+    }
+  }
 }
 
 .form-item {
   position: relative;
+
+  .container-inline {
+    margin: 0;
+  }
+
+  &--error-message {
+    @extend %error-bubble;
+
+    @at-root .container-inline & {
+      @extend %error-bubble--floating-below;
+    }
+  }
 }
 
 form > .form-item,
 .form-wrapper > .form-item {
   padding: 0;
   margin: 2em 0;
-}
 
-.description {
-  @include rhythm-margins(1, 1.66667);
-  @include adjust-font-size-to(13px, 2.6667);
-  @include breakpoint($phab, $no-query: true) {
-    @include adjust-font-size-to(15px, 3);
+  &.form-type-processed-text {
+    margin: 0;
   }
 }
 
+.description {
+  @include responsive-typo-map($small-text);
+  margin: .6rem 0 .9rem;
+
+  .fieldset-wrapper .field-prefix &,
+  .fieldset-wrapper .field-suffix & {
+    @include responsive-typo-map($body-text);
+  }
+
+  .fieldset-wrapper .field-prefix & {
+    margin: 0 0 1em;
+  }
+
+  .fieldset-wrapper .field-suffix & {
+    margin: 1em 0 0;
+  }
+}
+
+// Fieldsets and sections act as containers for groups of related form controls.
+//
+// Using a fieldset is the preferred way to group form controls where the legend of the fieldset helps to uniquely
+// identify each control in the group.
+//
+// In some cases, it may be better to use a section instead of a fieldset in these situations:
+// # The grouping is primarily visual and the controls in the group have labels that adequately differentiate them from
+// other similar controls in the form as a whole.
+// # The group of controls includes nested fieldsets of radios/checkboxes. Nested fieldsets
+// should be avoided because they can confuse screen readers and screen reader users.
+//
+// Style fieldsets and legends, and sections and H2s in same manner.
+
 fieldset,
-.fieldset {
+.fieldset,
+form > section,
+form > .form-wrapper > section {
   border: 0;
   padding: 0;
 
@@ -52,12 +105,6 @@ fieldset,
     border: 0;
   }
 
-  /* Remove?
-  & + div.form-item {
-    margin-top: -.5em !important;
-  }
-  */
-
   & > .form-item,
   & > .fieldset-wrapper > .form-item,
   fieldset {
@@ -69,6 +116,21 @@ fieldset,
     }
   }
 
+  > legend,
+  > .legend,
+  > h2 {
+    @include responsive-typo-map($form-legend);
+    color: $brand-primary-dark;
+    font-weight: normal;
+  }
+
+  // Nested fieldset/section legends/titles.
+  fieldset legend,
+  section h2 {
+    @include responsive-typo-map($form-legend-plain);
+    color: $text;
+  }
+
   .form-type-processed-text > * {
 
     margin: 1em 0;
@@ -77,14 +139,6 @@ fieldset,
       margin-top: 0;
     }
   }
-}
-
-legend,
-fieldset h2,
-.fieldset h2 {
-  @include responsive-typo-map($form-legend);
-  color: $brand-primary-dark;
-  font-weight: normal;
 }
 
 label,
@@ -144,6 +198,11 @@ label,
   width: 100%;
   max-width: 56rem; // fallback for older browsers
   max-width: fit-content;
+
+  &::placeholder {
+    color: #777;
+    opacity: 1;
+  }
 }
 
 [size='30'],
@@ -199,8 +258,7 @@ textarea {
   font-size: 1.6rem !important;
 
   &::-webkit-file-upload-button {
-    @include btn;
-    @include btn--small;
+    @include btn(small);
     @include btn-color($btn-primary, #fff);
     margin: 0 !important;
     font-weight: normal;
@@ -253,19 +311,30 @@ textarea,
 .form-type-radio,
 .form-type-checkbox {
   position: relative;
+  width: 100%;
   margin: .5em .5em 0 0;
+  padding: 0 33% 0 0; // Right padding makes room for error bubbles.
 
   .container-inline & {
     display: inline-block;
+    width: auto;
+    padding: 0;
+
+    .form-item--error-message {
+      @extend %error-bubble--floating-below;
+    }
+  }
+
+  // Error bubbles sit to the right of radio/checkbox options.
+  .form-item--error-message {
+    @extend %error-bubble--floating-right;
   }
 }
 
 input[type='radio'],
 .form-radio,
-.container-inline.form-radio,
 input[type='checkbox'],
-.form-checkbox,
-.container-inline.form-checkbox {
+.form-checkbox {
   font-size: 1em;
   line-height: 1.5;
 
@@ -302,6 +371,7 @@ input[type='checkbox'],
     left: 0;
     margin: 0;
     padding: .625em 1em .625em 3.2rem; // Right padding makes space for the input to sit in.
+    width: 100%;
     min-width: 4.5em;
     min-height: 2.75em;
     box-shadow: inset 0 0 0 1px $charcoal; // Using box shadow to make thin border as it doesn't affect the overall size.
@@ -347,31 +417,4 @@ input[type='checkbox'],
   }
 }
 
-/* Error Tool Tip Styles*/
-.form-item--error-message {
-  @include responsive-typo-map($body-text);
 
-  display: block;
-  position: relative;
-  left: -.6rem;
-  z-index: 101;
-  width: fit-content;
-  max-width: 56rem;
-  font-weight: bold;
-  padding: .9rem;
-  color: $white;
-  background-color: $hc-red;
-  border: 1px solid $hc-red;
-  border-radius: 3px;
-  box-shadow: 0 8px 12px -4px rgba(0, 0, 0, .3);
-  opacity: 1;
-
-  &::before {
-    content: '';
-    border: .9rem solid transparent;
-    border-bottom-color: $hc-red;
-    position: absolute;
-    top: -1.7rem;
-    left: 1.4rem;
-  }
-}

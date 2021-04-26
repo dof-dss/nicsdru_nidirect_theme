@@ -67,11 +67,11 @@
  */
 #}
 {% if content.field_photo %}
-  <div class="card__image">
-    {{ content.field_photo }}
-  </div>
+<div class="card__image">
+  {{ content.field_photo }}
+</div>
 {% endif %}
-<div class="card__content">
+<div class="card__body">
   {{ title_prefix }}
   {% if label and not page %}
     <h3{{ title_attributes.addClass('card__title') }}>
@@ -79,11 +79,13 @@
     </h3>
   {% endif %}
   {{ title_suffix }}
-  <p class="card__meta">
-    <span class="visually-hidden">{{ 'Published:'|t }}</span>
-    {{ content.field_published_date | field_value }}
-  </p>
-  <p class="card__description">
+  {% if content.field_published_date %}
+    <p class="card__meta">
+      <span class="visually-hidden">{{ 'Published:'|t }}</span>
+      {{ content.field_published_date | field_value }}
+    </p>
+  {% endif %}
+  {% if content.field_teaser %}
     {{ content.field_teaser }}
-  </p>
+  {% endif %}
 </div>
