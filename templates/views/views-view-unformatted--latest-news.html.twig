@@ -15,8 +15,10 @@
  * @see template_preprocess_views_view_unformatted()
  */
 #}
+<ul class="card-deck card-deck--list card-deck--latest-news list--no-bullet">
 {% for row in rows %}
-  <article class="card card--plain card--no-padding">
+  <li class="card card--plain card--no-padding">
     {{- row.content -}}
-  </article>
+  </li>
 {% endfor %}
+</ul>
