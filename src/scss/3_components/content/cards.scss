@@ -236,13 +236,13 @@ a.card {
   // By default, use grid to layout the cards in a single column.
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: min-content;
-  grid-gap: 1.5em 2rem;
+  grid-template-rows: min-content; // IE Fix. min-content instead of auto.
+  grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
   margin-top: 0;
   margin-bottom: 1.5em;
 
-  // Ensure cards in a deck take the full width and height of their grid container.
-  .card {
+  // Ensure grid items (cards) in a deck take the full width and height of their grid container.
+  > * {
     width: 100%;
     height: 100%;
   }
@@ -259,9 +259,8 @@ a.card {
   &--x2 {
     @include breakpoint($phab) {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: min-content;
-      // IE fix. When grid columns/rows change, specify grid-gap so that autoprefixer creates correct IE grid styles.
-      grid-gap: 1.5em 2rem;
+      grid-template-rows: min-content; // IE Fix. min-content instead of auto.
+      grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
     }
   }
 
@@ -269,16 +268,14 @@ a.card {
   &--x3 {
     @include breakpoint($phab) {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: min-content;
-      // IE fix. When grid columns/rows change, specify grid-gap so that autoprefixer creates correct IE grid styles.
-      grid-gap: 1.5em 2rem;
+      grid-template-rows: min-content; // IE Fix. min-content instead of auto.
+      grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
     }
 
     @include breakpoint($tab) {
       grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: min-content;
-      // IE fix. When grid columns/rows change, specify grid-gap so that autoprefixer creates correct IE grid styles.
-      grid-gap: 1.5em 2rem;
+      grid-template-rows: min-content; // IE Fix. min-content instead of auto.
+      grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
     }
   }
 
@@ -286,23 +283,20 @@ a.card {
   &--x4 {
     @include breakpoint($phab) {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: min-content;
-      // IE fix. When grid columns/rows change, specify grid-gap so that autoprefixer creates correct IE grid styles.
-      grid-gap: 1.5em 2rem;
+      grid-template-rows: min-content; // IE Fix. min-content instead of auto.
+      grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
     }
 
     @include breakpoint($tab) {
       grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: min-content;
-      // IE fix. When grid columns/rows change, specify grid-gap so that autoprefixer creates correct IE grid styles.
-      grid-gap: 1.5em 2rem;
+      grid-template-rows: min-content; // IE Fix. min-content instead of auto.
+      grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
     }
 
     @include breakpoint($lap) {
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-template-rows: min-content;
-      // IE fix. When grid columns/rows change, specify grid-gap so that autoprefixer creates correct IE grid styles.
-      grid-gap: 1.5em 2rem;
+      grid-template-rows: min-content; // IE Fix. min-content instead of auto.
+      grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
     }
   }
 
@@ -365,27 +359,24 @@ a.card {
     &-to-x4 {
       @include breakpoint($tab) {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: min-content;
-        // IE fix. When grid columns/rows change, specify grid-gap so that autoprefixer creates correct IE grid styles.
-        grid-gap: 1.5em 2rem;
+        grid-template-rows: min-content; // IE Fix. min-content instead of auto.
+        grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
       }
     }
 
     &-to-x3 {
       @include breakpoint($tab) {
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: min-content;
-        // IE fix. When grid columns/rows change, specify grid-gap so that autoprefixer creates correct IE grid styles.
-        grid-gap: 1.5em 2rem;
+        grid-template-rows: min-content; // IE Fix. min-content instead of auto.
+        grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
       }
     }
 
     &-to-x4 {
       @include breakpoint($lap) {
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: min-content;
-        // IE fix. When grid columns/rows change, specify grid-gap so that autoprefixer creates correct IE grid styles.
-        grid-gap: 1.5em 2rem;
+        grid-template-rows: min-content; // IE Fix. min-content instead of auto.
+        grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
       }
     }
   }
