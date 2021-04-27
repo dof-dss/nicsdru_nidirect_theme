@@ -16,11 +16,24 @@
 .section--info-services {
   .card {
     &-deck {
-      grid-template-rows: repeat(8, min-content);
       grid-row-gap: .6667em;
 
       @include breakpoint($phab) {
         grid-row-gap: 1em;
+      }
+
+      // IE fix.
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active), (min-width: $phab) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(16, min-content);
+        grid-row-gap: 1em;
+      }
+
+      // IE fix.
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active), (min-width: $phab) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(8, min-content);
+        grid-gap: 1em 2rem;
       }
     }
 
