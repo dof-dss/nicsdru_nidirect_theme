@@ -75,9 +75,12 @@
 
 .latest-news .card-deck {
 
-  // IE fix. And it's important.
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, min-content);
+  // IE fix.
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, min-content);
+    grid-row-gap: 1.5em;
+  }
 
   .card_content {
     max-width: $max-content-width;
