@@ -73,7 +73,7 @@
   display: grid;
   grid-column-gap: $grid-gap;
   grid-template-columns: 1fr;
-  grid-template-rows: auto;
+  grid-template-rows: min-content; // IE fix. Use min-content instead of auto.
 
   &.no-gutter {
     grid-column-gap: 0;
@@ -116,10 +116,11 @@
   }
 }
 
-// Disable fallback widths set on grid items for IE11 which has partial support for grid.
-// sass-lint:disable no-important
+// IE fix.
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  // Disable fallback widths set on grid items for IE11 which has partial support for grid.
   .grid > * {
+    // sass-lint:disable no-important
     width: 100% !important;
   }
 }
