@@ -36,6 +36,10 @@
   &__image {
     flex: auto 1 1;
 
+    &:empty {
+      flex: 0;
+    }
+
     .media-image {
       display: flex; // Resolves font-size and line-height causing empty white-space.
       flex-direction: column;
@@ -315,6 +319,10 @@ a.card {
 
         .card__image {
           flex: 150px 0 0;
+
+          &:empty {
+            flex: 0;
+          }
         }
 
         .card__body {
@@ -339,6 +347,10 @@ a.card {
 
           .card__image {
             flex: 33% 0 0;
+
+            &:empty {
+              flex: 0;
+            }
           }
 
           .card__body {
