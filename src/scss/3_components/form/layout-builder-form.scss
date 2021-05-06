@@ -113,7 +113,8 @@
   [type='date'],
   [type='time'],
   [type='number'],
-  [type='file'] {
+  [type='file'],
+  textarea {
     width: auto;
   }
 
@@ -171,11 +172,12 @@
 
     // All buttons smaller than usual except primary buttons.
   .button:not(.button--primary) {
-    @include btn--small;
+    @include btn(small);
   }
 
   .button--primary {
-    @include btn--medium;
+    @include btn(medium);
+    @include btn-color($btn-primary);
   }
 
   table {
@@ -411,8 +413,12 @@
 
     // Small buttons.
     .button {
-      @include btn--small;
+      @include btn(small);
       margin: .6rem !important;
+
+      &--primary {
+        @include btn-color($btn-primary);
+      }
 
       &:not(.button--primary) {
         border-color: #ddd;

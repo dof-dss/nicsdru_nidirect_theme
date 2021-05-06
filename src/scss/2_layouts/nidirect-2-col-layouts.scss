@@ -45,7 +45,12 @@
       display: grid;
       grid-gap: 0 1.5em;
       grid-template-columns: 1fr 1fr;
+
+      .sub-menu {
+        margin-top: 0;
+      }
     }
+
     @include breakpoint($tab) {
       display: block;
       margin-top: -5px; // Tucks the top border under the top nav when breadcrumb is not displayed.
