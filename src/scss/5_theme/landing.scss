@@ -25,10 +25,21 @@
   .card-deck:not(.card-deck--plain) .card {
     border-top: .9rem solid $brand-primary-medium;
     outline-width: 0;
+
+    .card__image:empty ~ .card__body {
+
+      > p,
+      > li {
+        @include responsive-typo-map($body-text);
+      }
+
+      .card__title {
+        @include responsive-typo-map($xl-text);
+      }
+    }
   }
 
   .card-deck + .card-deck:not(.card-deck--plain) {
-
     margin-top: rhythm(-3);
 
     @include breakpoint($phab, $no-query: true) {
@@ -50,7 +61,8 @@
 
     .card {
 
-      padding: 0 .9rem;
+      padding: .5em .9rem .5em .4rem;
+      border-left: .5rem solid lighten($brand-primary-medium, 50%);
 
       &__link {
         position: unset;
@@ -62,8 +74,7 @@
 
       &__title {
         @include adjust-font-size-to(18px, 4);
-        border-bottom: 2px solid $brand-primary;
-        padding: 0 .9rem .9rem;
+        padding: 0 .9rem;
         margin-top: 0;
 
         @include breakpoint($phab, $no-query: true) {
@@ -79,21 +90,20 @@
         @include adjust-font-size-to(15px, 3.3334);
         max-width: 720px;
         padding: 0 .9rem;
-        margin: .8rem 0 .4rem;
+        margin: .8rem 0 0;
 
         @include breakpoint($tab, $no-query: true) {
           @include adjust-font-size-to(16px, 4);
         }
 
         @include breakpoint($tab, $no-query: true) {
-          margin: .9rem 0 .6rem;
+          margin: .9rem 0 0;
         }
 
         .more {
           white-space: nowrap;
           color: $link;
           text-decoration: underline;
-          font-weight: bold;
 
           &::before {
             display: inline-block;
