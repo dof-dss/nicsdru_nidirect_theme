@@ -7,13 +7,14 @@
 
 // Layouts
 //
-// The layout styling for major parts of the page are created 'mobile-first' using flexbox and rid. Limited fallbacks
+// The layout styling for major parts of the page are created 'mobile-first' using flexbox and grid. Limited fallbacks
 // declaring appropriate fallback's where the technology is not widely enough implemented in currently used web
 // browsers. We utilise auto-prefixer to help in this regard to ensure that when prefixing for a declaration is required
 // for a particular vendor that the developer need not be concerned with making sure this is done.
 //
-// NOTE: if you want to use CSS grid in an IE-friendly way, you should only ever use it if there are a known number of
-// cells for a known number of rows and columns.
+// NOTE: if you want to use CSS grid in an IE-friendly way, you should only use it in scenarios where the the number of
+// columns and rows is known and grid items can then be placed explicitly (IE does not support auto-placement of items).
+// Using grid areas also works well in IE where grid items are specifically placed in a specific grid area.
 //
 // As NICS has comparatively few variations in layouts, therefore layouts can be covered with relatively little code.
 // This section of the styleguide is essentially broken into 2 main areas - common classes and utilities that are

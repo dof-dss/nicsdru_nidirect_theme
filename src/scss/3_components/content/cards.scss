@@ -443,9 +443,9 @@ a.card {
 // IE fixes.
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 
-  // By default card decks can contain any number of cards.
+  // Most types of card deck can contain a variable number of cards.
   // Grid is difficult to do in IE when the number of columns / rows is unknown.
-  // So we use flex for card decks in IE.
+  // So we use flex instead.
 
   .card-deck {
     display: flex;
@@ -504,8 +504,10 @@ a.card {
     }
   }
 
-  // Switch to grid for these types of card decks where the number of columns and rows is fixed
-  // and so autoplacement (which IE cannot do) is not needed.
+  // Switch to grid for these types of card decks where the number of cards is fixed
+  // and so autoplacement (which IE cannot do) is not needed. Note that everytime a
+  // a modifier changes the number of columns, we have to set the number of rows and
+  // the grid gap at the same time so that autoprefixer creates IE grid rules correctly.
   .card-deck--list {
     &-to-x2,
     &-to-x3,
