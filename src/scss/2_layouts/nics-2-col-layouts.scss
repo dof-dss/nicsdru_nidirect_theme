@@ -31,18 +31,30 @@
 .layout {
   &--main-n-side,
   &--side-n-main {
+
+    // By default, main on top of side. On larger screens they go side by side.
+    grid-template-areas:
+      'main'
+      'side';
+
+    .ga-main {
+      grid-area: main;
+    }
+
+    .ga-aside {
+      grid-area: side;
+    }
+
     @include breakpoint($tab) {
       grid-gap: $grid-gap;
 
       .ga-main {
-        grid-area: main;
         /* no grid support? */
         float: left;
         width: 62%;
       }
 
       .ga-aside {
-        grid-area: side;
         /* no grid support? */
         float: right;
         width: 34%;
@@ -66,14 +78,16 @@
   }
 
   &--main-n-side {
-  @include breakpoint($tab) {
+    @include breakpoint($tab) {
       grid-template-columns: 2fr 1fr;
+      grid-template-rows: auto;
       grid-template-areas: 'main side';
     }
 
     @include breakpoint($lap) {
       grid-template-columns: $article-grid-max-width $aside-grid-max-width;
       grid-template-rows: auto;
+      grid-template-areas: 'main side';
     }
 
     .ga-aside {
@@ -84,6 +98,7 @@
   &--side-n-main {
     @include breakpoint($tab) {
       grid-template-columns: 1fr 2fr;
+      grid-template-rows: auto;
       grid-template-areas: 'side main';
 
       .ga-main {
