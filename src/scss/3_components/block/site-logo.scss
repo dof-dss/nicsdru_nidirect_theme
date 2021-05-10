@@ -29,9 +29,9 @@
 }
 
 // IE fix.
-// IE does not support outline-offset. So just remove the outline.
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   .layout-header--logo a {
+    // IE does not support outline-offset. So fake it with a pseudo element.
     position: relative;
     outline: none !important;
 
