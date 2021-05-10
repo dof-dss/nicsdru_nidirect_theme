@@ -63,8 +63,7 @@
     flex-flow: column nowrap;
 
     > * {
-      flex: 0 100%;
-      max-width: 100%;
+      flex: auto 1 1;
     }
   }
 
@@ -118,8 +117,9 @@
         justify-content: space-between;
 
         > * {
-          flex: 0 48.9%;
+          flex: 48.9% 0 0;
           max-width: 460px;
+          margin: 0;
         }
       }
     }
@@ -145,3 +145,14 @@
     padding: 0;
   }
 }
+
+// IE fixes.
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .video-and-caption__caption {
+    // https://nicedoc.io/philipwalton/flexbugs#flexbug-2.
+    > * {
+      max-width: 100%;
+    }
+  }
+}
+
