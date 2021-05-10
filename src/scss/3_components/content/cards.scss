@@ -240,13 +240,12 @@ a.card {
   // By default, use grid to layout the cards in a single column.
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: min-content; // IE Fix. min-content instead of auto.
-  grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
+  grid-gap: 1.5em 2rem;
   margin-top: 0;
   margin-bottom: 1.5em;
 
-  // Ensure grid items (cards) in a deck take the full width and height of their grid container.
-  > * {
+  // Ensure cards in a deck take the full width and height of their grid container.
+  .card {
     width: 100%;
     height: 100%;
   }
@@ -263,8 +262,6 @@ a.card {
   &--x2 {
     @include breakpoint($phab) {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: min-content; // IE Fix. min-content instead of auto.
-      grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
     }
   }
 
@@ -272,14 +269,10 @@ a.card {
   &--x3 {
     @include breakpoint($phab) {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: min-content; // IE Fix. min-content instead of auto.
-      grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
     }
 
     @include breakpoint($tab) {
       grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: min-content; // IE Fix. min-content instead of auto.
-      grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
     }
   }
 
@@ -287,28 +280,20 @@ a.card {
   &--x4 {
     @include breakpoint($phab) {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: min-content; // IE Fix. min-content instead of auto.
-      grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
     }
 
     @include breakpoint($tab) {
       grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: min-content; // IE Fix. min-content instead of auto.
-      grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
     }
 
     @include breakpoint($lap) {
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-template-rows: min-content; // IE Fix. min-content instead of auto.
-      grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
     }
   }
 
   // Card deck lists (single column) and single column list to multi-column hybrids.
   &--list {
-
     .card {
-
       // Column layout for card (small screen sizes).
       flex-flow: column nowrap;
 
@@ -331,7 +316,7 @@ a.card {
         }
 
         .card__body {
-          padding-left: 1em;
+          padding: 1em;
           align-self: center;
         }
       }
@@ -342,7 +327,6 @@ a.card {
     &-to-x3,
     &-to-x4 {
       .card {
-
         // Column layout for card (small and larger screen sizes).
         flex-flow: column nowrap;
 
@@ -367,28 +351,25 @@ a.card {
     }
 
     // Card deck list / column hybrids finally arrange cards in multi-column layout at large screens sizes.
-    &-to-x2,
-    &-to-x4 {
+    &-to-x2 {
       @include breakpoint($tab) {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: min-content; // IE Fix. min-content instead of auto.
-        grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
       }
     }
 
     &-to-x3 {
       @include breakpoint($tab) {
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: min-content; // IE Fix. min-content instead of auto.
-        grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
       }
     }
 
     &-to-x4 {
+      @include breakpoint($tab) {
+        grid-template-columns: 1fr 1fr;
+      }
+
       @include breakpoint($lap) {
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: min-content; // IE Fix. min-content instead of auto.
-        grid-gap: 1.5em 2rem; // IE Fix.  Always set grid-gap when grid columns / rows are changed.
       }
     }
   }
@@ -399,7 +380,6 @@ a.card {
 
     .card {
       padding: .5em 0 1em;
-      margin: 0;
       box-shadow: 0 1px 0 0 $grey-medium;
       border: 0;
 
@@ -459,3 +439,105 @@ a.card {
     display: none;
   }
 }
+
+// IE fixes.
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
+  // By default card decks can contain any number of cards.
+  // Grid is difficult to do in IE when the number of columns / rows is unknown.
+  // So we use flex for card decks in IE.
+
+  .card-deck {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-bottom: 0;
+
+    > * {
+      // Flex items - use explicitly set widths rather than flex basis (which we set to auto).
+      flex: auto 0 0;
+      width: 100%;
+      height: auto;
+      margin-bottom: 1.5em;
+    }
+
+    .card {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+@media all and (-ms-high-contrast: none) and (min-width: $phab), (-ms-high-contrast: active) and (min-width: $phab) {
+
+  .card-deck--x2,
+  .card-deck--x3,
+  .card-deck--x4 {
+    flex-flow: row wrap;
+
+    > * {
+      width: 49.9999% !important;
+    }
+  }
+
+  .card-deck--list {
+    &-to-x2,
+    &-to-x3,
+    &-to-x4 {
+      .card {
+        flex-flow: row nowrap;
+        height: min-content !important;
+      }
+    }
+  }
+}
+
+@media all and (-ms-high-contrast: none) and (min-width: $tab), (-ms-high-contrast: active) and (min-width: $tab) {
+  .card-deck--x3 {
+    > * {
+      width: 33.3333% !important;
+    }
+  }
+
+  .card-deck--x4 {
+    > * {
+      width: 23.9999% !important;
+    }
+  }
+
+  // Switch to grid for these types of card decks where the number of columns and rows is fixed
+  // and so autoplacement (which IE cannot do) is not needed.
+  .card-deck--list {
+    &-to-x2,
+    &-to-x3,
+    &-to-x4 {
+      display: grid;
+
+      .card {
+        flex-flow: column nowrap;
+        height: 100% !important;
+        margin-bottom: 0;
+      }
+    }
+
+    &-to-x2 {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: min-content;
+      grid-gap: 1.5em 2rem;
+    }
+
+    &-to-x3 {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: min-content;
+      grid-gap: 1.5em 2rem;
+    }
+
+    &-to-x4 {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: min-content;
+      grid-gap: 1.5em 2rem;
+    }
+  }
+}
+
+
+
