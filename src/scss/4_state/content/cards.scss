@@ -1,6 +1,6 @@
 /*
  * @file
- * Provides specific overrides for card components.
+ * Provides overrides for card components in specific contexts.
  */
 @import '../../init';
 
@@ -20,20 +20,6 @@
 
       @include breakpoint($phab) {
         grid-row-gap: 1em;
-      }
-
-      // IE fix.
-      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active), (min-width: $phab) {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(16, min-content);
-        grid-row-gap: 1em;
-      }
-
-      // IE fix.
-      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active), (min-width: $phab) {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(8, min-content);
-        grid-gap: 1em 2rem;
       }
     }
 
@@ -88,14 +74,13 @@
 
 .latest-news .card-deck {
 
-  // IE fix.
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, min-content);
-    grid-row-gap: 1.5em;
-  }
-
   .card_content {
     max-width: $max-content-width;
+  }
+
+  @include breakpoint($mob) {
+    .card__body {
+      padding: 0 0 0 1em;
+    }
   }
 }
