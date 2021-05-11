@@ -23,6 +23,7 @@ ckeditor_stylesheets:
   - css/3_components/content/lists.css
   - css/3_components/content/responsive-images.css
   - css/3_components/content/responsive-images-ckeditor.css
+  - css/3_components/content/text.css
   - css/3_components/content/video.css
 
 libraries-override:

@@ -49,6 +49,7 @@ nidirect-global-styles:
       css/3_components/content/cards.css: { minified: true }
       css/3_components/content/card-contact.css: { minified: true }
       css/3_components/content/quizzes.css: { minified: true }
+      css/3_components/content/text.css: { minified: true }
       css/3_components/field/field-label.css: { minified: true }
       css/3_components/field/file-link.css: { minified: true }
       css/3_components/block/section-feedback.css: { minified: true }
