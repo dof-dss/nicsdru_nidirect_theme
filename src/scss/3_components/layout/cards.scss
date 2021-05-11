@@ -1,0 +1,227 @@
+/*
+ * @file
+ * Provides the styling for creating a card component.
+ */
+
+@import '../../init';
+
+// Card component
+//
+// A fairly simple component to group a number of related elements. It is envisaged that this component will frequently
+// change state. These are dealt with in the states section of the theme.
+//
+// Style guide: components.layouts.cards
+.card {
+  &-deck {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+
+    $selector: ();
+    $suffixes: ('top', 'bottom', 'left', 'right');
+    // this declaration creates a number of modifier classes for a border on the `.card` children under `.card-deck`
+    // one modifier for each item in the $suffixes list.
+    @each $suffix in $suffixes {
+      $selector: unquote('border-#{$suffix}');
+
+      &.#{$selector} .card {
+        #{$selector}: 1px solid;
+      }
+    }
+  }
+
+  &__image {
+    .media-image img {
+      margin: 0;
+    }
+  }
+
+  &__title {
+    margin-top: 0;
+  }
+
+  &__meta {
+    @include adjust-font-size-to(15px, 3.6667);
+    @include breakpoint($tab) {
+      @include adjust-font-size-to(16px, 4);
+    }
+  }
+
+  // Featured news card
+  //
+  // Style guide: components.layouts.cards.featured-news
+  &--featured-news {
+    width: 100%;
+    max-width: 720px;
+    margin-bottom: 2.4rem;
+
+    @include breakpoint($mob) {
+      display: grid;
+      grid-template-columns: 174px auto;
+      grid-template-rows: min-content;
+      grid-gap: 0 1.2rem;
+    }
+
+    @include breakpoint($tab) {
+      grid-gap: 0 1.5rem;
+      margin-bottom: 2.7rem;
+    }
+
+    .card__image img {
+      width: 100%;
+      margin: 0;
+      float: none;
+    }
+
+    .card {
+
+      &__title {
+        @include adjust-font-size-to(18px, 4);
+        margin: 0;
+
+        @include breakpoint($mob) {
+          @include adjust-font-size-to(21px, 4.5);
+        }
+      }
+
+      &__meta {
+        color: $meta;
+        margin: .9rem 0;
+      }
+
+      &__description {
+        @include adjust-font-size-to(16px, 3.5);
+        margin: .6rem 0;
+      }
+    }
+  }
+}
+
+// Cards with toggleable links display.
+.card--multilink:hover {
+  cursor: pointer;
+}
+
+// Card decks for landing pages.
+.card-deck--landing {
+
+  // Small screens - cards are stacked in single column.
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-gap: 1.5em 20px;
+  margin: 1em 0;
+
+  // 3 card decks.
+  &--x3 {
+    @include breakpoint($tab, $no-query: true) {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      grid-gap: 1.5em 20px;
+      margin: 1.5em 0 2.5em;
+    }
+  }
+
+  // 2 card decks.
+  &--x2 {
+    @include breakpoint($phab, $no-query: true) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      grid-gap: 1.5em 20px;
+      margin: 1.5em 0 2.5em;
+    }
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    &__link { // .card__link wraps everything in the card.
+
+     display: block;
+     width: 100%;
+     height: 100%;
+
+     // Some child elements will be absolutely positioned relative to the card.
+     position: relative;
+
+    }
+
+    picture {
+      width: 100%;
+      height: auto;
+      margin: 0;
+
+      img {
+        width: 100%;
+        height: auto;
+        margin: 0;
+      }
+    }
+
+    &__title {
+
+      margin: 0 0 .8rem;
+
+      @include breakpoint($phab, $no-query: true) {
+        margin: 0 0 .8rem;
+      }
+
+      @include breakpoint($tab, $no-query: true) {
+        margin: 0 0 .9rem;
+      }
+    }
+
+    &__content {
+
+      width: 100%;
+      padding: .75em;
+
+      @include breakpoint($tab, $no-query: true) {
+        padding: .6667em;
+      }
+
+      > * {
+
+       &:last-child {
+         margin-bottom: 0;
+       }
+     }
+
+      iframe {
+       margin: 0;
+     }
+   }
+  }
+
+  &--x3 .card { // .card wrapper is a region in layout builder that blocks can be inserted into.
+
+    @include breakpoint($mob $tab, $no-query: true) {
+
+      &__link {
+        display: flex;
+        flex-direction: row;
+      }
+
+      &__image {
+        width: 38%;
+        padding: .5em;
+      }
+
+      &__content {
+        width: 62%;
+      }
+    }
+  }
+
+  &--simple .card__content {
+    // Simple landing page card decks have no images - so content is always full width.
+    width: 100%;
+  }
+
+  // Prevent adding multiple cards (blocks) into a card-deck section (region) in layout builder
+  section .layout-builder-block + .layout-builder__add-block {
+    display: none;
+  }
+}

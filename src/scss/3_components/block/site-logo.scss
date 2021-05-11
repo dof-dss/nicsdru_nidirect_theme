@@ -18,9 +18,35 @@
 
   a {
     @include link-state-style($link-site-logo);
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 }
 
 .site-logo {
   height: 5.5rem; // temporary - might change for bilingual logo
+}
+
+// IE fix.
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .layout-header--logo a {
+    // IE does not support outline-offset. So fake it with a pseudo element.
+    position: relative;
+    outline: none !important;
+
+    &::after {
+      content: '';
+      display: block;
+      width: calc(100% + 24px);
+      height: calc(100% + 24px);
+      position: absolute;
+      left: -12px;
+      top: -12px;
+    }
+
+    &:focus::after {
+      border: 3px dashed $grey;
+    }
+  }
 }

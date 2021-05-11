@@ -32,6 +32,13 @@
 
   &__toggle {
     @include link-state-style($link-page-bottom);
+
+    // IE fix.
+    // IE doesn't support fiddling with underline widths and colours - just add a standard underline.
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      text-decoration: underline;
+    }
+
     display: block;
     position: relative;
     width: 100%;

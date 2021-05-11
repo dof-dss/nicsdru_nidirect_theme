@@ -34,15 +34,16 @@
   margin: 0; // Spacing for cards is controlled by parent containers.
 
   &__image {
-    flex: auto 1 1;
+    flex: auto 0 0;
 
     &:empty {
       flex: 0;
     }
 
     .media-image {
-      display: flex; // Resolves font-size and line-height causing empty white-space.
-      flex-direction: column;
+      // Resolve font-size and line-height causing empty white-space.
+      font-size: .1px;
+      line-height: 0;
 
       img {
         margin: 0;
@@ -51,7 +52,7 @@
   }
 
   &__body {
-    flex: 100% 1 1;
+    flex: auto 0 1;
     padding: 1em;
 
     > p,
@@ -239,7 +240,6 @@ a.card {
   // By default, use grid to layout the cards in a single column.
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: min-content;
   grid-gap: 1.5em 2rem;
   margin-top: 0;
   margin-bottom: 1.5em;
@@ -262,48 +262,38 @@ a.card {
   &--x2 {
     @include breakpoint($phab) {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: min-content;
     }
   }
 
   // .card-deck--x3 allows up to three columns of cards as screen size increases.
   &--x3 {
-
     @include breakpoint($phab) {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: min-content;
     }
 
     @include breakpoint($tab) {
       grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: min-content;
     }
   }
 
   // .card-deck--x4 allows up to four columns of cards as screen size increases.
   &--x4 {
-
     @include breakpoint($phab) {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: min-content;
     }
 
     @include breakpoint($tab) {
       grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: min-content;
     }
 
     @include breakpoint($lap) {
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-template-rows: min-content;
     }
   }
 
   // Card deck lists (single column) and single column list to multi-column hybrids.
   &--list {
-
     .card {
-
       // Column layout for card (small screen sizes).
       flex-flow: column nowrap;
 
@@ -326,7 +316,7 @@ a.card {
         }
 
         .card__body {
-          padding-left: 1em;
+          padding: 1em;
           align-self: center;
         }
       }
@@ -337,7 +327,6 @@ a.card {
     &-to-x3,
     &-to-x4 {
       .card {
-
         // Column layout for card (small and larger screen sizes).
         flex-flow: column nowrap;
 
@@ -362,25 +351,25 @@ a.card {
     }
 
     // Card deck list / column hybrids finally arrange cards in multi-column layout at large screens sizes.
-    &-to-x2,
-    &-to-x4 {
+    &-to-x2 {
       @include breakpoint($tab) {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: min-content;
       }
     }
 
     &-to-x3 {
       @include breakpoint($tab) {
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: min-content;
       }
     }
 
     &-to-x4 {
+      @include breakpoint($tab) {
+        grid-template-columns: 1fr 1fr;
+      }
+
       @include breakpoint($lap) {
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: min-content;
       }
     }
   }
@@ -391,7 +380,6 @@ a.card {
 
     .card {
       padding: .5em 0 1em;
-      margin: 0;
       box-shadow: 0 1px 0 0 $grey-medium;
       border: 0;
 
@@ -451,3 +439,107 @@ a.card {
     display: none;
   }
 }
+
+// IE fixes.
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
+  // Most types of card deck can contain a variable number of cards.
+  // Grid is difficult to do in IE when the number of columns / rows is unknown.
+  // So we use flex instead.
+
+  .card-deck {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-bottom: 0;
+
+    > * {
+      // Flex items - use explicitly set widths rather than flex basis (which we set to auto).
+      flex: auto 0 0;
+      width: 100%;
+      height: auto;
+      margin-bottom: 1.5em;
+    }
+
+    .card {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+@media all and (-ms-high-contrast: none) and (min-width: $phab), (-ms-high-contrast: active) and (min-width: $phab) {
+
+  .card-deck--x2,
+  .card-deck--x3,
+  .card-deck--x4 {
+    flex-flow: row wrap;
+
+    > * {
+      width: 49.9999% !important;
+    }
+  }
+
+  .card-deck--list {
+    &-to-x2,
+    &-to-x3,
+    &-to-x4 {
+      .card {
+        flex-flow: row nowrap;
+        height: min-content !important;
+      }
+    }
+  }
+}
+
+@media all and (-ms-high-contrast: none) and (min-width: $tab), (-ms-high-contrast: active) and (min-width: $tab) {
+  .card-deck--x3 {
+    > * {
+      width: 33.3333% !important;
+    }
+  }
+
+  .card-deck--x4 {
+    > * {
+      width: 23.9999% !important;
+    }
+  }
+
+  // Switch to grid for these types of card decks where the number of cards is fixed
+  // and so autoplacement (which IE cannot do) is not needed. Note that everytime a
+  // a modifier changes the number of columns, we have to set the number of rows and
+  // the grid gap at the same time so that autoprefixer creates IE grid rules correctly.
+  .card-deck--list {
+    &-to-x2,
+    &-to-x3,
+    &-to-x4 {
+      display: grid;
+
+      .card {
+        flex-flow: column nowrap;
+        height: 100% !important;
+        margin-bottom: 0;
+      }
+    }
+
+    &-to-x2 {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: min-content;
+      grid-gap: 1.5em 2rem;
+    }
+
+    &-to-x3 {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: min-content;
+      grid-gap: 1.5em 2rem;
+    }
+
+    &-to-x4 {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: min-content;
+      grid-gap: 1.5em 2rem;
+    }
+  }
+}
+
+
+

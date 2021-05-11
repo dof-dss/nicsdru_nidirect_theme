@@ -24,96 +24,29 @@
   display: grid;
   grid-gap: 0;
   grid-template-columns: 1fr;
-  grid-template-rows: 126fr 65fr;
-  justify-content: center;
+  grid-template-rows: 12.6rem 6.5rem;
   align-items: center;
-  min-height: 8rem;
+  justify-content: space-between;
+
+  // IE fix.
+  // IE does not support align-items on parent grid container - but does support align-self on grid items.
+  > * {
+    align-self: center;
+  }
 
   @include breakpoint($phab) {
-    grid-template-rows: 135fr 65fr;
+    grid-template-rows: 13.5rem 6.5rem;
   }
 
   @include breakpoint($tab) {
-    min-height: 15.3rem;
     grid-template-columns: 45% 42.56%;
-    grid-template-rows: auto;
-    justify-content: space-between;
+    grid-template-rows: 15.3rem;
     margin: 0 auto;
     max-width: $max-grid-width;
     padding: 0 20px;
-  }
-}
 
-nav .menu-wrapper {
-  @include breakpoint($tab) {
-    height: auto;
-    margin: 0 auto;
-    max-width: $max-grid-width;
-  }
-
-  .social-media-links {
-    max-height: 0;
-    width: 100%;
-    text-align: center;
-
-    @include breakpoint($tab) {
-      display: inline-block;
-      float: right;
-      width: auto;
-    }
-
-    ul {
-      margin: 0;
-      padding: 0;
-    }
-
-    li {
-      display: inline-block;
-      width: 40px;
-      width: 4rem;
-      height: 60px;
-      height: 6rem;
-      padding: 0;
-      margin: 0;
-      font-size: 0; /* Safari inline-block white space bug fix */
-      border: 0;
-    }
-
-    a {
-      padding: 0;
-      margin: 0;
-      background-color: inherit;
-      background: url('../../../images/svg-fallback-sprite.png');
-      background-repeat: no-repeat;
-      display: inline-block;
-      font-size: 0; /* Safari inline-block white space bug fix */
-      text-indent: -9999px;
-      text-decoration: none;
-      width: 40px;
-      width: 4rem;
-      height: 40px;
-      height: 4rem;
-      overflow: hidden;
-      background-color: inherit;
-      background-position: center center;
-      background-repeat: no-repeat;
-    }
-
-    a[href*='https://twitter.com'] {
-      background-position: -40px 8px;
-    }
-
-    a[href*='https://www.facebook.com'] {
-      background-position: 0 8px;
-    }
-
-    a[href*='https://www.youtube.com'] {
-      background-position: -80px 8px;
-    }
-
-    a[href*='/news-rss.xml'] {
-      background-position: -120px 8px;
-    }
-
+    // IE fix.
+    // IE does not support justify-content: space-between. So we need a grid gap.
+    grid-gap: 12.44%;
   }
 }

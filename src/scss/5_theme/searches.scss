@@ -236,8 +236,8 @@ form#views-exposed-form-gp-practices-find-a-gp {
 
 // On a health condition node, the search label and input container needs a little more width.
 .page-node-type-health-condition {
-  .form-item-query-health-az {
-    flex: calc(100% - 5.2rem) 0 0;
+  [data-drupal-selector='views-exposed-form-health-conditions-search-page'] {
+    padding-right: 0;
   }
 }
 
