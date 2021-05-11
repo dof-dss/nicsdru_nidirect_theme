@@ -9,7 +9,8 @@
   .info-notice,
   .card-deck,
   .accordion,
-  .video-and-caption {
+  .video-and-caption,
+  .text-block {
 
     @include rhythm-margins(3.5, 7);
 
