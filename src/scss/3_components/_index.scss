@@ -14,10 +14,9 @@
 // Style guide: components
 
 @import 'layout/header';
+@import 'layout/main-menu';
 @import 'layout/footer';
-@import 'layout/cards';
 @import 'navigation/nav-menu';
-@import 'navigation/main-menu';
 @import 'navigation/footer-menu';
 @import 'navigation/breadcrumb';
 @import 'navigation/contextual';
@@ -28,8 +27,10 @@
 @import 'form/form';
 @import 'form/webform';
 @import 'form/search-form';
+@import 'content/cards';
 @import 'content/icons-messages';
 @import 'content/lists';
+@import 'content/text';
 @import 'field/field-label';
 @import 'field/file-link';
 @import 'block/site-logo';

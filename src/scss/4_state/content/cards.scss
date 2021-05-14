@@ -1,6 +1,6 @@
 /*
  * @file
- * Provides specific overrides for card components.
+ * Provides overrides for card components in specific contexts.
  */
 @import '../../init';
 
@@ -72,6 +72,35 @@
   }
 }
 
-.latest-news .card_content {
-  max-width: $max-content-width;
+.latest-news .card-deck {
+
+  .card_content {
+    max-width: $max-content-width;
+  }
+
+  @include breakpoint($mob) {
+    .card__body {
+      padding: 0 0 0 1em;
+    }
+  }
+}
+
+// IE fixes.
+@media all and (-ms-high-contrast: none) and (min-width: $phab), (-ms-high-contrast: active) and (min-width: $phab) {
+
+  .section--info-services {
+
+    // Since IE is using a basic flexbox layout for card-decks we
+    // don't have any grid-gap. So we use padding instead.
+    .card-deck {
+
+      > *:nth-child(odd) {
+        padding-right: 1rem;
+      }
+
+      > *:nth-child(even) {
+        padding-left: 1rem;
+      }
+    }
+  }
 }

@@ -10,6 +10,10 @@ module.exports = (ctx) => ({
   plugins: {
     'autoprefixer': {
       cascade: false,
+      "overrideBrowserslist": [
+        "> 0.5%, last 2 versions, not dead"
+      ],
+      grid: "autoplace"
     },
     'postcss-assets': {
       cachebuster: true,

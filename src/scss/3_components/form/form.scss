@@ -109,11 +109,6 @@ form > .form-wrapper > section {
   & > .fieldset-wrapper > .form-item,
   fieldset {
     margin: 1em 0 0;
-
-    &:first-child,
-    &:first-of-type {
-      margin: 0;
-    }
   }
 
   > legend,
@@ -312,7 +307,7 @@ textarea,
 .form-type-checkbox {
   position: relative;
   width: 100%;
-  margin: .5em .5em 0 0;
+  margin: .5em .5em .5em 0;
   padding: 0 33% 0 0; // Right padding makes room for error bubbles.
 
   .container-inline & {

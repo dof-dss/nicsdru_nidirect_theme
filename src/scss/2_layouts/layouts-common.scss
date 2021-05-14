@@ -7,10 +7,14 @@
 
 // Layouts
 //
-// The layout styling for major parts of the page  are created 'mobile-first' using the benefits of flexbox and cssgrid,
+// The layout styling for major parts of the page are created 'mobile-first' using flexbox and grid. Limited fallbacks
 // declaring appropriate fallback's where the technology is not widely enough implemented in currently used web
 // browsers. We utilise auto-prefixer to help in this regard to ensure that when prefixing for a declaration is required
 // for a particular vendor that the developer need not be concerned with making sure this is done.
+//
+// NOTE: if you want to use CSS grid in an IE-friendly way, you should only use it in scenarios where the the number of
+// columns and rows is known and grid items can then be placed explicitly (IE does not support auto-placement of items).
+// Using grid areas also works well in IE where grid items are specifically placed in a specific grid area.
 //
 // As NICS has comparatively few variations in layouts, therefore layouts can be covered with relatively little code.
 // This section of the styleguide is essentially broken into 2 main areas - common classes and utilities that are
@@ -70,7 +74,7 @@
   display: grid;
   grid-column-gap: $grid-gap;
   grid-template-columns: 1fr;
-  justify-content: space-between;
+  grid-template-rows: min-content; // IE fix. Use min-content instead of auto.
 
   &.no-gutter {
     grid-column-gap: 0;
@@ -105,10 +109,19 @@
   width: 100%;
 }
 
-/* We need to set the widths used on floated items back to auto, and remove the bottom margin as when we have grid we have gaps. */
+// Disable fallback widths on grid items for browsers that can support css grid.
 // sass-lint:disable no-important
 @supports (display: grid) {
   .grid > * {
     width: auto !important;
+  }
+}
+
+// IE fix.
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  // Disable fallback widths set on grid items for IE11 which has partial support for grid.
+  .grid > * {
+    // sass-lint:disable no-important
+    width: 100% !important;
   }
 }
