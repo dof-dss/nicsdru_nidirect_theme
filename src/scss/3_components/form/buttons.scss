@@ -181,6 +181,12 @@
   }
 }
 
+// Replacement for .call-to-action suitable for use in CKEditor.
+.btn--call-to-action {
+  @include btn(large, right);
+  @include btn-color($btn-action);
+}
+
 // Drupal off canvas buttons - shown in "off" canvas Drupal dialogs.
 #drupal-off-canvas .button {
   @include btn(small);
