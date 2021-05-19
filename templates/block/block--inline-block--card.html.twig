@@ -54,7 +54,7 @@
     {% if content.field_link['#items'] %}
       <ul class="card__links">
         {% for item in content.field_link['#items'] %}
-          <li><a href="{{ item.uri }}">{{ (item.title) ? item.title : item.uri }}</a></li>
+          <li><a href="{{ item.getUrl }}">{{ (item.title) ? item.title : item.getUrl }}</a></li>
         {% endfor %}
       </ul>
     {%  endif %}
