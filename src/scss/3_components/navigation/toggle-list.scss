@@ -5,25 +5,43 @@
  * @requires js/toggle-btn-script.js
  */
 @import '../../init';
+@import '../form/button/button-defs';
 
 // Toggle button
 //
-// Creates a subtle action button that hides (via javascript) list items when there are more than large numbers of items
+// Creates a toggle button that hides (via javascript) list items when there are more than large numbers of items
 // in the list. The default is 7 items, however this can be overridden by adding a data-toggle-length attribute to the
 // element the `.toggle-list` class is declared.
 // When a user clicks on the button, all items are then shown and the button is hidden.
 //
 // Style guide: components.toggle-list
 
-.toggle-list .toggle-btn {
-  @include adjust-font-size-to(18px, 4.5);
-  border: 1px solid color(brand-primary-medium);
-  background-color: color(brand-primary-medium);
-  border-right: 21px solid color(brand-primary-medium);
-  color: color(white);
-  display: block;
-  padding: .9rem 4rem;
-  text-align: center;
-  text-decoration: none;
-  width: 100%;
+.toggle-list {
+  &__toggle {
+    @include btn(default);
+    @include btn-color($btn-primary);
+    width: 100%;
+    position: relative;
+    padding-right: 2em !important;
+
+    @at-root a#{&} {
+      color: color(white);
+    }
+
+    .ico-arrow-down {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      margin: 0 .5em;
+      position: absolute;
+      top: calc(50% - .5em);
+      transition: transform .4s ease;
+    }
+
+    &[aria-pressed='true'] .ico-arrow-down {
+      transform: rotate(270deg);
+    }
+  }
 }
+
+
