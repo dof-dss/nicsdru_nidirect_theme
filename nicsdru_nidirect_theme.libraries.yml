@@ -54,6 +54,7 @@ nidirect-global-styles:
       css/3_components/field/file-link.css: { minified: true }
       css/3_components/block/section-feedback.css: { minified: true }
       css/3_components/block/section-translation-help.css: { minified: true }
+      css/3_components/block/social-sharing.css: { minified: true }
   js:
     js/thwoop-images.js: { minified: true }
     js/section-feedback.js: { minified: true }
