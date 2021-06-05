@@ -25,6 +25,7 @@
  * @see template_preprocess_block()
  */
 #}
+{{ attach_library('nicsdru_origins_theme/toggle-list') }}
 {%
   set classes = [
   'sub-menu',
@@ -32,8 +33,12 @@
   'toggle-list',
 ]
 %}
-{{ attach_library('nicsdru_origins_theme/toggle-list') }}
-<div{{ attributes.removeClass('views-element-container').addClass(classes).setAttribute('aria-labelledby', 'related-content').removeAttribute('id') }}>
+{% set attributes = attributes.setAttribute('data-toggle-length', '12') %}
+{% set attributes = attributes.setAttribute('aria-labelledby', 'related-content') %}
+{% set attributes = attributes.removeAttribute('id') %}
+{% set attributes = attributes.removeClass('views-element-container') %}
+{% set attributes = attributes.addClass(classes) %}
+<div{{ attributes }}>
   {{ title_prefix }}
   {% if label %}
     <h2{{ title_attributes.addClass('menu-title').setAttribute('id', 'related-content') }}>{{ label }}</h2>
