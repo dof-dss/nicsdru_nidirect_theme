@@ -54,7 +54,7 @@ function nicsdru_nidirect_theme_theme_suggestions_field_alter(array &$suggestion
 function nicsdru_nidirect_theme_theme_suggestions_item_list_alter(array &$suggestions, array $variables) {
   // If an item list has the 'nav-menu' class, render using
   // the templates/navigation/item-list--nav-menu.html.twig template.
-  if (isset($variables['attributes']['class']) && is_array($variables['attributes']['class']) ) {
+  if (isset($variables['attributes']['class']) && is_array($variables['attributes']['class'])) {
     if (in_array('nav-menu', $variables['attributes']['class'])) {
       $suggestions = ['item_list__nav_menu'];
     }
