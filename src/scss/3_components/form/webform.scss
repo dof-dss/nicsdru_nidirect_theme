@@ -67,8 +67,7 @@
     @include breakpoint($tab) {
       // Banner needs to break out of it's parent and be full width of the page.
       width: 940px;
-      // Max width is parent width + viewport width - parent width - 40px worth of padding.
-      max-width: calc(100% + 100vw - 100% - 40px);
+      max-width: calc(100vw - 40px);
     }
   }
 }
