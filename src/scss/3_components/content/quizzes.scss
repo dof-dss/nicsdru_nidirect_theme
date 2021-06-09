@@ -34,6 +34,7 @@
         display: inline-block;
         color: #000;
         font-weight: normal;
+        margin-right: .5em;
 
         &::before {
           content: 'Your answer:';
@@ -47,7 +48,7 @@
       .error {
         display: inline-block;
         white-space: nowrap;
-        padding: .3rem .9rem;
+        padding: .3rem 0;
         text-transform: uppercase;
       }
 
