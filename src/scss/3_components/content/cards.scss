@@ -60,11 +60,6 @@
     > ol {
       margin: .9rem 0;
     }
-
-    > p,
-    > li {
-      @include responsive-typo-map($small-text);
-    }
   }
 
   &__title {
@@ -116,7 +111,7 @@ a.card {
   text-decoration: none;
   background-color: transparent;
   outline-color: transparent;
-  transition: background-color .3s, outline-color .3s;
+  transition: background-color .3s, outline-color .3s, border-color .3s;
 
   &:hover,
   &:focus {
@@ -158,7 +153,6 @@ a.card {
     // Need to reset some styles from the classic card link style.
     color: $link;
     text-decoration: none;
-    text-underline-position: under;
     // sass-lint:disable no-misspelled-properties
     text-underline-offset: 3px;
     // sass-lint:enable no-misspelled-properties
