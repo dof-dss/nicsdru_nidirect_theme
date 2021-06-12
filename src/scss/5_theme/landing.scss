@@ -98,14 +98,6 @@
           white-space: nowrap;
           color: $link;
           text-decoration: underline;
-
-          &::before {
-            display: inline-block;
-            content: '  \2026  ';
-            margin-right: 4px;
-            text-decoration: none;
-            font-weight: normal;
-          }
         }
       }
     }
