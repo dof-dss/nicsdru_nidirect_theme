@@ -31,36 +31,23 @@ blockquote {
   quotes: '\201C' '\201D' '\2018' '\2019';
   position: relative;
   color: lighten($charcoal, 10%);
-  padding: 0 2.5em;
+  padding: 0 1em;
 
-  &::before {
-    content: '\201C';
-    display: block;
-    position: absolute;
-    top: .3334em;
-    left: 0;
-    font-size: 5em;
-    line-height: 0;
-    color: $grey-medium;
-    font-weight: bold;
-  }
-
-  &::after {
-    content: '\201D';
-    display: block;
-    position: absolute;
-    top: calc(100% + .1em);
-    right: 0;
-    font-size: 5em;
-    line-height: 0;
-    color: $grey-medium;
-    font-weight: bold;
-  }
+  border-top: .3334em solid $grey-light;
+  border-bottom: .3334em solid $grey-light;
 
   cite {
     display: block;
     font-style: italic;
     text-align: right;
+  }
+
+  & > :first-child {
+    margin-top: 1em;
+  }
+
+  & > :last-child {
+    margin-bottom: 1em;
   }
 }
 
