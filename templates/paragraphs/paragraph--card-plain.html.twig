@@ -38,12 +38,13 @@
  * @ingroup themeable
  */
 #}
-{% set classes = ['card__link'] %}
+{% set classes = ['card'] %}
+{% set card_content = content.field_teaser.0|render %}
 {% block paragraph %}
 <a{{ attributes.addClass(classes) }} href="{{ content.field_link.0['#url']|render }}">
   <h2 class="card__title">
     {{ content.field_title }}
   </h2>
-  <p class="card__content">{{ content.field_teaser.0 }}&nbsp;<span class="more">read more</span></p>
+  <p class="card__content">{{ card_content|trim(".") }}&nbsp;&hellip;&nbsp;<span class="more">read more</span></p>
 </a>
 {% endblock paragraph %}

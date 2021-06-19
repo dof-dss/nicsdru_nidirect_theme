@@ -36,9 +36,8 @@
  * @see template_preprocess_field()
  */
 #}
-{% set classes = ['card'] %}
 {% for item in items %}
-<article{{ item.attributes.addClass(classes) }}>
+<article{{ item.attributes }}>
   {{ item.content }}
 </article>
 {% endfor %}
