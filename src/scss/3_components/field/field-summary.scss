@@ -23,10 +23,15 @@
     margin: 0 0 2.7rem;
   }
 
-  // Page summary may or may not contain a P.
-  // Remove margin from child P elements (although there shouldn't be more than one).
+  // Page summary may or may not contain P tags and BR tags.
+  // Ensure they do not break up the summary.
   p {
+    display: inline;
     margin: 0;
+  }
+
+  br {
+    display: none;
   }
 }
 
