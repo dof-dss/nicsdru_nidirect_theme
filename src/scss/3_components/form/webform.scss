@@ -62,7 +62,17 @@
   .form-submit:not(:first-child) {
     margin-left: 1.5em;
   }
+
+  .banner {
+    @include breakpoint($tab) {
+      // Banner needs to break out of it's parent and be full width of the page.
+      width: 940px;
+      max-width: calc(100vw - 40px);
+    }
+  }
 }
+
+
 
 input[type='submit'].webform-button--submit {
   @include btn(large);

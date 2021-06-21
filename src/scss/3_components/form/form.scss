@@ -340,7 +340,6 @@ input[type='checkbox'],
   z-index: 1;
   appearance: none;
   border: 2px solid $charcoal;
-  border-radius: 50% !important;
   background-color: #fff;
   width: 1.8rem;
   height: 1.8rem;
@@ -401,6 +400,11 @@ input[type='checkbox'],
     outline: 3px solid $brand-primary-medium;
     outline-offset: -2px;
   }
+}
+
+input[type='radio'],
+.form-radio {
+  border-radius: 50%;
 }
 
 input[type='checkbox'],
