@@ -339,6 +339,34 @@ form#views-exposed-form-gp-practices-find-a-gp {
   }
 }
 
+// Illnesses and conditions health conditions search.
+.page-node-type-landing-page #views-exposed-form-health-conditions-search-page {
+  position: relative;
+  display: block;
+  max-width: 360px;
+  margin-bottom: 1em;
+
+  .form-item-query-health-az {
+    width: 100%;
+    margin-bottom: 1em;
+
+    ::placeholder {
+      font-size: 1.5rem;
+    }
+
+    #edit-query-health-az {
+      width: calc(100% - 6rem);
+    }
+  }
+
+  .form-actions {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+  }
+}
+
 // Driving Instructors search form.
 .search-form--driving-instructors {
 
@@ -505,3 +533,4 @@ form#views-exposed-form-gp-practices-find-a-gp {
     margin: 0 .5em;
   }
 }
+
