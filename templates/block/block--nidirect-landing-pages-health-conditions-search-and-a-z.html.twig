@@ -34,13 +34,13 @@
       <div class="card__image">{{ content.field_image }}</div>
       <div class="card__body">
         {% if label %}
-            <a class="card__title-link" href="/services/health-conditions-a-z"><h2{{ title_attributes.addClass('card__title') }}>{{ label }}</h2></a>
+            <h2{{ title_attributes.addClass('card__title') }}>{{ label }}</h2>
         {% endif %}
         {% block content %}
           {{ content['search'] }}
-          <p{{ title_attributes.addClass(['label', 'label--small']).setAttribute('id', label_id) }}>
+          <span class="label label--small">
             <span aria-hidden="true">Or</span> find conditions beginning with &hellip;
-          </p>
+          </span>
           {{ content['atoz'] }}
         {% endblock %}
       </div>
