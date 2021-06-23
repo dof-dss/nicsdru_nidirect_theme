@@ -365,6 +365,12 @@ form#views-exposed-form-gp-practices-find-a-gp {
     #edit-categories {
       display: inline-flex;
     }
+
+    .form-type-radio {
+      display: inline-block;
+      width: auto;
+      padding: 0;
+    }
   }
 }
 
