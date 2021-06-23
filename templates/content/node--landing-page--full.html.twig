@@ -92,6 +92,6 @@ Landing pages have a boolean field to enable title visibility.
   </div>
   {% endif %}
   {% if display_social_links %}
-    {{ drupal_block('origins_social_sharing', wrapper=false) }}
+    {{ drupal_entity('block', 'originssocialsharing', check_access=false) }}
   {% endif %}
 </article>
