@@ -24,7 +24,6 @@
 p,
 pre {
   @include responsive-typo-map($normal-text);
-  color: color(text);
 }
 
 // Tighten lists up closer to the preceding paragraph.
