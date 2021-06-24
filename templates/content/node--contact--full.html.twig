@@ -82,4 +82,7 @@
   {% if  content_attributes is not empty %}
   </div>
   {% endif %}
+  {% if display_social_links %}
+    {{ drupal_entity('block', 'originssocialsharing', check_access=false) }}
+  {% endif %}
 </article>

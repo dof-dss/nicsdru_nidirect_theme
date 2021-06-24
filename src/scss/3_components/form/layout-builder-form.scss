@@ -592,7 +592,7 @@
 
 }
 
-.ui-dialog {
+.ui-dialog:not(.ui-dialog-off-canvas) {
   z-index: 501; // Ensure the dialog overlays things properly.
   max-width: 80%; // Fix for when it occasionally decides to go 100% width for some reason.
 
@@ -625,18 +625,20 @@
   }
 
   .ui-button.ui-dialog-titlebar-close {
-    background: none;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
     border: 0;
     margin: 0;
     padding: 0;
     top: 50%;
     transform: translateY(-50%);
-    right: 16px;
+    right: 10px;
 
     &:focus,
     &:hover {
+      border: 0;
       outline: 2px solid #f6f6f6;
-      outline-offset: 3px;
     }
   }
 
