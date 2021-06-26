@@ -79,7 +79,8 @@ input[type='submit'].webform-button--submit {
   @include btn-color($btn-primary, $btn-primary, #fff, 'dark');
 }
 
-input[type='submit'].webform-button--next {
+input[type='submit'].webform-button--next,
+input[type='submit'].webform-button--preview {
   @include btn(large, right, white);
   @include btn-color($btn-primary);
 }
