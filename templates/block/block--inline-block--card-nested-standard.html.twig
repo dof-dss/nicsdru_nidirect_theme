@@ -33,11 +33,12 @@
 <div{{ attributes }}>
   {{ title_prefix }}{{ title_suffix }}
 {% endif %}
-
 <div class="card">
+  {% if content.field_image.0 is not empty %}
   <div class="card__image">{{ content.field_image }}</div>
+  {% endif %}
   <div class="card__body">
-    {% if content.field_card_title %}
+    {% if content.field_card_title.0 is not empty %}
       {% if content.field_title_link[0]['#url']  %}
         <a class="card__title-link" href="{{ content.field_title_link[0]['#url']|render }}"><h2{{ title_attributes.addClass('card__title') }}>{{ content.field_card_title }}</h2></a>
       {% else %}
