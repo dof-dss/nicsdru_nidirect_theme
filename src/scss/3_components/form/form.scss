@@ -119,9 +119,8 @@ form > .form-wrapper > section {
     font-weight: normal;
   }
 
-  // Nested fieldset/section legends/titles.
-  &.radios--wrapper legend,
-  &.checkboxes--wrapper legend,
+  // Plain and nested fieldset legends / section titles.
+ .legend--plain,
   fieldset legend,
   section h2 {
     @include responsive-typo-map($form-legend-plain);
