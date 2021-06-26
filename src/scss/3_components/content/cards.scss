@@ -112,6 +112,7 @@ a.card {
   background-color: transparent;
   outline-color: transparent;
   transition: background-color .3s, outline-color .3s, border-color .3s;
+  color: $text;
 
   &:hover,
   &:focus {
@@ -151,7 +152,7 @@ a.card {
   .card-deck--plain & {
 
     // Need to reset some styles from the classic card link style.
-    color: $link;
+    color: $text;
     text-decoration: none;
     // sass-lint:disable no-misspelled-properties
     text-underline-offset: 3px;

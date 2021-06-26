@@ -119,7 +119,8 @@ form > .form-wrapper > section {
     font-weight: normal;
   }
 
-  // Nested fieldset/section legends/titles.
+  // Plain and nested fieldset legends / section titles.
+ .legend--plain,
   fieldset legend,
   section h2 {
     @include responsive-typo-map($form-legend-plain);
@@ -144,7 +145,7 @@ label,
   font-size: 1em;
   line-height: 1.5;
   font-weight: normal;
-  color: $charcoal;
+  color: color(text);
 
   &--small {
     font-size: 1.6rem;
@@ -222,7 +223,7 @@ textarea {
   box-sizing: border-box;
   border: 1px solid #333;
   border-radius: 0;
-  color: $charcoal;
+  color: color(text);
   margin: .5em 0;
   padding: .6rem;
   min-height: 2.5em;
@@ -233,7 +234,7 @@ textarea {
 
   &:focus {
     box-shadow: none;
-    color: $charcoal;
+    color: color(text);
     outline: 3px solid $brand-primary-medium;
   }
 
@@ -244,7 +245,7 @@ textarea {
     outline-color: $error;
     background-color: $error-bg; // lightpink
     box-shadow: none;
-    color: $charcoal;
+    color: color(text);
   }
 }
 
@@ -266,7 +267,7 @@ textarea {
   font-size: 1em;
   font-family: sans-serif;
   font-weight: normal;
-  color: $charcoal;
+  color: color(text);
   line-height: 1.3;
   padding: .6em 1.4em .5em .8em;
   box-sizing: border-box;
@@ -372,7 +373,7 @@ input[type='checkbox'],
     font-size: 1em;
     line-height: 1.5;
     vertical-align: baseline;
-    color: $charcoal;
+    color: color(text);
     background-color: $white;
 
     @include breakpoint($tab, $no-query: true) {
@@ -385,7 +386,7 @@ input[type='checkbox'],
     box-shadow: inset 0 0 0 1px $error;
     outline-color: $error;
     background-color: $error-bg;
-    color: $charcoal;
+    color: color(text);
   }
 
   &:hover:not(.error) ~ label {
