@@ -38,7 +38,7 @@ html {
 
 body {
   @include responsive-typo-map($body-text);
-  color: $charcoal;
+  color: color(text);
   background-color: #fff;
   // Remove default margin and padding.
   margin: 0;

@@ -72,14 +72,45 @@
   }
 }
 
+.webform-preview .webform-submission-data {
 
+  > .webform-container {
+    margin: 2.5em 0 2em;
+  }
+
+  > .form-item {
+    margin: 2em 0;
+  }
+
+  .webform-element {
+    background-color: $grey-lightest;
+    padding: .5em;
+
+    label {
+      position: relative;
+      background-color: #fff;
+      top: -.5em;
+      left: -.5em;
+      width: calc(100% + 1em);
+      padding-bottom: .5em;
+    }
+  }
+
+  details {
+    summary {
+      @include responsive-typo-map($h2-text);
+      color: color(brand-secondary);
+    }
+  }
+}
 
 input[type='submit'].webform-button--submit {
   @include btn(large);
   @include btn-color($btn-primary, $btn-primary, #fff, 'dark');
 }
 
-input[type='submit'].webform-button--next {
+input[type='submit'].webform-button--next,
+input[type='submit'].webform-button--preview {
   @include btn(large, right, white);
   @include btn-color($btn-primary);
 }
