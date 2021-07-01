@@ -77,13 +77,39 @@
 
   // Floated styles.
   &[data-picture-mapping='inline'],
-  &[data-picture-mapping='inline_expandable'],
-  &[data-picture-mapping='portrait_float'],
-  &[data-picture-mapping='portrait_float_expandable'] {
+  &[data-picture-mapping='portrait_float'] {
 
     > figure,
     > img {
       @include media-image-float;
+
+      &.thwooped {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 0 2.4rem;
+
+        @include breakpoint($tab) {
+          margin: 0 0 2.7rem;
+        }
+      }
+    }
+  }
+
+  &[data-picture-mapping='inline_expandable'],
+  &[data-picture-mapping='portrait_float_expandable'] {
+
+    > .thwooper {
+      @include media-image-float;
+      display: block;
+
+      &:link,
+      &:focus,
+      &:hover,
+      &:active {
+        text-decoration: none;
+        background: transparent;
+        box-shadow: none;
+      }
 
       &.thwooped {
         width: 100%;
@@ -125,36 +151,54 @@
   }
 }
 
-
-
 a.thwooper { // Added by JS after all expandable images - when clicked it adds "thwooped" class to img.
+  position: relative;
 
-  display: none; // By default do not show the thwooper expand/shrink control.
-  position: absolute;
-  margin: 0;
-  font-size: .1px;
-  line-height: 0;
+  &:link,
+  &:hover,
+  &:active,
+  &:visited {
+    background-color: transparent;
+    text-decoration: none;
+    box-shadow: none;
+    outline: none;
+  }
 
-  width: 44px;
-  height: 44px;
-  padding: 4px;
-  right: 5px;
-  top: 14px;
-  z-index: 10;
-  background: rgba(0, 0, 0, .5) resolve('img-expand-icon-x2.png') 50% 50% no-repeat;
-  background-size: 24px 24px;
-  transition: top .5s;
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    margin: 0;
+    font-size: .1px;
+    line-height: 0;
 
-  &:focus,
-  &:hover {
-    outline: 3px solid #fff;
+    width: 44px;
+    height: 44px;
+    padding: 4px;
+    right: 5px;
+    top: 5px;
+    z-index: 10;
+    background: rgba(0, 0, 0, .75) resolve('img-expand-icon-x2.png') 50% 50% no-repeat;
+    background-size: 24px 24px;
+    transition: top .5s, filter .5s;
+  }
+
+  &:focus::before,
+  &:hover::before {
+    outline: 2px solid rgba(255, 255, 255, .9);
     border: 0;
   }
 
   // Swap to a shrink image when img is 'thwooped'.
-  .thwooped + & {
+  &.thwooped::before {
     background-image: resolve('img-shrink-icon-x2.png');
-    top: 5px;
+    background-color: #ff4da9;
+  }
+
+  .thwooped-modal &::before {
+    outline-width: 6px;
+    top: 2.5%;
+    right: 10px;
   }
 
   // Show the thooper control when screen is big enough to accommodate the expansion.
@@ -174,34 +218,6 @@ a.thwooper { // Added by JS after all expandable images - when clicked it adds "
     // Full width expandable styles are only expandable when layout becomes two column
     @include breakpoint($tab) {
       display: block;
-    }
-  }
-
-  .thwooped-modal & {
-
-    right: 32px;
-    top: 32px;
-
-    // In a modal we change the thwooper control to look like a close button.
-    background-image: none;
-
-    &::before,
-    &::after {
-      position: absolute;
-      content: ' ';
-      top: 11px;
-      left: 20px;
-      width: 4px;
-      height: 22px;
-      background-color: #fff;
-    }
-
-    &::before {
-      transform: rotate(45deg);
-    }
-
-    &::after {
-      transform: rotate(-45deg);
     }
   }
 }

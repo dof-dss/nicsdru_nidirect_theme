@@ -15,15 +15,15 @@
 
       // Add a clickable/focusable wrapper and icon to indicate image is thwoopable.
       $thwoopImages.once('thwoop-toggle').each(function () {
-        $(this).after('<a class="thwooper" href="#">Enlarge</a>');
+        $(this).wrap('<a class="thwooper" href="#"></a>');
       });
 
       // Click or keypress toggles thwoop.
       $('.thwooper').click(function (event) {
         event.preventDefault();
-        var $thwoopimage = $(this).prev('img, figure');
+        var $thwoopimage = $(this).find('img, figure');
         var $thwoop_wrap = $(this).closest('.media-image');
-        var thwoop_picture_mapping = $thwoopimage.parent().attr('data-picture-mapping');
+        var thwoop_picture_mapping = $(this).parent().attr('data-picture-mapping');
         var modal = false;
 
         if (thwoop_picture_mapping == 'inline_xl_expandable' || thwoop_picture_mapping == 'portrait_full_expandable') {
@@ -42,9 +42,9 @@
           });
         }
 
-        if ($thwoopimage.hasClass('thwooped')) {
-          $thwoopimage.removeClass('thwooped');
-          $(this).text('title', 'Enlarge');
+        if ($(this).hasClass('thwooped')) {
+          $(this).removeClass('thwooped');
+          $(this).attr('aria-label', 'Enlarge');
           if (modal) {
             $thwoop_wrap.removeClass('thwooped-modal');
             // Just in case user scrolled page behind the modal, bring image back into view.
@@ -53,12 +53,12 @@
             });
           }
         } else {
-          $thwoopimage.addClass('thwooped');
+          $(this).addClass('thwooped');
           if (modal) {
             $thwoop_wrap.addClass('thwooped-modal');
-            $(this).text('Close');
+            $(this).attr('aria-label', 'Close');
           } else {
-            $(this).text('Shrink');
+            $(this).attr('aria-label', 'Shrink');
           }
         }
       });
