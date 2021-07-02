@@ -13,7 +13,6 @@
   // Media is full width by default.
   width: 100%;
   height: auto;
-  margin: 1.6rem 0;
 
   // Float media when display gets width enough ...
   @include breakpoint($mob) {
@@ -21,12 +20,7 @@
     float: right;
     width: 48.3871%;
     max-width: 300px;
-    margin: .8rem 0 .8rem 2.4rem;
-    transition: width 1s, max-width 1s, margin 1s; // For thwoopable images.
-  }
-
-  @include breakpoint($tab) {
-    margin: .9rem 0 .9rem 2.7rem;
+    transition: width .3s, max-width .3s, margin .3s; // For thwoopable images.
   }
 }
 
@@ -64,15 +58,12 @@
     }
   }
 
-  // Defaults for all images
-  img {
+  // Defaults for all images and figures.
+  img,
+  figure {
     width: 100%;
     height: auto;
-    margin: .8rem 0 2.4rem;
-
-    @include breakpoint($tab) {
-      margin: .9rem 0 2.7rem;
-    }
+    margin: 1em 0 1.5em;
   }
 
   // Floated styles.
@@ -82,15 +73,12 @@
     > figure,
     > img {
       @include media-image-float;
+      margin: 0 0 1.5em 1em;
 
       &.thwooped {
         width: 100%;
         max-width: 100%;
-        margin: 0 0 2.4rem;
-
-        @include breakpoint($tab) {
-          margin: 0 0 2.7rem;
-        }
+        margin: 1em 0 1.5em;
       }
     }
   }
@@ -101,6 +89,7 @@
     > .thwooper {
       @include media-image-float;
       display: block;
+      margin: 0 0 1.5em 1em;
 
       &:link,
       &:focus,
@@ -111,14 +100,15 @@
         box-shadow: none;
       }
 
+      > img,
+      > figure {
+        margin: 0;
+      }
+
       &.thwooped {
         width: 100%;
         max-width: 100%;
-        margin: 0 0 2.4rem;
-
-        @include breakpoint($tab) {
-          margin: 0 0 2.7rem;
-        }
+        margin: 1em 0 1.5em;
       }
     }
   }
@@ -143,7 +133,6 @@
       display: block;
       font-style: italic;
       text-align: center;
-      margin: 0 0 2.5em;
       padding: .5em;
       background-color: $grey-lightest;
       color: $text;
