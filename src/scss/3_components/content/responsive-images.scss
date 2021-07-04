@@ -20,7 +20,7 @@
     float: right;
     width: 48.3871%;
     max-width: 300px;
-    transition: width .3s, max-width .3s, margin .3s; // For thwoopable images.
+    margin-left: 1em;
   }
 }
 
@@ -28,33 +28,35 @@
 .media-image {
   width: 100%;
   position: relative;
+  margin: 1em 0 1.5em;
 
   // It can act as a modal wrapper for full size expandable images.
   &.thwooped-modal {
-    display: flex;
     position: fixed;
     left: 0;
     top: 0;
     z-index: 10000;
     width: 100%;
     height: 100%;
+    margin: 0;
     background-color: rgba(0, 0, 0, .9);
-    padding: 5%;
-    justify-content: center;
     text-align: center;
 
-    // Images inside the model wrapper must be contained in the viewport.
-    img {
-      width: auto;
-      height: auto;
-      max-width: 100%;
-      max-height: 100%;
-    }
-
-    // Sometimes the thwooper control is display: none at certain screen sizes.
-    // In a modal, the thwooper control acts as a close button and should be displayed at all times.
     a.thwooper {
-      display: block !important;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+
+      img,
+      figure {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+      }
     }
   }
 
@@ -63,7 +65,7 @@
   figure {
     width: 100%;
     height: auto;
-    margin: 1em 0 1.5em;
+    margin: 0;
   }
 
   // Floated styles.
@@ -73,23 +75,17 @@
     > figure,
     > img {
       @include media-image-float;
-      margin: 0 0 1.5em 1em;
-
-      &.thwooped {
-        width: 100%;
-        max-width: 100%;
-        margin: 1em 0 1.5em;
-      }
     }
   }
 
   &[data-picture-mapping='inline_expandable'],
   &[data-picture-mapping='portrait_float_expandable'] {
 
+    // Remove margin from .media-image wrapper. Margin is added to the .thwooper wrapped image instead.
+    margin: 0;
+
     > .thwooper {
-      @include media-image-float;
-      display: block;
-      margin: 0 0 1.5em 1em;
+      margin: 0 0 1.5em;
 
       &:link,
       &:focus,
@@ -105,10 +101,18 @@
         margin: 0;
       }
 
-      &.thwooped {
-        width: 100%;
-        max-width: 100%;
-        margin: 1em 0 1.5em;
+      @include breakpoint($mob) {
+        @include media-image-float;
+        animation: thwoop-shrink .3s;
+        animation-fill-mode: backwards;
+
+        &.thwooped {
+          margin: 0 0 1.5em;
+          width: 100%;
+          max-width: 100%;
+          animation: thwoop-expand .3s;
+          animation-fill-mode: forwards;
+        }
       }
     }
   }
@@ -141,6 +145,7 @@
 }
 
 a.thwooper { // Added by JS after all expandable images - when clicked it adds "thwooped" class to img.
+  display: block;
   position: relative;
 
   &:link,
@@ -155,6 +160,8 @@ a.thwooper { // Added by JS after all expandable images - when clicked it adds "
 
   &::before {
     content: '';
+    // Display is disabled by default and enabled within certain breakpoints
+    // depending on image style the thwooper is acting on.
     display: block;
     position: absolute;
     margin: 0;
@@ -183,30 +190,32 @@ a.thwooper { // Added by JS after all expandable images - when clicked it adds "
     background-image: resolve('img-shrink-icon-x2.png');
     background-color: #ff4da9;
   }
+}
 
-  .thwooped-modal &::before {
-    outline-width: 6px;
-    top: 2.5%;
-    right: 10px;
+@keyframes thwoop-expand {
+  0% {
+    width: 48.3871%;
+    max-width: 300px;
+    margin-left: 1em;
   }
 
-  // Show the thooper control when screen is big enough to accommodate the expansion.
+  100% {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+  }
+}
 
-  [data-picture-mapping='inline_expandable'] &,
-  [data-picture-mapping='portrait_float_expandable'] & {
-
-    // Floated styles are expandable quite early.
-    @include breakpoint($mob) {
-      display: block;
-    }
+@keyframes thwoop-shrink {
+  0% {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
   }
 
-  [data-picture-mapping='inline_xl_expandable'] &,
-  [data-picture-mapping='portrait_full_expandable'] & {
-
-    // Full width expandable styles are only expandable when layout becomes two column
-    @include breakpoint($tab) {
-      display: block;
-    }
+  100% {
+    width: 48.3871%;
+    max-width: 300px;
+    margin-left: 1em;
   }
 }
