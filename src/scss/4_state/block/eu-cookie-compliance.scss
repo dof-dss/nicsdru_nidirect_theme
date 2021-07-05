@@ -26,23 +26,24 @@
     }
 
     .popup-content {
-      @include breakpoint($tab) {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-      }
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      grid-row-gap: 1.5em;
     }
   }
 
   &-buttons {
-    @include breakpoint($tab) {
-      text-align: right;
-      align-self: end;
-    }
+    display: flex;
+    flex-direction: row-reverse;
+    text-align: right;
+    align-self: end;
 
     .btn {
+      margin-left: 1em;
 
-      &:not(:last-child) {
-        margin-right: .5em;
+      &:not(.decline-button) {
+        padding-left: 1.5em;
+        padding-right: 1.5em;
       }
 
       &:focus {
@@ -54,6 +55,7 @@
   &-message {
 
     h2 {
+      @include responsive-typo-map($h3-text);
       color: white;
     }
 

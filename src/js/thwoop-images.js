@@ -9,58 +9,54 @@
 (function ($, Drupal) {
   Drupal.behaviors.nicsdruOriginsThwoopImages = {
     attach: function attach (context) {
-      // Make responsive image styles thwoopable.
+
+      // Make expandable responsive image styles thwoopable.
       var thwoopImageSelector = '[data-picture-mapping*="_expandable"] > img, [data-picture-mapping*="_expandable"] > figure';
       var $thwoopImages = $(thwoopImageSelector, context);
 
       // Add a clickable/focusable wrapper and icon to indicate image is thwoopable.
       $thwoopImages.once('thwoop-toggle').each(function () {
-        $(this).wrap('<a class="thwooper" href="#"></a>');
-      });
 
-      // Click or keypress toggles thwoop.
-      $('.thwooper').click(function (event) {
-        event.preventDefault();
-        var $thwoopimage = $(this).find('img, figure');
-        var $thwoop_wrap = $(this).closest('.media-image');
-        var thwoop_picture_mapping = $(this).parent().attr('data-picture-mapping');
-        var modal = false;
+        var $thwooper = $('<a class="thwooper" aria-label="expand image" href="#"></a>');
 
-        if (thwoop_picture_mapping == 'inline_xl_expandable' || thwoop_picture_mapping == 'portrait_full_expandable') {
-          modal = true;
+        // CSS animates the thwooper expansion and contraction.
+        $thwooper.bind('oanimationstart animationstart webkitAnimationStart', function() {
+          // When animation begins, clear away any text wrapping near the
+          // image by making the parent contain the floated image.
+          $(this).parent().addClass('clearfix');
+        });
 
-          // Enable escape key to close modal.
-          $(document).keydown(function(event) {
-            if (event.keyCode == 27) {
-              $thwoop_wrap.removeClass('thwooped-modal');
-              $thwoopimage.removeClass('thwooped');
-              // Just in case user scrolled page behind the modal, bring image back into view.
-              $thwoop_wrap[0].scrollIntoView({
-                block: 'center',
-              });
-            }
-          });
-        }
+        $thwooper.bind('oanimationend animationend webkitAnimationEnd', function() {
+          // When animation finishes, let text wrap around non-thwooped images by
+          // removing float clearing from the parent.
+          if (!$(this).hasClass('thwooped')) $(this).parent().removeClass('clearfix');
+        });
 
-        if ($(this).hasClass('thwooped')) {
-          $(this).removeClass('thwooped');
-          $(this).attr('aria-label', 'Enlarge');
-          if (modal) {
+        $thwooper.click(function (event) {
+          event.preventDefault();
+          var $thwoopimage = $(this).find('img, figure');
+          var $thwoop_wrap = $(this).closest('.media-image');
+          var is_thwooped = $(this).hasClass('thwooped');
+          var thwooper_label = $(this).attr('aria-lable') === 'expand image'? 'shrink image' : 'expand image';
+
+          // Open image in a modal if it does not have room to expand inside its
+          // container (and its not already thwooped).
+          var open_as_modal = (!is_thwooped && $thwoopimage.outerWidth() == $thwoop_wrap.outerWidth());
+
+          $(this).toggleClass('thwooped', !is_thwooped);
+          $(this).attr('aria-label', thwooper_label);
+          if (open_as_modal) {
+            $thwoop_wrap.addClass('thwooped-modal');
+            $(this).attr('aria-label', 'close image');
+          } else if ($thwoop_wrap.hasClass('thwooped-modal')) {
             $thwoop_wrap.removeClass('thwooped-modal');
-            // Just in case user scrolled page behind the modal, bring image back into view.
             $thwoop_wrap[0].scrollIntoView({
               block: 'center',
             });
           }
-        } else {
-          $(this).addClass('thwooped');
-          if (modal) {
-            $thwoop_wrap.addClass('thwooped-modal');
-            $(this).attr('aria-label', 'Close');
-          } else {
-            $(this).attr('aria-label', 'Shrink');
-          }
-        }
+        });
+
+        $(this).wrap($thwooper);
       });
     }
   };
