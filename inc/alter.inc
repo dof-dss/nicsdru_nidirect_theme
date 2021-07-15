@@ -81,3 +81,12 @@ function nicsdru_nidirect_theme_form_node_landing_page_layout_builder_form_alter
   // Hide revision information section.
   $form['revision_information']['#access'] = FALSE;
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function nicsdru_nidirect_theme_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (!empty($form['#id']) && $form['#id'] == 'views-exposed-form-search-site-search') {
+    $form['#info']['filter-search_api_fulltext']['label'] = t('Search nidirect');
+  }
+}
