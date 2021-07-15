@@ -159,11 +159,7 @@
     opacity: 0;
 
     @include breakpoint($tab) {
-      height: 1px;
-      width: 1px;
-      overflow: hidden;
-      left: -.5rem;
-      top: 0;
+      display: none;
     }
 
     /* Toggler Animation */
