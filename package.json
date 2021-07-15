@@ -62,6 +62,7 @@
     "js-compile-accordions": "mkdir -p js && uglifyjs src/js/accordions.js -o js/accordions.js",
     "js-compile-section-feedback": "mkdir -p js && uglifyjs src/js/section-feedback.js -o js/section-feedback.js",
     "js-compile-ui": "mkdir -p js && uglifyjs src/js/ui.js -o js/ui.js",
+    "js-compile-site-search": "mkdir -p js && uglifyjs src/js/site-search.js -o js/site-search.js",
     "––––––– CSS SCRIPTS": "–––––––––––––",
     "css": "npm-run-all --sequential scss-dev css-post",
     "css-lint": "sass-lint -c config/.sass-lint.yml \"src/scss/**/*.scss\"  -v -q",

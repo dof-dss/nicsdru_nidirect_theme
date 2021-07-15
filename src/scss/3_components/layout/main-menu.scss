@@ -147,7 +147,7 @@
 
   .toggler {
     position: absolute;
-    top: -3.2rem;
+    top: -5.8rem;
     left: .5rem;
     z-index: 2;
     cursor: pointer;
@@ -155,6 +155,7 @@
     height: 5rem;
     max-height: 5rem;
     max-width: 5rem;
+    margin: 0;
     opacity: 0;
 
     @include breakpoint($tab) {
@@ -195,7 +196,7 @@
 
   .hamburger {
     position: absolute;
-    top: -5.6rem;
+    top: -5.8rem;
     left: .5rem;
     z-index: 1;
     width: 5rem;
@@ -204,6 +205,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    .path-search & {
+      background-color: #0a78cd;
+      justify-content: flex-start;
+      left: 0;
+      top: -6.5rem;
+      width: 100%;
+      height: 6.5rem;
+      padding: 1rem 1.5rem;
+    }
 
     @include breakpoint($tab) {
       display: none;
@@ -214,6 +225,7 @@
       position: relative;
       flex: none;
       width: 100%;
+      max-width: 3rem;
       height: .3rem;
       background: #fff;
       // sass-lint:disable no-transition-all
