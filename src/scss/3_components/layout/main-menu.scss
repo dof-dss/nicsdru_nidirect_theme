@@ -157,6 +157,7 @@
     max-width: 5rem;
     margin: 0;
     opacity: 0;
+    appearance: none;
 
     @include breakpoint($tab) {
       display: none;
@@ -179,7 +180,9 @@
     }
 
     /* Show menu */
-    &:checked ~ .nav-main {
+    &:checked ~ .nav-main,
+    &:focus ~ .nav-main,
+    & ~ .nav-main:focus-within {
       height: auto;
       max-height: 60rem;
       transition: max-height 1s ease;
@@ -201,9 +204,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #0a78cd;
 
     .path-search & {
-      background-color: #0a78cd;
       justify-content: flex-start;
       left: 0;
       top: -6.5rem;
