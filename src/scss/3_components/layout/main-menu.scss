@@ -181,7 +181,6 @@
 
     /* Show menu */
     &:checked ~ .nav-main,
-    &:focus ~ .nav-main,
     & ~ .nav-main:focus-within {
       height: auto;
       max-height: 60rem;
