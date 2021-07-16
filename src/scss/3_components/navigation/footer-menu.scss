@@ -34,7 +34,7 @@
       flex-wrap: wrap;
       align-items: center;
       list-style: none;
-      margin: .5em 0 0;
+      margin: 0;
       padding: 0;
 
       li {
@@ -42,7 +42,7 @@
           font-size: 1.6rem;
         }
         font-size: 1.4rem;
-        margin: 0 .5em 0 0;
+        margin: .5em .5em .5em 0;
         padding: 0 .5em 0 0;
         border-right: 1px solid $link;
         line-height: 1;
