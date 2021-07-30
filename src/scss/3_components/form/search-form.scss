@@ -205,3 +205,14 @@ header .search-form {
     text-decoration: 2px underline #333;
   }
 }
+
+// Search autocomplete suggestions.
+.search-api-autocomplete-search {
+
+  // On narrow screens the suggestions should span the entire search form.
+  // Need to use !important to override inline styles added by jquery ui.
+  @include breakpoint(0 $mob) {
+    left: 8px !important;
+    width: calc(100% - 16px) !important;
+  }
+}
