@@ -345,11 +345,10 @@ $link-skip: (
     default: $charcoal
   ),
   text-decoration: (
-    default: underline
+    default: none,
   ),
-  text-underline-offset: 3px,
   outline: 3px solid #ff0,
-  outline-offset: -3px,
+  outline-offset: -6px,
   opacity: (
     default: 0,
     hover: 1,
