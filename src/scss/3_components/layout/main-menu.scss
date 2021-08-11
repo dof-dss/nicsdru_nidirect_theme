@@ -12,7 +12,7 @@
   .nav {
 
     &-main {
-      height: 0; // .toggler:checked will set height to auto.
+      display: none; // .toggler:checked will set display to block.
       overflow: hidden;
 
       @include breakpoint($tab) {
@@ -191,9 +191,8 @@
     }
 
     /* Show menu */
-    &:checked ~ .nav-main,
-    & ~ .nav-main:focus-within {
-      height: auto;
+    &:checked ~ .nav-main {
+      display: block;
       max-height: 60rem;
       transition: max-height 1s ease;
     }
