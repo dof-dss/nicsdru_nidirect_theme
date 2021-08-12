@@ -183,10 +183,8 @@
       display: none;
     }
 
-    // Hamburger Lines are added to button using a nested div and pseudo elements.
-    // The nested div is the middle line to which we add ::before and ::after
-    // pseudo elements to make the top and bottom lines.
-    & > div {
+    // Hamburger Lines are added to button using a nested span and pseudo elements.
+    & > span {
       position: relative;
       flex: none;
       width: 100%;
@@ -215,7 +213,7 @@
     }
 
     // Hamburger lines animate into a X close symbol when menu is opened.
-    &[aria-expanded='true'] > div {
+    &[aria-expanded='true'] > span {
       transform: rotate(135deg);
 
       /* Turns Lines Into X */
@@ -227,7 +225,7 @@
     }
 
     // Hamburger X close symbol does partial rotation on hover.
-    &[aria-expanded='true']:hover > div {
+    &[aria-expanded='true']:hover > span {
       transform: rotate(225deg);
     }
 
