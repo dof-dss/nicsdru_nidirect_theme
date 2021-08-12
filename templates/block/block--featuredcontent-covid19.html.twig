@@ -30,6 +30,7 @@
 {% set classes = ['section--featured', 'section--featured-highlights'] %}
 {% set attributes = attributes.addClass(classes) %}
 {% set attributes = attributes.removeAttribute('id') %}
+{% set title_attributes = title_attributes.addClass(['visually-hidden']) %}
 <section{{ attributes }}>
   {{ title_prefix }}
   {% if label %}
