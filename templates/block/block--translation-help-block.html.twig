@@ -25,6 +25,7 @@
  * @see template_preprocess_block()
  */
 #}
+{% set title_attributes = title_attributes.addClass(['visually-hidden']) %}
 <section{{ attributes.addClass(['section--translation-help', 'container', 'container--no-padding']) }}>
   {{ title_prefix }}
   {% if label %}
