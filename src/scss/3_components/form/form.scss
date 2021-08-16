@@ -84,8 +84,9 @@ form > .form-item,
 // In some cases, it may be better to use a section instead of a fieldset in these situations:
 // # The grouping is primarily visual and the controls in the group have labels that adequately differentiate them from
 // other similar controls in the form as a whole.
-// # The group of controls includes nested fieldsets of radios/checkboxes. Nested fieldsets
-// should be avoided because they can confuse screen readers and screen reader users.
+// # The group of controls includes nested fieldsets. Fieldsets can be nested if desired, although this can lead to
+// confusion if overdone.
+// @see https://www.w3.org/TR/2008/WD-WCAG20-TECHS-20080430/H82.html.
 //
 // Style fieldsets and legends, and sections and H2s in same manner.
 
