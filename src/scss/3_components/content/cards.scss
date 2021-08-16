@@ -168,7 +168,9 @@ a.card {
     .card__title {
       padding: 0;
       color: $link;
-      text-decoration: 1px underline $link;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-decoration-color: $link;
 
       &::after {
         content: none;
@@ -185,7 +187,8 @@ a.card {
       color: $link;
       background-color: transparent;
       box-shadow: none;
-      text-decoration: 2px underline $brand-secondary;
+      text-decoration-thickness: 2px;
+      text-decoration-color: $brand-secondary;
     }
 
     &:active .card__title {

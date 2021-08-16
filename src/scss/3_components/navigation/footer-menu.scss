@@ -96,6 +96,10 @@
           width: 4rem;
           height: 4rem;
         }
+
+        &:hover {
+          box-shadow: 0 0 0 3px $charcoal;
+        }
       }
 
       a[href*='https://twitter.com'] {
