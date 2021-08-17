@@ -37,5 +37,10 @@
  */
 #}
 {% for item in items %}
-  {{ item.content }}
+  <iframe
+    class="{{ item.content['#attributes']['class']|join(' ') }}"
+    src="{{ item.content['#attributes']['src'] }}"
+    width="{{ item.content['#attributes']['width'] }}"
+    height="{{ item.content['#attributes']['height'] }}"
+    title="{{ item.content['#attributes']['title'] }}"></iframe>
 {% endfor %}
