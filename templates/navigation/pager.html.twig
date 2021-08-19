@@ -32,7 +32,7 @@
 #}
 {% if items %}
   <nav class="pager" aria-labelledby="{{ heading_id }}">
-    <h2 id="{{ heading_id }}" class="visually-hidden">{{ 'Pages'|t }}</h2>
+    <h2 id="{{ heading_id }}" class="visually-hidden">{{ 'Page navigation'|t }}</h2>
     <ul class="pager__items js-pager__items">
       {# Print first item if we are not on the first page. #}
       {% if items.first %}
@@ -60,12 +60,12 @@
       {% for key, item in items.pages %}
         <li class="pager__item {{ current == key ? 'is-active' : '' }}">
           {% if current == key %}
-            <span class="pager__item-current active">
+            <a href="{{ item.href }}"{{ item.attributes|without('href', 'title').setAttribute('aria-current', 'page').addClass(['pager__item-current', 'active']) }}>
               <span class="visually-hidden">
-                {{ 'current page '|t }}
+                {{ 'page '|t }}
               </span>
               {{- key -}}
-            </span>
+            </a>
           {% else %}
             <a href="{{ item.href }}"{{ item.attributes|without('href', 'title') }}>
               <span class="visually-hidden">
