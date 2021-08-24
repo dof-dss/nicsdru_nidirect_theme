@@ -71,11 +71,11 @@
   </div>
 
   {% if rows %}
-    <div class="view-content" aria-label="{{ 'list of contacts'|t }}" role="region">
+    <div class="view-content" aria-roledescription="{{ 'list of contacts'|t }}" role="region">
       {{ rows }}
     </div>
   {% elseif empty %}
-    <div class="view-empty" aria-label="{{ 'list of contact search results'|t }}" role="region">
+    <div class="view-empty" aria-roledescription="{{ 'list of contact search results'|t }}" role="region">
       {{ empty }}
     </div>
   {% endif %}
