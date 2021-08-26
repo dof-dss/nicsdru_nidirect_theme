@@ -59,6 +59,7 @@ nidirect-global-styles:
     js/thwoop-images.js: { minified: true }
     js/section-feedback.js: { minified: true }
     js/site-search.js: { minified: true }
+    js/sitewide-alerts.js: { minified: true }
   dependencies:
     - core/drupal
     - core/jquery
