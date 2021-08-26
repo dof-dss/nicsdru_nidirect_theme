@@ -106,14 +106,13 @@
     }
   }
 
-  .field--name-message {
+  &__message {
     position: relative;
     display: block;
     width: 100%;
     padding: 0 .5em 0 2.3334em;
 
-    &::before {
-      content: '!';
+    > strong:first-child {
       display: block;
       position: absolute;
       top: 0;
