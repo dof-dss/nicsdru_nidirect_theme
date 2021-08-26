@@ -29,9 +29,11 @@
 <div aria-labelledby="{{ label_id }}"{{ attributes.setAttribute('role', 'region') }}>
   {{ title_prefix }}
   <p{{ title_attributes.addClass(['label', 'label--small']).setAttribute('id', label_id) }}>
-    <span aria-hidden="true">Or</span> find conditions beginning with &hellip;
+    <span aria-hidden="true">Or</span>
+    find conditions beginning with <span class="visually-hidden">A to Z</span>&hellip;
   </p>
   {{ title_suffix }}
+  <a href="#health-conditions-results" class="skip-link visually-hidden focusable">Skip A to Z menu</a>
   {% block content %}
     {{ content }}
   {% endblock %}
