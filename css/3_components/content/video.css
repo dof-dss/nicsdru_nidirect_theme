@@ -1,1 +1,182 @@
-.media-video{width:100%;position:relative;padding-bottom:56.25%;height:0;overflow:hidden}.media-video iframe,.media-video video{position:absolute;top:0;left:0;width:100%;height:100%;border:0;background-color:transparent}.media-video video{background-color:#949494;color:#fff}.media-video video:focus{outline:3px solid #000;background-color:#000}.video-and-caption{width:100%;position:relative}.video-and-caption__heading{padding-left:.8rem}@media (min-width: 768px){.video-and-caption__heading{padding-left:1.5rem}}.video-and-caption__content{display:flex;flex-flow:column nowrap}.video-and-caption__content>*{flex:auto 1 1}.video-and-caption__caption{display:flex;flex-flow:column nowrap;justify-content:center;align-items:center;margin:1em 0 1.5em;padding:0 2.5em;color:#4d4d4d;quotes:'\201C' '\201D' '\2018' '\2019'}.video-and-caption__caption::before{content:'\201C';display:block;width:50px;height:50px;font-size:100px;line-height:1;color:#cdcdcd;font-weight:bold;text-align:center}.video-and-caption__caption p{font-size:1.8rem;line-height:1.5;margin-top:0}@media screen and (min-width: 600px){.video-and-caption__caption p{font-size:2rem;line-height:1.5}}.video-and-caption--above .video-and-caption__caption p,.video-and-caption--below .video-and-caption__caption p{font-size:2rem;line-height:1.4;margin-bottom:0}@media screen and (min-width: 600px){.video-and-caption--above .video-and-caption__caption p,.video-and-caption--below .video-and-caption__caption p{font-size:2.2rem;line-height:1.4546}}@media screen and (min-width: 768px){.video-and-caption--above .video-and-caption__caption p,.video-and-caption--below .video-and-caption__caption p{font-size:2.4rem;line-height:1.5}}@media (min-width: 600px){.video-and-caption--left .video-and-caption__content,.video-and-caption--right .video-and-caption__content{flex-direction:row;justify-content:space-between}.video-and-caption--left .video-and-caption__content>*,.video-and-caption--right .video-and-caption__content>*{flex:48.9% 0 0;max-width:460px;margin:0}}.video-and-caption--no-caption .video-and-caption__caption{position:absolute !important;height:1px;width:1px;overflow:hidden;clip:rect(1px, 1px, 1px, 1px);word-wrap:normal}.video-and-caption--left .video-and-caption__video,.video-and-caption--above .video-and-caption__video,.video-and-caption--below .video-and-caption__caption,.video-and-caption--right .video-and-caption__caption{order:2}.video-and-caption.layout-builder-block{padding:0}@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){.video-and-caption__caption>*{max-width:100%}}
+/*
+ * @file
+ * Provides the styling for inline videos.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 41, src/scss/3_components/content/video.scss */
+.media-video {
+  width: 100%;
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 is the expected ratio. */
+  height: 0;
+  overflow: hidden;
+}
+
+/* line 17, src/scss/3_components/content/video.scss */
+.media-video iframe,
+.media-video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background-color: transparent;
+}
+
+/* line 28, src/scss/3_components/content/video.scss */
+.media-video video {
+  background-color: #949494;
+  color: #fff;
+}
+
+/* line 32, src/scss/3_components/content/video.scss */
+.media-video video:focus {
+  outline: 3px solid #000;
+  background-color: #000;
+}
+
+/* line 46, src/scss/3_components/content/video.scss */
+.video-and-caption {
+  width: 100%;
+  position: relative;
+}
+
+/* line 53, src/scss/3_components/content/video.scss */
+.video-and-caption__heading {
+  padding-left: .8rem;
+}
+
+@media (min-width: 768px) {
+  /* line 53, src/scss/3_components/content/video.scss */
+  .video-and-caption__heading {
+    padding-left: 1.5rem;
+  }
+}
+
+/* line 61, src/scss/3_components/content/video.scss */
+.video-and-caption__content {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+/* line 67, src/scss/3_components/content/video.scss */
+.video-and-caption__content > * {
+  flex: auto 1 1;
+}
+
+/* line 72, src/scss/3_components/content/video.scss */
+.video-and-caption__caption {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  margin: 1em 0 1.5em;
+  padding: 0 2.5em;
+  color: #4d4d4d;
+  quotes: '\201C' '\201D' '\2018' '\2019';
+}
+
+/* line 87, src/scss/3_components/content/video.scss */
+.video-and-caption__caption::before {
+  content: '\201C';
+  display: block;
+  width: 50px;
+  height: 50px;
+  font-size: 100px;
+  line-height: 1;
+  color: #cdcdcd;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* line 100, src/scss/3_components/content/video.scss */
+.video-and-caption__caption p {
+  font-size: 1.8rem;
+  line-height: 1.5;
+  margin-top: 0;
+}
+
+@media screen and (min-width: 600px) {
+  /* line 100, src/scss/3_components/content/video.scss */
+  .video-and-caption__caption p {
+    font-size: 2rem;
+    line-height: 1.5;
+  }
+}
+
+/* line 106, src/scss/3_components/content/video.scss */
+.video-and-caption--above .video-and-caption__caption p,
+.video-and-caption--below .video-and-caption__caption p {
+  font-size: 2rem;
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 600px) {
+  /* line 106, src/scss/3_components/content/video.scss */
+  .video-and-caption--above .video-and-caption__caption p,
+  .video-and-caption--below .video-and-caption__caption p {
+    font-size: 2.2rem;
+    line-height: 1.4546;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* line 106, src/scss/3_components/content/video.scss */
+  .video-and-caption--above .video-and-caption__caption p,
+  .video-and-caption--below .video-and-caption__caption p {
+    font-size: 2.4rem;
+    line-height: 1.5;
+  }
+}
+
+@media (min-width: 600px) {
+  /* line 117, src/scss/3_components/content/video.scss */
+  .video-and-caption--left .video-and-caption__content, .video-and-caption--right .video-and-caption__content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  /* line 121, src/scss/3_components/content/video.scss */
+  .video-and-caption--left .video-and-caption__content > *, .video-and-caption--right .video-and-caption__content > * {
+    flex: 48.9% 0 0;
+    max-width: 460px;
+    margin: 0;
+  }
+}
+
+/* line 131, src/scss/3_components/content/video.scss */
+.video-and-caption--no-caption .video-and-caption__caption {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  word-wrap: normal;
+}
+
+/* line 138, src/scss/3_components/content/video.scss */
+.video-and-caption--left .video-and-caption__video,
+.video-and-caption--above .video-and-caption__video,
+.video-and-caption--below .video-and-caption__caption,
+.video-and-caption--right .video-and-caption__caption {
+  order: 2;
+}
+
+/* line 146, src/scss/3_components/content/video.scss */
+.video-and-caption.layout-builder-block {
+  padding: 0;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* line 155, src/scss/3_components/content/video.scss */
+  .video-and-caption__caption > * {
+    max-width: 100%;
+  }
+}
+
+/*# sourceMappingURL=video.css.map */

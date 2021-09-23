@@ -1,1 +1,45 @@
-*,*::before,*::after{box-sizing:border-box}html{font-family:"Lato","Open Sans",sans-serif;font-size:62.5%;line-height:1.5;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:subpixel-antialiased;min-height:100%}body{font-size:1.6rem;line-height:1.5;color:#1c1c1c;background-color:#fff;margin:0;padding:0}@media screen and (min-width: 768px){body{font-size:1.8rem}}
+/*
+ * @file
+ * Resets and creates defaults for root html elements.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 22, src/scss/1_base/root.scss */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* line 28, src/scss/1_base/root.scss */
+html {
+  font-family: "Lato", "Open Sans", sans-serif;
+  /* 1 */
+  font-size: 62.5%;
+  /* 3 */
+  line-height: 1.5;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: subpixel-antialiased;
+  min-height: 100%;
+}
+
+/* line 39, src/scss/1_base/root.scss */
+body {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: #1c1c1c;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 39, src/scss/1_base/root.scss */
+  body {
+    font-size: 1.8rem;
+  }
+}
+
+/*# sourceMappingURL=root.css.map */

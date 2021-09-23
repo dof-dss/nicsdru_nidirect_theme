@@ -1,1 +1,15 @@
-.page-footer-text{margin-top:3em;border-top:0.3334em solid #d9edfd}
+/*
+ * @file
+ * Provides the layout styles for content output from footer text field.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 7, src/scss/3_components/field/field-footer-text.scss */
+.page-footer-text {
+  margin-top: 3em;
+  border-top: 0.3334em solid #d9edfd;
+}
+
+/*# sourceMappingURL=field-footer-text.css.map */

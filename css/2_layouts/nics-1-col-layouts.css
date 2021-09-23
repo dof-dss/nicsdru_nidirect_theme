@@ -1,1 +1,19 @@
-.layout--main .ga-main{width:100%}.layout--main-limited .ga-main{max-width:720px}
+/*
+ * @file
+ * Provides the layout styles for common nics 2 column layouts.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 23, src/scss/2_layouts/nics-1-col-layouts.scss */
+.layout--main .ga-main {
+  width: 100%;
+}
+
+/* line 30, src/scss/2_layouts/nics-1-col-layouts.scss */
+.layout--main-limited .ga-main {
+  max-width: 720px;
+}
+
+/*# sourceMappingURL=nics-1-col-layouts.css.map */

@@ -1,1 +1,61 @@
-.nodeSummary,.page-summary,.page-summary p,.contact--body p:first-child{font-size:1.8rem;line-height:1.5;font-weight:700}@media screen and (min-width: 600px){.nodeSummary,.page-summary,.page-summary p,.contact--body p:first-child{font-size:2rem;line-height:1.5}}.nodeSummary:first-child,.page-summary:first-child,.page-summary p:first-child,.contact--body p:first-child:first-child{margin-top:0}.page-summary{margin:0 0 2.4rem}@media (min-width: 768px){.page-summary{margin:0 0 2.7rem}}.page-summary p{display:inline;margin:0}.page-summary br{display:none}
+/*
+ * @file
+ * Provides the layout styles for content output from field_summary for any entity.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 7, src/scss/3_components/field/field-summary.scss */
+.nodeSummary,
+.page-summary,
+.page-summary p,
+.contact--body p:first-child {
+  font-size: 1.8rem;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+@media screen and (min-width: 600px) {
+  /* line 7, src/scss/3_components/field/field-summary.scss */
+  .nodeSummary,
+  .page-summary,
+  .page-summary p,
+  .contact--body p:first-child {
+    font-size: 2rem;
+    line-height: 1.5;
+  }
+}
+
+/* line 14, src/scss/3_components/field/field-summary.scss */
+.nodeSummary:first-child,
+.page-summary:first-child,
+.page-summary p:first-child,
+.contact--body p:first-child:first-child {
+  margin-top: 0;
+}
+
+/* line 19, src/scss/3_components/field/field-summary.scss */
+.page-summary {
+  margin: 0 0 2.4rem;
+}
+
+@media (min-width: 768px) {
+  /* line 19, src/scss/3_components/field/field-summary.scss */
+  .page-summary {
+    margin: 0 0 2.7rem;
+  }
+}
+
+/* line 28, src/scss/3_components/field/field-summary.scss */
+.page-summary p {
+  display: inline;
+  margin: 0;
+}
+
+/* line 33, src/scss/3_components/field/field-summary.scss */
+.page-summary br {
+  display: none;
+}
+
+/*# sourceMappingURL=field-summary.css.map */

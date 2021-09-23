@@ -1,1 +1,72 @@
-.container{padding:0 15px}@media (min-width: 768px){.container{margin:0 auto;max-width:980px;padding:0 20px}}.container--no-padding{padding:0}.grid{display:-ms-grid;display:grid;grid-column-gap:24px;-ms-grid-columns:1fr;grid-template-columns:1fr;-ms-grid-rows:-webkit-min-content;-ms-grid-rows:min-content;grid-template-rows:-webkit-min-content;grid-template-rows:min-content}.grid > *:nth-child(1){-ms-grid-row:1;-ms-grid-column:1}.grid.no-gutter{grid-column-gap:0}.ga-full{grid-column:1 / -1;float:left;clear:both;width:100%}@supports (display: grid){.grid>*{width:auto !important}}@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){.grid>*{width:100% !important}}
+/*
+ * @file
+ * Provides the layout styles for common nics 2 column layouts.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 48, src/scss/2_layouts/layouts-common.scss */
+.container {
+  padding: 0 15px;
+}
+
+@media (min-width: 768px) {
+  /* line 48, src/scss/2_layouts/layouts-common.scss */
+  .container {
+    margin: 0 auto;
+    max-width: 980px;
+    padding: 0 20px;
+  }
+}
+
+/* line 56, src/scss/2_layouts/layouts-common.scss */
+.container--no-padding {
+  padding: 0;
+}
+
+/* line 73, src/scss/2_layouts/layouts-common.scss */
+.grid {
+  display: -ms-grid;
+  display: grid;
+  grid-column-gap: 24px;
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
+  -ms-grid-rows: -webkit-min-content;
+  -ms-grid-rows: min-content;
+  grid-template-rows: -webkit-min-content;
+  grid-template-rows: min-content;
+}
+.grid > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+/* line 79, src/scss/2_layouts/layouts-common.scss */
+.grid.no-gutter {
+  grid-column-gap: 0;
+}
+
+/* line 104, src/scss/2_layouts/layouts-common.scss */
+.ga-full {
+  grid-column: 1 / -1;
+  float: left;
+  clear: both;
+  width: 100%;
+}
+
+@supports (display: grid) {
+  /* line 115, src/scss/2_layouts/layouts-common.scss */
+  .grid > * {
+    width: auto !important;
+  }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* line 123, src/scss/2_layouts/layouts-common.scss */
+  .grid > * {
+    width: 100% !important;
+  }
+}
+
+/*# sourceMappingURL=layouts-common.css.map */

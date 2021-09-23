@@ -1,1 +1,16 @@
-.gmap{display:block;height:400px;width:100%}
+/*
+ * @file
+ * Set defined height and width for the container on google map elements.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 7, src/scss/3_components/content/gmap.scss */
+.gmap {
+  display: block;
+  height: 400px;
+  width: 100%;
+}
+
+/*# sourceMappingURL=gmap.css.map */

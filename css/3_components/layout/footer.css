@@ -1,1 +1,54 @@
-.footer{width:100%;background-color:#e8e7e7;padding:0 0 4.5em;margin-top:0}.footer-main.container{width:100%}@media (min-width: 768px){.footer-main.container{display:-ms-grid;display:grid;-ms-grid-columns:2fr 1fr;grid-template-columns:2fr 1fr;grid-template-areas:'menu social';align-items:center}}.footer .nav-menu{grid-area:menu}.footer .nav-social{grid-area:social}@media (min-width: 768px){.footer .nav-menu{-ms-grid-row:1;-ms-grid-column:1}.footer .nav-social{-ms-grid-row:1;-ms-grid-column:2}}
+/*
+ * @file
+ * Provides the layout styles for the footer area.
+ */
+/* Vertical rhythm presets =========================================== */
+/* Set the base images folder */
+/* Layout ============================================================ */
+/* Breakpoints ======================================================== */
+/* line 7, src/scss/3_components/layout/footer.scss */
+.footer {
+  width: 100%;
+  background-color: #e8e7e7;
+  padding: 0 0 4.5em;
+  margin-top: 0;
+}
+
+/* line 13, src/scss/3_components/layout/footer.scss */
+.footer-main.container {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  /* line 13, src/scss/3_components/layout/footer.scss */
+  .footer-main.container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 2fr 1fr;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: 'menu social';
+    align-items: center;
+  }
+}
+
+/* line 25, src/scss/3_components/layout/footer.scss */
+.footer .nav-menu {
+  grid-area: menu;
+}
+
+/* line 29, src/scss/3_components/layout/footer.scss */
+.footer .nav-social {
+  grid-area: social;
+}
+@media (min-width: 768px) {
+  .footer .nav-menu {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+  .footer .nav-social {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+  }
+}
+
+/*# sourceMappingURL=footer.css.map */
