@@ -15,6 +15,15 @@
   position: relative;
 }
 
+button.eu-cookie-withdraw-tab {
+  background: $tangaroa;
+  color: white;
+  border: none;
+  padding: 0.2em 0.5em;
+  border-radius: 3px 3px 0 0;
+  top: 1px;
+}
+
 .eu-cookie-compliance {
   &-banner {
     width: 100%;
