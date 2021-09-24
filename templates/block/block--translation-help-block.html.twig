@@ -25,7 +25,11 @@
  * @see template_preprocess_block()
  */
 #}
-<section{{ attributes.addClass(['section--translation-help', 'container', 'container--no-padding']) }}>
+{% set attributes = attributes.addClass(['section--translation-help', 'container', 'container--no-padding']) %}
+{% set attributes = attributes.setAttribute('id', 'section--translation-help') %}
+{% set attributes = attributes.setAttribute('aria-labelledby', 'section-translation-help__heading') %}
+{% set title_attributes = title_attributes.addClass(['visually-hidden']).setAttribute('id', 'section-translation-help__heading') %}
+<section{{ attributes }}>
   {{ title_prefix }}
   {% if label %}
     <h2{{ title_attributes }}>{{ label }}</h2>

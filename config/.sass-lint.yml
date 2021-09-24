@@ -46,6 +46,7 @@ rules:
         - '*margin-left'
         - '*vertical-align'
         - '*width'
+        - 'text-decoration-thickness'
   no-qualifying-elements: 0
   no-trailing-zero: 2
   no-transition-all: 2

@@ -34,7 +34,7 @@
 ]
 %}
 {% if tree or has_links %}
-  <nav role="navigation" {{ attributes.addClass(classes) }} aria-labelledby="book-label-{{ book_id }}">
+  <nav {{ attributes.addClass(classes) }} aria-labelledby="book-label-{{ book_id }}">
     {% if tree %}
       <h2 class="menu-title"><span class="visually-hidden">{{ book_title }} </span>{{ 'Contents'|t }}</h2>
       {{ tree }}

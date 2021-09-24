@@ -33,14 +33,13 @@
  * - field_type: The type of the field.
  * - label_display: The display settings for the label.
  *
+ *
  * @see template_preprocess_field()
  */
 #}
-{% for item in items %}
-  <iframe
-    class="{{ item.content['#attributes']['class']|join(' ') }}"
-    src="{{ item.content['#attributes']['src'] }}"
-    width="{{ item.content['#attributes']['width'] }}"
-    height="{{ item.content['#attributes']['height'] }}"
-    title="{{ item.content['#attributes']['title'] }}"></iframe>
+{% for index, item in items %}
+  <span {{ item.attributes.addClass('sitewide-alert__message') }} aria-labelledby="sitewide-alert-id-{{ index }}">
+    <strong id="sitewide-alert-id-{{ index }}"><span class="visually-hidden">Important information</span>!</strong>
+    {{ item.content }}
+  </span>
 {% endfor %}

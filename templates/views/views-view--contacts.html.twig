@@ -45,7 +45,7 @@
     {{ title }}
   {% endif %}
 
-  <div role="search" aria-label="{{ 'filter list of contacts'|t }}">
+  <div role="search" aria-roledescription="{{ 'search contacts'|t }}">
     {% if exposed %}
       {{ exposed }}
     {% endif %}
@@ -67,11 +67,11 @@
   </div>
 
   {% if rows %}
-    <div class="view-content" aria-label="{{ 'list of contacts'|t }}" role="region">
+    <div class="view-content" aria-roledescription="{{ 'contacts search results'|t }}" role="region">
       {{ rows }}
     </div>
   {% elseif empty %}
-    <div class="view-empty" aria-label="{{ 'list of contact search results'|t }}" role="region">
+    <div class="view-empty" aria-roledescription="{{ 'contacts search results'|t }}" role="region">
       {{ empty }}
     </div>
   {% endif %}

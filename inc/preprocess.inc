@@ -94,7 +94,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         $variables['sidebar_first_attr']
           ->addClass('ga-aside')
           ->setAttribute('role', 'search')
-          ->setAttribute('aria-label', t('filter search results'));
+          ->setAttribute('aria-roledescription', t('search health conditions'));
         break;
 
       case "publications":
@@ -102,7 +102,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
         $variables['sidebar_first_attr']
           ->addClass('ga-aside')
           ->setAttribute('role', 'search')
-          ->setAttribute('aria-label', t('filter search results'));
+          ->setAttribute('aria-roledescription', t('search publications'));
         break;
 
       case "search":
@@ -123,10 +123,11 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
               ->setAttribute('role', 'presentation');
           }
           $variables['sidebar_first_attr']
-            ->addClass('ga-aside')
-            ->setAttribute('role', 'search')
-            ->setAttribute('aria-label', t('filter search results'));
+            ->addClass('ga-aside');
         }
+        $variables['sidebar_first_attr']
+          ->setAttribute('role', 'search')
+          ->setAttribute('aria-roledescription', t('search driving instructors'));
         break;
     }
   }
@@ -292,7 +293,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
       $variables['sidebar_first_attr']
         ->addClass('ga-aside')
         ->setAttribute('role', 'search')
-        ->setAttribute('aria-label', t('filter search results'));
+        ->setAttribute('aria-roledescription', t('search health conditions or choose a letter from the A to Z'));
       break;
 
     default:

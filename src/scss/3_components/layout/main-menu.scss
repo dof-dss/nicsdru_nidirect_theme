@@ -12,17 +12,17 @@
   .nav {
 
     &-main {
-      height: 0; // .toggler:checked will set height to auto.
-      overflow: hidden;
+      display: flex;
+      flex-flow: column nowrap;
+      padding: 1rem 0;
 
       @include breakpoint($tab) {
-        display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
         align-items: center;
         max-width: $max-grid-width;
         margin: 0 auto;
-        height: auto;
+        padding: 0;
       }
     }
 
@@ -33,23 +33,6 @@
       @include breakpoint($tab) {
         display: flex;
         width: auto;
-      }
-    }
-
-    &-item {
-
-      &:first-child {
-        margin-top: 1rem;
-        @include breakpoint($tab) {
-          margin-top: 0;
-        }
-      }
-
-      &:last-child {
-        margin-bottom: 1rem;
-        @include breakpoint($tab) {
-          margin-bottom: 0;
-        }
       }
     }
 
@@ -145,26 +128,92 @@
     }
   }
 
-  .toggler {
-    position: absolute;
-    top: -5.8rem;
-    left: .5rem;
-    z-index: 2;
-    cursor: pointer;
-    width: 5rem;
-    height: 5rem;
-    max-height: 5rem;
-    max-width: 5rem;
-    margin: 0;
-    opacity: 0;
-    appearance: none;
+  .hamburger {
 
+    // The hamburger should use a button element for semantics.
+    // Set appearance to none and remove some default styling browsers add for buttons.
+    appearance: none;
+    border: 0;
+    width: 4.5rem;
+    height: 4.5rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $brand-primary-medium;
+
+    // Position burger absolutely beside the search box in the header.
+    // Note the header search form has some padding to make space for the button.
+    // @see src/scss/3_components/form/search-form.scss.
+    position: absolute;
+    top: -5.5rem;
+    left: .7rem;
+    z-index: 1;
+
+    // On the main search page, there is no search form in the header.
+    // So we need to style and position the hamburger a little differently for that page.
+    .path-search & {
+      justify-content: flex-start;
+      left: 0;
+      top: -6.5rem;
+      width: 100%;
+      height: 6.5rem;
+      padding: 1rem 1.5rem;
+    }
+
+    &:focus {
+      outline: 3px solid #fff;
+      outline-offset: -3px;
+
+      .path-search & {
+        outline-offset: -6px;
+      }
+    }
+
+    // By default the hamburger has the hidden attribute applied.
+    // If JS is enabled, the hidden attribute is removed.
+    // @see src/js/main-menu-toggle.js
+    // @see templates/block/block--mainnavigation.html.twig.
+    &[hidden] {
+      display: none;
+    }
+
+    // Don't display the hamburger on larger screens.
     @include breakpoint($tab) {
       display: none;
     }
 
-    /* Toggler Animation */
-    &:checked + .hamburger > div {
+    // Hamburger Lines are added to button using a nested span and pseudo elements.
+    & > span {
+      position: relative;
+      flex: none;
+      width: 100%;
+      max-width: 3rem;
+      height: .3rem;
+      background: #fff;
+      transition: transform .4s ease;
+
+      /* Hamburger Lines - Top & Bottom */
+      &::after,
+      &::before {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        top: -.9rem;
+        left: 0;
+        width: 100%;
+        height: .3rem;
+        background: inherit;
+      }
+
+      /* Moves Line Down */
+      &::after {
+        top: .9rem;
+      }
+    }
+
+    // Hamburger lines animate into a X close symbol when menu is opened.
+    &[aria-expanded='true'] > span {
       transform: rotate(135deg);
 
       /* Turns Lines Into X */
@@ -175,77 +224,30 @@
       }
     }
 
-    &:checked:hover + .hamburger > div {
+    // Hamburger X close symbol does partial rotation on hover.
+    &[aria-expanded='true']:hover > span {
       transform: rotate(225deg);
     }
 
-    /* Show menu */
-    &:checked ~ .nav-main,
-    & ~ .nav-main:focus-within {
-      height: auto;
-      max-height: 60rem;
-      transition: max-height 1s ease;
-    }
-
-    &-label {
-      color: #fff;
-    }
-  }
-
-  .hamburger {
-    position: absolute;
-    top: -5.8rem;
-    left: .5rem;
-    z-index: 1;
-    width: 5rem;
-    height: 5rem;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $brand-primary-medium;
-
-    .path-search & {
-      justify-content: flex-start;
-      left: 0;
-      top: -6.5rem;
-      width: 100%;
-      height: 6.5rem;
-      padding: 1rem 1.5rem;
-    }
-
-    @include breakpoint($tab) {
+    // Show or hide main nav depending on the state of the hamburger.
+    // @see src/js/main-menu-toggle.js.
+    &:not([hidden]) ~ .nav-main {
       display: none;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 1s ease;
+
+      // Except on larger screens - the main nav must be shown.
+      @include breakpoint($tab) {
+        display: flex;
+        max-height: 6rem;
+      }
     }
 
-    /* Hamburger Line */
-    & > div {
-      position: relative;
-      flex: none;
-      width: 100%;
-      max-width: 3rem;
-      height: .3rem;
-      background: #fff;
-      // sass-lint:disable no-transition-all
-      transition: all .4s ease;
-      // sass-lint:enable no-transition-all
-
-      /* Hamburger Lines - Top & Bottom */
-      &::after,
-      &::before {
-        content: '';
-        position: absolute;
-        z-index: 1;
-        top: -.9rem;
-        width: 100%;
-        height: .3rem;
-        background: inherit;
-      }
-
-      /* Moves Line Down */
-      &::after {
-        top: .9rem;
-      }
+    // Show main nav when the hamburger aria-expanded attribute is true.
+    &[aria-expanded='true'] ~ .nav-main {
+      display: flex;
+      max-height: 60rem;
     }
   }
 }

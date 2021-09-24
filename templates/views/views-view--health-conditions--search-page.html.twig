@@ -40,7 +40,8 @@
 %}
 {% set attributes = attributes.addClass(classes) %}
 {% set attributes = attributes.setAttribute('role', 'region') %}
-{% set attributes = attributes.setAttribute('aria-label', 'search results'|t) %}
+{% set attributes = attributes.setAttribute('aria-roledescription', 'Health conditions search results'|t) %}
+{% set attributes = attributes.setAttribute('id', 'health-conditions-results'|t) %}
 <section{{ attributes }}>
   {{ title_prefix }}
   {{ title }}

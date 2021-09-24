@@ -89,7 +89,35 @@
   {% if  content_attributes is not empty %}
   <div{{ content_attributes }}>
   {% endif %}
-  {{- content|without('field_gp_practice_lead', 'field_gp_practice_member') -}}
+  {{- content|without('field_gp_practice_lead', 'field_gp_practice_member', 'field_gp_appointments', 'field_gp_prescriptions', 'field_location') -}}
+  {% set appointments_url = content.field_gp_appointments[0]['#url'] %}
+  {% set prescriptions_url = content.field_gp_prescriptions[0]['#url'] %}
+  {% if appointments_url and prescriptions_url and appointments_url == prescriptions_url %}
+    <div class="launch-service" role="presentation">
+      <a class="call-to-action" href="{{ appointments_url }}">
+        Online appointments and repeat prescriptions
+        <svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg>
+      </a>
+    </div>
+  {% else %}
+    {% if appointments_url %}
+      <div class="launch-service" role="presentation">
+        <a class="call-to-action" href="{{ appointments_url }}">
+          Online appointments
+          <svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg>
+        </a>
+      </div>
+    {% endif %}
+    {% if prescriptions_url %}
+      <div class="launch-service" role="presentation">
+        <a class="call-to-action" href="{{ prescriptions_url }}">
+          Repeat prescriptions
+          <svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg>
+        </a>
+      </div>
+    {% endif %}
+  {% endif %}
+  {{ content.field_location }}
   {% if  content_attributes is not empty %}
   </div>
   {% endif %}
