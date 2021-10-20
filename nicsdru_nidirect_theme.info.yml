@@ -2,7 +2,7 @@ name: NIDirect
 type: theme
 description: 'Drupal 8 theme for nidirect site'
 package: NICS
-core: 8.x
+core_version_requirement: ^8.8 || ^9
 libraries:
   - nicsdru_nidirect_theme/nidirect-global-styles
   - nicsdru_nidirect_theme/nidirect-specific-styles
