@@ -357,7 +357,7 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
         }
       }
 
-      if ($variables['elements']['#photo_image_style']) {
+      if (!empty($variables['elements']['#photo_image_style'])) {
         // Some features use a different image style, eg: top set
         // of featured content on the homepage.
         $variables['content']['field_photo'][0]['#view_mode'] = $variables['elements']['#photo_image_style'];
