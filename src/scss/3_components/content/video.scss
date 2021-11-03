@@ -80,26 +80,14 @@
     padding: 0 2.5em;
     color: lighten($charcoal, 10%);
 
-    // Set consistent quote types.
-    quotes: '\201C' '\201D' '\2018' '\2019';
-
-    // Big quote pseudo element above the caption text.
-    &::before {
-      content: '\201C';
-      display: block;
-      width: 50px;
-      height: 50px;
-      font-size: 100px;
-      line-height: 1;
-      color: $grey-medium;
-      font-weight: bold;
-      text-align: center;
-    }
-
     // Caption text
     p {
       @include responsive-typo-map($large-text);
       margin-top: 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 
