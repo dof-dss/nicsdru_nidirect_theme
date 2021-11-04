@@ -160,7 +160,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
     // Site theme term pages.
     case 'entity.taxonomy_term.canonical':
       // Set the section css classes for theme taxonomy terms.
-      if ($variables['term']->bundle() == "site_themes") {
+      if ($variables['term']->bundle() === 'site_themes') {
         $variables['main_content_attr']->addClass([
           'grid',
           'layout--theme-term',
@@ -357,7 +357,7 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
         }
       }
 
-      if ($variables['elements']['#photo_image_style']) {
+      if (isset($variables['elements']['#photo_image_style'])) {
         // Some features use a different image style, eg: top set
         // of featured content on the homepage.
         $variables['content']['field_photo'][0]['#view_mode'] = $variables['elements']['#photo_image_style'];
@@ -366,7 +366,7 @@ function nicsdru_nidirect_theme_preprocess_node(array &$variables) {
 
     case "featured_content_list":
       // Only show the title on the canonical node route.
-      if (\Drupal::routeMatch()->getRouteName() != 'entity.node.canonical') {
+      if (\Drupal::routeMatch()->getRouteName() !== 'entity.node.canonical') {
         $variables['show_title'] = FALSE;
       }
 
@@ -532,17 +532,17 @@ function nicsdru_nidirect_theme_preprocess_page_title(&$variables) {
  * Implements hook_preprocess_field().
  */
 function nicsdru_nidirect_theme_preprocess_field(&$variables) {
-  if ($variables['element']['#field_name'] == 'field_featured_content' && \Drupal::service('path.matcher')->isFrontPage()) {
+  if ($variables['element']['#field_name'] === 'field_featured_content' && \Drupal::service('path.matcher')->isFrontPage()) {
     // Only show 3 items on the homepage.
     if (count($variables['items']) > 3) {
       $variables['items'] = array_slice($variables['items'], 0, 3);
     }
 
-    // If we're rendering this field on the front page, see if the parent object id
-    // matches the node id defined for the feature COVID-19 FCL node. If it does
-    // then we want to add a preprocess variable to let us hide the teaser field
-    // which saves having to define a whole new set of view modes + config for
-    // a really small trivial change to the way the feature nodes render.
+    // If we're rendering this field on the front page, see if the parent object
+    // id matches the node id defined for the feature COVID-19 FCL node. If it
+    // does then we want to add a preprocess variable to let us hide the teaser
+    // field which saves having to define a whole new set of view modes + config
+    // for a really small trivial change to the way the feature nodes render.
     $block = Block::load('featuredcontent_covid19');
     $covid_fcl_nid = $block->get('settings')['featured_items'];
     $parent = &$variables['element']['#object'];
@@ -558,8 +558,8 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
 
   // Add a class to the anchor tag on application link fields & append the icon.
   if (isset($variables['element'])
-    && $variables['element']['#field_name'] == 'field_link'
-    && $variables['element']['#bundle'] == 'application'
+    && $variables['element']['#field_name'] === 'field_link'
+    && $variables['element']['#bundle'] === 'application'
   ) {
     foreach ($variables['items'] as $key => $item) {
       $icon = '<svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg>';
@@ -576,7 +576,8 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
   if (isset($variables['element'])
     && $variables['element']['#field_type'] == 'address'
   ) {
-    for ($i = 0; $i < count($variables['items']); $i++) {
+    $item_count = count($variables['items']);
+    for ($i = 0; $i < $item_count; $i++) {
       $variables['items'][$i]["content"]["#prefix"] = '<p class="adr" translate="no">';
       if (($key = array_search('address-line1', $variables['items'][$i]['content']['address_line1']['#attributes']['class'])) !== FALSE) {
         unset($variables['items'][$i]['content']['address_line1']['#attributes']['class'][$key]);
@@ -591,8 +592,8 @@ function nicsdru_nidirect_theme_preprocess_field(&$variables) {
   }
 
   if (isset($variables['element'])
-    && $variables['element']['#field_name'] == 'body'
-    && $variables['element']['#bundle'] == 'webform'
+    && $variables['element']['#field_name'] === 'body'
+    && $variables['element']['#bundle'] === 'webform'
   ) {
     $variables['body_summary'] = $variables['element']['#object']->body->summary;
   }
@@ -616,10 +617,10 @@ function nicsdru_nidirect_theme_preprocess_views_view(&$variables) {
     $variables['attributes']['role'] = 'region';
     $variables['attributes']['aria-label'] = t('search results');
   }
-  if ($variables['view']->current_display == 'contacts_by_letter') {
+  if ($variables['view']->current_display === 'contacts_by_letter') {
     // Do not show search box if we are in a letter search.
     $route = \Drupal::routeMatch()->getRouteName();
-    if ($route == "nidirect_contacts.letter") {
+    if ($route === 'nidirect_contacts.letter') {
       $variables['exposed'] = NULL;
     }
   }
@@ -701,7 +702,7 @@ function nicsdru_nidirect_theme_preprocess_views_view_rss(&$variables) {
   // Based on https://jungleran.com/node/44 for preprocess
   // code to refine the output of the news RSS feed.
   $view = $variables['view'];
-  if ($view->id() === 'news' && $view->current_display === 'news_feed') {
+  if ($view->current_display === 'news_feed' && $view->id() === 'news') {
     // The 'link' in the preprocess variables doesn't give us the full path so
     // we can create a new one here to give us what we need.
     $display = $view->getDisplay();
