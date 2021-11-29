@@ -32,7 +32,8 @@
 .layout-builder-update-block,
 .layout-builder-configure-block,
 .media-library-wrapper form,
-.js-media-library-add-form {
+.js-media-library-add-form,
+.media-form {
 
   max-width: initial;
 
@@ -142,6 +143,7 @@
     }
 
     label.option {
+      width: auto;
       min-height: 3.6rem;
       line-height: 1.5em;
       padding-top: .7rem;
@@ -173,6 +175,10 @@
     // All buttons smaller than usual except primary buttons.
   .button:not(.button--primary) {
     @include btn(small);
+  }
+
+  .dropbutton-widget .button {
+    color: $charcoal;
   }
 
   .button--primary {
@@ -232,6 +238,7 @@
 
   // Tables with draggable rows.
   .tabledrag-toggle-weight {
+    @include btn--link-inline;
     font-size: 1.4rem;
   }
 
@@ -373,6 +380,14 @@
     .form-item {
       margin: .5em 0;
     }
+  }
+
+  .vertical-tabs__menu-item {
+    margin-bottom: 0;
+  }
+
+  .vertical-tabs__panes {
+    padding: 0 1em;
   }
 }
 
@@ -535,6 +550,12 @@
       color: #fff;
       font-size: 1.6rem;
     }
+
+    // Update widget button - hide it.
+    // @see https://www.drupal.org/project/drupal/issues/3121239.
+    [data-drupal-selector*='media-library-update-widget'] {
+      display: none;
+    }
   }
 
   // An item selected from media library - media to left, remove button to the right.
@@ -588,8 +609,17 @@
         }
       }
     }
-  }
 
+    // Edit link for media items
+    .media-library-edit__link {
+      all: inherit;
+      // sass-lint:disable mixins-before-declarations
+      @include btn(small);
+      // sass-lint:enable mixins-before-declarations
+      cursor: pointer;
+      margin-right: .5em;
+    }
+  }
 }
 
 .ui-dialog:not(.ui-dialog-off-canvas) {
