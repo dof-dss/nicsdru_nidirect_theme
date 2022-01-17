@@ -109,4 +109,4 @@ workflows:
           requires:
             - install
       - coding_standards
-      - deprecated_code
+#      - deprecated_code
