@@ -4,18 +4,6 @@
  */
 @import '../../init';
 
-/*
-// This no longer appears to wrap the layout builder - just seems to be an empty div ...
-#edit-layout-builder-layout-wrapper {
-  position: relative;
-  width: calc(100% + 40px);
-  left: -20px;
-  margin: 3em 0;
-  outline: 5px dashed #ddd;
-  outline-offset: 10px;
-}
- */
-
 .layout-builder {
   position: relative;
   width: calc(100% + 40px);
