@@ -65,13 +65,6 @@ form > .form-item,
   .fieldset-wrapper .field-prefix &,
   .fieldset-wrapper .field-suffix & {
     @include responsive-typo-map($body-text);
-  }
-
-  .fieldset-wrapper .field-prefix & {
-    margin: 0 0 1em;
-  }
-
-  .fieldset-wrapper .field-suffix & {
     margin: 1em 0 0;
   }
 }
@@ -131,10 +124,6 @@ form > .form-wrapper > section {
   .form-type-processed-text > * {
 
     margin: 1em 0;
-
-    &:first-child {
-      margin-top: 0;
-    }
   }
 }
 
@@ -264,7 +253,7 @@ textarea {
 
 // Based on https://css-tricks.com/styling-a-select-like-its-2019/
 .form-select {
-  display: block;
+  display: inline-block; /* inline-block ensures top and bottom margins aren't collapsed with parent container margins */
   font-size: 1em;
   font-family: sans-serif;
   font-weight: normal;
