@@ -7,7 +7,7 @@
 {% set symptom_list %}
   {% for i in 1..4 %}
     {% set symptom = attribute(content, 'field_hc_primary_symptom_' ~ i) | render | striptags %}
-    {% if symptom is not empty %}<li class="meta">{{ symptom }}</li>{% endif %}
+    {% if symptom is not empty %}<li class="meta">{{ symptom|raw }}</li>{% endif %}
   {% endfor %}
 {% endset %}
 {% if symptom_list|trim is not empty %}
