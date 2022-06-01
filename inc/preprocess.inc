@@ -40,7 +40,7 @@ function nicsdru_nidirect_theme_preprocess_page(array &$variables) {
 
     $node = $variables['node'];
 
-    if (isset($node) && method_exists($node, 'bundle')) {
+    if (method_exists($node, 'bundle')) {
       switch ($node->bundle()) {
         // Specific node types have a main and aside.
         case "article":
