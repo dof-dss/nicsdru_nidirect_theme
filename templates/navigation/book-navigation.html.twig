@@ -36,25 +36,38 @@
 {% if tree or has_links %}
   <nav {{ attributes.addClass(classes) }} aria-labelledby="book-label-{{ book_id }}">
     {% if tree %}
-      <h2 class="menu-title"><span class="visually-hidden">{{ book_title }} </span>{{ 'Contents'|t }}</h2>
+      <h2 class="menu-title">{{ book_title ~ ' — contents'|t }}</h2>
       {{ tree }}
     {% endif %}
     {% if has_links %}
-      <h2 class="visually-hidden" id="book-label-{{ book_id }}">{{ 'Book traversal links for'|t }} {{ book_title }}</h2>
+      <h2 class="visually-hidden" id="book-label-{{ book_id }}">{{ 'Page navigation'|t }}</h2>
       <ul class="book-navigation">
         {% if prev_url %}
           <li class="page-previous">
-            <a href="{{ prev_url }}" rel="prev" title="{{ 'Go to previous page'|t }}"><svg aria-hidden="true" class="ico ico-arrow-left"><use xlink:href="#arrow"></use></svg>{{ prev_title }}</a>
+            <a href="{{ prev_url }}" rel="prev">
+              <svg class="ico ico-arrow-left">
+                <title>Go to previous page</title>
+                <use xlink:href="#arrow"></use>
+              </svg> {{ prev_title|t }}
+            </a>
           </li>
         {% endif %}
         {% if parent_url %}
           <li class="page-up">
-            <a href="{{ parent_url }}" title="{{ 'Go to parent page'|t }}">{{ 'Up'|t }}</a>
+            <a href="{{ parent_url }}">
+              <span aria-hidden="true" title="{{ 'Go to parent page "' ~ parent_title ~ '"'|t }}">{{ 'Up'|t }}</span>
+              <span class="visually-hidden">{{ 'Go to parent page "' ~ parent_title ~ '"'|t }}</span>
+            </a>
           </li>
         {% endif %}
         {% if next_url %}
           <li class="page-next">
-            <a href="{{ next_url }}" rel="next" title="{{ 'Go to next page'|t }}">{{ next_title }}<svg aria-hidden="true" class="ico ico-arrow-right"><use xlink:href="#arrow"></use></svg></a>
+            <a href="{{ next_url }}" rel="next">
+              <svg class="ico ico-arrow-right">
+                <title>Go to next page</title>
+                <use xlink:href="#arrow"></use>
+              </svg> {{ next_title|t }}
+            </a>
           </li>
         {% endif %}
       </ul>

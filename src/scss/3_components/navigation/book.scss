@@ -24,7 +24,7 @@
     padding: 0;
 
     a,
-    span {
+    > span {
       @include link-state-style($link-body-no-visited);
       display: inline-block;
       position: relative;

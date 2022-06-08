@@ -23,7 +23,7 @@
   }
 
   .menu-title {
-    @include responsive-typo-map($body-text);
+    @include responsive-typo-map($large-text);
     font-weight: bold;
     margin: 1em 0 .5em;
   }
