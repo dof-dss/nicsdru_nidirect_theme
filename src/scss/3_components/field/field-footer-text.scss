@@ -7,5 +7,9 @@
 .page-footer-text {
   margin-top: 3em;
   border-top: .3334em solid lighten($brand-primary-medium, 50%);
-}
 
+  @at-root .sub-menu--book + & {
+    margin-top: 0;
+    border-top: 0;
+  }
+}
