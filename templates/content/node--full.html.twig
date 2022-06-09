@@ -77,7 +77,8 @@
   {% if  content_attributes is not empty %}
   <div{{ content_attributes }}>
   {% endif %}
-  {{- content -}}
+  {{- content|without('field_additional_info') -}}
+  {{- content.field_additional_info -}}
   {% if  content_attributes is not empty %}
   </div>
   {% endif %}
