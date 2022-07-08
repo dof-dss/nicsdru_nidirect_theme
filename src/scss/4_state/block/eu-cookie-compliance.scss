@@ -15,7 +15,8 @@
   position: relative;
 }
 
-.eu-cookie-compliance {
+.eu-cookie-compliance,
+.eu-cookie-withdraw, {
   &-banner {
     width: 100%;
     background: $tangaroa;
