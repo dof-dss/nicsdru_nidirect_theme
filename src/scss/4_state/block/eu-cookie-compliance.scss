@@ -119,13 +119,34 @@
   transform: scaleY(-1);
 }
 
-.eu-cookie-withdraw-tab {
-  position: absolute;
-  top: 0;
-  transform: translate(-50%, -100%);
-  left: 50%;
-}
-
 .eu-cookie-withdraw-wrapper.sliding-popup-top .eu-cookie-withdraw-tab {
   transform: translate(-50%, -100%) scaleY(-1);
+}
+
+button.eu-cookie-withdraw-tab {
+  position: absolute;
+  top: 0;
+  left: -11em;
+  z-index: -1;
+  background: #041e34 url('/core/misc/icons/bebebe/cog.svg') right 12.5px top 12.5px no-repeat;
+  background-size: 25px;
+  color: #bebebe;
+  border: 0;
+  width: 11em;
+  height: 50px;
+  padding: 0 50px 0 1em;
+  text-align: right;
+  transform: translate(50px, -50px);
+  transition: left ease .3s;
+
+  &:hover,
+  &:focus,
+  .eu-cookie-compliance-popup-open & {
+    left: -50px;
+  }
+
+  &:focus {
+    outline: 3px solid #bebebe;
+    outline-offset: -9px;
+  }
 }
