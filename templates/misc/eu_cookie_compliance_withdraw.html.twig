@@ -19,7 +19,7 @@
 {% set btn_classes = ['btn', 'btn--primary', 'eu-cookie-withdraw-button'] %}
 {% set btn_attributes = btn_attributes.addClass(btn_classes).setAttribute('type', 'button') %}
 <button type="button" class="eu-cookie-withdraw-tab" aria-controls="eu-cookie-dialog" aria-expanded="false">{{ withdraw_tab_button_label }}</button>
-<div id="eu-cookie-dialog" class="eu-cookie-withdraw-banner" role="alertdialog" aria-labelledby="popup-text" tabindex="-1">
+<div id="eu-cookie-dialog" class="eu-cookie-withdraw-banner" role="alertdialog" aria-labelledby="popup-text">
   <div class="container grid popup-content info eu-cookie-compliance-message">
     <div id="popup-text" class="eu-cookie-compliance-message">
       {{ message }}
