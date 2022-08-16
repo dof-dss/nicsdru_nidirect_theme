@@ -60,7 +60,8 @@
       color: white;
     }
 
-    a {
+    a,
+    .find-more-button {
       @include link-state-style($link-cookie-notice);
     }
 
@@ -88,19 +89,6 @@
 
       &:last-of-type {
         margin-bottom: 0;
-      }
-    }
-
-    .find-more-button {
-      color: #1593f4;
-      border-bottom: 1px solid;
-
-      &:focus {
-        color: #fff;
-      }
-
-      &:hover {
-        border-color: #fff;
       }
     }
   }
