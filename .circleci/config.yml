@@ -1,21 +1,26 @@
-# PHP CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-php/ for more details
-version: 2
+version: 2.1
+
+default_docker_image: &docker_image
+  docker:
+    - image: thecodingmachine/php:7.4-v4-apache-node14
+      environment:
+        CACHE_VERSION: v1
+        PROJECT_ROOT: "/home/docker/project"
+        PHP_EXTENSION_GD: 1
+        PHP_INI_MEMORY_LIMIT: 1g
 
 jobs:
   install:
-    docker:
-      - image: circleci/node:lts
+    <<: *docker_image
     steps:
       - checkout
       - restore_cache:
-          key: node_modules-{{ checksum "package.json" }}
+          key: node_modules-{{ .Environment.CACHE_VERSION }}-{{checksum "package-lock.json" }}
       - run:
           name: Fetch dependencies
           command: npm install
       - save_cache:
-          key: node_modules-{{ checksum "package.json" }}
+          key: node_modules-{{ .Environment.CACHE_VERSION }}-{{checksum "package-lock.json" }}
           paths:
             - node_modules
       - persist_to_workspace:
@@ -24,8 +29,7 @@ jobs:
             - ./
   # Code static analysis.
   lint:
-    docker:
-      - image: circleci/node:lts
+    <<: *docker_image
     steps:
       - attach_workspace:
           at: ./
@@ -35,8 +39,7 @@ jobs:
             npm run lint
   # Build front-end assets.
   build_assets:
-    docker:
-      - image: circleci/node:lts
+    <<: *docker_image
     steps:
       - attach_workspace:
           at: ./
@@ -46,57 +49,47 @@ jobs:
 
   # Static analysis of any PHP/Drupal code.
   coding_standards:
-    docker:
-      - image: circleci/php:7.4.15-apache-browsers
+    <<: *docker_image
     steps:
       - checkout
       - run:
           name: Fetch phpcs and dependencies
           command: |
             composer require drupal/coder --prefer-stable --no-interaction --optimize-autoloader
-            composer require slevomat/coding-standard --prefer-stable --no-interaction --optimize-autoloader
             # Move vendor directory up a level as we don't want to code-check all of that.
             mv vendor ../
       - run:
           name: Fetch phpcs convenience script
           command: |
-            curl https://raw.githubusercontent.com/dof-dss/nidirect-drupal/development/phpcs.sh -o /home/circleci/project/phpcs.sh
-            chmod +x /home/circleci/project/phpcs.sh
+            curl https://raw.githubusercontent.com/dof-dss/nidirect-drupal/development/phpcs.sh -o $PROJECT_ROOT/phpcs.sh
+            chmod +x $PROJECT_ROOT/phpcs.sh
       - run:
           name: PHPCS analysis
-          command: /home/circleci/project/phpcs.sh /home/circleci "/home/circleci/project"
+          command: $PROJECT_ROOT/phpcs.sh ~/ "${PROJECT_ROOT}"
 
   deprecated_code:
-    docker:
-      - image: circleci/php:7.4.15-apache-browsers
+    <<: *docker_image
     steps:
       - checkout:
-          path: /home/circleci/nicsdru_nidirect_theme
+          path: ~/nicsdru_nidirect_theme
       - run:
-          name: Add OS and PHP extensions/config
+          name: Fetch main project composer manifest and extend as required.
           command: |
-            sudo cp /home/circleci/nicsdru_nidirect_theme/.circleci/docker-php-circleci.ini /usr/local/etc/php/conf.d/
-            sudo apt --allow-releaseinfo-change update
-            sudo apt install -y libpng-dev
-            sudo docker-php-ext-install gd
-      - run:
-          name: Fetch latest Drupal version
-          command: |
-            cd /home/circleci
-            composer create-project drupal-composer/drupal-project:8.x-dev /home/circleci/project --no-interaction
-      - run:
-          name: Download dependent contrib modules.
-          command: |
-            cd /home/circleci/project
-            composer require mglaman/drupal-check --no-interaction
+            cd $PROJECT_ROOT
+            wget https://raw.githubusercontent.com/dof-dss/nidirect-drupal/development/composer.json
+            # Remove dof-dss packages (from the requires section, not the scaffold).
+            sed -i -E '/dof-dss\/.+:/d' composer.json
+            # NB: no lock file fetched, and some packages aren't explicit dependencies/versions
+            # so we add them here to make sure they arrive with the rest listed in composer.json.
+            composer require -n mglaman/drupal-check drupal/clientside_validation:3.0.0-rc4
       - run:
           name: Move custom code into position
-          command: mv /home/circleci/nicsdru_nidirect_theme /home/circleci/project/web/themes/custom
+          command: mv ~/nicsdru_nidirect_theme $PROJECT_ROOT/web/themes/custom
       - run:
           name: Deprecated code check
           command: |
-            cd /home/circleci/project/web
-            ../vendor/bin/drupal-check themes/custom -e "*/tests/*"
+            cd $PROJECT_ROOT/web
+            ../vendor/bin/drupal-check themes/custom
 
 workflows:
   version: 2
