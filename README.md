@@ -74,7 +74,7 @@ Run `npm run` to see all the npm scripts.
 ## Theme hooks
 
 Common theme hooks such as hook_preprocess, hook_alter should not be added to
-the .theme file but to their respective include file under the /inc directory
+the `.theme` file but to their respective include file under the /inc directory
 There are currently hook files for:
 - alter
 - preprocess
