@@ -39,7 +39,7 @@ main form {
     margin: 0;
   }
 
-  &--error-message {
+  &--error-message .error {
     @extend %error-bubble;
 
     @at-root .container-inline & {
@@ -306,13 +306,13 @@ textarea,
     width: auto;
     padding: 0;
 
-    .form-item--error-message {
+    .form-item--error-message .error {
       @extend %error-bubble--floating-below;
     }
   }
 
   // Error bubbles sit to the right of radio/checkbox options.
-  .form-item--error-message {
+  .form-item--error-message .error {
     @extend %error-bubble--floating-right;
   }
 }
