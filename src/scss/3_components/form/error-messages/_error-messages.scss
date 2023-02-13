@@ -20,6 +20,10 @@
   box-shadow: 0 8px 12px -4px rgba(0, 0, 0, .3);
   opacity: 1;
 
+  &:has(.error:empty) {
+    display: none;
+  }
+
   // Bubble arrow. By default points up.
   &::before {
     content: '';
