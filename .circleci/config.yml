@@ -2,9 +2,8 @@ version: 2.1
 
 default_docker_image: &docker_image
   docker:
-    - image: thecodingmachine/php:7.4-v4-apache-node14
+    - image: thecodingmachine/php:8.1-v4-apache-node14
       environment:
-        CACHE_VERSION: v1
         PROJECT_ROOT: "/home/docker/project"
         PHP_EXTENSION_GD: 1
         PHP_INI_MEMORY_LIMIT: 1g
@@ -15,12 +14,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: node_modules-{{ .Environment.CACHE_VERSION }}-{{checksum "package-lock.json" }}
+          key: node_modules-{{ .Branch }}-{{ checksum "package.json" }}
       - run:
           name: Fetch dependencies
           command: npm install
       - save_cache:
-          key: node_modules-{{ .Environment.CACHE_VERSION }}-{{checksum "package-lock.json" }}
+          key: node_modules-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - node_modules
       - persist_to_workspace:
@@ -55,13 +54,13 @@ jobs:
       - run:
           name: Fetch phpcs and dependencies
           command: |
-            composer require drupal/coder --prefer-stable --no-interaction --optimize-autoloader
+            composer require drupal/coder
             # Move vendor directory up a level as we don't want to code-check all of that.
             mv vendor ../
       - run:
           name: Fetch phpcs convenience script
           command: |
-            curl https://raw.githubusercontent.com/dof-dss/nidirect-drupal/development/phpcs.sh -o $PROJECT_ROOT/phpcs.sh
+            curl https://raw.githubusercontent.com/dof-dss/nidirect-drupal/main/phpcs.sh -o $PROJECT_ROOT/phpcs.sh
             chmod +x $PROJECT_ROOT/phpcs.sh
       - run:
           name: PHPCS analysis
@@ -73,15 +72,15 @@ jobs:
       - checkout:
           path: ~/nicsdru_nidirect_theme
       - run:
-          name: Fetch main project composer manifest and extend as required.
+          name: Fetch latest Drupal version
           command: |
             cd $PROJECT_ROOT
-            wget https://raw.githubusercontent.com/dof-dss/nidirect-drupal/development/composer.json
-            # Remove dof-dss packages (from the requires section, not the scaffold).
-            sed -i -E '/dof-dss\/.+:/d' composer.json
-            # NB: no lock file fetched, and some packages aren't explicit dependencies/versions
-            # so we add them here to make sure they arrive with the rest listed in composer.json.
-            composer require -n mglaman/drupal-check drupal/clientside_validation:3.0.0-rc4
+            composer create-project drupal-composer/drupal-project:9.x-dev $PROJECT_ROOT --no-interaction
+      - run:
+          name: Download dependent contrib modules.
+          command: |
+            cd $PROJECT_ROOT
+            composer require mglaman/drupal-check --no-interaction
       - run:
           name: Move custom code into position
           command: mv ~/nicsdru_nidirect_theme $PROJECT_ROOT/web/themes/custom
