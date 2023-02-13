@@ -2,9 +2,8 @@ version: 2.1
 
 default_docker_image: &docker_image
   docker:
-    - image: thecodingmachine/php:7.4-v4-apache-node14
+    - image: thecodingmachine/php:8.1-v4-apache-node14
       environment:
-        CACHE_VERSION: v1
         PROJECT_ROOT: "/home/docker/project"
         PHP_EXTENSION_GD: 1
         PHP_INI_MEMORY_LIMIT: 1g
@@ -55,7 +54,7 @@ jobs:
       - run:
           name: Fetch phpcs and dependencies
           command: |
-            composer require drupal/coder --prefer-stable --no-interaction --optimize-autoloader
+            composer require drupal/coder
             # Move vendor directory up a level as we don't want to code-check all of that.
             mv vendor ../
       - run:
