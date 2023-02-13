@@ -72,15 +72,15 @@ jobs:
       - checkout:
           path: ~/nicsdru_nidirect_theme
       - run:
-          name: Fetch main project composer manifest and extend as required.
+          name: Fetch latest Drupal version
           command: |
             cd $PROJECT_ROOT
-            wget https://raw.githubusercontent.com/dof-dss/nidirect-drupal/development/composer.json
-            # Remove dof-dss packages (from the requires section, not the scaffold).
-            sed -i -E '/dof-dss\/.+:/d' composer.json
-            # NB: no lock file fetched, and some packages aren't explicit dependencies/versions
-            # so we add them here to make sure they arrive with the rest listed in composer.json.
-            composer require -n mglaman/drupal-check drupal/clientside_validation:3.0.0-rc4
+            composer create-project drupal-composer/drupal-project:9.x-dev $PROJECT_ROOT --no-interaction
+      - run:
+          name: Download dependent contrib modules.
+          command: |
+            cd $PROJECT_ROOT
+            composer require mglaman/drupal-check --no-interaction
       - run:
           name: Move custom code into position
           command: mv ~/nicsdru_nidirect_theme $PROJECT_ROOT/web/themes/custom
