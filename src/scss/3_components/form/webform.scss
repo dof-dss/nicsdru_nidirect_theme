@@ -13,7 +13,7 @@
 .webform-counter {
   margin-bottom: 0;
 
-  + .form-item--error-message {
+  + .form-item--error-message .error {
     position: absolute;
     margin-top: .9rem;
   }
@@ -50,7 +50,7 @@
     width: auto;
     padding: 0;
 
-    &--error-message {
+    &--error-message .error {
       @extend %error-bubble--floating-below;
     }
   }
