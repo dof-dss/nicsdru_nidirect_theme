@@ -6,15 +6,8 @@
 
 /* print styles */
 @media print {
-  body {
-    padding: 1.5cm 2cm;
-
-    &::after {
-      content: '© Crown Copyright';
-      display: block;
-      text-align: center;
-      padding: 1em 0;
-    }
+  @page {
+    margin: 1.5cm;
   }
 
   footer,
@@ -42,16 +35,41 @@
     display: block;
   }
 
-  article {
-    float: none !important;
-  }
-
   .header,
   .container {
     display: block;
     width: auto;
     max-width: 21cm;
     margin: auto;
+  }
+
+  .layout-header--logo {
+    width: auto;
+    height: auto;
+    max-width: none;
+    max-height: none;
+
+    .site-logo {
+      width: 10cm;
+      height: auto;
+      margin: .5cm 0 0;
+    }
+  }
+
+  main {
+    display: block;
+    width: auto;
+
+    &::after {
+      content: '© Crown Copyright';
+      display: block;
+      text-align: center;
+      margin: 1.5em 0 0;
+    }
+  }
+
+  article {
+    float: none !important;
   }
 
   h1 {
