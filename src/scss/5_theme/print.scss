@@ -1,0 +1,108 @@
+/*
+ * @file
+ * Print CSS.
+ */
+@import '../init';
+
+/* print styles */
+@media print {
+  body {
+    padding: 1.5cm 2cm;
+
+    &::after {
+      content: '© Crown Copyright';
+      display: block;
+      text-align: center;
+      padding: 1em 0;
+    }
+  }
+
+  footer,
+  aside,
+  nav,
+  .header .search-form,
+  .sitewide-alert,
+  .sliding-popup-bottom,
+  .toolbar,
+  .messages,
+  .sub-menu,
+  .social-sharing,
+  .section-feedback,
+  .section-translation-help,
+  .ico-elink {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  .grid {
+    display: block;
+  }
+
+  article {
+    float: none !important;
+  }
+
+  .header,
+  .container {
+    display: block;
+    width: auto;
+    max-width: 21cm;
+    margin: auto;
+  }
+
+  h1 {
+    margin: 1.5em 0 1em !important;
+  }
+
+  a {
+    &:link,
+    &:visited {
+      text-decoration: none !important;
+    }
+
+    &[href]::after {
+      display: inline-block;
+      content: '(' attr(href) ')';
+      margin: 0 3pt;
+      font-weight: normal;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+
+    &[href^='/']::after {
+      content: '(https://www.nidirect.gov.uk' attr(href) ')';
+    }
+
+    &[href^='javascript:']::after,
+    &[href^='#']::after {
+      content: '';
+    }
+  }
+
+  .accordion *:not(a, li, p) {
+    all: revert;
+
+    .visually-hidden {
+      display: none;
+    }
+
+    button {
+      all: inherit;
+
+      &::after {
+        display: none !important;
+      }
+    }
+
+    .accordion-section {
+      visibility: visible !important;
+      height: auto !important;
+      overflow: visible !important;
+      opacity: 1 !important;
+    }
+  }
+}
