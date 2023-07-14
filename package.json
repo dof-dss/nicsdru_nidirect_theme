@@ -33,6 +33,7 @@
     "imagemin-pngcrush": "^6.0.0",
     "imagemin-pngout": "^4.0.0",
     "imagemin-zopfli": "^6.0.0",
+    "jpegoptim-bin": "^7.1.0",
     "kss": "^3.0.1",
     "modernizr": "^3.11.7",
     "nicsdru_origins_theme": "^0.1.1",
@@ -102,6 +103,5 @@
     "//": "Some useful configuration we can use to pass back to scripts",
     "scssfile": "src/scss/**/*.scss",
     "sasslintConfig": "config/.sass-lint.yml"
-  },
-  "dependencies": {}
+  }
 }
