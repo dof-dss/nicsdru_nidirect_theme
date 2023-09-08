@@ -13,6 +13,7 @@
 .webform-counter {
   margin-bottom: 0;
 
+  + .form-item--error-message.error,
   + .form-item--error-message .error {
     position: absolute;
     margin-top: .9rem;
