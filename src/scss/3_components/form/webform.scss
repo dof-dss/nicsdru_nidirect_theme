@@ -68,9 +68,15 @@
   .form-type-radio,
   .form-type-checkbox {
     padding: 0;
+
+    input:checked ~ label {
+      background-color: $brand-primary-light;
+      color: #000;
+    }
   }
 
   label.webform-options-display-buttons-label {
+    min-width: 5.5em;
     padding: .5em;
     color: $text;
     border: 0;
