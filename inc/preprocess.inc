@@ -6,9 +6,9 @@
  */
 
 use Drupal\block\Entity\Block;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Template\Attribute;
-use Drupal\Component\Utility\Html;
 use Drupal\nicsdru_nidirect_theme\Helpers;
 use Drupal\nicsdru_nidirect_theme\LayoutClasses;
 use Drupal\node\Entity\Node;
