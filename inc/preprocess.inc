@@ -6,14 +6,14 @@
  */
 
 use Drupal\block\Entity\Block;
-use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Template\Attribute;
 use Drupal\Component\Utility\Html;
-use Drupal\media\MediaInterface;
 use Drupal\nicsdru_nidirect_theme\Helpers;
 use Drupal\nicsdru_nidirect_theme\LayoutClasses;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
+use Drupal\media\MediaInterface;
 
 /**
  * Implements hook_preprocess_html().
