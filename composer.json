@@ -1,13 +1,19 @@
 {
     "name": "dof-dss/nicsdru_nidirect_theme",
     "type": "drupal-custom-theme",
-    "description": "Drupal 8 theme for nidirect website",
+    "description": "Drupal theme for nidirect website",
     "keywords": ["Drupal", "theme"],
     "license": "MIT",
     "homepage": "https://github.com/dof-dss/nicsdru_nidirect_theme",
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.0"
+        "php": ">=8.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "authors": [
         {
