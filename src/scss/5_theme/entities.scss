@@ -101,3 +101,65 @@
     margin: 3em 0;
   }
 }
+
+.webform-submission-prison-visit-online-booking-form {
+
+  details[data-webform-key^='slots_week'] {
+
+    padding-bottom: 1.5em;
+
+    summary {
+      margin-bottom: 1em;
+    }
+
+    fieldset {
+      margin: 0 .75em 1em;
+
+      span.fieldset-legend {
+        @include responsive-typo-map($large-text);
+      }
+    }
+
+    fieldset:has(.webform-options-display-buttons-wrapper:only-child) {
+
+      @include breakpoint($tab) {
+        margin-right: 1em;
+      }
+
+      display: inline-flex;
+      margin: 0 .5em 0 0;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      .webform-options-display-buttons-wrapper {
+        margin: .5em .25em;
+      }
+    }
+
+  }
+
+  dl {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+
+    dt,
+    dd {
+      max-width: fit-content;
+      padding: .5em;
+      margin: 0;
+    }
+
+    dt {
+      font-weight: bold;
+      background-color: $grey-lightest;
+    }
+
+    dd {
+      margin-right: 1em;
+    }
+  }
+
+}
