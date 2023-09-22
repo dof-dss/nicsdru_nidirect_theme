@@ -109,7 +109,26 @@
     padding-bottom: 1.5em;
 
     summary {
+      position: relative;
       margin-bottom: 1em;
+      padding-left: 3em;
+      text-align: left;
+
+      &::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 3em;
+        height: 100%;
+        background: transparent resolve('arrow_forward_white.svg') center center / 1.5em no-repeat;
+        transition: transform .2s ease;
+      }
+    }
+
+    &[open] summary::after {
+      transform: rotate(90deg);
     }
 
     fieldset {
@@ -140,21 +159,21 @@
 
   }
 
-  dl {
+  .visit-details dl {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: flex-start;
 
     dt,
     dd {
       max-width: fit-content;
-      padding: .5em;
+      padding: .25em .5em;
       margin: 0;
     }
 
     dt {
       font-weight: bold;
-      background-color: $grey-lightest;
+      background-color: $brand-primary-lighter;
     }
 
     dd {
