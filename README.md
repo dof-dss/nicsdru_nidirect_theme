@@ -1,6 +1,6 @@
 [![CircleCI](https://circleci.com/gh/dof-dss/nicsdru_nidirect_theme.svg?style=svg)](https://circleci.com/gh/dof-dss/nicsdru_nidirect_theme)
 
-# DEPRECIATED 
+#  DEPRECATED 
 This theme has been merged into the main repo. 
 Any changes to this repo will not appear on the site.  
 
