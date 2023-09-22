@@ -1,5 +1,9 @@
 [![CircleCI](https://circleci.com/gh/dof-dss/nicsdru_nidirect_theme.svg?style=svg)](https://circleci.com/gh/dof-dss/nicsdru_nidirect_theme)
 
+# DEPRECIATED 
+This theme has been merged into the main repo. 
+Any changes to this repo will not appear on the site.  
+
 # nicsdru_nidirect_theme
 This repository contains code for nidirect Drupal 8 site theme.
 
